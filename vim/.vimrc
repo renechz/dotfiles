@@ -1,6 +1,7 @@
 " Leader
-let mapleader = ","
+let mapleader = "`"
 
+set encoding=utf-8
 set clipboard=unnamed   " Share clipboard.
 set history=1000        " Remember more commands and search history
 set incsearch           " Do incremental searching
