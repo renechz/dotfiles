@@ -32,6 +32,7 @@ set backspace=indent,eol,start " Allow backspacing over everything in insert mod
 set autoindent                 " Always set autoindenting on
 set copyindent                 " Copy the previous indentation on autoindenting
 set number                     " Always show line numbers
+set shell=/usr/local/bin/zsh
 set shiftwidth=2               " Number of spaces to use for autoindenting
 set shiftround                 " Use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch                  " Set show matching parenthesis
@@ -46,6 +47,7 @@ set cursorline
 set foldmethod=indent
 set nofoldenable
 set colorcolumn=80,120
+set re=1
 
 " Load bundles from .vimrc.bundles
 if filereadable(expand("~/.vimrc.bundles"))
@@ -56,7 +58,8 @@ endif
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax enable
-  set background=light
+  syntax sync minlines=100
+  set background=dark
   colorscheme solarized
 endif
 
@@ -162,6 +165,7 @@ let g:ctrlp_extensions = [
 let g:ctrlp_map = '<C-t>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_match_window = 'top,order:ttb'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " Highlight and Delete trailing whitespace on save.
 let g:DeleteTrailingWhitespace_Action = 'delete'
@@ -169,3 +173,7 @@ highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 
 " NERDTree
 map <Leader>nt :NERDTreeToggle<CR>
+
+" Emmet
+let g:user_emmet_settings = { 'indentation': '2' }
+autocmd FileType html,css,sass,scss,eruby imap <tab> <plug>(EmmetExpandAbbr)
