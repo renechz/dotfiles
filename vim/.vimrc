@@ -65,30 +65,6 @@ endif
 
 filetype plugin indent on
 
-augroup vimrcEx
-  autocmd!
-
-" For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-
-  " Enable spellchecking for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal spell
-
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-augroup END
-
 " Use The Silver Searcher
 " https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -155,8 +131,7 @@ nnoremap <C-H> <C-W><C-H>
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 
-" CtrlP configuration
-" =============================
+" CtrlP
 let g:ctrlp_extensions = [
 \ 'tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
 \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir'
