@@ -1,0 +1,10 @@
+{
+  "surround_pairs_for_replacement": {
+    "=": ["<%= ", " %>"],
+    "%": ["<% ", " %>"]
+  },
+  "surround_pairs_for_search": {
+    "=": ["<%=", "%>"],
+    "%": ["<%", "%>"]
+  }
+}

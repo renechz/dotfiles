@@ -1,0 +1,28 @@
+{
+	"auto_upgrade_last_run": null,
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Alignment",
+		"Better CoffeeScript",
+		"Bower",
+		"CoffeeScript",
+		"DocBlockr",
+		"Emmet",
+		"Floobits",
+		"GitGutter",
+		"Handlebars",
+		"Origami",
+		"Package Control",
+		"RSpec (snippets and syntax)",
+		"Sass",
+		"SideBarEnhancements",
+		"Solarized Color Scheme",
+		"SublimeGit",
+		"Surround",
+		"Theme - Sodarized",
+		"Vintage Surround",
+		"Vintage-Origami",
+		"Vintageous"
+	]
+}
