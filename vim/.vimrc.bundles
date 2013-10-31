@@ -1,27 +1,31 @@
 set nocompatible
-
 filetype off
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+filetype plugin indent on
+
 " Define bundles via Github repos
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'croaky/vim-colors-github'
-Bundle 'danro/rename.vim'
+Bundle 'dsawardekar/ember.vim'
+Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mattn/emmet-vim'
+Bundle 'mustache/vim-mode'
 Bundle 'Raimondi/delimitMate'
 Bundle 'rking/ag.vim'
-Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
@@ -37,7 +41,3 @@ Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'vim-scripts/greplace.vim'
 Bundle 'vim-scripts/ShowTrailingWhitespace'
-Bundle 'vim-scripts/tComment'
-Bundle 'xenoterracide/html.vim'
-
-filetype on
