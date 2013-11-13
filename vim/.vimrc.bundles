@@ -7,8 +7,6 @@ call vundle#rc()
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-filetype plugin indent on
-
 " Define bundles via Github repos
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'airblade/vim-gitgutter'
@@ -41,3 +39,6 @@ Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'vim-scripts/greplace.vim'
 Bundle 'vim-scripts/ShowTrailingWhitespace'
+Bundle 'wincent/Command-T'
+
+filetype plugin indent on
