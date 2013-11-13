@@ -82,16 +82,9 @@ imap <C-s> <Esc><C-s>
 " Plugin customisation
 " ======================================
 
-" Command-T
-" ======================================
-nnoremap <silent> <C-t> :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
-let g:CommandTMaxHeight = 10
-let g:CommandTMatchWindowAtTop = 1
 " CtrlP
 " ======================================
-" let g:ctrlp_map = '<C-t>'
-let g:ctrlp_by_filename = 1
+let g:ctrlp_map = '<C-t>'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed']
 let g:ctrlp_match_window = 'top,order:ttb'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'

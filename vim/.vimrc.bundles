@@ -33,12 +33,12 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-matchit'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/BufOnly.vim'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'vim-scripts/greplace.vim'
 Bundle 'vim-scripts/ShowTrailingWhitespace'
-Bundle 'wincent/Command-T'
 
 filetype plugin indent on
