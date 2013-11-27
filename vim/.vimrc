@@ -81,6 +81,9 @@ imap <C-s> <Esc><C-s>
 " ======================================
 " Plugin customisation
 " ======================================
+" Matchit
+" ======================================
+runtime macros/matchit.vim
 
 " CtrlP
 " ======================================
@@ -105,7 +108,9 @@ map <Leader>nt :NERDTreeToggle<CR>
 
 " Emmet
 " ======================================
-let g:user_emmet_settings = { 'indentation': '2' }
+let g:user_emmet_settings = {
+  \ 'indentation' : ' '
+\}
 autocmd FileType html,css,sass,scss,eruby EmmetInstall
 autocmd FileType html,css,sass,scss,eruby imap <Leader><tab> <plug>(EmmetExpandAbbr)
 
@@ -119,3 +124,8 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 " delimitMate
 " ======================================
 let delimitMate_expand_cr = 1
+
+" YouCompleteMe
+" ======================================
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
