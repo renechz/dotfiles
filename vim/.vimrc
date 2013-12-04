@@ -81,6 +81,7 @@ imap <C-s> <Esc><C-s>
 " ======================================
 " Plugin customisation
 " ======================================
+
 " Matchit
 " ======================================
 runtime macros/matchit.vim
@@ -124,8 +125,3 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 " delimitMate
 " ======================================
 let delimitMate_expand_cr = 1
-
-" YouCompleteMe
-" ======================================
-let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
