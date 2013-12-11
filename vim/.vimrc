@@ -10,7 +10,7 @@ let mapleader = "`"
 
 set autoindent                    " Copy indent from current line when starting a new line.
 set backspace=indent,eol,start    " Allow backspacing over everything in insert mode.
-set colorcolumn=80,100            " Highlight columns
+set colorcolumn=80,125            " Highlight columns
 set copyindent                    " Copy the previous indentation on autoindenting
 set cursorline                    " Highlight current line
 set encoding=utf-8                " Character encoding used inside Vim.
@@ -55,7 +55,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-let &colorcolumn="80,".join(range(100,999),",")
+let &colorcolumn="80,".join(range(125,999),",")
 
 " Use The Silver Searcher
 " https://github.com/ggreer/the_silver_searcher
@@ -98,7 +98,6 @@ map <Leader>r :CtrlPBufTag<CR>
 " DeleteTrailingWhiteSpace
 " ShowTrailingWhiteSpace
 " ======================================
-"
 " * Highlight and Delete trailing whitespace on save.
 let g:DeleteTrailingWhitespace_Action = 'delete'
 highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
