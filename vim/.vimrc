@@ -30,7 +30,6 @@ set noswapfile
 set number                        " Show line numbers.
 set pastetoggle=<F2>              " Avoid cascading indents when pasting large amounts of text
 set ruler                         " Show the cursor position all the time
-set shell=/usr/local/bin/zsh
 set showmatch
 set showcmd                       " Display incomplete commands
 set smartcase                     " Ignore case if search pattern is all lowercase, case-sensitive otherwise
@@ -53,7 +52,7 @@ set tabstop=2
 " Colorscheme
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme hybrid
 
 let &colorcolumn="80,".join(range(125,999),",")
 
@@ -124,3 +123,10 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 " delimitMate
 " ======================================
 let delimitMate_expand_cr = 1
+
+" vim-rspec
+" =====================================
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>as :call RunAllSpecs()<CR>
