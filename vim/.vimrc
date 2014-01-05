@@ -52,6 +52,7 @@ set tabstop=2
 " Colorscheme
 syntax enable
 set background=dark
+let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
 
 let &colorcolumn="80,".join(range(125,999),",")
@@ -104,14 +105,6 @@ highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 " NERDTree
 " ======================================
 map <Leader>nt :NERDTreeToggle<CR>
-
-" Emmet
-" ======================================
-let g:user_emmet_settings = {
-  \ 'indentation' : ' '
-\}
-autocmd FileType html,css,sass,scss,eruby EmmetInstall
-autocmd FileType html,css,sass,scss,eruby imap <Leader><tab> <plug>(EmmetExpandAbbr)
 
 " Tabularize
 " ======================================

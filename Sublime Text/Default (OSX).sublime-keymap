@@ -9,7 +9,6 @@
   { "keys": ["alt+r"], "command": "side_bar_move" },
   { "keys": ["alt+d"], "command": "side_bar_duplicate" },
   { "keys": ["super+backspace"], "command": "side_bar_delete" },
-  { "keys": ["ctrl+s"], "command": "save" },
 
   // Panel management
   {
