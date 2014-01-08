@@ -30,6 +30,7 @@ set noswapfile
 set number                        " Show line numbers.
 set pastetoggle=<F2>              " Avoid cascading indents when pasting large amounts of text
 set ruler                         " Show the cursor position all the time
+set shell=/usr/local/bin/zsh
 set showmatch
 set showcmd                       " Display incomplete commands
 set smartcase                     " Ignore case if search pattern is all lowercase, case-sensitive otherwise
@@ -123,3 +124,22 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>as :call RunAllSpecs()<CR>
+
+" vim-rails
+" =====================================
+"
+" * Go to Alternate file
+nmap ga :A<CR>
+vmap ga :A<CR>
+nmap gsa :AS<CR>
+vmap gsa :AS<CR>
+nmap gva :AV<CR>
+vmap gva :AV<CR>
+
+" * Go to Related file
+nmap gr :R<CR>
+vmap gr :R<CR>
+nmap gsr :RS<CR>
+vmap gsr :RS<CR>
+nmap gvr :RV<CR>
+vmap gvr :RV<CR>
