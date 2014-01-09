@@ -1,0 +1,19 @@
+[user]
+	name = René Cienfuegos
+	email = renecienfuegos@gmail.com
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	di = diff
+	aa = add --all
+	b = branch
+[color]
+	ui = true
+[github]
+	user = renechz
+[push]
+	default = current
+[core]
+	editor = vim --noplugin
+  excludesfile = ~/.gitignore

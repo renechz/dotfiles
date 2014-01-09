@@ -1,0 +1,13 @@
+.DS_Store
+.svn
+*~
+tags
+log/
+log
+tmp
+db/*.sqlite3
+.netrwhist
+project-notes.txt
+.agignore
+Procfile.dev
+Procfile.local
