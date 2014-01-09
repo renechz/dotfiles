@@ -1,5 +1,42 @@
-" Load bundles from .vimrc.bundles
-source ~/.vimrc.bundles
+set nocompatible
+filetype off
+
+" ======================================
+" Vundle
+" ======================================
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" Define bundles via Github repos
+Bundle 'bling/vim-airline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'Raimondi/delimitMate'
+Bundle 'rking/ag.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'slim-template/vim-slim'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rbenv'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/BufOnly.vim'
+Bundle 'vim-scripts/DeleteTrailingWhitespace'
+Bundle 'vim-scripts/ShowTrailingWhitespace'
+Bundle 'w0ng/vim-hybrid'
+
+filetype plugin indent on
 
 " ======================================
 " Vim settings
