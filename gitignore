@@ -2,6 +2,8 @@
 .svn
 *~
 tags
+.tags
+.tags_sorted_by_file
 log/
 log
 tmp
