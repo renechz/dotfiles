@@ -116,6 +116,17 @@ nmap <C-s> <Esc>:w<CR>
 vmap <C-s> <Esc><C-s>gv
 imap <C-s> <Esc><C-s>
 
+" Toggle between light and dark colour schemes
+nnoremap <F4> :call ToggleColors()<CR>
+
+function! ToggleColors()
+  if g:colors_name == 'hybrid'
+    colorscheme hybrid-light
+  else
+    colorscheme hybrid
+  endif
+endfunction
+
 " ======================================
 " Plugin customisation
 " ======================================
@@ -143,13 +154,6 @@ highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 " NERDTree
 " ======================================
 map <Leader>nt :NERDTreeToggle<CR>
-
-" Tabularize
-" ======================================
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
 
 " delimitMate
 " ======================================
