@@ -12,16 +12,19 @@ Bundle 'gmarik/vundle'
 
 " Define bundles via Github repos
 Bundle 'bling/vim-airline'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kana/vim-textobj-user'
-Bundle 'msanders/snipmate.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'Raimondi/delimitMate'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'slim-template/vim-slim'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-endwise'
@@ -67,6 +70,7 @@ set nowritebackup
 set noswapfile
 set number                        " Show line numbers.
 set pastetoggle=<F2>              " Avoid cascading indents when pasting large amounts of text
+set relativenumber
 set ruler                         " Show the cursor position all the time
 set shell=/usr/local/bin/zsh
 set showmatch
