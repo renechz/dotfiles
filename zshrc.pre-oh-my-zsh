@@ -1,0 +1,40 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=50
+SAVEHIST=1000
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/rene/.zshrc'
+
+autoload -Uz compinit vcs_info
+autoload -U colors && colors
+compinit
+
+zstyle ':vcs_info:git*' formats "%{$bg_bold[green]%}%{$fg_bold[black]%}[%b]%{$reset_color%} %m%u%c"
+precmd () { vcs_info }
+setopt prompt_subst
+# End of lines added by compinstall
+#
+# Disable flow control commands (keeps C-s from freezing everything)
+stty start undef
+stty stop undef
+
+# export PS1="%n@%M:%~ $ "
+# PS1="\$vcs_info_msg_0_$PS1"
+PROMPT='%n@%M:%{$bg_bold[blue]%}%{$fg_bold[black]%}%~%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%} % '
+export CLICOLOR=1
+
+# rbenv
+# # To enable shims and autocompletion add to your profile:
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#
+# # bash completion
+# if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#   . $(brew --prefix)/etc/bash_completion
+# fi
+#
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH="/usr/local/bin:/usr/local/sbin:/Users/rene/.rbenv/shims:$PATH"
