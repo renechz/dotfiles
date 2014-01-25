@@ -21,7 +21,6 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'Raimondi/delimitMate'
 Bundle 'rking/ag.vim'
-Bundle 'scrooloose/nerdtree'
 Bundle 'slim-template/vim-slim'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tomtom/tlib_vim'
@@ -155,10 +154,6 @@ map <Leader>r :CtrlPBufTag<CR>
 " * Highlight and Delete trailing whitespace on save.
 let g:DeleteTrailingWhitespace_Action = 'delete'
 highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
-
-" NERDTree
-" ======================================
-map <Leader>nt :NERDTreeToggle<CR>
 
 " delimitMate
 " ======================================
