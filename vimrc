@@ -12,16 +12,20 @@ Bundle 'gmarik/vundle'
 
 " Define bundles via Github repos
 Bundle 'bling/vim-airline'
+Bundle 'ervandew/supertab'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kana/vim-textobj-user'
 Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'mattn/emmet-vim'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'othree/html5.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'rking/ag.vim'
 Bundle 'slim-template/vim-slim'
+Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-bundler'
@@ -46,7 +50,7 @@ filetype plugin indent on
 " ======================================
 
 " Leader key
-let mapleader = "`"
+let mapleader = " "
 
 set autoindent                    " Copy indent from current line when starting a new line.
 set backspace=indent,eol,start    " Allow backspacing over everything in insert mode.
@@ -63,6 +67,7 @@ set incsearch                     " Do incremental searching.
 set laststatus=2                  " Always display the status line.
 set nobackup                      " No backup file.
 set nocompatible                  " Use Vim settings, rather than Vi settings.
+set nohls
 set noerrorbells                  " Don't beep.
 set nowrap                        " Don't wrap lines.
 set nowritebackup
@@ -70,7 +75,7 @@ set noswapfile
 set number                        " Show line numbers.
 set pastetoggle=<F2>              " Avoid cascading indents when pasting large amounts of text
 set relativenumber
-set ruler                         " Show the cursor position all the time
+set ruler
 set shell=/usr/local/bin/zsh
 set showmatch
 set showcmd                       " Display incomplete commands
@@ -79,9 +84,9 @@ set splitbelow                    " Open new split panes to right and bottom.
 set splitright
 set tags=./tags;                  " Set the tag file search order
 set timeoutlen=1000 ttimeoutlen=0
-set title                         " Change the terminal's title
-set undolevels=1000               " Use many levels of undo
-set visualbell                    " Don't beep
+set title
+set undolevels=1000
+set visualbell
 
 " Softtabs. 2 spaces
 set expandtab
@@ -168,7 +173,6 @@ map <Leader>as :call RunAllSpecs()<CR>
 
 " vim-rails
 " =====================================
-"
 " * Go to Alternate file
 nmap ga :A<CR>
 vmap ga :A<CR>
@@ -184,3 +188,22 @@ nmap gsr :RS<CR>
 vmap gsr :RS<CR>
 nmap gvr :RV<CR>
 vmap gvr :RV<CR>
+
+" vim-commentary
+" =====================================
+nmap cm <Plug>Commentary
+
+" emmet-vim
+" =====================================
+let g:user_emmet_leader_key='mm'
+let g:user_emmet_expandabbr_key='<Tab>'
+
+" supertab
+" =====================================
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+
+" Fugitive
+" =====================================
+" * Open :Gstatus window on right
+autocmd FileType gitcommit wincmd L
