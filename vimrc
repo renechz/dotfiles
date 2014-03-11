@@ -73,6 +73,7 @@ set nowrap                        " Don't wrap lines.
 set nowritebackup
 set noswapfile
 set number                        " Show line numbers.
+set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F2>              " Avoid cascading indents when pasting large amounts of text
 set relativenumber
 set ruler
@@ -104,12 +105,6 @@ colorscheme hybrid
 
 let &colorcolumn="80,".join(range(125,999),",")
 
-" Use The Silver Searcher
-" https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
 
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
@@ -136,8 +131,12 @@ function! ToggleColors()
   endif
 endfunction
 
+" Bind :Q to :q
+command! Q q
+command! Qall qall
+
 " ======================================
-" Plugin customisation
+" Plugins
 " ======================================
 
 " Matchit
@@ -150,6 +149,7 @@ let g:ctrlp_map = '<C-t>'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed']
 let g:ctrlp_match_window = 'top,order:ttb'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 map <Leader>r :CtrlPBufTag<CR>
 
@@ -195,15 +195,26 @@ nmap cm <Plug>Commentary
 
 " emmet-vim
 " =====================================
-let g:user_emmet_leader_key='mm'
-let g:user_emmet_expandabbr_key='<Tab>'
+let g:user_emmet_leader_key = "<c-e>"
 
 " supertab
 " =====================================
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 " Fugitive
 " =====================================
 " * Open :Gstatus window on right
 autocmd FileType gitcommit wincmd L
+
+" The Silver Searcher
+" =====================================
+" Use The Silver Searcher
+" https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" * Bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
