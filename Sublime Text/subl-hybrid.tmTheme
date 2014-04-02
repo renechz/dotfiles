@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <!--
-    background  = "#1d1f21"
-    foreground  = "#c5c8c6"
-    selection   = "#373b41"
-    line        = "#282a2e"
-    comment     = "#707880"
-    red_light   = "#cc6666"
-    red_dark    = "#a54242"
-    orange      = "#de935f"
-    yellow      = "#f0c674"
-    green_light = "#b5bd68"
-    green_dark  = #8c9440
-    aqua        = "#8abeb7"
-    blue        = "#81a2be"
-    purple      = "#b294bb"
-    darkcolumn  = "#1c1c1c"
-  -->
-  <dict>
+<dict>
   <key>name</key>
   <string>subl-hybrid</string>
   <key>website</key>
