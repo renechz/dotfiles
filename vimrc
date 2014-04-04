@@ -88,11 +88,27 @@ set title
 set undolevels=1000
 set visualbell
 
-" Softtabs. 2 spaces
+" Folding
+set fillchars="fold:"
+set foldenable
+set foldmethod=syntax
+set foldlevel=100
+set foldtext=MyFoldText()
+function MyFoldText()
+  let line = getline(v:foldstart)
+  let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
+  let lines = v:foldend - v:foldstart
+  let linestxt = ' - [' . lines . ' lines]'
+
+  return sub . linestxt
+endfunction
+
+" Tabs
+" * Use 2 spaces
 set expandtab
-set shiftround      " Use multiple of shiftwidth when indenting with '<' and '>'
+set shiftround
 set shiftwidth=2
-set smarttab        " Insert tabs on the start of a line according to shiftwidth, not tabstop
+set smarttab
 set softtabstop=2
 set tabstop=2
 
