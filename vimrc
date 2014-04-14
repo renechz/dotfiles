@@ -52,17 +52,16 @@ filetype plugin indent on
 let mapleader = " "
 
 set autoindent                    " Copy indent from current line when starting a new line.
+set autoread
 set backspace=indent,eol,start    " Allow backspacing over everything in insert mode.
 set colorcolumn=80,125            " Highlight columns
 set copyindent                    " Copy the previous indentation on autoindenting
 set cursorline                    " Highlight current line
 set encoding=utf-8                " Character encoding used inside Vim.
 set clipboard=unnamed             " Share system clipboard.
+set gdefault
 set hidden                        " Hide buffers when abandoning.
 set history=50                    " Remember more commands and search history.
-set hlsearch                      " Highlight search terms.
-set ignorecase                    " Ignore case when searching.
-set incsearch                     " Do incremental searching.
 set laststatus=2                  " Always display the status line.
 set nobackup                      " No backup file.
 set nocompatible                  " Use Vim settings, rather than Vi settings.
@@ -73,20 +72,24 @@ set nowritebackup
 set noswapfile
 set number                        " Show line numbers.
 set omnifunc=syntaxcomplete#Complete
-set pastetoggle=<F2>              " Avoid cascading indents when pasting large amounts of text
 set relativenumber
 set ruler
 set shell=/usr/local/bin/zsh
 set showmatch
-set showcmd                       " Display incomplete commands
-set smartcase                     " Ignore case if search pattern is all lowercase, case-sensitive otherwise
-set splitbelow                    " Open new split panes to right and bottom.
+set showcmd
+set smartcase
+set splitbelow
 set splitright
-set tags=./tags;                  " Set the tag file search order
+set tags=./tags
 set timeoutlen=1000 ttimeoutlen=0
 set title
 set undolevels=1000
 set visualbell
+
+" Search
+set hlsearch      " Highlight search terms.
+set ignorecase    " Ignore case when searching.
+set incsearch     " Do incremental searching.
 
 " Folding
 set fillchars="fold:"
@@ -104,7 +107,6 @@ function MyFoldText()
 endfunction
 
 " Tabs
-" * Use 2 spaces
 set expandtab
 set shiftround
 set shiftwidth=2
@@ -129,7 +131,7 @@ function! ToggleColors()
   endif
 endfunction
 
-let &colorcolumn="80,".join(range(125,999),",")
+let &colorcolumn="80,".join(range(100,999),",")
 
 " Index ctags
 map <Leader>ct :!ctags -R .<CR>
