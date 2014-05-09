@@ -1,0 +1,3 @@
+-d postgresql
+-T
+-m https://gist.githubusercontent.com/renechz/10662061/raw/7d2f50df0fcfa089509fce659c8f8320144f1069/rails_template.rb
