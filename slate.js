@@ -32,35 +32,36 @@ var rightHalf = slate.operation("corner", {
 });
 slate.bind("right:ctrl,alt,cmd", rightHalf);
 
+// 1440 x 900 quarters
 // Top left corner window
 var topLeftHalf = slate.operation("corner", {
   "direction" : "top-left",
-  "width"     : "screenSizeX/2",
-  "height"    : "screenSizeY/2"
+  "width"     : "1440",
+  "height"    : "900"
 });
 slate.bind("1:ctrl,alt,cmd", topLeftHalf);
 
 // Top right corner window
 var topRightHalf = slate.operation("corner", {
   "direction" : "top-right",
-  "width"     : "screenSizeX/2",
-  "height"    : "screenSizeY/2"
+  "width"     : "1440",
+  "height"    : "900"
 });
 slate.bind("2:ctrl,alt,cmd", topRightHalf);
 
 // Bottom left corner window
 var bottomLeftHalf = slate.operation("corner", {
   "direction" : "bottom-left",
-  "width"     : "screenSizeX/2",
-  "height"    : "screenSizeY/2"
+  "width"     : "1440",
+  "height"    : "900"
 });
 slate.bind("3:ctrl,alt,cmd", bottomLeftHalf);
 
 // Bottom right corner window
 var bottomRightHalf = slate.operation("corner", {
   "direction" : "bottom-right",
-  "width"     : "screenSizeX/2",
-  "height"    : "screenSizeY/2"
+  "width"     : "1440",
+  "height"    : "900"
 });
 slate.bind("4:ctrl,alt,cmd", bottomRightHalf);
 

@@ -54,10 +54,9 @@ let mapleader = " "
 set autoindent                    " Copy indent from current line when starting a new line.
 set autoread
 set backspace=indent,eol,start    " Allow backspacing over everything in insert mode.
-set colorcolumn=80,125            " Highlight columns
-set copyindent                    " Copy the previous indentation on autoindenting
-set cursorline                    " Highlight current line
-set encoding=utf-8                " Character encoding used inside Vim.
+set copyindent
+set cursorline
+set encoding=utf-8
 set clipboard=unnamed             " Share system clipboard.
 set gdefault
 set hidden                        " Hide buffers when abandoning.
@@ -73,7 +72,6 @@ set noswapfile
 set number                        " Show line numbers.
 set omnifunc=syntaxcomplete#Complete
 set relativenumber
-set ruler
 set shell=/usr/local/bin/zsh
 set showmatch
 set showcmd
@@ -85,6 +83,11 @@ set timeoutlen=1000 ttimeoutlen=0
 set title
 set undolevels=1000
 set visualbell
+
+" Rulers
+set ruler
+set colorcolumn=80,100
+let &colorcolumn="80,".join(range(100,999),",")
 
 " Search
 set hlsearch      " Highlight search terms.
@@ -130,8 +133,6 @@ function! ToggleColors()
     colorscheme hybrid
   endif
 endfunction
-
-let &colorcolumn="80,".join(range(100,999),",")
 
 " Index ctags
 map <Leader>ct :!ctags -R .<CR>
@@ -209,7 +210,7 @@ nmap cm <Plug>Commentary
 " =====================================
 let g:user_emmet_leader_key = "<c-e>"
 
-" Fugitive
+" vim-fugitive
 " =====================================
 " * Open :Gstatus window on right
 autocmd FileType gitcommit wincmd L
