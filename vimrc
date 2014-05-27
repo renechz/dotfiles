@@ -11,33 +11,41 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 " Define bundles via Github repos
+
+" Vim
 Plugin 'bling/vim-airline'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'kana/vim-textobj-user'
-Plugin 'mattn/emmet-vim'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'othree/html5.vim'
 Plugin 'rking/ag.vim'
 Plugin 'SirVer/ultisnips'
-Plugin 'slim-template/vim-slim'
-Plugin 'scrooloose/syntastic'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/DeleteTrailingWhitespace'
+Plugin 'vim-scripts/ShowTrailingWhitespace'
+Plugin 'scrooloose/syntastic'
+Plugin 'w0ng/vim-hybrid'
+
+" Ruby / Rails
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'kana/vim-textobj-user'
+Plugin 'slim-template/vim-slim'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/DeleteTrailingWhitespace'
-Plugin 'vim-scripts/ShowTrailingWhitespace'
-Plugin 'w0ng/vim-hybrid'
+
+" HTML / CSS
+Plugin 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+
 
 filetype plugin indent on
 
@@ -48,38 +56,40 @@ filetype plugin indent on
 " Leader key
 let mapleader = " "
 
-set autoindent                    " Copy indent from current line when starting a new line.
+set autoindent
 set autoread
-set backspace=indent,eol,start    " Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
 set copyindent
 set cursorline
 set encoding=utf-8
-set clipboard=unnamed             " Share system clipboard.
+set clipboard=unnamed
 set gdefault
-set hidden                        " Hide buffers when abandoning.
-set history=50                    " Remember more commands and search history.
-set laststatus=2                  " Always display the status line.
-set nobackup                      " No backup file.
-set nocompatible                  " Use Vim settings, rather than Vi settings.
+set hidden
+set history=50
+set laststatus=2
+set nobackup
+set nocompatible
 set nohls
-set noerrorbells                  " Don't beep.
-set nowrap                        " Don't wrap lines.
+set noerrorbells
+set nowrap
 set nowritebackup
 set noswapfile
-set number                        " Show line numbers.
-set omnifunc=syntaxcomplete#Complete
+set number
+" set omnifunc=syntaxcomplete#Complete
 set relativenumber
 set shell=/usr/local/bin/zsh
 set showmatch
 set showcmd
 set smartcase
-set splitbelow
-set splitright
 set tags=./tags
 set timeoutlen=1000 ttimeoutlen=0
 set title
 set undolevels=1000
 set visualbell
+
+" Splits
+set splitbelow
+set splitright
 
 " Rulers
 set ruler
@@ -205,7 +215,9 @@ nmap cm <Plug>Commentary
 
 " emmet-vim
 " =====================================
-let g:user_emmet_leader_key = "<c-e>"
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,eruby,scss EmmetInstall
+autocmd FileType html,css,eruby,scss imap <tab> <Plug>(emmet-expand-abbr)
 
 " vim-fugitive
 " =====================================
@@ -226,6 +238,11 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " UltiSnips
 " =====================================
-let g:UltiSnipsExpandTrigger="<c-]>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" YouCompleteMe
+" =====================================
+let g:ycm_collect_identifiers_from_tags_files = '1'
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']

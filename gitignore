@@ -13,3 +13,5 @@ project-notes.txt
 .agignore
 Procfile.dev
 Procfile.local
+.sublime-project
+.sublime-workspace

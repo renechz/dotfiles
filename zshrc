@@ -56,7 +56,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export PATH="/usr/local/bin:/usr/local/sbin:/Users/rene/.rbenv/shims:/usr/local/heroku/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/Users/rene/.rbenv/shims:/usr/local/heroku/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
