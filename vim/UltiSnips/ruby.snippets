@@ -1,0 +1,6 @@
+snippet rescue
+rescue ${1:StandardError} => e
+	puts e.message
+	puts e.backtrace.inspect
+	${0:# Rescue}
+endsnippet
