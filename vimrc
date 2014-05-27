@@ -217,7 +217,7 @@ nmap cm <Plug>Commentary
 " =====================================
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,eruby,scss EmmetInstall
-autocmd FileType html,css,eruby,scss imap <tab> <Plug>(emmet-expand-abbr)
+autocmd FileType html,css,eruby,scss imap <s-tab> <plug>(emmet-expand-abbr)
 
 " vim-fugitive
 " =====================================
