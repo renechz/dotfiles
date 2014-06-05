@@ -4,3 +4,11 @@ rescue ${1:StandardError} => e
 	puts e.backtrace.inspect
 	${0:# Rescue}
 endsnippet
+
+snippet rspec "Setup RSpec file"
+require 'spec_helper'
+
+describe ${1:Class} do
+	${0}
+end
+endsnippet

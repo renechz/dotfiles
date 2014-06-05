@@ -4,20 +4,20 @@ filetype off
 " ======================================
 " Vundle
 " ======================================
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " Let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Define bundles via Github repos
 
 " Vim
 Plugin 'bling/vim-airline'
-Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
@@ -46,7 +46,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'mattn/emmet-vim'
 Plugin 'othree/html5.vim'
 
-
+call vundle#end()
 filetype plugin indent on
 
 " ======================================
@@ -75,7 +75,6 @@ set nowrap
 set nowritebackup
 set noswapfile
 set number
-" set omnifunc=syntaxcomplete#Complete
 set relativenumber
 set shell=/usr/local/bin/zsh
 set showmatch
@@ -238,8 +237,9 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " UltiSnips
 " =====================================
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsEditSplit = 'vertical'
 
 " YouCompleteMe
 " =====================================
