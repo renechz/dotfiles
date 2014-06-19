@@ -87,18 +87,23 @@ set undolevels=1000
 set visualbell
 
 " Splits
-set splitbelow
-set splitright
+set splitbelow  " Open vertical splits below of current buffer
+set splitright  " Open horizontal splits right of current buffer
+
+" Easier split navigation.
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Rulers
 set ruler
-set colorcolumn=80,100
-let &colorcolumn="80,".join(range(100,999),",")
+set colorcolumn=80,100  " Set ruler to 80 and 100 chars
 
 " Search
-set hlsearch      " Highlight search terms.
-set ignorecase    " Ignore case when searching.
-set incsearch     " Do incremental searching.
+set hlsearch    " Highlight search terms.
+set ignorecase  " Ignore case when searching.
+set incsearch   " Do incremental searching.
 
 " Folding
 set fillchars="fold:"
@@ -142,12 +147,6 @@ endfunction
 
 " Index ctags
 map <Leader>ct :!ctags -R .<CR>
-
-" Easier split navigation.
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " Save file with <C-s>
 nmap <C-s> <Esc>:w<CR>
