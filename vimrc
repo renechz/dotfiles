@@ -24,7 +24,6 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'scrooloose/syntastic'
@@ -215,7 +214,7 @@ nmap cm <Plug>Commentary
 " =====================================
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,eruby,scss EmmetInstall
-autocmd FileType html,css,eruby,scss imap <s-tab> <plug>(emmet-expand-abbr)
+autocmd FileType html,css,eruby,scss imap <expr> <s-tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " vim-fugitive
 " =====================================
@@ -239,9 +238,3 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit = 'vertical'
-
-" YouCompleteMe
-" =====================================
-let g:ycm_collect_identifiers_from_tags_files = '1'
-let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']

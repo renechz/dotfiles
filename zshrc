@@ -52,12 +52,12 @@ stty start undef
 stty stop undef
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export PATH="/usr/local/bin:/usr/local/sbin:/Users/rene/.rbenv/shims:/usr/local/heroku/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/Users/rene/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin"
 # export MANPATH="/usr/local/man:$MANPATH"
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -71,4 +71,3 @@ export PATH="/usr/local/bin:/usr/local/sbin:/Users/rene/.rbenv/shims:/usr/local/
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-

@@ -73,7 +73,7 @@ var moveToLaptop = slate.operation("move", {
   "width"   : "screenSizeX",
   "height"  : "screenSizeY"
 });
-slate.bind("pad1:ctrl,alt,cmd", moveToLaptop);
+slate.bind("1:shift,ctrl,alt,cmd", moveToLaptop);
 
 // Send to big screen
 var moveToBigScreen = slate.operation("move", {
@@ -83,4 +83,4 @@ var moveToBigScreen = slate.operation("move", {
   "width"   : "screenSizeX",
   "height"  : "screenSizeY"
 });
-slate.bind("pad2:ctrl,alt,cmd", moveToBigScreen);
+slate.bind("2:shift,ctrl,alt,cmd", moveToBigScreen);
