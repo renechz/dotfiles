@@ -15,3 +15,5 @@ Procfile.dev
 Procfile.local
 .sublime-project
 .sublime-workspace
+.env
+.rbenv-version

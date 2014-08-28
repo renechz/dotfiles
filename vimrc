@@ -14,7 +14,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " Vim
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/seoul256.vim'
 Plugin 'rking/ag.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -130,17 +131,17 @@ set tabstop=2
 " Colorscheme
 syntax enable
 set background=dark
-let g:hybrid_use_iTerm_colors = 1
-colorscheme hybrid
+let g:seoul256_background = 235
+colorscheme seoul256
 
 " Toggle between light and dark color schemes
 nnoremap <F4> :call ToggleColors()<CR>
 
 function! ToggleColors()
-  if g:colors_name == 'hybrid'
-    colorscheme hybrid-light
+  if g:colors_name == 'seoul256'
+    colorscheme seoul256-light
   else
-    colorscheme hybrid
+    colorscheme seoul256
   endif
 endfunction
 
