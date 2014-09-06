@@ -29,6 +29,7 @@ Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'scrooloose/syntastic'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'gerw/vim-HiLinkTrace'
 
 " Ruby / Rails
 Plugin 'kchmck/vim-coffee-script'
@@ -131,19 +132,10 @@ set tabstop=2
 " Colorscheme
 syntax enable
 set background=dark
-let g:seoul256_background = 235
-colorscheme seoul256
+colorscheme CommonSense
 
 " Toggle between light and dark color schemes
 nnoremap <F4> :call ToggleColors()<CR>
-
-function! ToggleColors()
-  if g:colors_name == 'seoul256'
-    colorscheme seoul256-light
-  else
-    colorscheme seoul256
-  endif
-endfunction
 
 " Index ctags
 map <Leader>ct :!ctags -R .<CR>
