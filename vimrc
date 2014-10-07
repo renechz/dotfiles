@@ -14,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Vim
 Plugin 'bling/vim-airline'
+Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'rking/ag.vim'
@@ -132,7 +133,7 @@ set tabstop=2
 " Colorscheme
 syntax enable
 set background=dark
-colorscheme CommonSense
+colorscheme base16-ocean
 
 " Toggle between light and dark color schemes
 nnoremap <F4> :call ToggleColors()<CR>
