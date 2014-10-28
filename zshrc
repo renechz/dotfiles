@@ -60,7 +60,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export PATH="/usr/local/bin:/usr/local/sbin:/Users/rene/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/Users/rene/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:$PATH"
+export PATH=".git/safe/../../bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 

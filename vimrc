@@ -16,11 +16,12 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'junegunn/seoul256.vim'
+Plugin 'pbrisbin/vim-mkdir'
 Plugin 'rking/ag.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
@@ -29,8 +30,6 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/DeleteTrailingWhitespace'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'scrooloose/syntastic'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'gerw/vim-HiLinkTrace'
 
 " Ruby / Rails
 Plugin 'kchmck/vim-coffee-script'
@@ -138,6 +137,8 @@ colorscheme base16-ocean
 " Toggle between light and dark color schemes
 nnoremap <F4> :call ToggleColors()<CR>
 
+" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
+let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Index ctags
 map <Leader>ct :!ctags -R .<CR>
 
@@ -181,6 +182,8 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>as :call RunAllSpecs()<CR>
+" Run specs using vim-dispatch
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " vim-rails
 " =====================================
