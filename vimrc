@@ -1,58 +1,45 @@
-set nocompatible
-filetype off
-
 " ======================================
-" Vundle
+" vim-plug
 " ======================================
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-" Let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
-
-" Define bundles via Github repos
+call plug#begin('~/.vim/plugged')
 
 " Vim
-Plugin 'bling/vim-airline'
-Plugin 'chriskempson/base16-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'pbrisbin/vim-mkdir'
-Plugin 'rking/ag.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-scripts/DeleteTrailingWhitespace'
-Plugin 'vim-scripts/ShowTrailingWhitespace'
-Plugin 'scrooloose/syntastic'
+Plug 'bling/vim-airline'
+Plug 'chriskempson/base16-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'rking/ag.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/DeleteTrailingWhitespace'
+Plug 'vim-scripts/ShowTrailingWhitespace'
 
 " Ruby / Rails
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'kana/vim-textobj-user'
-Plugin 'slim-template/vim-slim'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rbenv'
-Plugin 'tpope/vim-rake'
-Plugin 'vim-ruby/vim-ruby'
+Plug 'kchmck/vim-coffee-script'
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'kana/vim-textobj-user'
+Plug 'slim-template/vim-slim', { 'for': 'ruby' }
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
+Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " HTML / CSS
-Plugin 'mattn/emmet-vim'
-Plugin 'othree/html5.vim'
+Plug 'mattn/emmet-vim'
+Plug 'othree/html5.vim'
 
-call vundle#end()
-filetype plugin indent on
-
-" ======================================
-" Vim settings
-" ======================================
+call plug#end()
 
 " Leader key
 let mapleader = " "
