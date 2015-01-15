@@ -5,35 +5,33 @@ call plug#begin('~/.vim/plugged')
 
 " Vim
 Plug 'bling/vim-airline'
-Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'ngmy/vim-rubocop'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/DeleteTrailingWhitespace'
 Plug 'vim-scripts/ShowTrailingWhitespace'
+Plug 'zenorocha/dracula-theme', { 'rtp': 'vim' }
 
 " Ruby / Rails
-Plug 'kchmck/vim-coffee-script'
-Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-user'
-Plug 'slim-template/vim-slim', { 'for': 'ruby' }
-Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
-Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
-Plug 'tpope/vim-rake', { 'for': 'ruby' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rbenv'
+Plug 'vim-ruby/vim-ruby'
 
 " HTML / CSS
 Plug 'mattn/emmet-vim'
@@ -117,9 +115,9 @@ set softtabstop=2
 set tabstop=2
 
 " Colorscheme
-syntax enable
 set background=dark
-colorscheme base16-ocean
+syntax enable
+colorscheme Dracula
 
 " Toggle between light and dark color schemes
 nnoremap <F4> :call ToggleColors()<CR>
@@ -222,3 +220,15 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit = 'vertical'
+
+" vim-easy-align
+" =====================================
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+nmap <Leader>a <Plug>(EasyAlign)
+
+" syntastic
+" =====================================
+let g:syntastic_ruby_rubocop_exec = '/Users/rene/.rbenv/shims/rubocop'
+let g:syntastic_ruby_checkers = ['rubocop']
