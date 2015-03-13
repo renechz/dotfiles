@@ -11,8 +11,6 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'rking/ag.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'ngmy/vim-rubocop'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
@@ -21,16 +19,21 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/DeleteTrailingWhitespace'
 Plug 'vim-scripts/ShowTrailingWhitespace'
-Plug 'zenorocha/dracula-theme', { 'rtp': 'vim' }
+Plug 'morhetz/gruvbox'
+Plug 'zeis/vim-kolor'
+Plug 'Konfekt/FastFold'
+Plug 'scrooloose/syntastic'
+Plug 'ajh17/Spacegray.vim'
+
 
 " Ruby / Rails
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-user'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
-Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
 
 " HTML / CSS
@@ -62,7 +65,6 @@ set nowritebackup
 set noswapfile
 set number
 set relativenumber
-set shell=/usr/local/bin/zsh
 set showmatch
 set showcmd
 set smartcase
@@ -92,19 +94,9 @@ set ignorecase  " Ignore case when searching.
 set incsearch   " Do incremental searching.
 
 " Folding
-set fillchars="fold:"
-set foldenable
+" set foldenable
 set foldmethod=syntax
 set foldlevel=100
-set foldtext=MyFoldText()
-function MyFoldText()
-  let line = getline(v:foldstart)
-  let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
-  let lines = v:foldend - v:foldstart
-  let linestxt = ' - [' . lines . ' lines]'
-
-  return sub . linestxt
-endfunction
 
 " Tabs
 set expandtab
@@ -115,12 +107,15 @@ set softtabstop=2
 set tabstop=2
 
 " Colorscheme
+"
 set background=dark
 syntax enable
-colorscheme Dracula
 
-" Toggle between light and dark color schemes
-nnoremap <F4> :call ToggleColors()<CR>
+let g:kolor_italic=0                    " Enable italic. Default: 1
+" let g:kolor_bold=1                      " Enable bold. Default: 1
+" let g:kolor_underlined=0                " Enable underline. Default: 0
+" let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
+colorscheme Spacegray
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
