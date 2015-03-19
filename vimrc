@@ -3,151 +3,170 @@
 " ======================================
 call plug#begin('~/.vim/plugged')
 
-" Vim
-Plug 'bling/vim-airline'
+Plug 'christoomey/vim-run-interactive'
+Plug 'kchmck/vim-coffee-script'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'rking/ag.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'scrooloose/syntastic'
+Plug 'slim-template/vim-slim'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'vim-scripts/DeleteTrailingWhitespace'
-Plug 'vim-scripts/ShowTrailingWhitespace'
-Plug 'morhetz/gruvbox'
-Plug 'zeis/vim-kolor'
-Plug 'Konfekt/FastFold'
-Plug 'scrooloose/syntastic'
-Plug 'ajh17/Spacegray.vim'
-
-
-" Ruby / Rails
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'kana/vim-textobj-user'
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/ctags.vim'
+Plug 'vim-scripts/matchit.zip'
+Plug 'ajh17/Spacegray.vim'
+Plug 'bling/vim-airline'
+Plug 'junegunn/vim-easy-align'
+Plug 'Konfekt/FastFold'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'vim-scripts/DeleteTrailingWhitespace'
+Plug 'vim-scripts/ShowTrailingWhitespace'
+Plug 'ludovicchabant/vim-gutentags'
 
-" HTML / CSS
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'kana/vim-textobj-user'
+
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5.vim'
 
 call plug#end()
 
-" Leader key
+" Leader
 let mapleader = " "
 
-set autoindent
-set autoread
-set backspace=indent,eol,start
-set copyindent
-set cursorline
-set encoding=utf-8
-set clipboard=unnamed
-set gdefault
-set hidden
-set history=50
-set laststatus=2
+set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
-set nocompatible
-set nohls
-set noerrorbells
-set nowrap
 set nowritebackup
-set noswapfile
-set number
-set relativenumber
-set showmatch
-set showcmd
-set smartcase
-set tags=./tags
-set timeoutlen=1000 ttimeoutlen=0
-set title
-set undolevels=1000
-set visualbell
+set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set autowrite     " Automatically :write before running commands
 
-" Splits
-set splitbelow  " Open vertical splits below of current buffer
-set splitright  " Open horizontal splits right of current buffer
+set clipboard=unnamed
+set nocompatible
 
-" Easier split navigation.
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+endif
 
-" Rulers
-set ruler
-set colorcolumn=80,100  " Set ruler to 80 and 100 chars
-
-" Search
-set hlsearch    " Highlight search terms.
-set ignorecase  " Ignore case when searching.
-set incsearch   " Do incremental searching.
-
-" Folding
-" set foldenable
-set foldmethod=syntax
-set foldlevel=100
-
-" Tabs
-set expandtab
-set shiftround
-set shiftwidth=2
-set smarttab
-set softtabstop=2
+" Softtabs, 2 spaces
 set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
 
-" Colorscheme
-"
-set background=dark
-syntax enable
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
 
-let g:kolor_italic=0                    " Enable italic. Default: 1
-" let g:kolor_bold=1                      " Enable bold. Default: 1
-" let g:kolor_underlined=0                " Enable underline. Default: 0
-" let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
-colorscheme Spacegray
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
+" Numbers
+set number
+set numberwidth=5
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-" Index ctags
+
+" Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" vim-rspec mappings
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>l :call RunLastSpec()<CR>
+
+" Run commands that require an interactive shell
+nnoremap <Leader>r :RunInInteractiveShell<space>
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
+" Always use vertical diffs
+set diffopt+=vertical
+
+set relativenumber
+
+" Colorscheme
+set background=dark
+colorscheme Spacegray
 
 " Save file with <C-s>
 nmap <C-s> <Esc>:w<CR>
 vmap <C-s> <Esc><C-s>gv
 imap <C-s> <Esc><C-s>
 
-" Bind :Q to :q
-command! Q q
-command! Qall qall
-
 " ======================================
 " Plugins
 " ======================================
-
-" Matchit
-" ======================================
-runtime macros/matchit.vim
 
 " CtrlP
 " ======================================
 let g:ctrlp_map = '<C-t>'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed']
 let g:ctrlp_match_window = 'top,order:ttb'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_use_caching = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-map <Leader>r :CtrlPBufTag<CR>
+map <Leader>pr :CtrlPBufTag<cr>
 
 " DeleteTrailingWhiteSpace
 " ShowTrailingWhiteSpace
@@ -156,12 +175,6 @@ map <Leader>r :CtrlPBufTag<CR>
 let g:DeleteTrailingWhitespace_Action = 'delete'
 highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 
-" vim-rspec
-" =====================================
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>as :call RunAllSpecs()<CR>
 " Run specs using vim-dispatch
 let g:rspec_command = "Dispatch rspec {spec}"
 
@@ -198,15 +211,6 @@ autocmd FileType html,css,eruby,scss imap <expr> <s-tab> emmet#expandAbbrIntelli
 " * Open :Gstatus window on right
 autocmd FileType gitcommit wincmd L
 
-" The Silver Searcher
-" =====================================
-" Use The Silver Searcher
-" https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
-
 " * Bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
@@ -222,8 +226,3 @@ let g:UltiSnipsEditSplit = 'vertical'
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
 nmap <Leader>a <Plug>(EasyAlign)
-
-" syntastic
-" =====================================
-let g:syntastic_ruby_rubocop_exec = '/Users/rene/.rbenv/shims/rubocop'
-let g:syntastic_ruby_checkers = ['rubocop']
