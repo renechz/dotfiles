@@ -156,30 +156,19 @@ nmap <C-s> <Esc>:w<CR>
 vmap <C-s> <Esc><C-s>gv
 imap <C-s> <Esc><C-s>
 
-" ======================================
-" Plugins
-" ======================================
+" Run specs using vim-dispatch
+let g:rspec_command = "Dispatch rspec {spec}"
 
-" CtrlP
-" ======================================
-let g:ctrlp_map = '<C-t>'
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed']
+let g:ctrlp_map = '<c-t>'
+" let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed']
 let g:ctrlp_match_window = 'top,order:ttb'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 map <Leader>pr :CtrlPBufTag<cr>
 
-" DeleteTrailingWhiteSpace
-" ShowTrailingWhiteSpace
-" ======================================
 " * Highlight and Delete trailing whitespace on save.
 let g:DeleteTrailingWhitespace_Action = 'delete'
 highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 
-" Run specs using vim-dispatch
-let g:rspec_command = "Dispatch rspec {spec}"
 
-" vim-rails
-" =====================================
 " * Go to Alternate file
 nmap ga :A<CR>
 vmap ga :A<CR>
@@ -196,32 +185,22 @@ vmap gsr :RS<CR>
 nmap gvr :RV<CR>
 vmap gvr :RV<CR>
 
-" vim-commentary
-" =====================================
 nmap cm <Plug>Commentary
 
-" emmet-vim
-" =====================================
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,eruby,scss EmmetInstall
 autocmd FileType html,css,eruby,scss imap <expr> <s-tab> emmet#expandAbbrIntelligent("\<tab>")
 
-" vim-fugitive
-" =====================================
 " * Open :Gstatus window on right
 autocmd FileType gitcommit wincmd L
 
 " * Bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" UltiSnips
-" =====================================
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit = 'vertical'
 
-" vim-easy-align
-" =====================================
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
