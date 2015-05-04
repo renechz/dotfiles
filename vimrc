@@ -4,12 +4,9 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'kchmck/vim-coffee-script'
-Plug 'croaky/vim-colors-github'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'romainl/Apprentice'
 Plug 'scrooloose/syntastic'
-Plug 'slim-template/vim-slim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
@@ -18,7 +15,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-ruby/vim-ruby'
@@ -26,7 +22,6 @@ Plug 'vim-scripts/ctags.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'bling/vim-airline'
 Plug 'junegunn/vim-easy-align'
-Plug 'Konfekt/FastFold'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'vim-scripts/DeleteTrailingWhitespace'
@@ -36,6 +31,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-user'
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5.vim'
+Plug 'w0ng/vim-hybrid'
 
 call plug#end()
 
@@ -45,19 +41,24 @@ let mapleader = " "
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=50
+set noswapfile
+set history=500
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
-set foldenable
-set foldmethod=syntax
-set foldlevel=100
 set ignorecase
 set hlsearch
 set undolevels=1000
+set number
+set numberwidth=4
+set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
+set diffopt+=vertical " Always use vertical diffs
+set clipboard=unnamed
+set relativenumber
+set ttimeout
+set ttimeoutlen=1
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -65,46 +66,18 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
 
-" Numbers
-set number
-set numberwidth=4
-
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-
-" Open new split panes to right and bottom, which feels more natural
+" Open new split panes to right and bottom
 set splitbelow
 set splitright
 
-" Always use vertical diffs
-set diffopt+=vertical
-
-" Colorscheme
+" Colors
 set background=dark
-colorscheme apprentice
-
-set clipboard=unnamed
-set relativenumber
-set ttimeout
-set ttimeoutlen=1
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -124,22 +97,14 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-
-set wildmode=list:longest,list:full
-
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
-" vim-rspec mappings
-nnoremap <leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <leader>s :call RunNearestSpec()<CR>
-nnoremap <leader>l :call RunLastSpec()<CR>
+" Bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -159,15 +124,20 @@ nmap <c-s> <Esc>:w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 
-" Run specs using vim-dispatch
-let g:rspec_command = "Dispatch rspec {spec}"
-
+" ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
 map <Leader>pr :CtrlPBufTag<cr>
 
-" * Highlight and Delete trailing whitespace on save.
+" Highlight and Delete trailing whitespace on save.
 let g:DeleteTrailingWhitespace_Action = 'delete'
 highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
+
+" vim-rspec
+nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <leader>s :call RunNearestSpec()<CR>
+nnoremap <leader>l :call RunLastSpec()<CR>
+" Run specs using vim-dispatch
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " vim-rails -- Go to Alternate file
 nmap ga :A<CR>
@@ -195,10 +165,7 @@ autocmd FileType html,css,eruby,scss EmmetInstall
 " vim-fugitive -- Open :Gstatus window on right
 autocmd FileType gitcommit wincmd L
 
-" Bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-" vim-easyalign
+" easyalign
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
@@ -209,3 +176,7 @@ let g:UltiSnipsExpandTrigger = "<S-tab>"
 let g:UltiSnipsListSnippets = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<S-tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
