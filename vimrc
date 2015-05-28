@@ -3,8 +3,10 @@
 " ======================================
 call plug#begin('~/.vim/plugged')
 
-Plug 'kchmck/vim-coffee-script'
+Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'kchmck/vim-coffee-script'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec'
@@ -18,20 +20,19 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/ctags.vim'
-Plug 'vim-scripts/matchit.zip'
-Plug 'bling/vim-airline'
 Plug 'junegunn/vim-easy-align'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'vim-scripts/ctags.vim'
+Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/DeleteTrailingWhitespace'
 Plug 'vim-scripts/ShowTrailingWhitespace'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'morhetz/gruvbox'
 Plug 'kana/vim-textobj-user'
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5.vim'
-Plug 'w0ng/vim-hybrid'
 
 call plug#end()
 
@@ -76,8 +77,7 @@ set splitright
 
 " Colors
 set background=dark
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+colorscheme gruvbox
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -126,7 +126,8 @@ imap <c-s> <Esc><c-s>
 
 " ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
-map <Leader>pr :CtrlPBufTag<cr>
+let g:ctrlp_extensions = ['tag', 'buffertag']
+nmap <Leader>pr :CtrlPBufTag<cr>
 
 " Highlight and Delete trailing whitespace on save.
 let g:DeleteTrailingWhitespace_Action = 'delete'
@@ -162,14 +163,9 @@ nmap cm <Plug>Commentary
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,eruby,scss EmmetInstall
 
-" vim-fugitive -- Open :Gstatus window on right
-autocmd FileType gitcommit wincmd L
-
 " easyalign
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
-nmap <Leader>a <Plug>(EasyAlign)
 
 " ultisnips
 let g:UltiSnipsExpandTrigger = "<S-tab>"
@@ -180,3 +176,5 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tmuxline#enabled = 1
