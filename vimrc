@@ -33,6 +33,7 @@ Plug 'morhetz/gruvbox'
 Plug 'kana/vim-textobj-user'
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
@@ -78,6 +79,19 @@ set splitright
 " Colors
 set background=dark
 colorscheme gruvbox
+
+" toggle colorscheme
+function! ToggleColors()
+  if &background == 'dark'
+    set background=light
+    colorscheme PaperColor
+  else
+    set background=dark
+    colorscheme gruvbox
+  endif
+endfunction
+
+nnoremap cot :call ToggleColors()<CR>
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
