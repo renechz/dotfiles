@@ -6,11 +6,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'kchmck/vim-coffee-script'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
@@ -19,7 +17,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-ruby/vim-ruby'
 Plug 'junegunn/vim-easy-align'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -28,12 +25,20 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/DeleteTrailingWhitespace'
 Plug 'vim-scripts/ShowTrailingWhitespace'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'morhetz/gruvbox'
 Plug 'kana/vim-textobj-user'
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5.vim'
+
+" ruby
+Plug 'tpope/vim-bundler'
+Plug 'vim-ruby/vim-ruby'
+Plug 'kchmck/vim-coffee-script'
+Plug 'nelstrom/vim-textobj-rubyblock'
+
+" colors
+Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'acarapetis/vim-colors-github'
 
 call plug#end()
 
@@ -77,21 +82,21 @@ set splitbelow
 set splitright
 
 " Colors
-set background=dark
+" set background=dark
 colorscheme gruvbox
 
 " toggle colorscheme
-function! ToggleColors()
+function! ToggleColors(light, dark)
   if &background == 'dark'
     set background=light
-    colorscheme PaperColor
+    exe "colorscheme ". a:light
   else
     set background=dark
-    colorscheme gruvbox
+    exe "colorscheme ". a:dark
   endif
 endfunction
 
-nnoremap cot :call ToggleColors()<CR>
+nnoremap cot :call ToggleColors("PaperColor", "gruvbox")<CR>
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -155,20 +160,20 @@ nnoremap <leader>l :call RunLastSpec()<CR>
 let g:rspec_command = "Dispatch rspec {spec}"
 
 " vim-rails -- Go to Alternate file
-nmap ga :A<CR>
-vmap ga :A<CR>
-nmap gsa :AS<CR>
-vmap gsa :AS<CR>
-nmap gva :AV<CR>
-vmap gva :AV<CR>
+nnoremap ga :A<CR>
+vnoremap ga :A<CR>
+nnoremap gsa :AS<CR>
+vnoremap gsa :AS<CR>
+nnoremap gva :AV<CR>
+vnoremap gva :AV<CR>
 
 " vim-rails -- Go to Related file
-nmap gr :R<CR>
-vmap gr :R<CR>
-nmap gsr :RS<CR>
-vmap gsr :RS<CR>
-nmap gvr :RV<CR>
-vmap gvr :RV<CR>
+nnoremap gr :R<CR>
+vnoremap gr :R<CR>
+nnoremap gsr :RS<CR>
+vnoremap gsr :RS<CR>
+nnoremap gvr :RV<CR>
+vnoremap gvr :RV<CR>
 
 " vim-commentary -- Toggle comment
 nmap cm <Plug>Commentary
@@ -179,7 +184,7 @@ autocmd FileType html,css,eruby,scss EmmetInstall
 
 " easyalign
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
+vnoremap <Enter> <Plug>(EasyAlign)
 
 " ultisnips
 let g:UltiSnipsExpandTrigger = "<S-tab>"
@@ -192,3 +197,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tmuxline#enabled = 1
+
+nnoremap <c-x> :bdelete<cr>
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
