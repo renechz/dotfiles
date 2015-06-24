@@ -57,7 +57,6 @@ export PATH=".git/safe/../../bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
