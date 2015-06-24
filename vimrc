@@ -106,20 +106,26 @@ let g:html_indent_tags = 'li\|p'
 " keybindings
 " ======================================
 
-function! GoToBuffer(split)
-  let bf = nr2char(getchar())
-  if a:split == "s"
-    exe "sb " . bf
-  elseif a:split == "v"
-    exe "vert sb" . bf
+function! GoToBuffer(split, bf)
+  if bufexists(a:bf)
+    if a:split == "s"
+      exe "sb " . a:bf
+    elseif a:split == "v"
+      exe "vert sb" . a:bf
+    else
+      exe "b " . a:bf
+    endif
   else
-    exe "b" . bf
+    echom "Buffer " . a:bf . " doesn't exist"
   endif
 endfunction
 
-nnoremap <tab><tab> :call GoToBuffer("c")<CR>
-nnoremap <tab><tab>s :call GoToBuffer("s")<CR>
-nnoremap <tab><tab>v :call GoToBuffer("v")<CR>
+" buffer switching
+" use together with airline tabline to get the correct buffer number
+" e.g. 12<tab><tab>
+nnoremap <tab><tab>   :<C-u>call GoToBuffer("c", v:count)<CR>
+nnoremap <tab><tab>s  :<C-u>call GoToBuffer("s", v:count)<CR>
+nnoremap <tab><tab>v  :<C-u>call GoToBuffer("v", v:count)<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
