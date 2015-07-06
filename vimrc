@@ -23,8 +23,10 @@ Plug 'vim-scripts/DeleteTrailingWhitespace'
 Plug 'vim-scripts/ShowTrailingWhitespace'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kana/vim-textobj-user'
-Plug 'mattn/emmet-vim'
-Plug 'othree/html5.vim'
+
+" html + css
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'scss'] }
+Plug 'othree/html5.vim', { 'for': ['html', 'eruby'] }
 
 " ruby
 Plug 'thoughtbot/vim-rspec'
@@ -123,9 +125,9 @@ endfunction
 " buffer switching
 " use together with airline tabline to get the correct buffer number
 " e.g. 12<tab><tab>
-nnoremap <tab><tab>   :<C-u>call GoToBuffer("c", v:count)<CR>
-nnoremap <tab><tab>s  :<C-u>call GoToBuffer("s", v:count)<CR>
-nnoremap <tab><tab>v  :<C-u>call GoToBuffer("v", v:count)<CR>
+nnoremap gb   :<C-u>call GoToBuffer("c", v:count)<CR>
+nnoremap gbs  :<C-u>call GoToBuffer("s", v:count)<CR>
+nnoremap gbv  :<C-u>call GoToBuffer("v", v:count)<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -212,11 +214,6 @@ vnoremap gvr :RV<CR>
 " vim-commentary
 " toggle comment
 nmap cm <Plug>Commentary
-
-" emmet-vim
-" enable Emmet just for HTML/CSS/ERB/SASS
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,eruby,scss EmmetInstall
 
 " vim-easyalign
 " start interactive EasyAlign in visual mode (e.g. vip<Enter>)
