@@ -33,7 +33,6 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
-Plug 'kchmck/vim-coffee-script'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
 " tmux
@@ -164,6 +163,7 @@ nnoremap <leader>= :wincmd =<cr>
 " configure syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_ruby_checkers = ["rubocop", "mri"]
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
