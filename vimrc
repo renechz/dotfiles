@@ -14,6 +14,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 Plug 'junegunn/vim-easy-align'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -27,6 +28,7 @@ Plug 'kana/vim-textobj-user'
 " html + css
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'scss'] }
 Plug 'othree/html5.vim', { 'for': ['html', 'eruby'] }
+Plug 'briancollins/vim-jst'
 
 " ruby
 Plug 'thoughtbot/vim-rspec'
@@ -42,6 +44,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'acarapetis/vim-colors-github'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'w0ng/vim-hybrid'
+Plug 'romainl/Apprentice'
 Plug 'MaxSt/FlatColor'
 
 call plug#end()
@@ -160,10 +163,15 @@ nnoremap <leader>= :wincmd =<cr>
 " ======================================
 
 " syntastic
-" configure syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_ruby_checkers = ["rubocop", "mri"]
+let g:syntastic_html_tidy_exec = "tidy5"
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -190,6 +198,7 @@ highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 nnoremap <leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <leader>s :call RunNearestSpec()<CR>
 nnoremap <leader>l :call RunLastSpec()<CR>
+nnoremap <leader>a :call RunAllSpecs()<CR>
 
 " Run specs using vim-dispatch
 let g:rspec_command = "Dispatch rspec {spec}"
@@ -233,6 +242,11 @@ let g:airline#extensions#tmuxline#enabled = 1
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
+" Colors
+let g:flatcolor_termcolors = 16
+set background=dark
+colorscheme flatcolor
+
 " toggle colorscheme
 function! ToggleColors(light, dark)
   if &background == 'dark'
@@ -244,11 +258,4 @@ function! ToggleColors(light, dark)
   endif
 endfunction
 
-" Colors
-set background=dark
-let g:flatcolor_termcolors = 16
-let g:flatcolor_asphaltbg = 1
-let g:flatcolor_terminal_italics = 1
-colorscheme flatcolor
-
-nnoremap cot :call ToggleColors("flatcolor", "flatcolor")<CR>
+nnoremap cot :call ToggleColors("PaperColor", "hybrid")<CR>
