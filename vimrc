@@ -24,6 +24,7 @@ Plug 'vim-scripts/DeleteTrailingWhitespace'
 Plug 'vim-scripts/ShowTrailingWhitespace'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kana/vim-textobj-user'
+Plug 'Valloric/YouCompleteMe'
 
 " html + css
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'scss'] }
@@ -36,6 +37,9 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'nelstrom/vim-textobj-rubyblock'
+
+Plug 'moll/vim-node'
+Plug 'jelera/vim-javascript-syntax'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -229,16 +233,34 @@ nmap cm <Plug>Commentary
 vmap <Enter> <Plug>(EasyAlign)
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger = "<S-tab>"
-let g:UltiSnipsListSnippets = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger = "<S-tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsSnippetsDir='~/.vim/snippets'
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+
+nnoremap <leader>ue :UltiSnipsEdit<cr>
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tmuxline#enabled = 1
+
+" YouCompleteMe - Intelligent completion with fuzzy matching
+let g:ycm_dont_warn_on_startup = 0
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+let g:ycm_filetype_blacklist = {}
+
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+" supertab - enhanced tab behavior based on context
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
