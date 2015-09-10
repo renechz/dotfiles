@@ -27,7 +27,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'Valloric/YouCompleteMe'
 
 " html + css
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'eruby', 'scss'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'jst', 'css', 'eruby', 'scss'] }
 Plug 'othree/html5.vim', { 'for': ['html', 'eruby'] }
 Plug 'briancollins/vim-jst'
 
@@ -38,17 +38,16 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
+" javascript
 Plug 'moll/vim-node'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'vim-scripts/JavaScript-Indent'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 
 " colors
-Plug 'acarapetis/vim-colors-github'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'w0ng/vim-hybrid'
-Plug 'romainl/Apprentice'
 Plug 'MaxSt/FlatColor'
 
 call plug#end()
@@ -66,6 +65,7 @@ set ruler
 " display incomplete commands
 set showcmd
 " do incremental searching
+set hidden
 set incsearch
 " Always display the status line
 set laststatus=2
@@ -114,26 +114,8 @@ let g:html_indent_tags = 'li\|p'
 " keybindings
 " ======================================
 
-function! GoToBuffer(split, bf)
-  if bufexists(a:bf)
-    if a:split == "s"
-      exe "sb " . a:bf
-    elseif a:split == "v"
-      exe "vert sb" . a:bf
-    else
-      exe "b " . a:bf
-    endif
-  else
-    echom "Buffer " . a:bf . " doesn't exist"
-  endif
-endfunction
-
-" buffer switching
-" use together with airline tabline to get the correct buffer number
-" e.g. 12<tab><tab>
-nnoremap gb   :<C-u>call GoToBuffer("c", v:count)<CR>
-nnoremap gbs  :<C-u>call GoToBuffer("s", v:count)<CR>
-nnoremap gbv  :<C-u>call GoToBuffer("v", v:count)<CR>
+" Switch to last active buffer
+noremap <leader><space> :buffer #<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -171,11 +153,13 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ruby_checkers = ["rubocop", "mri"]
+let g:syntastic_eruby_checkers = ["rubocop", "mri", "tidy"]
 let g:syntastic_html_tidy_exec = "tidy5"
+let g:syntastic_aggregate_errors = 1
+
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -234,38 +218,53 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " UltiSnips
 let g:UltiSnipsSnippetsDir='~/.vim/snippets'
-let g:UltiSnipsExpandTrigger           = '<tab>'
-let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsJumpForwardTrigger      = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsEditSplit = 'vertical'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 nnoremap <leader>ue :UltiSnipsEdit<cr>
 
 " vim-airline
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
 
 " YouCompleteMe - Intelligent completion with fuzzy matching
 let g:ycm_dont_warn_on_startup = 0
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
 let g:ycm_filetype_blacklist = {}
-
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 " supertab - enhanced tab behavior based on context
-let g:SuperTabDefaultCompletionType    = '<C-n>'
-let g:SuperTabCrMapping                = 0
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabCrMapping = 0
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Colors
 let g:flatcolor_termcolors = 16
+let g:flatcolor_terminal_italics = 1
+
+" neovim
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 set background=dark
 colorscheme flatcolor
 
@@ -280,4 +279,4 @@ function! ToggleColors(light, dark)
   endif
 endfunction
 
-nnoremap cot :call ToggleColors("PaperColor", "hybrid")<CR>
+nnoremap cot :call ToggleColors("github", "flatcolor")<CR>
