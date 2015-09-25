@@ -5,31 +5,26 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'pbrisbin/vim-mkdir'
+Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'junegunn/vim-easy-align'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'vim-scripts/ctags.vim'
-Plug 'vim-scripts/matchit.zip'
-Plug 'vim-scripts/DeleteTrailingWhitespace'
-Plug 'vim-scripts/ShowTrailingWhitespace'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'kana/vim-textobj-user'
 Plug 'Valloric/YouCompleteMe'
+Plug 'elixir-lang/vim-elixir'
 
 " html + css
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jst', 'css', 'eruby', 'scss'] }
-Plug 'othree/html5.vim', { 'for': ['html', 'eruby'] }
-Plug 'briancollins/vim-jst'
+Plug 'othree/html5.vim', { 'for': ['html', 'eruby', 'jst'] }
 
 " ruby
 Plug 'thoughtbot/vim-rspec'
@@ -42,7 +37,9 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'moll/vim-node'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'vim-scripts/JavaScript-Indent'
+Plug 'briancollins/vim-jst'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'kchmck/vim-coffee-script'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -58,12 +55,13 @@ call plug#end()
 
 let mapleader = " "
 
-" Backspace deletes like most programs in insert mode
-set backspace=2
+set autoindent
+set autoread
+set backspace=indent,eol,start
+set clipboard=unnamed
+" Complete terms from all buffers
+set complete=.,w,b,u,t,i
 " show the cursor position all the time
-set ruler
-" display incomplete commands
-set showcmd
 " do incremental searching
 set hidden
 set incsearch
@@ -83,6 +81,8 @@ set expandtab
 " Make it obvious where 80 and 100 characters is
 set textwidth=80
 set colorcolumn=+1,+21
+set cursorline
+
 " Open new split panes to right and bottom
 set splitbelow
 set splitright
@@ -90,16 +90,30 @@ set splitright
 set nobackup
 set nowritebackup
 set noswapfile
-set history=500
+set nrformats-=octal
+set history=1000
 set ignorecase
 set hlsearch
 set undolevels=1000
 set number
 set numberwidth=4
-set clipboard=unnamed
 set relativenumber
+set ruler
+" display incomplete commands
+set showcmd
+set smarttab
 set ttimeout
-set ttimeoutlen=1
+set ttimeoutlen=100
+set wildmenu
+
+" Persistent undo
+let undodir = expand('~/.undo-vim')
+if !isdirectory(undodir)
+  call mkdir(undodir)
+endif
+set undodir=~/.undo-vim
+" Create FILE.un~ files for persistent undo
+set undofile
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -134,7 +148,7 @@ nmap <c-s> <Esc>:w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 
-" delete buffer
+" unload buffer
 nnoremap <c-x> :bdelete<cr>
 
 " automatically rebalance windows on vim resize
@@ -143,6 +157,22 @@ autocmd VimResized * :wincmd =
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
+
+" Strip trailing whitespace
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
 " ======================================
 " plugins
@@ -177,10 +207,6 @@ endif
 let g:ctrlp_match_window = 'top,order:ttb'
 let g:ctrlp_extensions = ['tag', 'buffertag']
 nnoremap <Leader>pr :CtrlPBufTag<cr>
-
-" Highlight and Delete trailing whitespace on save.
-let g:DeleteTrailingWhitespace_Action = 'delete'
-highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 
 " vim-rspec
 nnoremap <leader>t :call RunCurrentSpecFile()<CR>
@@ -230,18 +256,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-
 
 " YouCompleteMe - Intelligent completion with fuzzy matching
 let g:ycm_dont_warn_on_startup = 0
@@ -256,27 +270,17 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:SuperTabCrMapping = 0
 
+let g:mustache_abbreviations = 1
+
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Colors
-let g:flatcolor_termcolors = 16
-let g:flatcolor_terminal_italics = 1
+let g:material_dark = 1
+let g:material_termcolors = 16
+let g:material_terminal_italics = 1
 
 " neovim
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 set background=dark
-colorscheme flatcolor
-
-" toggle colorscheme
-function! ToggleColors(light, dark)
-  if &background == 'dark'
-    set background=light
-    exe "colorscheme ". a:light
-  else
-    set background=dark
-    exe "colorscheme ". a:dark
-  endif
-endfunction
-
-nnoremap cot :call ToggleColors("github", "flatcolor")<CR>
+colorscheme material
