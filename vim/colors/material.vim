@@ -60,7 +60,7 @@ if s:is_dark
     let s:base00     = { "gui": "#455A64", "cterm": "0", "cterm16" : "8" }
   end
 
-  let s:base0        = { "gui": "#ECEFF1", "cterm": "255", "cterm16" : "255" }
+  let s:base0        = { "gui": "#CDD3DE", "cterm": "7",   "cterm16": "7" }
   let s:base1        = { "gui": "#BDBDBD", "cterm": "250", "cterm16" : "250" }
   let s:base2        = { "gui": "#E0E0E0", "cterm": "254", "cterm16" : "254" }
   let s:base3        = { "gui": "#EEEEEE", "cterm": "253", "cterm16" : "253" }
@@ -129,7 +129,7 @@ else
 endif
 
 call s:h("Comment",       { "fg": s:base00 })
-call s:h("Constant",      { "fg": s:red })
+call s:h("Constant",      { "fg": s:dark_red })
 call s:h("String",        { "fg": s:green })
 hi! link Character        Constant
 
@@ -199,7 +199,7 @@ call s:h("VertSplit",     { "fg": s:base02 })
 call s:h("Folded",        { "fg": s:base01, "bg": s:base02 })
 call s:h("FoldColumn",    { "bg": s:base02 })
 call s:h("SignColumn",    { "bg": s:base02 })
-call s:h("IncSearch",     { "fg": s:dark_yellow, "gui": "standout", "cterm": "standout" })
+call s:h("IncSearch",     { "fg": s:base03, "bg": s:dark_yellow })
 call s:h("LineNr",        { "fg": s:base00 })
 call s:h("CursorLineNr",  { "fg": s:dark_red })
 call s:h("MatchParen",    { "fg": s:base03, "bg": s:magenta })
@@ -295,7 +295,6 @@ call s:h("htmlTagN",           { "fg": s:red })
 call s:h("htmlTagName",        { "fg": s:red })
 call s:h("htmlSpecialTagName", { "fg": s:red })
 call s:h("htmlArg",            { "fg": s:dark_yellow })
-call s:h("javaScript",         { "fg": s:blue })
 
 " HTML content
 call s:h("htmlH1",        {"fg": s:head_a, "gui": "bold,italic", "cterm": "bold"     })
@@ -396,26 +395,30 @@ hi! link SignifySignChange          LineNr
 "
 
 " JavaScript
-call s:h("javaScriptBraces",             { "fg": s:blue })
+call s:h("javaScript",                   { "fg": s:blue })
+call s:h("javaScriptIdentifier",         { "fg": s:magenta })
 call s:h("javaScriptConditional",        { "fg": s:magenta })
 call s:h("javascriptGlobal",             { "fg": s:blue })
-call s:h("javaScriptParens",             { "fg": s:blue })
+call s:h("javaScriptGlobalObjects",      { "fg": s:dark_yellow })
+call s:h("javaScriptOperator",           { "fg": s:dark_cyan })
 call s:h("javaScriptRepeat",             { "fg": s:magenta })
 call s:h("javaScriptMember",             { "fg": s:cyan })
-call s:h("javaScriptObjectKey",          { "fg": s:cyan })
+call s:h("javaScriptObjectKey",          { "fg": s:green })
 call s:h("javaScriptHtmlElemProperties", { "fg": s:cyan })
-call s:h("javaScriptFuncArg",            { "fg": s:dark_red })
 call s:h("javaScriptFuncKeyword",        { "fg": s:magenta })
+call s:h("javaScriptjQuery",             { "fg": s:blue })
 hi! link javaScriptBoolean        Boolean
 hi! link javaScriptFunction       Function
-hi! link javaScriptIdentifier     Identifier
+hi! link javaScriptFuncExp        Function
 hi! link javaScriptNull           Boolean
 hi! link javaScriptNumber         Number
 hi! link javaScriptStatement      Statement
 
-" ruby
+" ruby + rails
 call s:h("rubySymbol",                   { "fg": s:green })
 call s:h("erubyDelimiter",               { "fg": s:red })
 call s:h("erubyRailsRenderMethod",       { "fg": s:cyan })
 call s:h("rubyRailsARMethod",            { "fg": s:cyan })
 call s:h("rubyRailsARAssociationMethod", { "fg": s:cyan })
+call s:h("rubyRailsFilterMethod",        { "fg": s:cyan })
+call s:h("rubyRailsRenderMethod",        { "fg": s:cyan })

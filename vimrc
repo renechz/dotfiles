@@ -7,7 +7,6 @@ Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/syntastic'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -19,8 +18,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'kana/vim-textobj-user'
-Plug 'Valloric/YouCompleteMe'
 Plug 'elixir-lang/vim-elixir'
+Plug 'SirVer/ultisnips'
+Plug 'Shougo/deoplete.nvim'
+Plug 'ludovicchabant/vim-gutentags'
 
 " html + css
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jst', 'css', 'eruby', 'scss'] }
@@ -36,6 +37,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 " javascript
 Plug 'moll/vim-node'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'vim-scripts/JavaScript-Indent'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'briancollins/vim-jst'
 Plug 'mustache/vim-mustache-handlebars'
@@ -43,9 +45,6 @@ Plug 'kchmck/vim-coffee-script'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
-
-" colors
-Plug 'MaxSt/FlatColor'
 
 call plug#end()
 
@@ -190,7 +189,6 @@ let g:syntastic_eruby_checkers = ["rubocop", "mri", "tidy"]
 let g:syntastic_html_tidy_exec = "tidy5"
 let g:syntastic_aggregate_errors = 1
 
-
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -242,14 +240,15 @@ nmap cm <Plug>Commentary
 " start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 
+" deoplete.vim
+let g:deoplete#enable_at_startup = 1
+
 " UltiSnips
-let g:UltiSnipsSnippetsDir='~/.vim/snippets'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-nnoremap <leader>ue :UltiSnipsEdit<cr>
+let g:UltiSnipsSnippetsDir = '~/.vim/snippets'
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -257,30 +256,17 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tmuxline#enabled = 1
 
-" YouCompleteMe - Intelligent completion with fuzzy matching
-let g:ycm_dont_warn_on_startup = 0
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_filetype_blacklist = {}
-let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-
-" supertab - enhanced tab behavior based on context
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:SuperTabCrMapping = 0
-
 let g:mustache_abbreviations = 1
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Colors
-let g:material_dark = 1
-let g:material_termcolors = 16
-let g:material_terminal_italics = 1
+let g:monokai_dark = 1
+let g:monokai_termcolors = 16
+let g:monokai_terminal_italics = 1
 
 " neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 set background=dark
-colorscheme material
+colorscheme monokai
