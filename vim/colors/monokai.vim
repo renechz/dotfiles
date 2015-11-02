@@ -1,5 +1,5 @@
 " Vim Color File
-" Name:       material.vim
+" Name:       monokai.vim
 " Version:    2.0
 " Maintainer: github.com/MaxSt
 " License:    The MIT License (MIT)
@@ -11,56 +11,48 @@ if exists('syntax on')
   syntax reset
 endif
 
-let g:colors_name = 'material'
+let g:colors_name = 'monokai'
 
-if ! exists("g:material_termcolors")
-  let g:material_termcolors = 256
+if ! exists("g:monokai_termcolors")
+  let g:monokai_termcolors = 256
 endif
 
-if ! exists("g:material_dark")
-  let g:material_dark = 0
+if ! exists("g:monokai_dark")
+  let g:monokai_dark = 0
 endif
 
 " not all terminals support italics properly.  If yours does, opt-in.
-if ! exists("g:material_terminal_italics")
-  let g:material_terminal_italics = 0
+if ! exists("g:monokai_terminal_italics")
+  let g:monokai_terminal_italics = 0
 endif
 
 let s:is_dark=(&background == "dark")
 
-let s:red           = { "gui": "#FF5370", "cterm": "197", "cterm16": "1" }
-let s:green         = { "gui": "#C3E88D", "cterm": "35",  "cterm16": "2" }
-let s:yellow        = { "gui": "#FFCB6B", "cterm": "214", "cterm16": "3" }
-let s:blue          = { "gui": "#89DDFF", "cterm": "33",  "cterm16": "4" }
-let s:magenta       = { "gui": "#C792EA", "cterm": "56",  "cterm16": "5" }
-let s:cyan          = { "gui": "#80CBC4", "cterm": "116", "cterm16": "6" }
+let s:red           = { "gui": "#F92672", "cterm": "197", "cterm16": "1" }
+let s:green         = { "gui": "#A6E22E", "cterm": "35",  "cterm16": "2" }
+let s:yellow        = { "gui": "#E6DB74", "cterm": "214", "cterm16": "3" }
+let s:blue          = { "gui": "#66D9EF", "cterm": "33",  "cterm16": "4" }
+let s:magenta       = { "gui": "#AE81FF", "cterm": "56",  "cterm16": "5" }
+let s:cyan          = { "gui": "#A1EFE4", "cterm": "116", "cterm16": "6" }
 
-let s:dark_red      = { "gui": "#F77669", "cterm": "197", "cterm16": "9" }
-let s:dark_green    = { "gui": "#8BD649", "cterm": "214", "cterm16": "10" }
-let s:dark_yellow   = { "gui": "#FFCF1B", "cterm": "214", "cterm16": "11" }
-let s:darker_yellow = { "gui": "#FF572D", "cterm": "214", "cterm16": "11" }
-let s:dark_blue     = { "gui": "#78CCF0", "cterm": "33",  "cterm16": "12" }
-let s:dark_magenta  = { "gui": "#7986CB", "cterm": "55",  "cterm16": "13" }
-let s:dark_cyan     = { "gui": "#39ADB5", "cterm": "116", "cterm16": "14" }
+let s:dark_red      = { "gui": "#EC3533", "cterm": "197", "cterm16": "9" }
+let s:dark_green    = { "gui": "#90A959", "cterm": "214", "cterm16": "10" }
+let s:dark_yellow   = { "gui": "#FD971F", "cterm": "214", "cterm16": "11" }
+let s:darker_yellow = { "gui": "#EBB060", "cterm": "214", "cterm16": "11" }
+let s:dark_blue     = { "gui": "#6089B4", "cterm": "33",  "cterm16": "12" }
+let s:dark_magenta  = { "gui": "#9872A2", "cterm": "55",  "cterm16": "13" }
+let s:dark_cyan     = { "gui": "#408080", "cterm": "116", "cterm16": "14" }
 
 let s:diff_add_bg    = { "gui": "#eaffea", "cterm": "116", "cterm16": "14" }
 let s:diff_change_bg = { "gui": "#F8EEC7", "cterm": "116", "cterm16": "14" }
 let s:diff_delete_bg = { "gui": "#ffecec", "cterm": "116", "cterm16": "14" }
 
 if s:is_dark
-  if g:material_dark == 1
-    let s:base03     = { "gui": "#212121", "cterm": "234", "cterm16" : "0" }
-    let s:base02     = { "gui": "#262626", "cterm": "235", "cterm16" : "235" }
-    let s:base01     = { "gui": "#424242", "cterm": "238", "cterm16" : "238" }
-    let s:base00     = { "gui": "#444444", "cterm": "241", "cterm16" : "8" }
-  else
-    let s:base03     = { "gui": "#1B2327", "cterm": "0", "cterm16" : "0" }
-    let s:base02     = { "gui": "#263238", "cterm": "0", "cterm16" : "0" }
-    let s:base01     = { "gui": "#37474F", "cterm": "0", "cterm16" : "0" }
-    let s:base00     = { "gui": "#455A64", "cterm": "0", "cterm16" : "8" }
-  end
-
-  let s:base0        = { "gui": "#EEFFFF", "cterm": "7",   "cterm16": "7" }
+  let s:base03       = { "gui": "#272822", "cterm": "234", "cterm16" : "0" }
+  let s:base02       = { "gui": "#3E3D32", "cterm": "235", "cterm16" : "8" }
+  let s:base01       = { "gui": "#424242", "cterm": "238", "cterm16" : "238" }
+  let s:base00       = { "gui": "#75715E", "cterm": "241", "cterm16" : "15" }
+  let s:base0        = { "gui": "#CDD3DE", "cterm": "7",   "cterm16": "7" }
   let s:base1        = { "gui": "#BDBDBD", "cterm": "250", "cterm16" : "250" }
   let s:base2        = { "gui": "#E0E0E0", "cterm": "254", "cterm16" : "254" }
   let s:base3        = { "gui": "#EEEEEE", "cterm": "253", "cterm16" : "253" }
@@ -98,10 +90,10 @@ let s:head_c = s:cyan
 " shamelessly stolen from hemisu: https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
   " Not all terminals support italics properly. If yours does, opt-in.
-  if g:material_terminal_italics == 0 && has_key(a:style, "cterm") && a:style["cterm"] == "italic"
+  if g:monokai_terminal_italics == 0 && has_key(a:style, "cterm") && a:style["cterm"] == "italic"
     unlet a:style.cterm
   endif
-  if g:material_termcolors == 16
+  if g:monokai_termcolors == 16
     let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
     let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm16 : "NONE")
   else

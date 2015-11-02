@@ -37,7 +37,6 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 " javascript
 Plug 'moll/vim-node'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'vim-scripts/JavaScript-Indent'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'briancollins/vim-jst'
 Plug 'mustache/vim-mustache-handlebars'
@@ -261,12 +260,12 @@ let g:mustache_abbreviations = 1
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Colors
-let g:monokai_dark = 1
-let g:monokai_termcolors = 16
-let g:monokai_terminal_italics = 1
+let g:material_dark = 1
+let g:material_termcolors = 16
+let g:material_terminal_italics = 1
 
 " neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 set background=dark
-colorscheme monokai
+colorscheme material
