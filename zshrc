@@ -53,7 +53,7 @@ stty stop undef
 
 # User configuration
 
-export PATH=".git/safe/../../bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH=".git/safe/../../bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

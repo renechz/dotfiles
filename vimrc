@@ -3,7 +3,7 @@
 " ======================================
 call plug#begin('~/.vim/plugged')
 
-Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/syntastic'
@@ -22,6 +22,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'benekastah/neomake'
+Plug 'MaxSt/FlatColor'
 
 " html + css
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jst', 'css', 'eruby', 'scss'] }
@@ -36,7 +38,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 
 " javascript
 Plug 'moll/vim-node'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'briancollins/vim-jst'
 Plug 'mustache/vim-mustache-handlebars'
@@ -175,18 +177,19 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 " ======================================
 " plugins
 " ======================================
+autocmd! BufWritePost * Neomake
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_check_on_wq = 0
 
-let g:syntastic_ruby_checkers = ["rubocop", "mri"]
-let g:syntastic_eruby_checkers = ["rubocop", "mri", "tidy"]
-let g:syntastic_html_tidy_exec = "tidy5"
-let g:syntastic_aggregate_errors = 1
+" let g:syntastic_ruby_checkers = ["rubocop", "mri"]
+" let g:syntastic_eruby_checkers = ["rubocop", "mri", "tidy"]
+" let g:syntastic_html_tidy_exec = "tidy5"
+" let g:syntastic_aggregate_errors = 1
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -260,12 +263,11 @@ let g:mustache_abbreviations = 1
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Colors
-let g:material_dark = 1
-let g:material_termcolors = 16
-let g:material_terminal_italics = 1
+let g:lightline = { 'colorscheme': 'flatcolor' }
+let g:flatcolor_termcolors = 16
+let g:flatcolor_terminal_italics = 1
 
-" neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 set background=dark
-colorscheme material
+colorscheme flatcolor
