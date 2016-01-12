@@ -28,6 +28,7 @@ endif
 
 let s:is_dark=(&background == "dark")
 
+let s:black         = { "gui": "#1a1a1a", "cterm": "234", "cterm16" : "0" }
 let s:red           = { "gui": "#FF5370", "cterm": "197", "cterm16": "1" }
 let s:dark_red      = { "gui": "#F77669", "cterm": "197", "cterm16": "9" }
 
@@ -58,10 +59,10 @@ let s:diff_delete_bg = { "gui": "#ffecec", "cterm": "116", "cterm16": "14" }
 
 if s:is_dark
   if g:material_dark == 1
-    let s:base03     = { "gui": "#212121", "cterm": "234", "cterm16" : "0" }
-    let s:base02     = { "gui": "#191919", "cterm": "235", "cterm16" : "235" }
-    let s:base01     = { "gui": "#424242", "cterm": "238", "cterm16" : "238" }
-    let s:base00     = { "gui": "#444444", "cterm": "241", "cterm16" : "8" }
+    let s:base03     = { "gui": "#212121", "cterm": "235", "cterm16" : "NONE" }
+    let s:base02     = s:black
+    let s:base01     = { "gui": "#313131", "cterm": "236", "cterm16" : "236" }
+    let s:base00     = { "gui": "#444444", "cterm": "238", "cterm16" : "238" }
   else
     let s:base03     = { "gui": "#263238", "cterm": "0", "cterm16" : "0" }
     let s:base02     = { "gui": "#1B2327", "cterm": "0", "cterm16" : "235" }
@@ -69,7 +70,7 @@ if s:is_dark
     let s:base00     = { "gui": "#546E7A", "cterm": "0", "cterm16" : "8" }
   end
 
-  let s:base0        = { "gui": "#EEFFFF", "cterm": "7",   "cterm16": "7" }
+  let s:base0        = { "gui": "#CDD3DE", "cterm": "251", "cterm16": "7" }
   let s:base1        = { "gui": "#BDBDBD", "cterm": "250", "cterm16" : "250" }
   let s:base2        = { "gui": "#E0E0E0", "cterm": "254", "cterm16" : "254" }
   let s:base3        = { "gui": "#EEEEEE", "cterm": "253", "cterm16" : "253" }
@@ -194,6 +195,9 @@ hi! link lCursor          Cursor
 
 call s:h("CursorColumn",  { "bg": s:base02 })
 call s:h("CursorLine",    { "bg": s:base02 })
+call s:h("LineNr",        { "fg": s:base00 })
+call s:h("CursorLineNr",  { "fg": s:base00, "bg": s:base02 })
+
 call s:h("Directory",     { "fg": s:blue })
 call s:h("DiffAdd",       { "fg": s:base00, "bg": s:diff_add_bg })
 call s:h("DiffChange",    { "fg": s:base00, "bg": s:diff_change_bg })
@@ -204,10 +208,7 @@ call s:h("VertSplit",     { "fg": s:base00, "bg": s:base02 })
 call s:h("Folded",        { "fg": s:base01, "bg": s:base02 })
 call s:h("FoldColumn",    { "bg": s:base02 })
 call s:h("SignColumn",    { "bg": s:base02 })
-call s:h("IncSearch",     { "fg": s:base03, "bg": s:yellow })
-call s:h("LineNr",        { "fg": s:base00 })
-call s:h("CursorLineNr",  { "fg": s:red })
-call s:h("MatchParen",    { "fg": s:base03, "bg": s:magenta })
+call s:h("MatchParen",    { "fg": s:base1, "bg": s:base00 })
 call s:h("ModeMsg",       { "fg": s:green })
 call s:h("MoreMsg",       { "fg": s:green })
 call s:h("NonText",       { "fg": s:base00 })
@@ -217,7 +218,8 @@ hi! link PmenuSbar        PmenuSel
 hi! link PmenuThumb       PmenuSel
 
 call s:h("Question",      { "fg": s:green })
-call s:h("Search",        { "fg": s:base03, "bg": s:yellow })
+call s:h("Search",        { "fg": s:base02, "bg": s:yellow })
+call s:h("IncSearch",     { "fg": s:base02, "bg": s:yellow })
 call s:h("SpecialKey",    { "fg": s:base01 })
 call s:h("SpellCap",      { "gui": "underline", "cterm": "underline", "fg": s:blue })
 call s:h("SpellLocal",    { "gui": "underline", "cterm": "underline", "fg": s:cyan })
@@ -230,7 +232,7 @@ hi! link TablineFill      Tabline
 hi! link TablineSel       Tabline
 
 call s:h("Title",         { "fg": s:dark_yellow })
-call s:h("Visual",        { "bg": s:base02 })
+call s:h("Visual",        { "bg": s:base01 })
 hi! link VisualNos        Visual
 
 call s:h("WarningMsg",    { "fg": s:red })

@@ -264,6 +264,7 @@ map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> t
 
 " Colors
 let g:lightline = { 'colorscheme': 'flatcolor' }
+let g:flatcolor_dark = 1
 let g:flatcolor_termcolors = 16
 let g:flatcolor_terminal_italics = 1
 
