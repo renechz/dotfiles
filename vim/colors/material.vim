@@ -63,11 +63,13 @@ if s:is_dark
     let s:base02     = s:black
     let s:base01     = { "gui": "#313131", "cterm": "236", "cterm16" : "236" }
     let s:base00     = { "gui": "#444444", "cterm": "238", "cterm16" : "238" }
+    let s:string     = s:light_yellow
   else
     let s:base03     = { "gui": "#263238", "cterm": "0", "cterm16" : "0" }
     let s:base02     = { "gui": "#1B2327", "cterm": "0", "cterm16" : "235" }
     let s:base01     = { "gui": "#455A64", "cterm": "0", "cterm16" : "238" }
     let s:base00     = { "gui": "#546E7A", "cterm": "0", "cterm16" : "8" }
+    let s:string     = s:green
   end
 
   let s:base0        = { "gui": "#CDD3DE", "cterm": "251", "cterm16": "7" }
@@ -83,6 +85,7 @@ else
   let s:base1        = { "gui": "#616161", "cterm": "241", "cterm16" : "8" }
   let s:base2        = { "gui": "#424242", "cterm": "238", "cterm16" : "238" }
   let s:base3        = { "gui": "#212121", "cterm": "235", "cterm16" : "0" }
+  let s:string     = s:darker_yellow
 
   let s:_green        = s:green
   let s:_yellow       = s:yellow
@@ -140,7 +143,7 @@ endif
 
 call s:h("Comment",       { "fg": s:base00 })
 call s:h("Constant",      { "fg": s:dark_red })
-call s:h("String",        { "fg": s:green })
+call s:h("String",        { "fg": s:string })
 hi! link Character        Constant
 
 call s:h("Number",        { "fg": s:dark_red })
@@ -440,15 +443,16 @@ call s:h("javascriptFuncKeyword",        { "fg": s:magenta })
 call s:h("javascriptObjectLabel",        { "fg": s:green })
 call s:h("javascriptMember",             { "fg": s:cyan })
 call s:h("javascriptHtmlElemProperties", { "fg": s:cyan })
+call s:h("javascriptVariable",           { "fg": s:magenta })
 hi! link javascriptBraces         Normal
 hi! link javascriptBoolean        Boolean
 hi! link javascriptFunction       Function
-hi! link javascriptMethod       Function
+hi! link javascriptMethod         Function
 hi! link javascriptFuncExp        Function
 hi! link javascriptNull           Boolean
 hi! link javascriptNumber         Number
 hi! link javascriptStatement      Statement
-hi! link javascriptVariable       Identifier
+" hi! link javascriptVariable       Identifier
 
 " ruby + rails
 call s:h("rubySymbol",                   { "fg": s:red })

@@ -3,10 +3,9 @@
 " ======================================
 call plug#begin('~/.vim/plugged')
 
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/syntastic'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -179,18 +178,6 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 " ======================================
 autocmd! BufWritePost * Neomake
 
-" syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_ruby_checkers = ["rubocop", "mri"]
-" let g:syntastic_eruby_checkers = ["rubocop", "mri", "tidy"]
-" let g:syntastic_html_tidy_exec = "tidy5"
-" let g:syntastic_aggregate_errors = 1
-
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -263,12 +250,11 @@ let g:mustache_abbreviations = 1
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Colors
-let g:lightline = { 'colorscheme': 'flatcolor' }
-let g:flatcolor_dark = 1
-let g:flatcolor_termcolors = 16
-let g:flatcolor_terminal_italics = 1
+let g:onedark_dark = 1
+let g:onedark_termcolors = 16
+let g:onedark_terminal_italics = 1
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 set background=dark
-colorscheme flatcolor
+colorscheme onedark
