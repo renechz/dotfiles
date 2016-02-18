@@ -3,48 +3,33 @@
 " ======================================
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline'
+Plug 'benekastah/neomake'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'ervandew/supertab'
+Plug 'kana/vim-textobj-user'
 Plug 'junegunn/vim-easy-align'
-Plug 'honza/vim-snippets'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'jst', 'css', 'eruby', 'scss'] }
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
-Plug 'kana/vim-textobj-user'
-Plug 'elixir-lang/vim-elixir'
-Plug 'SirVer/ultisnips'
-Plug 'Shougo/deoplete.nvim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'benekastah/neomake'
-Plug 'MaxSt/FlatColor'
-
-" html + css
-Plug 'mattn/emmet-vim', { 'for': ['html', 'jst', 'css', 'eruby', 'scss'] }
-Plug 'othree/html5.vim', { 'for': ['html', 'eruby', 'jst'] }
-
-" ruby
-Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rails'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
-Plug 'nelstrom/vim-textobj-rubyblock'
-
-" javascript
-Plug 'moll/vim-node'
-Plug 'othree/yajs.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'briancollins/vim-jst'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'kchmck/vim-coffee-script'
-
-" tmux
-Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
@@ -176,7 +161,7 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 " ======================================
 " plugins
 " ======================================
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -228,16 +213,6 @@ nmap cm <Plug>Commentary
 " vim-easyalign
 " start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
-
-" deoplete.vim
-let g:deoplete#enable_at_startup = 1
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsEditSplit = 'vertical'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetsDir = '~/.vim/snippets'
 
 " vim-airline
 let g:airline_powerline_fonts = 1
