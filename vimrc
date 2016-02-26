@@ -14,6 +14,8 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jst', 'css', 'eruby', 'scss'] }
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/yajs.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
@@ -133,7 +135,8 @@ vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 
 " unload buffer
-nnoremap <c-x> :bdelete<cr>
+nnoremap <c-x><c-u> :bunload<cr>
+nnoremap <c-x><c-d> :bdelete<cr>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -161,7 +164,8 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 " ======================================
 " plugins
 " ======================================
-" autocmd! BufWritePost * Neomake
+" neomake
+autocmd! BufWritePost * Neomake
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
