@@ -13,7 +13,7 @@ endif
 
 let g:colors_name = 'onedark'
 
-if ! exists("g:onedark_termcolors")
+if !exists("g:onedark_termcolors")
   let g:onedark_termcolors = 256
 endif
 
@@ -67,10 +67,10 @@ if &background == "dark"
   " let s:fg2 = { "gui": "#828997", "cterm": "244", "cterm16": "244" }
 else
   let s:bg             = s:white
-  let s:bg_dark        = { "gui": "#e5e5e6", "cterm": "252", "cterm16": "15" }
+  let s:bg_dark        = { "gui": "#e5e5e6", "cterm": "254", "cterm16": "254" }
   let s:fg             = { "gui": "#595c69", "cterm": "236", "cterm16": "236" }
   let s:fg_dark        = { "gui": "#9d9d9f", "cterm": "242", "cterm16": "242" }
-  let s:fg3            = { "gui": "#a0a1a7", "cterm": "240", "cterm16" : "240" }
+  let s:fg3            = { "gui": "#a0a1a7", "cterm": "248", "cterm16": "248" }
   let s:red            = { "gui": "#e45649", "cterm": "204", "cterm16": "1" }
   let s:red_dark       = { "gui": "#ca1243", "cterm": "203", "cterm16": "9" }
   let s:green          = s:green_dark
@@ -82,16 +82,12 @@ else
 
   let s:comment        = s:fg3
   let s:cursor         = { "gui": "#528bff", "cterm": "75", "cterm16": "75" }
-  let s:visual         = { "gui": "#ededed", "cterm": "254", "cterm16": "254" }
+  let s:visual         = { "gui": "#ededed", "cterm": "253", "cterm16": "253" }
   let s:line_highlight = { "gui": "#f2f2f2", "cterm": "255", "cterm16": "255" }
 
   " Defined in atom's colorscheme but not used here so far. Here for reference
   " let s:fg2 = { "gui": "#696c77", "cterm": "240", "cterm16" : "240" }
 endif
-
-let s:head_a = s:blue_dark
-let s:head_b = s:blue
-let s:head_c = s:cyan_dark
 
 " shamelessly stolen from hemisu: https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
@@ -118,8 +114,6 @@ endfunction
 
 " common groups ================================================================
 " (see `:h w18`)
-call s:h("Normal", { "bg": s:bg, "fg": s:fg })
-call s:h("Cursor", { "bg": s:cursor, "fg": s:fg })
 
 call s:h("Comment", { "fg": s:comment, "gui": "italic", "cterm": "italic" })
 
@@ -130,7 +124,7 @@ hi! link Number      Constant
 hi! link Boolean     Constant
 hi! link Float       Constant
 
-call s:h("Identifier", { "fg": s:purple })
+call s:h("Identifier", { "fg": s:red })
 call s:h("Function",   { "fg": s:blue })
 
 call s:h("Statement", { "fg": s:purple })
@@ -147,8 +141,8 @@ hi! link Define     PreProc
 hi! link Macro      PreProc
 hi! link PreCondit  PreProc
 
-call s:h("Type",         { "fg": s:yellow_dark })
-call s:h("StorageClass", { "fg": s:yellow_dark })
+call s:h("Type",         { "fg": s:yellow })
+call s:h("StorageClass", { "fg": s:yellow })
 hi! link Structure       Type
 hi! link Typedef         Type
 
@@ -161,70 +155,65 @@ hi! link Debug           Special
 
 call s:h("Underlined", { "gui": "underline", "cterm": "underline" })
 call s:h("Ignore",     { "fg": s:bg })
-call s:h("Todo",       { "fg": s:purple, "gui": "bold,italic", "cterm": "bold,italic" })
+call s:h("Todo",       { "fg": s:purple, "gui": "italic", "cterm": "italic" })
 call s:h("Error",      { "fg": s:fg, "bg": s:red_dark, "gui": "bold", "cterm": "bold" })
 
 " ui chrome ====================================================================
 
-call s:h("SpecialKey",   { "fg": s:blue })
-call s:h("NonText",      { "fg": s:bg_dark })
-call s:h("Directory",    { "fg": s:purple })
+call s:h("ColorColumn",  { "bg": s:line_highlight })
+call s:h("CursorColumn", { "bg": s:line_highlight })
+call s:h("CursorLine",   { "bg": s:line_highlight })
+call s:h("Conceal",      { "fg": s:fg })
+call s:h("Cursor",       { "bg": s:cursor, "fg": s:black })
+call s:h("Directory",    { "fg": s:fg })
+call s:h("DiffAdd",      { "fg": s:diff_add })
+call s:h("diffAdded",    { "fg": s:diff_add })
+call s:h("DiffChange",   { "fg": s:diff_change })
+call s:h("DiffDelete",   { "fg": s:diff_delete })
+call s:h("diffRemoved",  { "fg": s:diff_delete })
+call s:h("DiffText",     { "fg": s:blue_dark })
 call s:h("ErrorMsg",     { "fg": s:red_dark })
+call s:h("VertSplit",    { "fg": s:bg_dark })
+call s:h("Folded",       { "fg": s:fg_dark })
+call s:h("FoldColumn",   { "fg": s:bg_dark })
+call s:h("SignColumn",   { "fg": s:green })
 call s:h("IncSearch",    { "fg": s:bg_dark, "bg": s:red })
-call s:h("Search",       { "bg": s:visual })
-call s:h("MoreMsg",      { "fg": s:fg_dark, "gui": "bold", "cterm": "bold" })
-hi! link ModeMsg MoreMsg
 call s:h("LineNr",       { "fg": s:fg_dark })
 call s:h("CursorLineNr", { "fg": s:fg })
+call s:h("MatchParen",   { "bg": s:cursor, "fg": s:bg })
+call s:h("ModeMsg",      { "fg": s:fg_dark, "gui": "bold", "cterm": "bold" })
+call s:h("MoreMsg",      { "fg": s:fg_dark, "gui": "bold", "cterm": "bold" })
+call s:h("NonText",      { "fg": s:bg_dark })
+call s:h("Normal",       { "bg": s:bg, "fg": s:fg })
+call s:h("Pmenu",        { "fg": s:fg, "bg": s:bg_dark })
+call s:h("PmenuSel",     { "fg": s:fg, "bg": s:visual })
+call s:h("PmenuSbar",    { "fg": s:fg, "bg": s:bg_dark })
+call s:h("PmenuThumb",   { "fg": s:fg, "bg": s:bg_dark })
 call s:h("Question",     { "fg": s:red })
+call s:h("Search",       { "bg": s:visual })
+call s:h("SpecialKey",   { "fg": s:blue })
 call s:h("StatusLine",   { "bg": s:bg_dark, "fg": s:fg })
-call s:h("Conceal",      { "fg": s:fg })
 call s:h("StatusLineNC", { "bg": s:bg_dark, "fg": s:fg })
-call s:h("VertSplit",    { "fg": s:bg_dark })
+call s:h("TabLine",      { "fg": s:fg, "bg": s:bg_dark })
+call s:h("TabLineFill",  { "fg": s:fg, "bg": s:bg_dark })
+call s:h("TabLineSel",   { "fg": s:fg, "bg": s:bg_dark, "gui": "bold", "cterm": "bold" })
 call s:h("Title",        { "fg": s:blue_dark })
 call s:h("Visual",       { "bg": s:visual })
 call s:h("WarningMsg",   { "fg": s:yellow_dark })
 call s:h("WildMenu",     { "fg": s:fg, "bg": s:bg })
 
-call s:h("Folded",       { "fg": s:fg_dark })
-call s:h("FoldColumn",   { "fg": s:bg_dark })
-
-call s:h("DiffAdd",      { "fg": s:diff_add })
-call s:h("diffAdded",    { "fg": s:diff_add })
-call s:h("DiffDelete",   { "fg": s:diff_delete })
-call s:h("diffRemoved",  { "fg": s:diff_delete })
-call s:h("DiffChange",   { "fg": s:diff_change })
-call s:h("DiffText",     { "fg": s:blue_dark })
-call s:h("SignColumn",   { "fg": s:green })
-
-call s:h("Pmenu",        { "fg": s:fg, "bg": s:bg_dark })
-call s:h("PmenuSel",     { "fg": s:fg, "bg": s:visual })
-call s:h("PmenuSbar",    { "fg": s:fg, "bg": s:bg_dark })
-call s:h("PmenuThumb",   { "fg": s:fg, "bg": s:bg_dark })
-
-call s:h("TabLine",      { "fg": s:fg, "bg": s:bg_dark })
-call s:h("TabLineSel",   { "fg": s:fg, "bg": s:bg_dark, "gui": "bold", "cterm": "bold" })
-call s:h("TabLineFill",  { "fg": s:fg, "bg": s:bg_dark })
-
-call s:h("CursorColumn", { "bg": s:line_highlight })
-call s:h("CursorLine",   { "bg": s:line_highlight })
-call s:h("ColorColumn",  { "bg": s:line_highlight })
-
 if has("gui_running")
-  call s:h("SpellRare",  { "gui": "underline", "sp": s:red })
-  call s:h("SpellCap",   { "gui": "underline", "sp": s:green })
   call s:h("SpellBad",   { "gui": "underline", "sp": s:red_dark })
+  call s:h("SpellCap",   { "gui": "underline", "sp": s:green })
   call s:h("SpellLocal", { "gui": "underline", "sp": s:green_dark })
+  call s:h("SpellRare",  { "gui": "underline", "sp": s:red })
 else
-  call s:h("SpellRare",  { "cterm": "underline", "fg": s:red })
-  call s:h("SpellCap",   { "cterm": "underline", "fg": s:green })
   call s:h("SpellBad",   { "cterm": "underline", "fg": s:red_dark })
+  call s:h("SpellCap",   { "cterm": "underline", "fg": s:green })
   call s:h("SpellLocal", { "cterm": "underline", "fg": s:green_dark })
+  call s:h("SpellRare",  { "cterm": "underline", "fg": s:red })
 endif
 
-" remainder of syntax highlighting
-call s:h("MatchParen", { "bg": s:bg_dark, "fg": s:fg })
-call s:h("qfLineNr",   { "fg": s:fg_dark })
 
 " hi helpHyperTextJump guifg=#5FAFD7 ctermfg=74
 
