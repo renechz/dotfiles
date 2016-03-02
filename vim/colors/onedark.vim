@@ -214,9 +214,6 @@ else
   call s:h("SpellRare",  { "cterm": "underline", "fg": s:red })
 endif
 
-
-" hi helpHyperTextJump guifg=#5FAFD7 ctermfg=74
-
 " HTML
 call s:h("htmlH1",             { "gui": "bold", "cterm": "bold" })
 call s:h("htmlH2",             { "gui": "bold", "cterm": "bold" })

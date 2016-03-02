@@ -30,7 +30,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-bundler'
-Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
@@ -164,6 +163,34 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 " ======================================
 " plugins
 " ======================================
+" statusline
+hi User1 guifg=#e06c75
+hi User4 guifg=#61afef
+
+set statusline=
+
+set statusline+=%t                " filename
+set statusline+=%4*
+set statusline+=%m                " modified flag
+set statusline+=%*
+
+set statusline+=%1*
+set statusline+=%r                " read only
+set statusline+=%h                " help
+set statusline+=%*
+
+set statusline+=\ %y              " file type
+set statusline+=%=
+
+set stl+=\ \ Col:%c               " Column number
+set stl+=\ \ Line:%l/%L           " Line # / total lines
+set stl+=\ \ %P%{InsertSpace()}   " percentage
+
+function! InsertSpace()
+    " For adding trailing spaces onto statusline
+    return ' '
+endfunction
+
 " neomake
 autocmd! BufWritePost * Neomake
 
@@ -217,12 +244,6 @@ nmap cm <Plug>Commentary
 " vim-easyalign
 " start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
-
-" vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tmuxline#enabled = 1
 
 let g:mustache_abbreviations = 1
 
