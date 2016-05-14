@@ -23,6 +23,9 @@ if ! exists("g:onedark_terminal_italics")
 endif
 
 " Colors
+let s:bg          = { "gui": "#282c34", "cterm": "235", "cterm16": "NONE" }
+let s:fg          = { "gui": "#abb2bf", "cterm": "249", "cterm16": "15" }
+
 let s:black       = { "gui": "#3e4451", "cterm": "234", "cterm16": "0" }
 let s:black_dark  = { "gui": "#2c323c", "cterm": "235", "cterm16": "8" }
 
@@ -47,24 +50,18 @@ let s:cyan_dark   = { "gui": "#0184BC", "cterm": "121", "cterm16": "14" }
 let s:white       = { "gui": "#FAFAFA", "cterm": "255", "cterm16": "7" }
 let s:white_dark  = { "gui": "#ABB2BF", "cterm": "249", "cterm16": "15" }
 
+let s:comment            = { "gui": "#5c6370", "cterm": "240", "cterm16": "240" }
+let s:cursor         = { "gui": "#528bff", "cterm": "75", "cterm16": "75" }
+let s:visual         = s:black
+let s:line_highlight = s:black_dark
+
 let s:diff_add    = { "gui": "#43d08a", "cterm": "252", "cterm16": "10" }
 let s:diff_change = { "gui": "#e0c285", "cterm": "252", "cterm16": "3" }
 let s:diff_delete = { "gui": "#e05252", "cterm": "252", "cterm16": "1" }
 
 if &background == "dark"
-  let s:bg             = { "gui": "#282C34", "cterm": "235", "cterm16": "NONE" }
   let s:bg_dark        = { "gui": "#21252b", "cterm": "234", "cterm16": "234" }
-  let s:fg             = s:white_dark
-  let s:fg3            = { "gui": "#5c6370", "cterm": "240", "cterm16": "240" }
   let s:fg_dark        = { "gui": "#636d83", "cterm": "242", "cterm16": "242" }
-
-  let s:comment        = s:fg3
-  let s:cursor         = { "gui": "#528bff", "cterm": "75", "cterm16": "75" }
-  let s:visual         = s:black
-  let s:line_highlight = s:black_dark
-
-  " Defined in atom's colorscheme but not used here so far. Here for reference
-  " let s:fg2 = { "gui": "#828997", "cterm": "244", "cterm16": "244" }
 else
   let s:bg             = s:white
   let s:bg_dark        = { "gui": "#e5e5e6", "cterm": "254", "cterm16": "254" }
@@ -112,261 +109,123 @@ function! s:h(group, style)
     \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm : "NONE")
 endfunction
 
-" common groups ================================================================
-" (see `:h w18`)
+call s:h("Normal",     { "bg": s:bg, "fg": s:fg })
+call s:h("LineNr",     { "bg": s:black, "fg": s:white })
+call s:h("FoldColumn", { "bg": s:black, "fg": s:white })
+call s:h("Folded",     { "bg": s:black, "fg": s:white })
+call s:h("MatchParen", { "bg": s:black, "fg": s:yellow_dark })
+call s:h("SignColumn", { "bg": s:black, "fg": s:white })
 
-call s:h("Comment", { "fg": s:comment, "gui": "italic", "cterm": "italic" })
+call s:h("Comment",    { "fg": s:comment })
+call s:h("Conceal",    { "fg": s:fg })
+call s:h("Constant",   { "fg": s:red_dark })
+call s:h("Error",      { "fg": s:red, "gui": "reverse", "cterm": "reverse" })
+call s:h("Identifier", { "fg": s:green })
+call s:h("Ignore",     { })
+call s:h("PreProc",    { "fg": s:cyan })
+call s:h("Special",    { "fg": s:green })
+call s:h("Statement",  { "fg": s:blue_dark })
+call s:h("String",     { "fg": s:green_dark })
+call s:h("Todo",       { "gui": "reverse", "cterm": "reverse" })
+call s:h("Type",       { "fg": s:purple_dark })
+call s:h("Underlined", { "fg": s:cyan , "gui": "underline", "cterm": "underline" })
 
-call s:h("Constant", { "fg": s:yellow_dark })
-call s:h("String",   { "fg": s:green })
-hi! link Character   Constant
-hi! link Number      Constant
-hi! link Boolean     Constant
-hi! link Float       Constant
+call s:h("NonText",      { "fg": s:bg_dark })
 
-call s:h("Identifier", { "fg": s:red })
-call s:h("Function",   { "fg": s:blue })
+call s:h("Pmenu",        { "bg": s:black_dark, "fg": s:fg })
+call s:h("PmenuSbar",    { "bg": s:bg_dark })
+call s:h("PmenuSel",     { "bg": s:cyan, "fg": s:black_dark })
+call s:h("PmenuThumb",   { "bg": s:cyan, "fg": s:cyan })
 
-call s:h("Statement", { "fg": s:purple })
-hi! link Conditonal   Statement
-hi! link Repeat       Statement
-hi! link Label        Statement
-call s:h("Operator",  { "fg": s:fg })
-hi! link Keyword      Statement
-hi! link Exception    Statement
+call s:h("ErrorMsg",     { "bg": s:red, "fg": s:bg })
+call s:h("ModeMsg",      { "bg": s:green_dark, "fg": s:bg })
+call s:h("MoreMsg",      { "fg": s:cyan })
+call s:h("Question",     { "fg": s:green_dark })
+call s:h("WarningMsg",   { "fg": s:red })
 
-call s:h("PreProc", { "fg": s:purple })
-hi! link Include    PreProc
-hi! link Define     PreProc
-hi! link Macro      PreProc
-hi! link PreCondit  PreProc
+call s:h("TabLine",      { "bg": s:black_dark, "fg": s:yellow })
+call s:h("TabLineFill",  { "bg": s:black_dark, "fg": s:black_dark })
+call s:h("TabLineSel",   { "bg": s:yellow, "fg": s:bg })
 
-call s:h("Type",         { "fg": s:yellow })
-call s:h("StorageClass", { "fg": s:yellow })
-hi! link Structure       Type
-hi! link Typedef         Type
-
-call s:h("Special",      { "fg": s:cyan})
-hi! link SpecialChar     Special
-call s:h("Tag",          { "fg": s:red })
-hi! link Delimiter       Special
-hi! link SpecialComment  Special
-hi! link Debug           Special
-
-call s:h("Underlined", { "gui": "underline", "cterm": "underline" })
-call s:h("Ignore",     { "fg": s:bg })
-call s:h("Todo",       { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-call s:h("Error",      { "fg": s:fg, "bg": s:red_dark, "gui": "bold", "cterm": "bold" })
-
-" ui chrome ====================================================================
-
-call s:h("ColorColumn",  { "bg": s:line_highlight })
+call s:h("Cursor",       { "bg": s:white })
 call s:h("CursorColumn", { "bg": s:line_highlight })
 call s:h("CursorLine",   { "bg": s:line_highlight })
-call s:h("Conceal",      { "fg": s:fg })
-call s:h("Cursor",       { "bg": s:cursor, "fg": s:black })
-call s:h("Directory",    { "fg": s:fg })
-call s:h("DiffAdd",      { "fg": s:diff_add })
-call s:h("diffAdded",    { "fg": s:diff_add })
-call s:h("DiffChange",   { "fg": s:diff_change })
-call s:h("DiffDelete",   { "fg": s:diff_delete })
-call s:h("diffRemoved",  { "fg": s:diff_delete })
-call s:h("DiffText",     { "fg": s:blue_dark })
-call s:h("ErrorMsg",     { "fg": s:red_dark })
-call s:h("VertSplit",    { "fg": s:bg_dark })
-call s:h("Folded",       { "fg": s:fg_dark })
-call s:h("FoldColumn",   { "fg": s:bg_dark })
-call s:h("SignColumn",   { "fg": s:green })
-call s:h("IncSearch",    { "fg": s:bg_dark, "bg": s:red })
-call s:h("LineNr",       { "fg": s:fg_dark })
-call s:h("CursorLineNr", { "fg": s:fg })
-call s:h("MatchParen",   { "bg": s:cursor, "fg": s:bg })
-call s:h("ModeMsg",      { "fg": s:fg_dark, "gui": "bold", "cterm": "bold" })
-call s:h("MoreMsg",      { "fg": s:fg_dark, "gui": "bold", "cterm": "bold" })
-call s:h("NonText",      { "fg": s:bg_dark })
-call s:h("Normal",       { "bg": s:bg, "fg": s:fg })
-call s:h("Pmenu",        { "fg": s:fg, "bg": s:bg_dark })
-call s:h("PmenuSel",     { "fg": s:fg, "bg": s:visual })
-call s:h("PmenuSbar",    { "fg": s:fg, "bg": s:bg_dark })
-call s:h("PmenuThumb",   { "fg": s:fg, "bg": s:bg_dark })
-call s:h("Question",     { "fg": s:red })
-call s:h("Search",       { "bg": s:visual })
+call s:h("CursorLineNr", { "bg": s:line_highlight, "fg": s:cyan_dark })
+
+call s:h("StatusLine",   { "bg": s:yellow, "fg": s:bg })
+call s:h("StatusLineNC", { "bg": s:black_dark, "fg": s:yellow })
+
+call s:h("Visual",       { "bg": s:bg, "fg": s:blue_dark, "gui": "reverse", "cterm": "reverse" })
+call s:h("VisualNOS",       { "cterm": "underline", "gui": "underline" })
+
+call s:h("VertSplit",    { "bg": s:black_dark, "fg": s:black_dark })
+call s:h("WildMenu",     { "bg": s:blue_dark, "fg": s:bg })
+
+call s:h("Function",     { "fg": s:yellow_dark })
 call s:h("SpecialKey",   { "fg": s:blue })
-call s:h("StatusLine",   { "bg": s:bg_dark, "fg": s:fg })
-call s:h("StatusLineNC", { "bg": s:bg_dark, "fg": s:fg })
-call s:h("TabLine",      { "fg": s:fg, "bg": s:bg_dark })
-call s:h("TabLineFill",  { "fg": s:fg, "bg": s:bg_dark })
-call s:h("TabLineSel",   { "fg": s:fg, "bg": s:bg_dark, "gui": "bold", "cterm": "bold" })
-call s:h("Title",        { "fg": s:blue_dark })
-call s:h("Visual",       { "bg": s:visual })
-call s:h("WarningMsg",   { "fg": s:yellow_dark })
-call s:h("WildMenu",     { "fg": s:fg, "bg": s:bg })
+call s:h("Title",        { "fg": s:white_dark })
 
-if has("gui_running")
-  call s:h("SpellBad",   { "gui": "underline", "sp": s:red_dark })
-  call s:h("SpellCap",   { "gui": "underline", "sp": s:green })
-  call s:h("SpellLocal", { "gui": "underline", "sp": s:green_dark })
-  call s:h("SpellRare",  { "gui": "underline", "sp": s:red })
-else
-  call s:h("SpellBad",   { "cterm": "underline", "fg": s:red_dark })
-  call s:h("SpellCap",   { "cterm": "underline", "fg": s:green })
-  call s:h("SpellLocal", { "cterm": "underline", "fg": s:green_dark })
-  call s:h("SpellRare",  { "cterm": "underline", "fg": s:red })
-endif
+call s:h("DiffAdd",      { "bg": s:bg, "fg": s:green_dark, "gui": "reverse", "cterm": "reverse" })
+call s:h("DiffChange",   { "bg": s:bg, "fg": s:purple, "gui": "reverse", "cterm": "reverse" })
+call s:h("DiffDelete",   { "bg": s:bg, "fg": s:red, "gui": "reverse", "cterm": "reverse" })
+call s:h("DiffText",     { "bg": s:bg, "fg": s:purple_dark, "gui": "reverse", "cterm": "reverse" })
 
-" HTML
-call s:h("htmlH1",             { "gui": "bold", "cterm": "bold" })
-call s:h("htmlH2",             { "gui": "bold", "cterm": "bold" })
-call s:h("htmlH3",             { "gui": "bold", "cterm": "bold" })
-call s:h("htmlH4",             { "gui": "bold", "cterm": "bold" })
-call s:h("htmlH5",             { "gui": "bold", "cterm": "bold" })
-call s:h("htmlH6",             { "gui": "bold", "cterm": "bold" })
-call s:h("htmlArg",            { "fg": s:cyan })
-call s:h("htmlTag",            { "fg": s:fg })
-call s:h("htmlTagName",        { "fg": s:red })
-call s:h("htmlSpecialTagName", { "fg": s:red })
-call s:h("htmlLink",           { "fg": s:blue , "gui": "underline", "cterm": "underline" })
-call s:h("htmlItalic",         { "gui": "italic", "cterm": "italic" })
-call s:h("htmlBold",           { "gui": "bold", "cterm": "bold" })
-call s:h("htmlBoldItalic",     { "gui": "bold,italic", "cterm": "bold" })
-hi! link htmlEndTag  htmlTag
-hi! link htmlTagN    Keyword
+call s:h("IncSearch",    { "bg": s:red, "fg": s:bg })
+call s:h("Search",       { "bg": s:yellow_dark, "fg": s:bg })
 
-" tpope/vim-markdown
-call s:h("markdownBlockquote",        { "fg": s:fg })
-call s:h("markdownBold",              { "fg": s:yellow_dark, "gui": "bold", "cterm": "bold" })
-call s:h("markdownBoldItalic",        { "fg": s:fg, "gui": "bold,italic", "cterm": "bold" })
-call s:h("markdownEscape",            { "fg": s:fg })
-call s:h("markdownH1",                { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("markdownH2",                { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("markdownH3",                { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("markdownH4",                { "fg": s:fg, "gui": "bold", "cterm": "bold" })
-call s:h("markdownH5",                { "fg": s:fg })
-call s:h("markdownH6",                { "fg": s:fg })
-call s:h("markdownHeadingDelimiter",  { "fg": s:red })
-call s:h("markdownHeadingRule",       { "fg": s:comment })
-call s:h("markdownItalic",            { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-call s:h("markdownLinkDelimiter",     { "fg": s:purple })
-call s:h("markdownLinkText",          { "fg": s:blue })
-call s:h("markdownLinkTextDelimiter", { "fg": s:fg })
-call s:h("markdownListMarker",        { "fg": s:red })
-call s:h("markdownOrderedListMarker", { "fg": s:red })
-call s:h("markdownRule",              { "fg": s:fg })
-call s:h("markdownUrlTitle",          { "fg": s:fg })
-call s:h("markdownCode",              { "fg": s:green })
-call s:h("markdownCodeDelimiter",     { "fg": s:green })
-call s:h("markdownIdDeclaration",     { "fg": s:fg })
-call s:h("markdownId",                { "fg": s:fg_dark })
-call s:h("markdownUrl",               { "fg": s:purple, "gui": "underline", "cterm": "underline" })
-call s:h("markdownUrlDelimiter",      { "fg": s:purple })
-call s:h("markdownUrlTitleDelimiter", { "fg": s:fg_dark })
+call s:h("Directory",    { "fg": s:cyan_dark })
 
-" plasticboy/vim-markdown
-call s:h("mkdBlockQuote",       { "fg": s:fg })
-call s:h("mkdLineContinue",     { "fg": s:fg })
-call s:h("mkdLink",             { "fg": s:blue })
-call s:h("mkdListItem",         { "fg": s:fg })
-call s:h("mkdNonListItemBlock", { "fg": s:fg })
-call s:h("mkdRule",             { "fg": s:fg })
-call s:h("mkdCode",             { "fg": s:fg })
-call s:h("mkdIndentCode",       { "fg": s:fg })
-call s:h("mkdDelimiter",        { "fg": s:fg_dark })
-call s:h("mkdID",               { "fg": s:fg_dark })
-call s:h("mkdLinkDef",          { "fg": s:fg_dark })
-call s:h("mkdUrl",              { "fg": s:purple, "gui": "underline", "cterm": "underline" })
+call s:h("SpellBad",   { "gui": "underline", "sp": s:red_dark })
+call s:h("SpellCap",   { "gui": "underline", "sp": s:green })
+call s:h("SpellLocal", { "gui": "underline", "sp": s:green_dark })
+call s:h("SpellRare",  { "gui": "underline", "sp": s:red })
 
-" gabrielelana/vim-markdown
-call s:h("markdownBlockquoteDelimiter", { "fg": s:fg })
-call s:h("markdownInlineDelimiter",     { "fg": s:fg })
-call s:h("markdownItemDelimiter",       { "fg": s:fg })
-call s:h("markdownLinkText",            { "fg": s:blue })
-call s:h("markdownFencedCodeBlock",     { "fg": s:fg })
-call s:h("markdownInlineCode",          { "fg": s:fg })
-call s:h("markdownLinkReference",       { "fg": s:fg_dark })
-call s:h("markdownLinkTextContainer",   { "fg": s:fg })
-call s:h("markdownLinkUrlContainer",    { "fg": s:purple })
-call s:h("markdownLinkUrl",             { "fg": s:purple, "gui": "underline", "cterm": "underline" })
+call s:h("ColorColumn",  { "bg": s:line_highlight })
 
-" mattly/vim-markdown-enhancements
-call s:h("mmdFootnoteMarker",        { "fg": s:fg })
-call s:h("mmdTableAlign",            { "fg": s:fg })
-call s:h("mmdTableDelimiter",        { "fg": s:fg })
-call s:h("mmdTableHeadDelimiter",    { "fg": s:red })
-call s:h("mmdTableHeader",           { "fg": s:fg })
-call s:h("mmdTableCaptionDelimiter", { "fg": s:fg })
-call s:h("mmdTableCaption",          { "fg": s:fg })
-call s:h("mmdFootnoteDelimiter",     { "fg": s:fg_dark })
+hi link Boolean                  Constant
+hi link Character                Constant
+hi link Conditional              Statement
+hi link Debug                    Special
+hi link Define                   PreProc
+hi link Delimiter                Special
+hi link Exception                Statement
+hi link Float                    Number
+hi link HelpCommand              Statement
+hi link HelpExample              Statement
+hi link Include                  PreProc
+hi link Keyword                  Statement
+hi link Label                    Statement
+hi link Macro                    PreProc
+hi link Number                   Constant
+hi link Operator                 Statement
+hi link PreCondit                PreProc
+hi link Repeat                   Statement
+hi link SpecialChar              Special
+hi link SpecialComment           Special
+hi link StorageClass             Type
+hi link Structure                Type
+hi link Tag                      Special
+hi link Typedef                  Type
 
-" XML content
-hi! link xmlTag     htmlTag
-hi! link xmlEndTag  xmlTag
-hi! link xmlTagName htmlTagName
+hi link htmlEndTag               htmlTagName
+hi link htmlLink                 Function
+hi link htmlSpecialTagName       htmlTagName
+hi link htmlTag                  htmlTagName
+hi link htmlBold                 Normal
+hi link htmlItalic               Normal
+hi link xmlTag                   Statement
+hi link xmlTagName               Statement
+hi link xmlEndTag                Statement
 
-" Signify, git-gutter
-hi link SignifySignAdd    LineNr
-hi link SignifySignDelete LineNr
-hi link SignifySignChange LineNr
-call s:h("GitGutterAdd",          { "fg": s:green })
-call s:h("GitGutterDelete",       { "fg": s:red })
-call s:h("GitGutterChange",       { "fg": s:yellow_dark })
-call s:h("GitGutterChangeDelete", { "fg": s:red })
+hi link markdownItalic           Preproc
+hi link asciidocQuotedEmphasized Preproc
 
-" Ruby
-call s:h("rubyAttribute",              { "fg": s:blue })
-call s:h("rubyFunction",               { "fg": s:blue })
-call s:h("rubyInclude",                { "fg": s:blue })
-call s:h("rubyPredefinedConstant",     { "fg": s:yellow_dark })
-call s:h("rubySymbol",                 { "fg": s:cyan })
-call s:h("rubyStringDelimiter",        { "fg": s:green })
-call s:h("rubyRailsARClassMethod",     { "fg": s:blue })
-call s:h("rubyInterpolationDelimiter", { "fg": s:red_dark })
-
-" othree/yajs
-" othree/javascript-libraries-syntax
-call s:h("javascript",                 { "fg": s:blue })
-call s:h("javascriptBCollection",      { "fg": s:cyan })
-call s:h("javascriptBraces",           { "fg": s:fg })
-call s:h("javascriptDateStaticMethod", { "fg": s:red })
-call s:h("javascriptDocTags",          { "fg": s:purple })
-call s:h("javascriptDocNotation",      { "fg": s:purple })
-call s:h("javascriptExport",           { "fg": s:red })
-call s:h("javascriptFuncArg",          { "fg": s:fg })
-call s:h("javascriptGlobal",           { "fg": s:yellow })
-call s:h("javascriptIdentifier",       { "fg": s:red })
-call s:h("javascriptIdentifierName",   { "fg": s:cyan })
-call s:h("javascriptObjectLabel",      { "fg": s:fg })
-call s:h("javascriptPropertyName",     { "fg": s:green })
-call s:h("javascriptQDeferred",        { "fg": s:blue })
-call s:h("javascriptQMiscellaneous",   { "fg": s:blue })
-call s:h("javascriptVariable",         { "fg": s:purple })
-
-" HAML
-call s:h("hamlAttributesDelimiter", { "fg": s:fg })
-call s:h("hamlAttributesHash",      { "fg": s:yellow_dark })
-call s:h("hamlClass",               { "fg": s:red })
-call s:h("hamlClassChar",           { "fg": s:red })
-call s:h("hamlDocType",             { "fg": s:fg })
-call s:h("hamlIdChar",              { "fg": s:red })
-call s:h("hamlRubyChar",            { "fg": s:fg })
-call s:h("hamlRubyOutputChar",      { "fg": s:fg })
-call s:h("hamlTag",                 { "fg": s:fg })
-
-" YAML
-call s:h("yamlKeyValueDelimiter", { "fg": s:red })
-
-" css
-call s:h("cssBraces",  { "fg": s:fg })
-call s:h("cssTagName", { "fg": s:red })
-
-" sass
-call s:h("sassAmpersand",  { "fg": s:red })
-call s:h("sassClass",      { "fg": s:yellow_dark })
-call s:h("sassClassChar",  { "fg": s:yellow_dark })
-call s:h("sassDefinition", { "fg": s:yellow_dark })
-call s:h("sassVariable",   { "fg": s:red })
-
-"elixir
-call s:h("elixirInclude",   { "fg": s:blue })
-call s:h("elixirAlias",   { "fg": s:yellow_dark })
-call s:h("elixirAtom",   { "fg": s:cyan })
-call s:h("elixirStringDelimiter",   { "fg": s:green })
+hi link diffBDiffer              WarningMsg
+hi link diffCommon               WarningMsg
+hi link diffDiffer               WarningMsg
+hi link diffIdentical            WarningMsg
+hi link diffIsA                  WarningMsg
+hi link diffNoEOL                WarningMsg
+hi link diffOnly                 WarningMsg
+hi link diffRemoved              WarningMsg
+hi link diffAdded                String

@@ -5,18 +5,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'benekastah/neomake'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'coderifous/textobj-word-column.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'kana/vim-textobj-user'
-Plug 'junegunn/vim-easy-align'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'mattn/emmet-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'othree/yajs.vim'
+Plug 'rstacruz/sparkup', { 'rtp': 'vim/' }
+Plug 'sheerun/vim-polyglot'
 Plug 'thoughtbot/vim-rspec'
+Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -52,7 +52,7 @@ set laststatus=2
 " Automatically :write before running commands
 set autowrite
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·,nbsp:·,extends:›,precedes:‹
 " Always use vertical diffs
 set diffopt+=vertical
 " Softtabs, 2 spaces
@@ -72,7 +72,6 @@ set splitright
 set nobackup
 set nowritebackup
 set noswapfile
-set nrformats-=octal
 set history=1000
 set ignorecase
 set hlsearch
@@ -194,13 +193,11 @@ autocmd! BufWritePost * Neomake
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  " set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --vimgrep\ $*
+  set grepformat=%f:%l:%c:%m
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 
@@ -247,11 +244,17 @@ let g:mustache_abbreviations = 1
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Colors
-let g:onedark_dark = 1
-let g:onedark_termcolors = 16
-let g:onedark_terminal_italics = 1
+let g:flaterial_terminal_italics = 1
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+if has('patch-7.4.1778')
+  let &t_8f="\e[38;2;%ld;%ld;%ldm"
+  let &t_8b="\e[48;2;%ld;%ld;%ldm"
+  set termguicolors
+endif
+
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
 set background=dark
-colorscheme onedark
+colorscheme flaterial
