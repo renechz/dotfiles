@@ -37,55 +37,35 @@ call plug#end()
 
 let mapleader = " "
 
-set autoindent
-set autoread
+set autowrite            " Automatically :write before running commands
 set backspace=indent,eol,start
 set clipboard=unnamed
-" Complete terms from all buffers
-set complete=.,w,b,u,t,i
-" show the cursor position all the time
-" do incremental searching
+set complete=.,w,b,u,t,i " Complete terms from all buffers
 set hidden
-set incsearch
-" Always display the status line
-set laststatus=2
-" Automatically :write before running commands
-set autowrite
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·,extends:›,precedes:‹
-" Always use vertical diffs
-set diffopt+=vertical
-" Softtabs, 2 spaces
+set laststatus=2         " Always display the status line
+set diffopt+=vertical    " Always use vertical diffs
 set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
-" Make it obvious where 80 and 100 characters is
-set textwidth=80
+set textwidth=80         " Highlight where 80 and 100 characters are
 set colorcolumn=+1,+21
 set cursorline
-
-" Open new split panes to right and bottom
-set splitbelow
-set splitright
-
 set nobackup
 set nowritebackup
 set noswapfile
 set history=1000
 set ignorecase
-set hlsearch
 set undolevels=1000
 set number
 set numberwidth=4
 set relativenumber
 set ruler
-" display incomplete commands
-set showcmd
-set smarttab
 set ttimeout
 set ttimeoutlen=100
-set wildmenu
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·,extends:›,precedes:‹
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
@@ -96,26 +76,14 @@ set undodir=~/.undo-vim
 " Create FILE.un~ files for persistent undo
 set undofile
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
 " ======================================
 " keybindings
 " ======================================
 
-" Switch to last active buffer
-noremap <leader><space> :buffer #<CR>
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
-" Bind K to grep word under cursor
+" Grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Quicker window movement
@@ -129,16 +97,16 @@ nmap <c-s> <Esc>:w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 
-" unload buffer
+" hide and delete buffer
 nnoremap <c-x><c-u> :bunload<cr>
 nnoremap <c-x><c-d> :bdelete<cr>
-
-" automatically rebalance windows on vim resize
-autocmd VimResized * :wincmd =
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 
 " Strip trailing whitespace
 function! Preserve(command)
@@ -183,11 +151,12 @@ set stl+=\ \ Line:%l/%L           " Line # / total lines
 set stl+=\ \ %P%{InsertSpace()}   " percentage
 
 function! InsertSpace()
-    " For adding trailing spaces onto statusline
-    return ' '
+  " For adding trailing spaces onto statusline
+  return ' '
 endfunction
 
 " neomake
+" Automatically run on file write
 autocmd! BufWritePost * Neomake
 
 " CtrlP
@@ -234,12 +203,6 @@ vnoremap gvr :RV<CR>
 " vim-commentary
 " toggle comment
 nmap cm <Plug>Commentary
-
-" vim-easyalign
-" start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-let g:mustache_abbreviations = 1
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
