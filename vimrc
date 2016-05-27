@@ -28,6 +28,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-ruby/vim-ruby'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 
 call plug#end()
 
@@ -206,9 +209,6 @@ nmap cm <Plug>Commentary
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
-" Colors
-let g:flaterial_terminal_italics = 1
-
 if has('patch-7.4.1778')
   let &t_8f="\e[38;2;%ld;%ld;%ldm"
   let &t_8b="\e[48;2;%ld;%ld;%ldm"
@@ -216,8 +216,20 @@ if has('patch-7.4.1778')
 endif
 
 if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 endif
 
-set background=dark
-colorscheme flaterial
+" set background=dark
+colorscheme material
+
+function! ToggleColors()
+  if &background == 'dark'
+    set background=light
+    colorscheme lighterial
+  else
+    set background=dark
+    colorscheme flaterial
+  endif
+endfunction
+
+nnoremap cot :call ToggleColors()<CR>
