@@ -31,6 +31,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -130,33 +131,8 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 " ======================================
 " plugins
 " ======================================
-" statusline
-hi User1 guifg=#e06c75
-hi User4 guifg=#61afef
-
-set statusline=
-
-set statusline+=%t                " filename
-set statusline+=%4*
-set statusline+=%m                " modified flag
-set statusline+=%*
-
-set statusline+=%1*
-set statusline+=%r                " read only
-set statusline+=%h                " help
-set statusline+=%*
-
-set statusline+=\ %y              " file type
-set statusline+=%=
-
-set stl+=\ \ Col:%c               " Column number
-set stl+=\ \ Line:%l/%L           " Line # / total lines
-set stl+=\ \ %P%{InsertSpace()}   " percentage
-
-function! InsertSpace()
-  " For adding trailing spaces onto statusline
-  return ' '
-endfunction
+" airline
+let g:airline_powerline_fonts = 1
 
 " neomake
 " Automatically run on file write
@@ -209,18 +185,12 @@ nmap cm <Plug>Commentary
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
-if has('patch-7.4.1778')
-  let &t_8f="\e[38;2;%ld;%ld;%ldm"
-  let &t_8b="\e[48;2;%ld;%ld;%ldm"
-  set termguicolors
-endif
+let &t_8f="\e[38;2;%ld;%ld;%ldm"
+let &t_8b="\e[48;2;%ld;%ld;%ldm"
+set termguicolors
 
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-endif
-
-" set background=dark
-colorscheme material
+set background=dark
+colorscheme flaterial
 
 function! ToggleColors()
   if &background == 'dark'
