@@ -32,6 +32,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'vim-airline/vim-airline'
+Plug 'dracula/vim'
 
 call plug#end()
 
@@ -189,8 +190,10 @@ let &t_8f="\e[38;2;%ld;%ld;%ldm"
 let &t_8b="\e[48;2;%ld;%ld;%ldm"
 set termguicolors
 
+" let g:flaterial_airline = 1
+let g:airline_theme = "dracula"
 set background=dark
-colorscheme flaterial
+colorscheme dracula
 
 function! ToggleColors()
   if &background == 'dark'

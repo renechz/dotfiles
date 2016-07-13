@@ -29,23 +29,23 @@ hi Function guifg=#3498db ctermfg=68 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Statement guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Keyword guifg=#e74c3c ctermfg=167 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Exception guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi PreProc guifg=#f39c12 ctermfg=214 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi PreProc guifg=#e67e22 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Include guifg=#3498db ctermfg=68 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Define guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Macro guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi PreCondit guifg=#f39c12 ctermfg=214 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Type guifg=#f39c12 ctermfg=214 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi PreCondit guifg=#e67e22 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Type guifg=#e67e22 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Special guifg=#3498db ctermfg=68 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Ignore gui=NONE cterm=NONE
 hi Error guifg=#c0392b ctermfg=130 guibg=#ffcdd2 ctermbg=224 gui=NONE cterm=NONE
-hi Todo guifg=#FF4081 ctermfg=204 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi ColorColumn guibg=#E0E0E0 ctermbg=254 gui=NONE cterm=NONE
+hi Todo guifg=#ff5252 ctermfg=203 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi ColorColumn guibg=#e0e0e0 ctermbg=254 gui=NONE cterm=NONE
 hi Cursor guifg=#263238 ctermfg=236 guibg=#e67e22 ctermbg=172 gui=NONE cterm=NONE
-hi CursorColumn guibg=#E0E0E0 ctermbg=254 gui=NONE cterm=NONE
-hi CursorLine guibg=#E0E0E0 ctermbg=254 gui=NONE cterm=NONE
+hi CursorColumn guibg=#e0e0e0 ctermbg=254 gui=NONE cterm=NONE
+hi CursorLine guibg=#e0e0e0 ctermbg=254 gui=NONE cterm=NONE
 hi Directory guifg=#1abc9c ctermfg=37 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi DiffAdd guifg=#27ae60 ctermfg=35 guibg=#C8E6C9 ctermbg=251 gui=NONE cterm=NONE
-hi DiffChange guifg=#e67e22 ctermfg=172 guibg=#FFECB3 ctermbg=229 gui=NONE cterm=NONE
+hi DiffAdd guifg=#27ae60 ctermfg=35 guibg=#c8e6c9 ctermbg=251 gui=NONE cterm=NONE
+hi DiffChange guifg=#e67e22 ctermfg=172 guibg=#ffecb3 ctermbg=229 gui=NONE cterm=NONE
 hi DiffDelete guifg=#c0392b ctermfg=130 guibg=#ffcdd2 ctermbg=224 gui=NONE cterm=NONE
 hi DiffText guifg=#3498db ctermfg=68 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi link diffAdded DiffAdd
@@ -58,7 +58,7 @@ hi FoldColumn guifg=#7f8c8d ctermfg=245 guibg=#95a5a6 ctermbg=248 gui=NONE cterm
 hi SignColumn guifg=#7f8c8d ctermfg=245 guibg=#95a5a6 ctermbg=248 gui=NONE cterm=NONE
 hi IncSearch guifg=#263238 ctermfg=236 guibg=#f1c40f ctermbg=220 gui=NONE cterm=NONE
 hi LineNr guifg=#7f8c8d ctermfg=245 guibg=#95a5a6 ctermbg=248 gui=NONE cterm=NONE
-hi CursorLineNr guifg=#7f8c8d ctermfg=245 guibg=#E0E0E0 ctermbg=254 gui=NONE cterm=NONE
+hi CursorLineNr guifg=#7f8c8d ctermfg=245 guibg=#e0e0e0 ctermbg=254 gui=NONE cterm=NONE
 hi MatchParen guifg=#3498db ctermfg=68 gui=underline cterm=underline
 hi NonText guifg=#95a5a6 ctermfg=248 guibg=#ecf0f1 ctermbg=255 gui=NONE cterm=NONE
 hi PMenu guifg=#ecf0f1 ctermfg=255 guibg=#95a5a6 ctermbg=248 gui=NONE cterm=NONE
@@ -69,9 +69,9 @@ hi Question guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Search guifg=#263238 ctermfg=236 guibg=#f1c40f ctermbg=220 gui=NONE cterm=NONE
 hi SpecialKey guifg=#34495e ctermfg=238 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi SpellBad guifg=#ff5252 ctermfg=203 guibg=#e74c3c ctermbg=167 gui=underline cterm=underline
-hi SpellLocal guifg=#FF6E40 ctermfg=203 guibg=#d35400 ctermbg=166 gui=NONE cterm=NONE
-hi SpellCap guifg=#FF6E40 ctermfg=203 guibg=#d35400 ctermbg=166 gui=NONE cterm=NONE
-hi SpellRare guifg=#FF6E40 ctermfg=203 guibg=#d35400 ctermbg=166 gui=NONE cterm=NONE
+hi SpellLocal guifg=#ffab40 ctermfg=215 guibg=#d35400 ctermbg=166 gui=NONE cterm=NONE
+hi SpellCap guifg=#ffab40 ctermfg=215 guibg=#d35400 ctermbg=166 gui=NONE cterm=NONE
+hi SpellRare guifg=#ffab40 ctermfg=215 guibg=#d35400 ctermbg=166 gui=NONE cterm=NONE
 hi StatusLine guifg=#7f8c8d ctermfg=245 guibg=#95a5a6 ctermbg=248 gui=NONE cterm=NONE
 hi StatusLineNC guifg=#7f8c8d ctermfg=245 guibg=#95a5a6 ctermbg=248 gui=NONE cterm=NONE
 hi TabLine guifg=#7f8c8d ctermfg=245 guibg=#95a5a6 ctermbg=248 gui=NONE cterm=NONE
@@ -126,7 +126,7 @@ hi jsDocParam guifg=#3498db ctermfg=68 guibg=NONE ctermbg=NONE gui=NONE cterm=NO
 hi jsDocTags guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi jsFuncCall guifg=#3498db ctermfg=68 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi jsFunction guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi jsGlobalObjects guifg=#f39c12 ctermfg=214 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi jsGlobalObjects guifg=#e67e22 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi jsModuleWords guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi jsModules guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi jsNull guifg=#d35400 ctermfg=166 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
@@ -165,7 +165,7 @@ hi jsonStringSQError guifg=#e74c3c ctermfg=167 gui=reverse cterm=reverse
 hi rubyBlockParameter guifg=#e74c3c ctermfg=167 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi rubyBlockParameterList guifg=#e74c3c ctermfg=167 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi rubyClass guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi rubyConstant guifg=#f39c12 ctermfg=214 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi rubyConstant guifg=#e67e22 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi rubyControl guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi rubyEscape guifg=#e74c3c ctermfg=167 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi rubyFunction guifg=#3498db ctermfg=68 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
@@ -181,6 +181,7 @@ hi rubyStringDelimiter guifg=#27ae60 ctermfg=35 guibg=NONE ctermbg=NONE gui=NONE
 hi rubySymbol guifg=#1abc9c ctermfg=37 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi sassAmpersand guifg=#e74c3c ctermfg=167 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi sassClass guifg=#d35400 ctermfg=166 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi link sassClassChar sassClass
 hi sassControl guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi sassExtend guifg=#9b59b6 ctermfg=97 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi sassFor guifg=#ecf0f1 ctermfg=255 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
