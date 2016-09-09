@@ -1,38 +1,35 @@
 " ======================================
 " vim-plug
 " ======================================
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'benekastah/neomake'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'coderifous/textobj-word-column.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'ervandew/supertab'
+Plug 'janko-m/vim-test'
 Plug 'kana/vim-textobj-user'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'mattn/emmet-vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'rstacruz/sparkup', { 'rtp': 'vim/' }
 Plug 'sheerun/vim-polyglot'
-Plug 'thoughtbot/vim-rspec'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-ruby/vim-ruby'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
-Plug 'dracula/vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -70,7 +67,7 @@ set ttimeout
 set ttimeoutlen=100
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·,extends:›,precedes:‹
+set list listchars=tab:—·,trail:·,nbsp:·,extends:›,precedes:‹
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
@@ -132,12 +129,18 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 " ======================================
 " plugins
 " ======================================
+set rtp+=/usr/local/opt/fzf
+
+" emmet
+imap <C-e> <plug>(emmet-expand-abbr)
 " airline
 let g:airline_powerline_fonts = 1
 
 " neomake
-" Automatically run on file write
-autocmd! BufWritePost * Neomake
+" Run on read and write operations
+autocmd! BufReadPost,BufWritePost * Neomake
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
 
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -180,29 +183,25 @@ vnoremap gsr :RS<CR>
 nnoremap gvr :RV<CR>
 vnoremap gvr :RV<CR>
 
+" fzf.vim
+nnoremap <c-p> :FZF<cr>
+imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+
+nnoremap <silent> <leader>B :Buffers<CR>
+nnoremap <silent> <leader>W :Windows<CR>
+nnoremap <silent> <leader>; :BLines<CR>
+nnoremap <silent> <leader>[ :BTags<CR>
+nnoremap <silent> <leader>] :Tags<CR>
+nnoremap <silent> <leader>? :History<CR>
+nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+
 " vim-commentary
 " toggle comment
 nmap cm <Plug>Commentary
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
-let &t_8f="\e[38;2;%ld;%ld;%ldm"
-let &t_8b="\e[48;2;%ld;%ld;%ldm"
-set termguicolors
-
-" let g:flaterial_airline = 1
-let g:airline_theme = "dracula"
 set background=dark
-colorscheme dracula
-
-function! ToggleColors()
-  if &background == 'dark'
-    set background=light
-    colorscheme lighterial
-  else
-    set background=dark
-    colorscheme flaterial
-  endif
-endfunction
-
-nnoremap cot :call ToggleColors()<CR>
+colorscheme monokai
+set termguicolors
