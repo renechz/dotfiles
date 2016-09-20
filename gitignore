@@ -15,3 +15,4 @@ tmp/**/*
 .agignore
 Procfile.dev
 Procfile.local
+dump.rdb

@@ -30,6 +30,7 @@ Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -67,7 +68,7 @@ set ttimeout
 set ttimeoutlen=100
 
 " Display extra whitespace
-set list listchars=tab:—·,trail:·,nbsp:·,extends:›,precedes:‹
+set list listchars=tab:»»,trail:·,nbsp:·,extends:›,precedes:‹
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
@@ -199,9 +200,16 @@ nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
 " vim-commentary
 " toggle comment
 nmap cm <Plug>Commentary
+let g:deoplete#enable_at_startup = 1
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
-set background=dark
-colorscheme monokai
+" set t_8f=[38;2;%lu;%lu;%lum
+" set t_8b=[48;2;%lu;%lu;%lum
+set t_ut=
 set termguicolors
+
+set background=dark
+colorscheme kaiterial
+let g:kaiterial_airline = 1
+let g:airline_theme = "kaiterial"
