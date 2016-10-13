@@ -93,3 +93,9 @@ export NVM_DIR="/Users/rene/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# Wrap git automatically by adding the following to ~/.zshrc:
+
+eval "$(hub alias -s)"
