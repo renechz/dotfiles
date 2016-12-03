@@ -1,4 +1,4 @@
-"unlet! skip_defaults_vim
+unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
 " ======================================
@@ -7,6 +7,7 @@ source $VIMRUNTIME/defaults.vim
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'AlessandroYorba/Despacio'
 Plug 'benekastah/neomake'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'coderifous/textobj-word-column.vim'
@@ -18,6 +19,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'mattn/emmet-vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'sheerun/vim-polyglot'
+Plug 'tek/vim-textobj-ruby'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
@@ -34,6 +36,7 @@ Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'othree/yajs.vim', { 'branch': 'master' }
 
 call plug#end()
 
@@ -42,6 +45,11 @@ call plug#end()
 " ======================================
 
 let mapleader = " "
+
+" enable italics
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+set t_ut=
 
 set autowrite
 set clipboard=unnamed
@@ -59,6 +67,7 @@ set expandtab
 " Highlight where 80 and 100 characters are
 set textwidth=80
 set colorcolumn=+1,+21
+
 set cursorline
 set nobackup
 set nowritebackup
@@ -71,14 +80,14 @@ set relativenumber
 " Display extra whitespace
 set list listchars=tab:»»,trail:·,nbsp:·,extends:›,precedes:‹
 
+set grepprg=grep\ -n\ $*\ /dev\/null
+
 " ======================================
 " colors
 " ======================================
-set t_ut=
 set termguicolors
-
 set background=dark
-colorscheme kaiterial
+colorscheme duotone
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
@@ -140,6 +149,11 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 " ======================================
 " plugins
 " ======================================
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+endif
+
 " airline
 let g:airline_powerline_fonts = 1
 
@@ -164,12 +178,13 @@ nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>[ :BTags<CR>
 nnoremap <silent> <leader>] :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
-nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+
+let g:polyglot_disabled = ["javascript"]
+
+let g:used_javascript_libs = "underscore,backbone,jquery,handlebars"
 
 " vim-commentary
 " toggle comment
 nmap cm <Plug>Commentary
-let g:deoplete#enable_at_startup = 1
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
-
