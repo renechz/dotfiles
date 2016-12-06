@@ -7,7 +7,6 @@ source $VIMRUNTIME/defaults.vim
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'AlessandroYorba/Despacio'
 Plug 'benekastah/neomake'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'coderifous/textobj-word-column.vim'
