@@ -15,11 +15,11 @@ let s:is_dark = (&background == "dark")
 
 function! s:h(group, style)
   execute "highlight" a:group
-    \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui   : "NONE")
-    \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui   : "NONE")
-    \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp.gui   : "NONE")
-    \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
-    \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
+    \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui : "NONE")
+    \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui : "NONE")
+    \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp.gui : "NONE")
+    \ "gui="     (has_key(a:style, "gui")   ? a:style.gui    : "NONE")
+    \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm  : "NONE")
 endfunction
 
 let s:theme_dark  = {
@@ -34,30 +34,27 @@ let s:theme_dark  = {
       \ "bg_darker":  { "gui": "#060709" },
       \ "comment":    { "gui": "#353a50" },
       \ "cursorline": { "gui": "#2e3244" },
+      \ "delimiter":  { "gui": "#3d435c" },
       \ "visual_fg":  { "gui": "#436493" },
       \ "visual_bg":  { "gui": "#d6dfec" },
-      \ "delimiter":  { "gui": "#3d435c" },
       \ }
 
-" Light
 let s:theme_light  = {
-      \ "red":       { "gui": "#a71d5d" },
-      \ "green":     { "gui": "#b8c587" },
-      \ "orange":    { "gui": "#db8f58" },
-      \ "blue":      { "gui": "#183691" },
-      \ "purple":    { "gui": "#795da3" },
-      \ "cyan":      { "gui": "#0086b3" },
-      \ "delimiter": { "gui": "#a9a9a9" },
-      \ "comment":   { "gui": "#aaafc7" },
-      \ "cursorline": { "gui": "#dadada" },
-      \ "bg":         { "gui": "#ffffff" },
+      \ "red":        { "gui": "#a71d5d" },
+      \ "green":      { "gui": "#63a35c" },
+      \ "orange":     { "gui": "#ed6a43" },
+      \ "blue":       { "gui": "#183691" },
+      \ "purple":     { "gui": "#795da3" },
+      \ "cyan":       { "gui": "#0086b3" },
       \ "fg":         { "gui": "#333333" },
-      \ "bg_darker":  { "gui": "#d9dce6" },
-      \ "visual_bg": { "gui": "#85a0c7" },
-      \ "visual_fg": { "gui": "#d6dfec" },
+      \ "bg":         { "gui": "#ffffff" },
+      \ "bg_darker":  { "gui": "#f7f7f7" },
+      \ "comment":    { "gui": "#969896" },
+      \ "cursorline": { "gui": "#d8d8d8" },
+      \ "delimiter":  { "gui": "#bbbbbb" },
+      \ "visual_bg":  { "gui": "#f8eec7" },
+      \ "visual_fg":  { "gui": "#333333" },
       \ }
-
-let s:theme = s:theme_dark
 
 if s:is_dark
   set background=dark
@@ -68,22 +65,21 @@ else
 endif
 
 call s:h("Normal",        { "fg": s:theme.fg, "bg": s:theme.bg })
+call s:h("Comment",       { "fg": s:theme.comment, "gui": "italic", "cterm": "italic" })
 call s:h("LineNr",        { "fg": s:theme.comment, "bg": s:theme.bg_darker })
-call s:h("CursorLineNr",  { "fg": s:theme.fg })
 call s:h("CursorLine",    { "bg": s:theme.cursorline })
+call s:h("CursorLineNr",  { "fg": s:theme.fg })
 call s:h("CursorColumn",  { "bg": s:theme.cursorline })
 call s:h("ColorColumn",   { "bg": s:theme.cursorline })
+call s:h("Directory",     { "fg": s:theme.blue })
 call s:h("StatusLine",    { "fg": s:theme.fg, "bg": s:theme.bg_darker })
 call s:h("VertSplit",     { "fg": s:theme.delimiter, "bg": s:theme.bg_darker })
 call s:h("TabLine",       { "fg": s:theme.comment, "bg": s:theme.bg_darker })
-call s:h("TabLineSel",    { "fg": s:theme.fg, "bg": s:theme.bg_darker })
+call s:h("TabLineSel",    { "fg": s:theme.bg, "bg": s:theme.green })
 call s:h("TabLineFill",   { "bg": s:theme.bg_darker })
-call s:h("Comment",       { "fg": s:theme.comment, "gui": "italic", "cterm": "italic" })
 call s:h("Pmenu",         { "fg": s:theme.fg, "bg": s:theme.bg_darker })
-call s:h("PmenuSbar",     { "fg": s:theme.bg_darker, "bg": s:theme.bg_darker })
+call s:h("PmenuSbar",     { "fg": s:theme.bg, "bg": s:theme.cursorline })
 call s:h("PmenuThumb",    { "fg": s:theme.bg_darker, "bg": s:theme.bg_darker })
-
-call s:h("Directory",     { "fg": s:theme.blue })
 call s:h("Search",        { "fg": s:theme.bg, "bg": s:theme.orange })
 call s:h("IncSearch",     { "fg": s:theme.bg, "bg": s:theme.orange })
 
@@ -92,7 +88,7 @@ call s:h("ModeMsg",       { "fg": s:theme.blue })
 call s:h("MoreMsg",       { "fg": s:theme.blue })
 call s:h("Question",      { "fg": s:theme.blue })
 
-call s:h("Folded",        { "fg": s:theme.blue, "bg": s:theme.bg_darker })
+call s:h("Folded",        { "fg": s:theme.comment, "bg": s:theme.bg_darker })
 call s:h("FoldColumn",    { "fg": s:theme.blue })
 call s:h("SignColumn",    { "fg": s:theme.cyan })
 
@@ -147,17 +143,17 @@ call s:h("Typedef",        { "fg": s:theme.cyan })
 
 call s:h("Cursor",         { "fg": s:theme.bg, "bg": s:theme.fg })
 call s:h("Ignore",         {})
+call s:h("Conceal",        {})
 
-call s:h("Conceal",      {})
-call s:h("DiffAdd",      { "fg": s:theme.green })
-call s:h("DiffChange",   { "fg": s:theme.orange })
-call s:h("DiffDelete",   { "fg": s:theme.red })
-call s:h("DiffText",     { "fg": s:theme.fg })
+call s:h("DiffAdd",        { "fg": s:theme.green })
+call s:h("DiffChange",     { "fg": s:theme.orange })
+call s:h("DiffDelete",     { "fg": s:theme.red })
+call s:h("DiffText",       { "fg": s:theme.fg })
 
-call s:h("SpellBad",     { "fg": s:theme.red })
-call s:h("SpellLocal",   { "fg": s:theme.green })
-call s:h("SpellCap",     { "fg": s:theme.cyan })
-call s:h("SpellRare",    { "fg": s:theme.orange })
+call s:h("SpellBad",       { "fg": s:theme.red })
+call s:h("SpellCap",       { "fg": s:theme.cyan })
+call s:h("SpellRare",      { "fg": s:theme.orange })
+call s:h("SpellLocal",     { "fg": s:theme.green })
 
 " CSS
 call s:h("cssAttr",              { "fg": s:theme.cyan })
@@ -174,21 +170,17 @@ call s:h("cssProp",              { "fg": s:theme.cyan })
 call s:h("cssPseudoClassId",     { "fg": s:theme.blue })
 call s:h("cssSelectorOp",        { "fg": s:theme.blue })
 call s:h("cssSelectorOp2",       { "fg": s:theme.blue })
-call s:h("cssUnitDecorators",    { "fg": s:theme.orange })
 call s:h("cssVendor",            { "fg": s:theme.cyan })
 hi link cssBraces     Delimiter
 hi link cssAttrComma  Delimiter
 
 " HTML
-call s:h("htmlStatement",      { "fg": s:theme.blue })
 call s:h("htmlH1",             { "fg": s:theme.blue })
-call s:h("htmlLink",           { "fg": s:theme.blue, "gui": "underline", "cterm": "underline" })
 call s:h("htmlTagName",        { "fg": s:theme.blue })
-call s:h("htmlSpecialTagName", { "fg": s:theme.blue })
-call s:h("htmlItalic",         { "fg": s:theme.cyan })
 call s:h("htmlArg",            { "fg": s:theme.cyan })
-hi link htmlEndTag  Delimiter
-hi link htmlTag     Delimiter
+hi link htmlTag             Delimiter
+hi link htmlEndTag          Delimiter
+hi link htmlSpecialTagName  htmlTagName
 
 " JavaScript
 call s:h("javaScriptRequire",    { "fg": s:theme.blue })
@@ -226,38 +218,32 @@ hi link javascriptParens           Delimiter
 hi link javascriptObjectLabelColon Delimiter
 
 " JSON
-call s:h("jsonCommentError",      { "fg": s:theme.blue })
-call s:h("jsonQuote",             { "fg": s:theme.blue })
-call s:h("jsonMissingCommaError", { "fg": s:theme.red, "gui": "reverse" })
-call s:h("jsonNoQuotesError",     { "fg": s:theme.red, "gui": "reverse" })
-call s:h("jsonNumError",          { "fg": s:theme.red, "gui": "reverse" })
-call s:h("jsonStringSQError",     { "fg": s:theme.red, "gui": "reverse" })
-call s:h("jsonSemicolonError",    { "fg": s:theme.red, "gui": "reverse" })
+hi link jsonBoolean Boolean
 
 " Ruby
 call s:h("rubyAttribute",                 { "fg": s:theme.cyan })
+call s:h("rubyClass",                     { "fg": s:theme.cyan })
 call s:h("rubyBlockParameter",            { "fg": s:theme.blue })
 call s:h("rubyBlockParameterList",        { "fg": s:theme.delimiter })
-call s:h("rubyClass",                     { "fg": s:theme.cyan })
 call s:h("rubyControl",                   { "fg": s:theme.blue })
 call s:h("rubyConstant",                  { "fg": s:theme.blue })
-call s:h("rubyEscape",                    { "fg": s:theme.purple })
 call s:h("rubyEval",                      { "fg": s:theme.blue })
 call s:h("rubyGlobalVariable",            { "fg": s:theme.blue })
 call s:h("rubyIncluderubyGlobalVariable", { "fg": s:theme.blue })
-call s:h("rubyInstanceVariable",          { "fg": s:theme.orange })
 call s:h("rubyInterpolation",             { "fg": s:theme.cyan })
 call s:h("rubyInterpolationDelimiter",    { "fg": s:theme.blue })
 call s:h("rubyKeywordAsMethod",           { "fg": s:theme.blue })
 call s:h("rubyLocalVariableOrMethod",     { "fg": s:theme.blue })
 call s:h("rubyModule",                    { "fg": s:theme.blue })
 call s:h("rubyPseudoVariable",            { "fg": s:theme.purple })
+call s:h("rubyEscape",                    { "fg": s:theme.purple })
+call s:h("rubyRegexpSpecial",             { "fg": s:theme.purple })
+call s:h("rubyInstanceVariable",          { "fg": s:theme.purple })
+call s:h("rubySymbol",                    { "fg": s:theme.purple })
 call s:h("rubyRegexp",                    { "fg": s:theme.blue })
 call s:h("rubyRegexpCharClass",           { "fg": s:theme.blue })
-call s:h("rubyRegexpSpecial",             { "fg": s:theme.purple })
 call s:h("rubyStringDelimiter",           { "fg": s:theme.cyan })
 call s:h("rubyStringEscape",              { "fg": s:theme.blue })
-call s:h("rubySymbol",                    { "fg": s:theme.purple })
 hi link RubyArrayDelimiter       Delimiter
 hi link RubyCurlyBlockDelimiter  Delimiter
 
