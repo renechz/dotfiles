@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew bundler gem git git-flow rails ruby)
+plugins=(brew bundler gem git git-flow rails ruby zsh-nvm)
 
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef

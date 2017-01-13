@@ -1,6 +1,6 @@
 " Vim Color File
-" Name:       duotone.vim
-" Maintainer: https://github.com/renechz/duotone.vim/
+" Name:       duonord.vim
+" Maintainer: https://github.com/renechz/duonord.vim/
 " License:    The MIT License (MIT)
 " Based On:   https://github.com/MaxSt/FlatColor/
 
@@ -10,7 +10,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "duotone"
+let g:colors_name = "duonord"
 let s:is_dark = (&background == "dark")
 
 function! s:h(group, style)
@@ -22,21 +22,40 @@ function! s:h(group, style)
     \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm  : "NONE")
 endfunction
 
+let s:nord  = {
+      \ "0":  "#2e3440",
+      \ "1":  "#3b4252",
+      \ "2":  "#434c5e",
+      \ "3":  "#4c566a",
+      \ "4":  "#d8dee9",
+      \ "5":  "#e5e9f0",
+      \ "6":  "#eceff4",
+      \ "7":  "#8fbcbb",
+      \ "8":  "#88c0d0",
+      \ "9":  "#81a1c1",
+      \ "10": "#5e81ac",
+      \ "11": "#bf616a",
+      \ "12": "#d08770",
+      \ "13": "#ebcb8b",
+      \ "14": "#a3be8c",
+      \ "15": "#b48ead",
+      \ }
+
 let s:theme_dark  = {
-      \ "red":        { "gui": "#e17a7a" },
-      \ "green":      { "gui": "#b8c587" },
-      \ "orange":     { "gui": "#e2a578" },
-      \ "blue":       { "gui": "#85a0c7" },
-      \ "purple":     { "gui": "#a093c8" },
-      \ "cyan":       { "gui": "#8ab8c1" },
-      \ "fg":         { "gui": "#c2c6d6" },
-      \ "bg":         { "gui": "#161821" },
-      \ "bg_darker":  { "gui": "#060709" },
-      \ "comment":    { "gui": "#353a50" },
-      \ "cursorline": { "gui": "#2e3244" },
-      \ "delimiter":  { "gui": "#3d435c" },
-      \ "visual_fg":  { "gui": "#436493" },
-      \ "visual_bg":  { "gui": "#d6dfec" },
+      \ "red":        { "gui": s:nord.11 },
+      \ "green":      { "gui": s:nord.14 },
+      \ "orange":     { "gui": s:nord.12 },
+      \ "blue":       { "gui": s:nord.9 },
+      \ "magenta":    { "gui": s:nord.15 },
+      \ "cyan":       { "gui": s:nord.8 },
+      \ "fg":         { "gui": s:nord.4 },
+      \ "bg":         { "gui": s:nord.0 },
+      \ "bg_darker":  { "gui": "#232831" },
+      \ "comment":    { "gui": s:nord.3 },
+      \ "cursorline": { "gui": "#343c49" },
+      \ "delimiter":  { "gui": s:nord.3 },
+      \ "visual_fg":  { "gui": s:nord.5 },
+      \ "visual_bg":  { "gui": s:nord.2 },
       \ }
 
 let s:theme_light  = {
@@ -44,7 +63,7 @@ let s:theme_light  = {
       \ "green":      { "gui": "#63a35c" },
       \ "orange":     { "gui": "#ed6a43" },
       \ "blue":       { "gui": "#183691" },
-      \ "purple":     { "gui": "#795da3" },
+      \ "magenta":    { "gui": "#795da3" },
       \ "cyan":       { "gui": "#0086b3" },
       \ "fg":         { "gui": "#333333" },
       \ "bg":         { "gui": "#ffffff" },
@@ -99,7 +118,7 @@ call s:h("NonText",       { "fg": s:theme.cursorline })
 call s:h("SpecialKey",    { "fg": s:theme.comment })
 call s:h("Underlined",    { "fg": s:theme.orange, "cterm": "underline" })
 call s:h("WarningMsg",    { "fg": s:theme.orange })
-call s:h("MatchParen",    { "fg": s:theme.bg, "bg": s:theme.purple })
+call s:h("MatchParen",    { "fg": s:theme.bg, "bg": s:theme.magenta })
 call s:h("Visual",        { "fg": s:theme.visual_fg, "bg": s:theme.visual_bg })
 call s:h("Error",         { "fg": s:theme.red })
 call s:h("Todo",          { "fg": s:theme.bg, "bg": s:theme.orange })
@@ -130,11 +149,11 @@ call s:h("Delimiter",      { "fg": s:theme.delimiter })
 call s:h("SpecialComment", { "fg": s:theme.blue })
 call s:h("Debug",          { "fg": s:theme.blue })
 
-call s:h("PreProc",        { "fg": s:theme.purple })
-call s:h("Include",        { "fg": s:theme.purple })
-call s:h("Define",         { "fg": s:theme.purple })
-call s:h("Macro",          { "fg": s:theme.purple })
-call s:h("PreCondit",      { "fg": s:theme.purple })
+call s:h("PreProc",        { "fg": s:theme.magenta })
+call s:h("Include",        { "fg": s:theme.magenta })
+call s:h("Define",         { "fg": s:theme.magenta })
+call s:h("Macro",          { "fg": s:theme.magenta })
+call s:h("PreCondit",      { "fg": s:theme.magenta })
 
 call s:h("Type",           { "fg": s:theme.cyan })
 call s:h("StorageClass",   { "fg": s:theme.cyan })
@@ -194,10 +213,10 @@ call s:h("javascriptFuncArg",            { "fg": s:theme.blue })
 call s:h("javascriptDocNotation",        { "fg": s:theme.blue })
 call s:h("javascriptObjectLabel",        { "fg": s:theme.blue })
 call s:h("javascriptPropertyNameString", { "fg": s:theme.blue })
-call s:h("javascriptArrowFunc",          { "fg": s:theme.purple })
-call s:h("javascriptClassExtends",       { "fg": s:theme.purple })
-call s:h("javascriptImport",             { "fg": s:theme.purple })
-call s:h("javascriptExport",             { "fg": s:theme.purple })
+call s:h("javascriptArrowFunc",          { "fg": s:theme.magenta })
+call s:h("javascriptClassExtends",       { "fg": s:theme.magenta })
+call s:h("javascriptImport",             { "fg": s:theme.magenta })
+call s:h("javascriptExport",             { "fg": s:theme.magenta })
 call s:h("javascriptVariable",           { "fg": s:theme.cyan })
 call s:h("javascriptPropertyName",       { "fg": s:theme.cyan })
 call s:h("javascriptClassKeyword",       { "fg": s:theme.cyan })
@@ -235,11 +254,11 @@ call s:h("rubyInterpolationDelimiter",    { "fg": s:theme.blue })
 call s:h("rubyKeywordAsMethod",           { "fg": s:theme.blue })
 call s:h("rubyLocalVariableOrMethod",     { "fg": s:theme.blue })
 call s:h("rubyModule",                    { "fg": s:theme.blue })
-call s:h("rubyPseudoVariable",            { "fg": s:theme.purple })
-call s:h("rubyEscape",                    { "fg": s:theme.purple })
-call s:h("rubyRegexpSpecial",             { "fg": s:theme.purple })
-call s:h("rubyInstanceVariable",          { "fg": s:theme.purple })
-call s:h("rubySymbol",                    { "fg": s:theme.purple })
+call s:h("rubyPseudoVariable",            { "fg": s:theme.magenta })
+call s:h("rubyEscape",                    { "fg": s:theme.magenta })
+call s:h("rubyRegexpSpecial",             { "fg": s:theme.magenta })
+call s:h("rubyInstanceVariable",          { "fg": s:theme.magenta })
+call s:h("rubySymbol",                    { "fg": s:theme.magenta })
 call s:h("rubyRegexp",                    { "fg": s:theme.blue })
 call s:h("rubyRegexpCharClass",           { "fg": s:theme.blue })
 call s:h("rubyStringDelimiter",           { "fg": s:theme.cyan })
@@ -256,8 +275,8 @@ call s:h("sassDefinition", { "fg": s:theme.blue })
 call s:h("sassMediaQuery", { "fg": s:theme.blue })
 call s:h("sassMixinName",  { "fg": s:theme.blue })
 call s:h("sassMixin",      { "fg": s:theme.cyan })
-call s:h("sassControl",    { "fg": s:theme.purple })
-call s:h("sassExtend",     { "fg": s:theme.purple })
+call s:h("sassControl",    { "fg": s:theme.magenta })
+call s:h("sassExtend",     { "fg": s:theme.magenta })
 hi link sassClass     cssClassName
 hi link sassClassChar cssClassName
 hi link sassId        cssIdentifier
@@ -277,7 +296,7 @@ hi link diffRemoved DiffDelete
 " Git
 call s:h("gitcommitComment",       { "fg": s:theme.comment })
 call s:h("gitcommitUnmerged",      { "fg": s:theme.blue })
-call s:h("gitcommitBranch",        { "fg": s:theme.purple })
+call s:h("gitcommitBranch",        { "fg": s:theme.magenta })
 call s:h("gitcommitDiscardedType", { "fg": s:theme.red })
 call s:h("gitcommitSelectedType",  { "fg": s:theme.blue })
 call s:h("gitcommitUntrackedFile", { "fg": s:theme.blue })

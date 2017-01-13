@@ -36,6 +36,7 @@ Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'othree/yajs.vim', { 'branch': 'master' }
+Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 
 call plug#end()
 
@@ -86,7 +87,8 @@ set grepprg=grep\ -n\ $*\ /dev\/null
 " ======================================
 set termguicolors
 set background=dark
-colorscheme duotone
+colorscheme duonord
+let g:airline_theme = "nord"
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
@@ -152,6 +154,15 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
 endif
+
+" vim-test
+let test#strategy = "dispatch"
+
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ta :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
 
 " airline
 let g:airline_powerline_fonts = 1
