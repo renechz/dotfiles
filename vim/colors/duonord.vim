@@ -41,6 +41,7 @@ let s:nord  = {
       \ "15": "#b48ead",
       \ }
 
+      "\ "cursorline": { "gui": "#343c49" },
 let s:theme_dark  = {
       \ "red":        { "gui": s:nord.11 },
       \ "green":      { "gui": s:nord.14 },
@@ -49,11 +50,11 @@ let s:theme_dark  = {
       \ "magenta":    { "gui": s:nord.15 },
       \ "cyan":       { "gui": s:nord.8 },
       \ "fg":         { "gui": s:nord.4 },
-      \ "bg":         { "gui": s:nord.0 },
+      \ "bg":         { "gui": "#1F2433" },
       \ "bg_darker":  { "gui": "#232831" },
       \ "comment":    { "gui": s:nord.3 },
-      \ "cursorline": { "gui": "#343c49" },
-      \ "delimiter":  { "gui": s:nord.3 },
+      \ "cursorline":    { "gui": "#232839" },
+      \ "delimiter":   { "gui": "#375268" },
       \ "visual_fg":  { "gui": s:nord.5 },
       \ "visual_bg":  { "gui": s:nord.2 },
       \ }

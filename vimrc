@@ -36,7 +36,9 @@ Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'othree/yajs.vim', { 'branch': 'master' }
+
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
+Plug 'alessandroyorba/monrovia'
 
 call plug#end()
 
@@ -87,8 +89,7 @@ set grepprg=grep\ -n\ $*\ /dev\/null
 " ======================================
 set termguicolors
 set background=dark
-colorscheme duonord
-let g:airline_theme = "nord"
+colorscheme monrovia
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
