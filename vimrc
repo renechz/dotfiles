@@ -7,7 +7,6 @@ source $VIMRUNTIME/defaults.vim
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'benekastah/neomake'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'honza/vim-snippets'
@@ -33,11 +32,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/vim-emoji'
 Plug 'othree/yajs.vim', { 'branch': 'master' }
 
-Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 Plug 'alessandroyorba/monrovia'
 
 call plug#end()
@@ -70,7 +69,6 @@ set expandtab
 set textwidth=80
 set colorcolumn=+1,+21
 
-set cursorline
 set nobackup
 set nowritebackup
 set noswapfile
@@ -89,7 +87,7 @@ set grepprg=grep\ -n\ $*\ /dev\/null
 " ======================================
 set termguicolors
 set background=dark
-colorscheme monrovia
+colorscheme ayu
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
@@ -171,14 +169,15 @@ let g:airline_powerline_fonts = 1
 " emmet
 imap <C-e> <plug>(emmet-expand-abbr)
 
-" neomake
-" Run on read and write operations
-autocmd! BufReadPost,BufWritePost * Neomake
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
+" ALE
+let g:ale_sign_column_always = 1
+let g:ale_javascript_eslint_use_global = 1
+if emoji#available()
+  let g:ale_sign_error = emoji#for('x')
+  let g:ale_sign_warning = emoji#for('warning')
+endif
 
 " fzf.vim
-set rtp+=/usr/local/opt/fzf
 nnoremap <c-p> :FZF<cr>
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)

@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew bundler gem git git-flow rails ruby zsh-nvm)
+plugins=(brew bundler gem git git-flow rails ruby)
 
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
@@ -53,7 +53,7 @@ stty stop undef
 
 # User configuration
 
-export PATH=".git/safe/../../bin:$HOME/.yarn/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+export PATH=".git/safe/../../bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.config/yarn/global/node_modules/.bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -88,11 +88,12 @@ export LC_ALL=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-export NVM_DIR="/Users/rene/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_TMUX=1
+bindkey -s '^V' 'vim $(fzf-tmux)\n'
 
 # Wrap git automatically by adding the following to ~/.zshrc:
 

@@ -16,4 +16,4 @@ tmp/**/*
 Procfile.dev
 Procfile.local
 dump.rdb
-.nvmrc
+.node-version
