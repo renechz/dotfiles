@@ -1,10 +1,6 @@
 unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
-" ======================================
-" vim-plug
-" ======================================
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
@@ -34,10 +30,11 @@ Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
-Plug 'othree/yajs.vim', { 'branch': 'master' }
-
-Plug 'alessandroyorba/monrovia'
+" Plug 'othree/yajs.vim', { 'branch': 'master' }
+Plug 'ryanoasis/vim-devicons'
+Plug 'trevordmiller/nova-vim'
 
 call plug#end()
 
@@ -78,16 +75,11 @@ set number
 set relativenumber
 
 " Display extra whitespace
-set list listchars=tab:»»,trail:·,nbsp:·,extends:›,precedes:‹
+set list listchars=tab:››,trail:·,nbsp:·,extends:›,precedes:‹
 
-set grepprg=grep\ -n\ $*\ /dev\/null
-
-" ======================================
-" colors
-" ======================================
 set termguicolors
 set background=dark
-colorscheme ayu
+colorscheme nova
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
@@ -97,10 +89,6 @@ endif
 set undodir=~/.undo-vim
 " Create FILE.un~ files for persistent undo
 set undofile
-
-" ======================================
-" keybindings
-" ======================================
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -143,7 +131,6 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
 " ======================================
@@ -165,6 +152,11 @@ nmap <silent> <leader>tv :TestVisit<CR>
 
 " airline
 let g:airline_powerline_fonts = 1
+let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V'}
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep = '|'
+let g:airline_right_alt_sep = '|'
 
 " emmet
 imap <C-e> <plug>(emmet-expand-abbr)
@@ -173,12 +165,12 @@ imap <C-e> <plug>(emmet-expand-abbr)
 let g:ale_sign_column_always = 1
 let g:ale_javascript_eslint_use_global = 1
 if emoji#available()
-  let g:ale_sign_error = emoji#for('x')
+  let g:ale_sign_error = emoji#for('no_entry_sign')
   let g:ale_sign_warning = emoji#for('warning')
 endif
 
 " fzf.vim
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> :Files<cr>
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
@@ -189,7 +181,7 @@ nnoremap <silent> <leader>[ :BTags<CR>
 nnoremap <silent> <leader>] :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
 
-let g:polyglot_disabled = ["javascript"]
+" let g:polyglot_disabled = ["javascript"]
 
 let g:used_javascript_libs = "underscore,backbone,jquery,handlebars"
 

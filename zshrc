@@ -93,7 +93,6 @@ if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_TMUX=1
-bindkey -s '^V' 'vim $(fzf-tmux)\n'
 
 # Wrap git automatically by adding the following to ~/.zshrc:
 
