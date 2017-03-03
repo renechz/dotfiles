@@ -4,16 +4,16 @@ source $VIMRUNTIME/defaults.vim
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'coderifous/textobj-word-column.vim'
+Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
 Plug 'kana/vim-textobj-user'
-Plug 'justinmk/vim-dirvish'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tek/vim-textobj-ruby'
+Plug 'coderifous/textobj-word-column.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
-Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'sheerun/vim-polyglot'
-Plug 'tek/vim-textobj-ruby'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
@@ -26,21 +26,16 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
-" Plug 'othree/yajs.vim', { 'branch': 'master' }
-Plug 'ryanoasis/vim-devicons'
 Plug 'trevordmiller/nova-vim'
 
 call plug#end()
-
-" ======================================
-" settings
-" ======================================
 
 let mapleader = " "
 
@@ -181,12 +176,7 @@ nnoremap <silent> <leader>[ :BTags<CR>
 nnoremap <silent> <leader>] :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
 
-" let g:polyglot_disabled = ["javascript"]
-
-let g:used_javascript_libs = "underscore,backbone,jquery,handlebars"
-
 " vim-commentary
-" toggle comment
 nmap cm <Plug>Commentary
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>

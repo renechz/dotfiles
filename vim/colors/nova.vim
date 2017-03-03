@@ -92,20 +92,20 @@ call s:h("VertSplit",     { "fg": s:theme.gray2, "bg": s:theme.gray2 })
 call s:h("Folded",        { "fg": s:theme.cyan })
 call s:h("FoldColumn",    { "fg": s:theme.cyan })
 call s:h("SignColumn",    {})
-call s:h("IncSearch",     { "fg": s:theme.cyan, "bg": s:theme.gray3 })
+call s:h("IncSearch",     { "fg": s:theme.gray0, "bg": s:theme.pink })
 call s:h("LineNr",        { "fg": s:theme.gray3 })
 call s:h("CursorLineNr",  { "fg": s:theme.cyan })
 call s:h("MatchParen",    { "fg": s:theme.cyan })
 call s:h("ModeMsg",       { "fg": s:theme.cyan })
 call s:h("MoreMsg",       { "fg": s:theme.cyan })
-call s:h("NonText",       { "fg": s:theme.orange })
+call s:h("NonText",       { "fg": s:theme.gray4 })
 call s:h("Pmenu",         { "fg": s:theme.gray5, "bg": s:theme.gray2 })
 call s:h("PmenuSel",      { "fg": s:theme.gray2, "bg": s:theme.cyan })
 call s:h("PmenuSbar",     { "fg": s:theme.gray4, "bg": s:theme.gray4 })
 call s:h("PmenuThumb",    { "fg": s:theme.cyan, "bg": s:theme.cyan })
 call s:h("Question",      { "fg": s:theme.cyan })
-call s:h("Search",        { "fg": s:theme.cyan, "bg": s:theme.gray3 })
-call s:h("SpecialKey",    { "fg": s:theme.orange })
+call s:h("Search",        { "fg": s:theme.gray0, "bg": s:theme.pink })
+call s:h("SpecialKey",    { "fg": s:theme.gray4 })
 call s:h("StatusLine",    { "fg": s:theme.cyan, "bg": s:theme.gray2 })
 call s:h("StatusLineNC",  { "fg": s:theme.gray1, "bg": s:theme.gray2 })
 call s:h("Title",         { "fg": s:theme.orange })
@@ -147,15 +147,15 @@ hi link cssClassNameDot      Noise
 
 hi link gitcommitComment        Comment
 hi link gitcommitBranch         Constant
+hi link gitcommitUntracked      Constant
 hi link gitcommitDiscardedType  Error
 hi link gitcommitDiscardedFile  Error
+hi link gitcommitNoBranch       Error
+hi link gitcommitUnmerged       Error
 hi link gitcommitUnmergedFile   Statement
 hi link gitcommitSelectedType   Special
 hi link gitcommitUntrackedFile  Special
 hi link gitcommitSelectedFile   Special
-hi link gitcommitUnmerged       Special
-hi link gitcommitNoBranch       gitcommitBranch
-hi link gitcommitUntracked      gitcommitComment
 hi link gitcommitDiscarded      gitcommitComment
 hi link gitcommitSelected       gitcommitComment
 hi link gitcommitDiscardedArrow gitcommitDiscardedFile
@@ -223,8 +223,8 @@ hi link jsonBoolean Boolean
 hi link jsonKeyword Identifier
 hi link jsonQuote   Noise
 
-hi link rubyConstant       Constant
-hi link rubyDefine         Identifier
+hi link rubyConstant Constant
+hi link rubyDefine   Identifier
 
 hi link sassClass     cssClassName
 hi link sassClassChar cssClassName
