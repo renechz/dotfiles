@@ -1,6 +1,3 @@
-unlet! skip_defaults_vim
-source $VIMRUNTIME/defaults.vim
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
@@ -39,7 +36,37 @@ call plug#end()
 
 let mapleader = " "
 
-" enable italics
+" Use Vim settings, rather than Vi settings.
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
+
+set history=200       " keep 200 lines of command line history
+set ruler             " show the cursor position all the time
+set showcmd           " display incomplete commands
+set wildmenu          " display completion matches in a status line
+
+set ttimeout          " time out for key codes
+set ttimeoutlen=100   " wait up to 100ms after Esc for special key
+
+set display=truncate  " show @@@ in the last line if it is truncated.
+
+" Show a few lines of context around the cursor.  Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching when it's possible to timeout.
+if has('reltime')
+  set incsearch
+endif
+
+if has('mouse')
+  set mouse=a
+endif
+
+" Enable italics
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 set t_ut=
@@ -47,19 +74,17 @@ set t_ut=
 set autowrite
 set clipboard=unnamed
 set diffopt+=vertical
-set complete=.,w,b,u,t,i
 set hidden
-set laststatus=2
+set laststatus=2  " Always show the status line
 
-" Tabs
+" 2 space tabs
 set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
 
 " Highlight where 80 and 100 characters are
-set textwidth=80
-set colorcolumn=+1,+21
+set colorcolumn=81,101
 
 set nobackup
 set nowritebackup
@@ -69,10 +94,10 @@ set undolevels=1000
 set number
 set relativenumber
 
-" Display extra whitespace
+" Show leading, trailing spaces and tabs
 set list listchars=tab:»\ ,trail:·,nbsp:·,extends:›,precedes:‹
 
-set termguicolors
+set termguicolors  " Enable true color support
 set background=dark
 colorscheme nova
 
@@ -82,8 +107,11 @@ if !isdirectory(undodir)
   call mkdir(undodir)
 endif
 set undodir=~/.undo-vim
-" Create FILE.un~ files for persistent undo
-set undofile
+set undofile  " Create FILE.un~ files for persistent undo
+
+" Don't use Ex mode, use Q for formatting.
+" Revert with ":unmap Q".
+map Q gq
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -97,7 +125,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" Save file with <C-s>
+" Save file with <c-s>
 nmap <c-s> <Esc>:w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
