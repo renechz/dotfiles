@@ -4,7 +4,7 @@ source $VIMRUNTIME/defaults.vim
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'sirver/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
 Plug 'kana/vim-textobj-user'
@@ -70,7 +70,7 @@ set number
 set relativenumber
 
 " Display extra whitespace
-set list listchars=tab:››,trail:·,nbsp:·,extends:›,precedes:‹
+set list listchars=tab:»\ ,trail:·,nbsp:·,extends:›,precedes:‹
 
 set termguicolors
 set background=dark
@@ -154,7 +154,7 @@ let g:airline_left_alt_sep = '|'
 let g:airline_right_alt_sep = '|'
 
 " emmet
-imap <C-e> <plug>(emmet-expand-abbr)
+imap <c-e> <plug>(emmet-expand-abbr)
 
 " ALE
 let g:ale_sign_column_always = 1

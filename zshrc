@@ -95,5 +95,4 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export FZF_TMUX=1
 
 # Wrap git automatically by adding the following to ~/.zshrc:
-
 eval "$(hub alias -s)"

@@ -223,8 +223,9 @@ hi link jsonBoolean Boolean
 hi link jsonKeyword Identifier
 hi link jsonQuote   Noise
 
-hi link rubyConstant Constant
-hi link rubyDefine   Identifier
+hi link rubyConstant        Constant
+hi link rubyStringDelimiter Constant
+hi link rubyDefine          Identifier
 
 hi link sassClass     cssClassName
 hi link sassClassChar cssClassName
