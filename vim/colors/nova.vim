@@ -30,23 +30,23 @@ endfunction
 
 let s:nova  = {
   \ "dark": {
-      \ "bg":     { "hex": "#2c373e", "cterm": "235" },
-      \ "fg":     { "hex": "#C5D4DD", "cterm": "188" },
+      \ "bg":     { "hex": "#1e272c", "cterm": "235" },
+      \ "fg":     { "hex": "#c5d4dd", "cterm": "188" },
       \ "cyan":   { "hex": "#7fc1ca", "cterm": "242" },
-      \ "blue":   { "hex": "#83AFE5", "cterm": "242" },
-      \ "purple": { "hex": "#9A93E1", "cterm": "242" },
-      \ "pink":   { "hex": "#D18EC2", "cterm": "242" },
-      \ "red":    { "hex": "#DF8C8C", "cterm": "242" },
-      \ "orange": { "hex": "#F2C38F", "cterm": "242" },
-      \ "yellow": { "hex": "#DADA93", "cterm": "242" },
-      \ "green":  { "hex": "#A8CE93", "cterm": "242" },
-      \ "gray0":  { "hex": "#1E272C", "cterm": "242" },
-      \ "gray1":  { "hex": "#3C4C55", "cterm": "242" },
+      \ "blue":   { "hex": "#83afe5", "cterm": "242" },
+      \ "purple": { "hex": "#9a93e1", "cterm": "242" },
+      \ "pink":   { "hex": "#d18ec2", "cterm": "242" },
+      \ "red":    { "hex": "#df8c8c", "cterm": "242" },
+      \ "orange": { "hex": "#f2c38f", "cterm": "242" },
+      \ "yellow": { "hex": "#dada93", "cterm": "242" },
+      \ "green":  { "hex": "#a8ce93", "cterm": "242" },
+      \ "gray0":  { "hex": "#1e272c", "cterm": "242" },
+      \ "gray1":  { "hex": "#3c4c55", "cterm": "242" },
       \ "gray2":  { "hex": "#556873", "cterm": "242" },
-      \ "gray3":  { "hex": "#6A7D89", "cterm": "242" },
-      \ "gray4":  { "hex": "#899BA6", "cterm": "242" },
-      \ "gray5":  { "hex": "#C5D4DD", "cterm": "242" },
-      \ "gray6":  { "hex": "#E6EEF3", "cterm": "242" },
+      \ "gray3":  { "hex": "#6a7d89", "cterm": "242" },
+      \ "gray4":  { "hex": "#899ba6", "cterm": "242" },
+      \ "gray5":  { "hex": "#c5d4dd", "cterm": "242" },
+      \ "gray6":  { "hex": "#e6eef3", "cterm": "242" },
   \ },
   \ "light": {
       \ "bg":     { "hex": "#fbfaf9", "cterm": "188" },
@@ -83,55 +83,65 @@ call s:h("ColorColumn",   { "bg": s:theme.gray2 })
 call s:h("CursorColumn",  { "bg": s:theme.gray2 })
 call s:h("CursorLine",    { "bg": s:theme.gray2 })
 call s:h("Directory",     { "fg": s:theme.cyan })
+
 call s:h("DiffAdd",       { "fg": s:theme.gray1, "bg": s:theme.green })
 call s:h("DiffChange",    { "fg": s:theme.gray1, "bg": s:theme.orange })
 call s:h("DiffDelete",    { "fg": s:theme.red })
 call s:h("DiffText",      { "fg": s:theme.gray1, "bg": s:theme.orange, "gui": "bold", "cterm": "bold" })
+
 call s:h("ErrorMsg",      { "fg": s:theme.red })
+call s:h("WarningMsg",    { "fg": s:theme.red })
+
 call s:h("VertSplit",     { "fg": s:theme.gray2, "bg": s:theme.gray2 })
 call s:h("Folded",        { "fg": s:theme.cyan })
 call s:h("FoldColumn",    { "fg": s:theme.cyan })
 call s:h("SignColumn",    {})
+
 call s:h("IncSearch",     { "fg": s:theme.gray0, "bg": s:theme.pink })
+call s:h("Search",        { "fg": s:theme.gray0, "bg": s:theme.pink })
+
 call s:h("LineNr",        { "fg": s:theme.gray3 })
 call s:h("CursorLineNr",  { "fg": s:theme.cyan })
+
 call s:h("MatchParen",    { "fg": s:theme.cyan })
 call s:h("ModeMsg",       { "fg": s:theme.cyan })
 call s:h("MoreMsg",       { "fg": s:theme.cyan })
 call s:h("NonText",       { "fg": s:theme.gray4 })
+call s:h("SpecialKey",    { "fg": s:theme.gray4 })
+
 call s:h("Pmenu",         { "fg": s:theme.gray5, "bg": s:theme.gray2 })
 call s:h("PmenuSel",      { "fg": s:theme.gray2, "bg": s:theme.cyan })
 call s:h("PmenuSbar",     { "fg": s:theme.gray4, "bg": s:theme.gray4 })
 call s:h("PmenuThumb",    { "fg": s:theme.cyan, "bg": s:theme.cyan })
-call s:h("Question",      { "fg": s:theme.cyan })
-call s:h("Search",        { "fg": s:theme.gray0, "bg": s:theme.pink })
-call s:h("SpecialKey",    { "fg": s:theme.gray4 })
+
 call s:h("StatusLine",    { "fg": s:theme.cyan, "bg": s:theme.gray2 })
 call s:h("StatusLineNC",  { "fg": s:theme.gray1, "bg": s:theme.gray2 })
-call s:h("Title",         { "fg": s:theme.orange })
+
 call s:h("Visual",        { "fg": s:theme.gray1, "bg": s:theme.cyan })
 call s:h("VisualNOS",     { "fg": s:theme.gray1, "bg": s:theme.cyan })
-call s:h("WarningMsg",    { "fg": s:theme.red })
+
+call s:h("Question",      { "fg": s:theme.cyan })
+call s:h("Title",         { "fg": s:theme.orange })
 call s:h("WildMenu",      { "fg": s:theme.gray2, "bg": s:theme.cyan })
 call s:h("EndOfBuffer",   { "fg": s:theme.gray2 })
 
 call s:h("SpellBad",      { "fg": s:theme.red })
 call s:h("SpellCap",      { "fg": s:theme.red })
 
-call s:h("Comment",      { "fg": s:theme.gray4, "gui": "italic", "cterm": "italic" })
-call s:h("Constant",     { "fg": s:theme.cyan })
-call s:h("Identifier",   { "fg": s:theme.blue })
-call s:h("Statement",    { "fg": s:theme.yellow })
-call s:h("PreProc",      { "fg": s:theme.purple })
-call s:h("Type",         { "fg": s:theme.green })
-call s:h("Special",      { "fg": s:theme.orange })
-call s:h("Underlined",   { "fg": s:theme.pink, "cterm": "underline" })
-call s:h("Error",        { "fg": s:theme.red })
-call s:h("Todo",         { "fg": s:theme.red })
-call s:h("Ignore",       { "fg": s:theme.gray4 })
-call s:h("Conceal",      { "fg": s:theme.gray4 })
-call s:h("Noise",        { "fg": s:theme.gray4 })
-call s:h("Quote",        { "fg": s:theme.gray4 })
+call s:h("Comment",    { "fg": s:theme.gray4, "gui": "italic", "cterm": "italic" })
+call s:h("Constant",   { "fg": s:theme.cyan })
+call s:h("Identifier", { "fg": s:theme.blue })
+call s:h("Statement",  { "fg": s:theme.yellow })
+call s:h("PreProc",    { "fg": s:theme.purple })
+call s:h("Type",       { "fg": s:theme.green })
+call s:h("Special",    { "fg": s:theme.orange })
+call s:h("Underlined", { "fg": s:theme.pink, "cterm": "underline" })
+call s:h("Error",      { "fg": s:theme.red })
+call s:h("Todo",       { "fg": s:theme.red })
+call s:h("Ignore",     { "fg": s:theme.gray4 })
+call s:h("Conceal",    { "fg": s:theme.gray4 })
+call s:h("Noise",      { "fg": s:theme.gray4 })
+call s:h("Quote",      { "fg": s:theme.gray4 })
 
 hi link cssAttr              Constant
 hi link cssAttrRegion        Constant
