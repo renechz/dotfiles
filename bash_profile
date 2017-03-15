@@ -44,6 +44,9 @@ source $BASH_IT/bash_it.sh
 stty start undef
 stty stop undef
 
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+
 # User configuration
 
 export PATH=".git/safe/../../bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.config/yarn/global/node_modules/.bin"
