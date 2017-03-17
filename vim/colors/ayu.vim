@@ -61,7 +61,7 @@ let s:ayu  = {
           \ "regexp":       { "hex": "#95e6cb", "cterm": "49" },
           \ "sup_var":      { "hex": "#f07178", "cterm": "225" },
           \ "keyword":      { "hex": "#ffae57", "cterm": "215" },
-          \ "es_spec":      { "hex": "#ffc44c", "cterm": "222" },
+          \ "special":      { "hex": "#ffc44c", "cterm": "222" },
           \ "constant":     { "hex": "#d4bfff", "cterm": "183" },
           \ "operator":     { "hex": "#80d4ff", "cterm": "117" }
       \ }
@@ -97,7 +97,7 @@ let s:ayu  = {
           \ "string":       { "hex": "#86b300", "cterm": "106" },
           \ "comment":      { "hex": "#abb0b6", "cterm": "145" },
           \ "sup_var":      { "hex": "#f07178", "cterm": "225" },
-          \ "es_spec":      { "hex": "#cca37a", "cterm": "10" },
+          \ "special":      { "hex": "#cca37a", "cterm": "10" },
           \ "keyword":      { "hex": "#f2590c", "cterm": "202" },
           \ "operator":     { "hex": "#e7c547", "cterm": "185" },
           \ "constant":     { "hex": "#a37acc", "cterm": "140" },
@@ -123,80 +123,86 @@ else
   let s:theme = s:ayu.light
 endif
 
-call s:h("ColorColumn",   { "bg": s:theme.syntax.gutter_fg })
-call s:h("Cursor",        { "bg": s:theme.common.accent })
-call s:h("CursorIM",      { "bg": s:theme.common.accent })
+call s:h("ColorColumn",   { "bg": s:theme.syntax.line_hg })
 call s:h("CursorColumn",  { "bg": s:theme.syntax.line_hg })
 call s:h("CursorLine",    { "bg": s:theme.syntax.line_hg })
-call s:h("Directory",     { "fg": s:theme.ui.folder.normal })
-call s:h("DiffAdd",       { "fg": s:theme.common.bg, "bg": s:theme.syntax.string })
-call s:h("DiffChange",    { "fg": s:theme.common.bg, "bg": s:theme.syntax.func })
-call s:h("DiffDelete",    { "fg": s:theme.common.bg, "bg": s:theme.syntax.error })
-call s:h("DiffText",      { "fg": s:theme.common.bg, "bg": s:theme.common.fg })
-call s:h("ErrorMsg",      { "fg": s:theme.syntax.error })
-call s:h("VertSplit",     { "fg": s:theme.ui.fg, "bg": s:theme.ui.grid_divider })
-call s:h("Folded",        { "fg": s:theme.syntax.active_guide, "bg": s:theme.syntax.stack_guide })
-call s:h("FoldColumn",    { "fg": s:theme.syntax.active_guide })
-call s:h("SignColumn",    { "bg": s:theme.common.bg, "fg": s:theme.common.fg })
+call s:h("CursorLineNr",  { "fg": s:theme.common.accent, "bg": s:theme.syntax.line_hg })
+call s:h("LineNr",        { "fg": s:theme.syntax.gutter_fg })
+call s:h("Cursor",        { "bg": s:theme.common.accent })
+call s:h("CursorIM",      { "bg": s:theme.common.accent })
+call s:h("Directory",     { "fg": s:theme.ui.fg })
+
+call s:h("DiffAdd",       { "fg": s:theme.syntax.string, "bg": s:theme.ui.panel.bg })
+call s:h("DiffChange",    { "fg": s:theme.syntax.tag, "bg": s:theme.ui.panel.bg })
+call s:h("DiffDelete",    { "fg": s:theme.syntax.error, "bg": s:theme.ui.panel.bg })
+call s:h("DiffText",      { "fg": s:theme.common.fg, "bg": s:theme.ui.panel.bg })
+
+call s:h("ErrorMsg",      { "fg": s:theme.common.fg, "bg": s:theme.syntax.error })
+call s:h("VertSplit",     { "fg": s:theme.common.bg })
+call s:h("Folded",        { "fg": s:theme.ui.fg, "bg": s:theme.ui.panel.bg })
+call s:h("FoldColumn",    { "bg": s:theme.ui.panel.bg })
+call s:h("SignColumn",    { "bg": s:theme.ui.panel.bg })
 call s:h("IncSearch",     { "fg": s:theme.common.bg, "bg": s:theme.syntax.constant })
-call s:h("LineNr",        { "fg": s:theme.syntax.gutter_fg, "bg": s:theme.common.bg })
-call s:h("CursorLineNr",  { "fg": s:theme.syntax.gutter_fg, "bg": s:theme.syntax.line_hg })
 call s:h("MatchParen",    { "fg": s:theme.common.bg, "bg": s:theme.common.accent })
-call s:h("ModeMsg",       { "fg": s:theme.ui.fg })
-call s:h("MoreMsg",       { "fg": s:theme.ui.fg })
-call s:h("NonText",       { "fg": s:theme.syntax.stack_guide })
-call s:h("Pmenu",         { "fg": s:theme.ui.fg, "bg": s:theme.ui.panel.bg })
-call s:h("PmenuSel",      { "fg": s:theme.common.accent, "bg": s:theme.syntax.line_hg })
+call s:h("ModeMsg",       { "fg": s:theme.syntax.string })
+call s:h("MoreMsg",       { "fg": s:theme.syntax.string })
+call s:h("NonText",       { "fg": s:theme.common.bg })
+call s:h("Pmenu",         { "fg": s:theme.common.fg, "bg": s:theme.syntax.selection })
+call s:h("PmenuSel",      { "fg": s:theme.common.fg, "bg": s:theme.syntax.selection, "gui": "reverse", "cterm": "reverse" })
 call s:h("PmenuSbar",     { "fg": s:theme.ui.scrollbar.puck })
 call s:h("PmenuThumb",    { "fg": s:theme.ui.scrollbar.puck })
-call s:h("Question",      { "fg": s:theme.ui.fg })
+call s:h("Question",      { "fg": s:theme.syntax.string })
 call s:h("Search",        { "fg": s:theme.common.bg, "bg": s:theme.syntax.constant })
-call s:h("SpecialKey",    { "fg": s:theme.syntax.stack_guide })
-call s:h("StatusLine",    { "fg": s:theme.ui.fg, "bg": s:theme.ui.panel.bg })
-call s:h("StatusLineNC",  { "fg": s:theme.ui.fg, "bg": s:theme.ui.panel.bg, "cterm": "reverse" })
-call s:h("TabLine",       { "fg": s:theme.syntax.comment, "bg": s:theme.common.bg })
-call s:h("TabLineFill",   { "bg": s:theme.common.bg })
-call s:h("TabLineSel",    { "fg": s:theme.syntax.keyword, "bg": s:theme.common.bg })
-call s:h("Title",         { "fg": s:theme.common.fg })
+call s:h("SpecialKey",    { "fg": s:theme.syntax.selection })
+call s:h("StatusLine",    { "fg": s:theme.common.fg, "bg": s:theme.ui.panel.bg })
+call s:h("StatusLineNC",  { "fg": s:theme.common.fg, "bg": s:theme.ui.panel.bg })
+call s:h("TabLine",       { "fg": s:theme.ui.fg, "bg": s:theme.ui.grid_divider })
+call s:h("TabLineFill",   { "bg": s:theme.ui.panel.bg })
+call s:h("TabLineSel",    { "fg": s:theme.common.accent, "bg": s:theme.common.bg })
+call s:h("Title",         { "fg": s:theme.syntax.keyword })
 call s:h("Visual",        { "bg": s:theme.syntax.selection })
-call s:h("WarningMsg",    { "fg": s:theme.syntax.func })
-call s:h("WildMenu",      { "fg": s:theme.syntax.tag })
+call s:h("WarningMsg",    { "fg": s:theme.syntax.error })
+call s:h("WildMenu",      { "fg": s:theme.common.bg, "bg": s:theme.syntax.sup_var })
 
 call s:h("Comment",      { "fg": s:theme.syntax.comment, "gui": "italic", "cterm": "italic" })
 call s:h("Constant",     { "fg": s:theme.syntax.constant })
 call s:h("String",       { "fg": s:theme.syntax.string })
-call s:h("Identifier",   { "fg": s:theme.syntax.keyword })
+call s:h("Identifier",   { "fg": s:theme.syntax.tag })
 call s:h("Function",     { "fg": s:theme.syntax.func })
 call s:h("Statement",    { "fg": s:theme.syntax.keyword })
 call s:h("Operator",     { "fg": s:theme.syntax.operator })
-call s:h("PreProc",      { "fg": s:theme.syntax.keyword })
+call s:h("PreProc",      { "fg": s:theme.syntax.special })
 call s:h("Type",         { "fg": s:theme.syntax.tag })
-call s:h("StorageClass", { "fg": s:theme.syntax.keyword })
-call s:h("Special",      { "fg": s:theme.syntax.keyword })
-call s:h("SpecialChar",  { "fg": s:theme.syntax.func })
-call s:h("Tag",          { "fg": s:theme.syntax.tag })
+call s:h("Structure",    { "fg": s:theme.syntax.special })
+call s:h("Special",      { "fg": s:theme.syntax.special })
 call s:h("Delimiter",    { "fg": s:theme.common.fg })
-call s:h("Underlined",   { "fg": s:theme.syntax.constant, "cterm": "underline" })
-call s:h("Error",        { "fg": s:theme.syntax.error })
-call s:h("Todo",         { "fg": s:theme.syntax.tag })
+call s:h("Underlined",   { "fg": s:theme.syntax.tag, "cterm": "underline" })
+call s:h("Error",        { "bg": s:theme.syntax.error })
+call s:h("Todo",         { "fg": s:theme.syntax.sup_var })
 call s:h("Quote",        { "fg": s:theme.syntax.tag })
+call s:h("qfLineNr",     { "fg": s:theme.syntax.keyword })
 
-call s:h("cssAttrComma",  { "fg": s:theme.common.fg })
-call s:h("cssBraces",     { "fg": s:theme.common.fg })
-call s:h("cssClassName",  { "fg": s:theme.syntax.keyword })
-call s:h("cssIdentifier", { "fg": s:theme.syntax.keyword })
-call s:h("cssTagName",    { "fg": s:theme.syntax.keyword })
-call s:h("cssProp",       { "fg": s:theme.syntax.tag })
+hi link cssClassName        Keyword
+hi link cssClassNameDot     cssClassName
+hi link cssKeyFrameSelector Keyword
+hi link cssIdentifier       Keyword
+hi link cssTagName          Keyword
+hi link cssProp             Identifier
+hi link cssIncludeKeyword   Keyword
+hi link cssMediaType        Constant
+hi link cssMediaProp        Type
+hi link cssTagName          Identifier
+hi link cssBraces           Normal
 
-call s:h("gitcommitComment",       { "fg": s:theme.syntax.comment })
-call s:h("gitcommitUnmerged",      { "fg": s:theme.syntax.tag })
-call s:h("gitcommitBranch",        { "fg": s:theme.syntax.constant })
-call s:h("gitcommitDiscardedType", { "fg": s:theme.syntax.error })
-call s:h("gitcommitSelectedType",  { "fg": s:theme.syntax.tag })
-call s:h("gitcommitUntrackedFile", { "fg": s:theme.syntax.tag })
-call s:h("gitcommitDiscardedFile", { "fg": s:theme.syntax.error })
-call s:h("gitcommitSelectedFile",  { "fg": s:theme.syntax.tag })
-call s:h("gitcommitUnmergedFile",  { "fg": s:theme.syntax.keyword })
+hi link gitcommitComment        Comment
+hi link gitcommitBranch         Constant
+hi link gitcommitDiscardedType  Error
+hi link gitcommitDiscardedFile  Error
+hi link gitcommitUnmergedFile   Keyword
+hi link gitcommitUnmerged       Tag
+hi link gitcommitSelectedType   Tag
+hi link gitcommitUntrackedFile  Tag
+hi link gitcommitSelectedFile   Tag
 hi link gitcommitNoBranch       gitcommitBranch
 hi link gitcommitUntracked      gitcommitComment
 hi link gitcommitDiscarded      gitcommitComment
@@ -205,68 +211,55 @@ hi link gitcommitDiscardedArrow gitcommitDiscardedFile
 hi link gitcommitSelectedArrow  gitcommitSelectedFile
 hi link gitcommitUnmergedArrow  gitcommitUnmergedFile
 
+hi link htmlArg            Keyword
+hi link htmlH1             Title
+hi link htmlEndTag         Type
+hi link htmlSpecialTagName Type
+hi link htmlTag            Type
+hi link htmlTagName        Type
 
-call s:h("htmlArg",            { "fg": s:theme.syntax.keyword })
-call s:h("htmlEndTag",         { "fg": s:theme.syntax.tag })
-call s:h("htmlH1",             { "fg": s:theme.common.fg })
-call s:h("htmlSpecialTagName", { "fg": s:theme.syntax.tag })
-call s:h("htmlTag",            { "fg": s:theme.syntax.tag })
-call s:h("htmlTagName",        { "fg": s:theme.syntax.tag })
-
-call s:h("javaScriptRequire",            { "fg": s:theme.syntax.tag })
-call s:h("javaScriptReserved",           { "fg": s:theme.syntax.tag })
-call s:h("javascriptDocTags",            { "fg": s:theme.syntax.tag })
-call s:h("javascriptFuncArg",            { "fg": s:theme.syntax.constant })
-call s:h("javascriptDocNotation",        { "fg": s:theme.syntax.tag })
-call s:h("javascriptObjectLabel",        { "fg": s:theme.syntax.func })
-call s:h("javascriptPropertyNameString", { "fg": s:theme.syntax.string })
-call s:h("javascriptArrowFunc",          { "fg": s:theme.syntax.keyword })
-call s:h("javascriptClassExtends",       { "fg": s:theme.syntax.constant })
-call s:h("javascriptImport",             { "fg": s:theme.syntax.constant })
-call s:h("javascriptExport",             { "fg": s:theme.syntax.constant })
-call s:h("javascriptVariable",           { "fg": s:theme.syntax.keyword })
-call s:h("javascriptPropertyName",       { "fg": s:theme.syntax.tag })
-call s:h("javascriptClassKeyword",       { "fg": s:theme.syntax.tag })
-call s:h("javascriptFuncKeyword",        { "fg": s:theme.syntax.keyword })
-call s:h("javascriptGlobal",             { "fg": s:theme.syntax.tag })
-call s:h("javascriptOpSymbol",           { "fg": s:theme.syntax.keyword })
-call s:h("javascriptOpSymbols",          { "fg": s:theme.syntax.keyword })
-call s:h("javascriptIdentifierName",     { "fg": s:theme.syntax.func })
-call s:h("javascriptMethod",             { "fg": s:theme.syntax.tag })
-call s:h("javascriptFuncName",           { "fg": s:theme.syntax.tag })
-call s:h("javascriptDocParamName",       { "fg": s:theme.syntax.tag })
-call s:h("javascriptProp",               { "fg": s:theme.syntax.tag })
-hi link javascriptDotNotation Keyword
-hi link javaScriptNull        Boolean
+hi link jsStorageClass Keyword
+hi link jsFunction     Keyword
+hi link jsVariableDef  Function
+hi link jsOperator     Keyword
+hi link jsNull         Boolean
+hi link jsGlobalObject Type
+hi link jsObjectProp   Function
+hi link jsUndefined    Constant
+hi link jsFuncArgs     Constant
+hi link jsArguments    Type
+hi link jsThis         Type
 
 hi link jsonBoolean Boolean
 
-call s:h("rubyClass",                  { "fg": s:theme.syntax.keyword })
-call s:h("rubyConstant",               { "fg": s:theme.syntax.tag })
-call s:h("rubyInclude",                { "fg": s:theme.syntax.func })
-call s:h("rubyInterpolationDelimiter", { "fg": s:theme.syntax.tag })
-call s:h("rubyKeywordAsMethod",        { "fg": s:theme.syntax.func })
-call s:h("rubyOperator",               { "fg": s:theme.syntax.keyword })
-call s:h("rubyStringDelimiter",        { "fg": s:theme.syntax.string })
+call s:h("rubyInstanceVariable", { "fg": s:theme.syntax.sup_var })
+hi link rubySymbol                 rubyInstanceVariable
+hi link rubyClass                  Keyword
+hi link rubyInclude                Function
+hi link rubyKeywordAsMethod        Function
+hi link rubyOperator               Keyword
+hi link rubyStringDelimiter        String
+hi link rubyInterpolationDelimiter Type
+hi link rubyConstant               Type
 
-call s:h("sassFor",        { "fg": s:theme.syntax.tag })
-call s:h("sassVariable",   { "fg": s:theme.syntax.constant })
-call s:h("sassMedia",      { "fg": s:theme.syntax.tag })
-call s:h("sassAmpersand",  { "fg": s:theme.syntax.keyword })
-call s:h("sassDefinition", { "fg": s:theme.syntax.tag })
-call s:h("sassMediaQuery", { "fg": s:theme.syntax.tag })
-call s:h("sassMixinName",  { "fg": s:theme.syntax.tag })
-call s:h("sassMixin",      { "fg": s:theme.syntax.tag })
-call s:h("sassControl",    { "fg": s:theme.syntax.keyword })
-call s:h("sassExtend",     { "fg": s:theme.syntax.constant })
-hi link sassClass     cssClassName
-hi link sassClassChar cssClassName
-hi link sassId        cssIdentifier
-hi link sassIdChar    cssIdentifier
-hi link sassInclude   PreProc
-hi link sassMixing    PreProc
+hi link sassFor        Type
+hi link sassVariable   Constant
+hi link sassMedia      Type
+hi link sassAmpersand  Keyword
+hi link sassDefinition Type
+hi link sassMediaQuery Type
+hi link sassMixinName  Type
+hi link sassMixin      Type
+hi link sassControl    Keyword
+hi link sassExtend     Constant
+hi link sassClass      cssClassName
+hi link sassClassChar  cssClassName
+hi link sassId         cssIdentifier
+hi link sassIdChar     cssIdentifier
+hi link sassInclude    PreProc
+hi link sassMixing     PreProc
 
-call s:h("vimBracket", { "fg": s:theme.syntax.func })
+hi link vimBracket Function
 
 " https://github.com/tpope/vim-fugitive
 hi link diffAdded   DiffAdd

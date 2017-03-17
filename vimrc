@@ -30,7 +30,6 @@ Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
-Plug 'trevordmiller/nova-vim'
 
 call plug#end()
 
@@ -99,7 +98,7 @@ set list listchars=tab:»\ ,trail:·,nbsp:·,extends:›,precedes:‹
 
 set termguicolors  " Enable true color support
 set background=dark
-colorscheme nova
+colorscheme ayu
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
