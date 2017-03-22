@@ -187,8 +187,8 @@ imap <c-e> <plug>(emmet-expand-abbr)
 let g:ale_sign_column_always = 1
 let g:ale_javascript_eslint_use_global = 1
 if emoji#available()
-  let g:ale_sign_error = emoji#for('no_entry_sign')
-  let g:ale_sign_warning = emoji#for('warning')
+  let g:ale_sign_error = emoji#for('sos')
+  let g:ale_sign_warning = emoji#for('vibration_mode')
 endif
 
 " fzf.vim
