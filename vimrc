@@ -1,15 +1,10 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'tek/vim-textobj-ruby'
-Plug 'coderifous/textobj-word-column.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-bundler'
@@ -25,11 +20,18 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons'
 Plug 'w0rp/ale'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'kana/vim-textobj-user'
+Plug 'coderifous/textobj-word-column.vim'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tek/vim-textobj-ruby'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
+Plug 'maralla/completor.vim'
+Plug 'ternjs/tern_for_vim'
 
 call plug#end()
 
@@ -42,6 +44,7 @@ set nocompatible
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
+set autoread
 set history=200       " keep 200 lines of command line history
 set ruler             " show the cursor position all the time
 set showcmd           " display incomplete commands

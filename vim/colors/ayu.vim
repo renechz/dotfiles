@@ -15,150 +15,117 @@ let s:is_dark = (&background == "dark")
 
 " vim-hemisu: https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
-  let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm : "NONE")
-  let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm : "NONE")
-
   execute "highlight" a:group
-    \ "guifg="   (has_key(a:style, "fg")  ? a:style.fg.hex : "NONE")
-    \ "guibg="   (has_key(a:style, "bg")  ? a:style.bg.hex : "NONE")
-    \ "guisp="   (has_key(a:style, "sp")  ? a:style.sp.hex : "NONE")
-    \ "gui="     (has_key(a:style, "gui") ? a:style.gui    : "NONE")
-    \ "ctermfg=" . l:ctermfg
-    \ "ctermbg=" . l:ctermbg
+    \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg    : "NONE")
+    \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg    : "NONE")
+    \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp    : "NONE")
+    \ "gui="     (has_key(a:style, "gui")   ? a:style.gui   : "NONE")
     \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm : "NONE")
 endfunction
 
 let s:ayu  = {
-      \ "mirage": {
-          \ "bg":     { "hex": "#212733", "cterm": "235" },
-          \ "fg":     { "hex": "#d9d7ce", "cterm": "188" },
-          \ "accent": { "hex": "#ffcc66", "cterm": "221" },
-      \ "ui": {
-          \ "fg":        { "hex": "#607080", "cterm": "60" },
-          \ "scrollbar": { "hex": "#ffffff", "cterm": "231" },
-          \ "panel_bg":  { "hex": "#272d38", "cterm": "236" },
-      \ },
-      \ "syntax": {
-          \ "comment":   { "hex": "#5c6773", "cterm": "242" },
-          \ "error":     { "hex": "#ff3333", "cterm": "203" },
-          \ "gutter_fg": { "hex": "#3d4752", "cterm": "238" },
-          \ "line_hg":   { "hex": "#242b38", "cterm": "235" },
-          \ "selection": { "hex": "#343f4c", "cterm": "237" },
-          \ "tag":       { "hex": "#5ccfe6", "cterm": "80" },
-          \ "func":      { "hex": "#ffd580", "cterm": "222" },
-          \ "string":    { "hex": "#bae67e", "cterm": "150" },
-          \ "regexp":    { "hex": "#95e6cb", "cterm": "49" },
-          \ "todo":      { "hex": "#f07178", "cterm": "225" },
-          \ "keyword":   { "hex": "#ffae57", "cterm": "215" },
-          \ "special":   { "hex": "#ffc44c", "cterm": "222" },
-          \ "constant":  { "hex": "#d4bfff", "cterm": "183" },
-          \ "operator":  { "hex": "#80d4ff", "cterm": "117" }
-      \ }
-      \ },
-      \ "light": {
-          \ "fg":     { "hex": "#5b544d", "cterm": "242" },
-          \ "bg":     { "hex": "#fbfaf9", "cterm": "231" },
-          \ "accent": { "hex": "#d88c41", "cterm": "202" },
-      \ "ui": {
-          \ "fg":        { "hex": "#828c99", "cterm": "245" },
-          \ "scrollbar": { "hex": "#000000", "cterm": "0" },
-          \ "panel_bg":  { "hex": "#ffffff", "cterm": "231" },
-      \ },
-      \ "syntax":        {
-          \ "error":     { "hex": "#ff3333", "cterm": "203" },
-          \ "line_hg":   { "hex": "#f2f2f2", "cterm": "255" },
-          \ "gutter_fg": { "hex": "#d9d8d7", "cterm": "188" },
-          \ "selection": { "hex": "#ebe6e1", "cterm": "255" },
-          \ "tag":       { "hex": "#41a6d9", "cterm": "74" },
-          \ "func":      { "hex": "#f29718", "cterm": "208" },
-          \ "regexp":    { "hex": "#4dbf99", "cterm": "10" },
-          \ "string":    { "hex": "#86b300", "cterm": "106" },
-          \ "comment":   { "hex": "#abb0b6", "cterm": "145" },
-          \ "todo":      { "hex": "#f07178", "cterm": "225" },
-          \ "special":   { "hex": "#cca37a", "cterm": "10" },
-          \ "keyword":   { "hex": "#f2590c", "cterm": "202" },
-          \ "operator":  { "hex": "#e7c547", "cterm": "185" },
-          \ "constant":  { "hex": "#a37acc", "cterm": "140" },
-      \ }
-      \ }
-      \ }
+\   "bg":            { "mirage": "#212733", "light": "#fafafa" },
+\   "fg":            { "mirage": "#d9d7ce", "light": "#5c6773" },
+\   "accent":        { "mirage": "#ffcc66", "light": "#ff6a00" },
+\   "ui": {
+\     "fg":          { "mirage": "#607080", "light": "#828c99" },
+\     "gridDivider": { "mirage": "#343d4a", "light": "#e2e4e7" },
+\     "folder":      { "mirage": "#3e4b59", "light": "#828c99" },
+\     "scrollbar":   { "mirage": "#ffffff", "light": "#000000" },
+\     "panel": {
+\       "bg":        { "mirage": "#272d38", "light": "#ffffff" },
+\       "shadow":    { "mirage": "#11141a", "light": "#a0a0a0" },
+\       "pathFg":    { "mirage": "#607080", "light": "#b0bec5" },
+\       "rowBg":     { "mirage": "#303540", "light": "#f5f5f5" },
+\     },
+\   },
+\   "syntax": {
+\     "error":       { "mirage": "#ff3333", "light": "#ff3333" },
+\     "lineHg":      { "mirage": "#242b38", "light": "#f2f2f2" },
+\     "gutterFg":    { "mirage": "#3d4752", "light": "#d9d8d7" },
+\     "selection":   { "mirage": "#343f4c", "light": "#f0eee4" },
+\     "stackGuide":  { "mirage": "#39434d", "light": "#dedddc" },
+\     "activeGuide": { "mirage": "#606f80", "light": "#b3b2b1" },
+\     "tag":         { "mirage": "#5ccfe6", "light": "#41a6d9" },
+\     "func":        { "mirage": "#ffd580", "light": "#f29718" },
+\     "regexp":      { "mirage": "#95e6cb", "light": "#4dbf99" },
+\     "string":      { "mirage": "#bae67e", "light": "#86b300" },
+\     "comment":     { "mirage": "#5c6773", "light": "#abb0b6" },
+\     "supVar":      { "mirage": "#f07178", "light": "#f07178" },
+\     "keyword":     { "mirage": "#ffae57", "light": "#f2590c" },
+\     "esSpec":      { "mirage": "#ffc44c", "light": "#cca37a" },
+\     "constant":    { "mirage": "#d4bfff", "light": "#a37acc" },
+\     "operator":    { "mirage": "#80d4ff", "light": "#e7c547" },
+\   },
+\ }
 
 if s:is_dark
+  let s:theme = "mirage"
   set background=dark
-  let s:theme = s:ayu.mirage
 else
+  let s:theme = "light"
   set background=light
-  let s:theme = s:ayu.light
 endif
 
-call s:h("Normal", { "fg": s:theme.fg, "bg": s:theme.bg })
+call s:h("Normal",        { "fg": s:ayu.fg[s:theme], "bg": s:ayu.bg[s:theme] })
+call s:h("ColorColumn",   { "bg": s:ayu.syntax.lineHg[s:theme] })
+call s:h("CursorColumn",  { "bg": s:ayu.syntax.lineHg[s:theme] })
+call s:h("CursorLine",    { "bg": s:ayu.syntax.lineHg[s:theme] })
+call s:h("CursorLineNr",  { "fg": s:ayu.accent[s:theme], "bg": s:ayu.syntax.lineHg[s:theme] })
+call s:h("LineNr",        { "fg": s:ayu.syntax.gutterFg[s:theme] })
+call s:h("Cursor",        { "bg": s:ayu.accent[s:theme] })
+call s:h("CursorIM",      { "bg": s:ayu.accent[s:theme] })
+call s:h("Directory",     { "fg": s:ayu.ui.folder[s:theme] })
 
-if s:is_dark
-  set background=dark
-  let s:theme = s:ayu.mirage
-else
-  set background=light
-  let s:theme = s:ayu.light
-endif
+call s:h("DiffAdd",       { "fg": s:ayu.syntax.string[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("DiffChange",    { "fg": s:ayu.syntax.tag[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("DiffDelete",    { "fg": s:ayu.syntax.error[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("DiffText",      { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
 
-call s:h("ColorColumn",   { "bg": s:theme.syntax.line_hg })
-call s:h("CursorColumn",  { "bg": s:theme.syntax.line_hg })
-call s:h("CursorLine",    { "bg": s:theme.syntax.line_hg })
-call s:h("CursorLineNr",  { "fg": s:theme.accent, "bg": s:theme.syntax.line_hg })
-call s:h("LineNr",        { "fg": s:theme.syntax.gutter_fg })
-call s:h("Cursor",        { "bg": s:theme.accent })
-call s:h("CursorIM",      { "bg": s:theme.accent })
-call s:h("Directory",     { "fg": s:theme.ui.fg })
+call s:h("ErrorMsg",      { "fg": s:ayu.fg[s:theme], "bg": s:ayu.syntax.error[s:theme] })
+call s:h("VertSplit",     { "fg": s:ayu.ui.gridDivider[s:theme] })
+call s:h("Folded",        { "fg": s:ayu.ui.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("FoldColumn",    { "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("SignColumn",    { "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("IncSearch",     { "fg": s:ayu.bg[s:theme], "bg": s:ayu.syntax.constant[s:theme] })
+call s:h("MatchParen",    { "fg": s:ayu.bg[s:theme], "bg": s:ayu.accent[s:theme] })
+call s:h("ModeMsg",       { "fg": s:ayu.syntax.string[s:theme] })
+call s:h("MoreMsg",       { "fg": s:ayu.syntax.string[s:theme] })
+call s:h("NonText",       { "fg": s:ayu.bg[s:theme] })
+call s:h("Pmenu",         { "fg": s:ayu.fg[s:theme], "bg": s:ayu.syntax.selection[s:theme] })
+call s:h("PmenuSel",      { "fg": s:ayu.fg[s:theme], "bg": s:ayu.syntax.selection[s:theme], "gui": "reverse", "cterm": "reverse" })
+call s:h("PmenuSbar",     { "fg": s:ayu.ui.scrollbar[s:theme] })
+call s:h("PmenuThumb",    { "fg": s:ayu.ui.scrollbar[s:theme] })
+call s:h("Question",      { "fg": s:ayu.syntax.string[s:theme] })
+call s:h("Search",        { "fg": s:ayu.bg[s:theme], "bg": s:ayu.syntax.constant[s:theme] })
+call s:h("SpecialKey",    { "fg": s:ayu.syntax.selection[s:theme] })
+call s:h("StatusLine",    { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("StatusLineNC",  { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("TabLine",       { "fg": s:ayu.ui.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("TabLineFill",   { "bg": s:ayu.syntax.lineHg[s:theme] })
+call s:h("TabLineSel",    { "fg": s:ayu.accent[s:theme], "bg": s:ayu.bg[s:theme] })
+call s:h("Title",         { "fg": s:ayu.syntax.keyword[s:theme] })
+call s:h("Visual",        { "bg": s:ayu.syntax.selection[s:theme] })
+call s:h("WarningMsg",    { "fg": s:ayu.syntax.error[s:theme] })
+call s:h("WildMenu",      { "fg": s:ayu.bg[s:theme], "bg": s:ayu.syntax.supVar[s:theme] })
 
-call s:h("DiffAdd",       { "fg": s:theme.syntax.string, "bg": s:theme.ui.panel_bg })
-call s:h("DiffChange",    { "fg": s:theme.syntax.tag, "bg": s:theme.ui.panel_bg })
-call s:h("DiffDelete",    { "fg": s:theme.syntax.error, "bg": s:theme.ui.panel_bg })
-call s:h("DiffText",      { "fg": s:theme.fg, "bg": s:theme.ui.panel_bg })
-
-call s:h("ErrorMsg",      { "fg": s:theme.fg, "bg": s:theme.syntax.error })
-call s:h("VertSplit",     { "fg": s:theme.bg })
-call s:h("Folded",        { "fg": s:theme.ui.fg, "bg": s:theme.ui.panel_bg })
-call s:h("FoldColumn",    { "bg": s:theme.ui.panel_bg })
-call s:h("SignColumn",    { "bg": s:theme.ui.panel_bg })
-call s:h("IncSearch",     { "fg": s:theme.bg, "bg": s:theme.syntax.constant })
-call s:h("MatchParen",    { "fg": s:theme.bg, "bg": s:theme.accent })
-call s:h("ModeMsg",       { "fg": s:theme.syntax.string })
-call s:h("MoreMsg",       { "fg": s:theme.syntax.string })
-call s:h("NonText",       { "fg": s:theme.bg })
-call s:h("Pmenu",         { "fg": s:theme.fg, "bg": s:theme.syntax.selection })
-call s:h("PmenuSel",      { "fg": s:theme.fg, "bg": s:theme.syntax.selection, "gui": "reverse", "cterm": "reverse" })
-call s:h("PmenuSbar",     { "fg": s:theme.ui.scrollbar })
-call s:h("PmenuThumb",    { "fg": s:theme.ui.scrollbar })
-call s:h("Question",      { "fg": s:theme.syntax.string })
-call s:h("Search",        { "fg": s:theme.bg, "bg": s:theme.syntax.constant })
-call s:h("SpecialKey",    { "fg": s:theme.syntax.selection })
-call s:h("StatusLine",    { "fg": s:theme.fg, "bg": s:theme.ui.panel_bg })
-call s:h("StatusLineNC",  { "fg": s:theme.fg, "bg": s:theme.ui.panel_bg })
-call s:h("TabLine",       { "fg": s:theme.ui.fg, "bg": s:theme.ui.panel_bg })
-call s:h("TabLineFill",   { "bg": s:theme.syntax.line_hg })
-call s:h("TabLineSel",    { "fg": s:theme.accent, "bg": s:theme.bg })
-call s:h("Title",         { "fg": s:theme.syntax.keyword })
-call s:h("Visual",        { "bg": s:theme.syntax.selection })
-call s:h("WarningMsg",    { "fg": s:theme.syntax.error })
-call s:h("WildMenu",      { "fg": s:theme.bg, "bg": s:theme.syntax.todo })
-
-call s:h("Comment",      { "fg": s:theme.syntax.comment, "gui": "italic", "cterm": "italic" })
-call s:h("Constant",     { "fg": s:theme.syntax.constant })
-call s:h("String",       { "fg": s:theme.syntax.string })
-call s:h("Identifier",   { "fg": s:theme.syntax.tag })
-call s:h("Function",     { "fg": s:theme.syntax.func })
-call s:h("Statement",    { "fg": s:theme.syntax.keyword })
-call s:h("Operator",     { "fg": s:theme.syntax.operator })
-call s:h("PreProc",      { "fg": s:theme.syntax.special })
-call s:h("Type",         { "fg": s:theme.syntax.tag })
-call s:h("Structure",    { "fg": s:theme.syntax.special })
-call s:h("Special",      { "fg": s:theme.syntax.special })
-call s:h("Delimiter",    { "fg": s:theme.fg })
-call s:h("Underlined",   { "fg": s:theme.syntax.tag, "cterm": "underline" })
-call s:h("Error",        { "bg": s:theme.syntax.error })
-call s:h("Todo",         { "fg": s:theme.syntax.todo })
-call s:h("Quote",        { "fg": s:theme.syntax.tag })
-call s:h("qfLineNr",     { "fg": s:theme.syntax.keyword })
+call s:h("Comment",      { "fg": s:ayu.syntax.comment[s:theme], "gui": "italic", "cterm": "italic" })
+call s:h("Constant",     { "fg": s:ayu.syntax.constant[s:theme] })
+call s:h("String",       { "fg": s:ayu.syntax.string[s:theme] })
+call s:h("Identifier",   { "fg": s:ayu.syntax.tag[s:theme] })
+call s:h("Function",     { "fg": s:ayu.syntax.func[s:theme] })
+call s:h("Statement",    { "fg": s:ayu.syntax.keyword[s:theme] })
+call s:h("Operator",     { "fg": s:ayu.syntax.operator[s:theme] })
+call s:h("PreProc",      { "fg": s:ayu.syntax.esSpec[s:theme] })
+call s:h("Type",         { "fg": s:ayu.syntax.tag[s:theme] })
+call s:h("Structure",    { "fg": s:ayu.syntax.esSpec[s:theme] })
+call s:h("Special",      { "fg": s:ayu.syntax.esSpec[s:theme] })
+call s:h("Delimiter",    { "fg": s:ayu.fg[s:theme] })
+call s:h("Underlined",   { "fg": s:ayu.syntax.tag[s:theme], "cterm": "underline" })
+call s:h("Error",        { "bg": s:ayu.syntax.error[s:theme] })
+call s:h("Todo",         { "fg": s:ayu.syntax.supVar[s:theme] })
+call s:h("Quote",        { "fg": s:ayu.syntax.tag[s:theme] })
+call s:h("qfLineNr",     { "fg": s:ayu.syntax.keyword[s:theme] })
 
 hi link cssClassName        Keyword
 hi link cssClassNameDot     cssClassName
@@ -210,7 +177,7 @@ hi link jsThis         Type
 
 hi link jsonBoolean Boolean
 
-call s:h("rubyInstanceVariable", { "fg": s:theme.syntax.todo })
+call s:h("rubyInstanceVariable", { "fg": s:ayu.syntax.supVar[s:theme] })
 hi link rubySymbol                 rubyInstanceVariable
 hi link rubyClass                  Keyword
 hi link rubyInclude                Function

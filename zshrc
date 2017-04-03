@@ -2,6 +2,7 @@
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
 zplug "lib/completion", from:oh-my-zsh
 zplug "plugins/brew", from:oh-my-zsh
 zplug "plugins/bundler", from:oh-my-zsh
