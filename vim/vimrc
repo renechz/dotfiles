@@ -1,10 +1,16 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'janko-m/vim-test'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-bundler'
@@ -78,6 +84,7 @@ set clipboard=unnamed
 set diffopt+=vertical
 set hidden
 set laststatus=2  " Always show the status line
+set noshowmode
 
 " 2 space tabs
 set tabstop=2
@@ -176,12 +183,12 @@ nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 
 " airline
-let g:airline_powerline_fonts = 1
-let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V'}
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_left_alt_sep = '|'
-let g:airline_right_alt_sep = '|'
+" let g:airline_powerline_fonts = 1
+" let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V'}
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_left_alt_sep = '|'
+" let g:airline_right_alt_sep = '|'
 
 " emmet
 imap <c-e> <plug>(emmet-expand-abbr)
