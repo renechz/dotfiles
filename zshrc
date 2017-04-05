@@ -4,15 +4,10 @@ source $ZPLUG_HOME/init.zsh
 
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 zplug "lib/completion", from:oh-my-zsh
-zplug "plugins/brew", from:oh-my-zsh
-zplug "plugins/bundler", from:oh-my-zsh
-zplug "plugins/gem", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
 zplug "plugins/heroku", from:oh-my-zsh
-zplug "plugins/rails", from:oh-my-zsh
-zplug "plugins/ruby", from:oh-my-zsh
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions", from:github
+zplug "zsh-users/zsh-history-substring-search", from:github
 
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
@@ -46,3 +41,6 @@ export FZF_TMUX=1
 
 # Wrap git automatically by adding the following to ~/.zshrc:
 eval "$(hub alias -s)"
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
