@@ -75,7 +75,7 @@ call s:h("CursorLineNr",  { "fg": s:ayu.accent[s:theme], "bg": s:ayu.syntax.line
 call s:h("LineNr",        { "fg": s:ayu.syntax.gutterFg[s:theme] })
 call s:h("Cursor",        { "bg": s:ayu.accent[s:theme] })
 call s:h("CursorIM",      { "bg": s:ayu.accent[s:theme] })
-call s:h("Directory",     { "fg": s:ayu.ui.folder[s:theme] })
+call s:h("Directory",     { "fg": s:ayu.ui.fg[s:theme] })
 call s:h("DiffAdd",       { "fg": s:ayu.syntax.string[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
 call s:h("DiffChange",    { "fg": s:ayu.syntax.tag[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
 call s:h("DiffDelete",    { "fg": s:ayu.syntax.error[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })

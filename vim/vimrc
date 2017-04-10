@@ -43,10 +43,6 @@ call plug#end()
 
 let mapleader = " "
 
-" Use Vim settings, rather than Vi settings.
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
@@ -118,10 +114,6 @@ endif
 set undodir=~/.undo-vim
 set undofile  " Create FILE.un~ files for persistent undo
 
-" Don't use Ex mode, use Q for formatting.
-" Revert with ":unmap Q".
-map Q gq
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
@@ -135,9 +127,9 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Save file with <c-s>
-nmap <c-s> <Esc>:w<CR>
-vmap <c-s> <Esc><c-s>gv
-imap <c-s> <Esc><c-s>
+nnoremap <c-s> <Esc>:w<CR>
+vnoremap <c-s> <Esc><c-s>gv
+inoremap <c-s> <Esc><c-s>
 
 " hide and delete buffer
 nnoremap <c-x><c-u> :bunload<cr>
@@ -150,24 +142,10 @@ nnoremap <leader>= :wincmd =<cr>
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" Strip trailing whitespace
-function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
-
 " ======================================
 " plugins
 " ======================================
+" use ripgrep for grep
 if executable('rg')
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
@@ -183,8 +161,8 @@ nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 
 " airline
-" let g:airline_powerline_fonts = 1
-" let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V'}
+let g:airline_powerline_fonts = 1
+let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V' }
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
 " let g:airline_left_alt_sep = '|'
@@ -215,5 +193,8 @@ nnoremap <silent> <leader>? :History<CR>
 
 " vim-commentary
 nmap cm <Plug>Commentary
+
+" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
