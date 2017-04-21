@@ -128,7 +128,7 @@ hi link cssClassName        Keyword
 hi link cssClassNameDot     cssClassName
 hi link cssKeyFrameSelector Keyword
 hi link cssIdentifier       Keyword
-hi link cssTagName          Keyword
+call s:h("cssTagName",      { "fg": s:ayu.syntax.keyword[s:theme] })
 hi link cssProp             Identifier
 hi link cssIncludeKeyword   Keyword
 hi link cssMediaType        Constant
@@ -140,6 +140,7 @@ hi link gitcommitComment        Comment
 hi link gitcommitBranch         Constant
 hi link gitcommitDiscardedType  Error
 hi link gitcommitDiscardedFile  Error
+hi link gitcommitOverflow       Error
 hi link gitcommitUnmergedFile   Keyword
 hi link gitcommitUnmerged       Tag
 hi link gitcommitSelectedType   Tag
@@ -200,8 +201,12 @@ hi link sassId         cssIdentifier
 hi link sassIdChar     cssIdentifier
 hi link sassInclude    PreProc
 hi link sassMixing     PreProc
+call s:h("scssSelectorName", { "fg": s:ayu.syntax.keyword[s:theme] })
+call s:h("scssMixin", { "fg": s:ayu.syntax.keyword[s:theme] })
 
 hi link vimBracket Function
+
+hi link shVarAssign Keyword
 
 " https://github.com/tpope/vim-fugitive
 hi link diffAdded   DiffAdd
