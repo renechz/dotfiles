@@ -15,7 +15,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
@@ -37,6 +36,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'maralla/completor.vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -66,6 +66,7 @@ set noshowmode
 set nowritebackup
 set noswapfile
 set number
+set relativenumber
 set undolevels=1000
 set ruler                       " show the cursor position all the time
 set scrolloff=3                 " Show a few lines of context around the cursor.
@@ -86,13 +87,12 @@ endif
 
 set termguicolors     " Enable true color support
 set background=dark
-colorscheme ayu
+colorscheme tiki
 
 " Enable italics
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 set t_ut=
-
 
 " Persistent undo
 let undodir = expand('~/.undo-vim')
@@ -151,10 +151,6 @@ nmap <silent> <leader>tv :TestVisit<CR>
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V' }
-" let g:airline_left_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_left_alt_sep = '|'
-" let g:airline_right_alt_sep = '|'
 
 " emmet
 imap <c-e> <plug>(emmet-expand-abbr)

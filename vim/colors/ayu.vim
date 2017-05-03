@@ -67,7 +67,44 @@ else
   set background=light
 endif
 
-call s:h("Normal",        { "fg": s:ayu.fg[s:theme], "bg": s:ayu.bg[s:theme] })
+let s:fg0 = { "mirage": "#e4e3dc", "light": "#515a65" }
+let s:fg1 = s:ayu.fg[s:theme]
+let s:fg2 = { "mirage": "#cecbc0", "light": "#677481" }
+let s:fg3 = { "mirage": "#c3c0b1", "light": "#73808f" }
+let s:fg4 = { "mirage": "#b8b4a3", "light": "#818d9a" }
+
+let s:bg0 = s:ayu.bg[s:theme]
+let s:bg1 = { "mirage": "#2b3342", "light": "#ededed" }
+let s:bg2 = { "mirage": "#353f52", "light": "#e1e1e1" }
+let s:bg3 = { "mirage": "#3f4b61", "light": "#d4d4d4" }
+let s:bg4 = { "mirage": "#495770", "light": "#c7c7c7" }
+
+call s:h("Normal", { "fg": s:ayu.fg[s:theme], "bg": s:ayu.bg[s:theme] })
+
+call s:h("AyuFg0", { "fg": s:fg0[s:theme] })
+call s:h("AyuFg1", { "fg": s:fg1 })
+call s:h("AyuFg2", { "fg": s:fg2[s:theme] })
+call s:h("AyuFg3", { "fg": s:fg3[s:theme] })
+call s:h("AyuFg4", { "fg": s:fg4[s:theme] })
+call s:h("AyuBg0", { "fg": s:bg0 })
+call s:h("AyuBg1", { "fg": s:bg1[s:theme] })
+call s:h("AyuBg2", { "fg": s:bg2[s:theme] })
+call s:h("AyuBg3", { "fg": s:bg3[s:theme] })
+call s:h("AyuBg4", { "fg": s:bg4[s:theme] })
+call s:h("AyuGray", { "fg": s:ayu.ui.fg[s:theme] })
+
+call s:h("AyuRed",        { "fg": s:ayu.syntax.supVar[s:theme] })
+call s:h("AyuGreen",      { "fg": s:ayu.syntax.string[s:theme] })
+call s:h("AyuYellow",     { "fg": s:ayu.syntax.func[s:theme] })
+call s:h("AyuBlue",       { "fg": s:ayu.syntax.tag[s:theme] })
+call s:h("AyuPurple",     { "fg": s:ayu.syntax.constant[s:theme] })
+call s:h("AyuAqua",       { "fg": s:ayu.syntax.regexp[s:theme] })
+call s:h("AyuOrange",     { "fg": s:ayu.syntax.keyword[s:theme] })
+call s:h("AyuOrangeBold", { "fg": s:ayu.syntax.keyword[s:theme], "gui": "bold", "cterm": "bold" })
+call s:h("AyuAquaBold",   { "fg": s:ayu.syntax.regexp[s:theme], "gui": "bold", "cterm": "bold" })
+call s:h("AyuGreenBold",  { "fg": s:ayu.syntax.string[s:theme], "gui": "bold", "cterm": "bold" })
+call s:h("AyuYellowBold", { "fg": s:ayu.syntax.func[s:theme], "gui": "bold", "cterm": "bold" })
+
 call s:h("ColorColumn",   { "bg": s:ayu.syntax.lineHg[s:theme] })
 call s:h("CursorColumn",  { "bg": s:ayu.syntax.lineHg[s:theme] })
 call s:h("CursorLine",    { "bg": s:ayu.syntax.lineHg[s:theme] })
@@ -75,142 +112,277 @@ call s:h("CursorLineNr",  { "fg": s:ayu.accent[s:theme], "bg": s:ayu.syntax.line
 call s:h("LineNr",        { "fg": s:ayu.syntax.gutterFg[s:theme] })
 call s:h("Cursor",        { "bg": s:ayu.accent[s:theme] })
 call s:h("CursorIM",      { "bg": s:ayu.accent[s:theme] })
-call s:h("Directory",     { "fg": s:ayu.ui.fg[s:theme] })
 call s:h("DiffAdd",       { "fg": s:ayu.syntax.string[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
 call s:h("DiffChange",    { "fg": s:ayu.syntax.tag[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
 call s:h("DiffDelete",    { "fg": s:ayu.syntax.error[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
-call s:h("DiffText",      { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
-call s:h("ErrorMsg",      { "fg": s:ayu.fg[s:theme], "bg": s:ayu.syntax.error[s:theme] })
+call s:h("DiffText",      { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme], "gui": "bold", "cterm": "bold" })
+call s:h("ErrorMsg",      { "fg": s:ayu.bg[s:theme], "bg": s:ayu.syntax.error[s:theme] })
 call s:h("VertSplit",     { "fg": s:ayu.ui.gridDivider[s:theme] })
 call s:h("Folded",        { "fg": s:ayu.ui.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
 call s:h("FoldColumn",    { "bg": s:ayu.ui.panel.bg[s:theme] })
 call s:h("SignColumn",    { "bg": s:ayu.ui.panel.bg[s:theme] })
 call s:h("IncSearch",     { "fg": s:ayu.bg[s:theme], "bg": s:ayu.syntax.constant[s:theme] })
 call s:h("MatchParen",    { "fg": s:ayu.bg[s:theme], "bg": s:ayu.accent[s:theme] })
-call s:h("ModeMsg",       { "fg": s:ayu.syntax.string[s:theme] })
-call s:h("MoreMsg",       { "fg": s:ayu.syntax.string[s:theme] })
 call s:h("NonText",       { "fg": s:ayu.bg[s:theme] })
 call s:h("Pmenu",         { "fg": s:ayu.fg[s:theme], "bg": s:ayu.syntax.selection[s:theme] })
 call s:h("PmenuSel",      { "fg": s:ayu.fg[s:theme], "bg": s:ayu.syntax.selection[s:theme], "gui": "reverse", "cterm": "reverse" })
 call s:h("PmenuSbar",     { "fg": s:ayu.ui.scrollbar[s:theme] })
 call s:h("PmenuThumb",    { "fg": s:ayu.ui.scrollbar[s:theme] })
-call s:h("Question",      { "fg": s:ayu.syntax.string[s:theme] })
 call s:h("Search",        { "fg": s:ayu.bg[s:theme], "bg": s:ayu.syntax.constant[s:theme] })
-call s:h("SpecialKey",    { "fg": s:ayu.syntax.selection[s:theme] })
-call s:h("StatusLine",    { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
-call s:h("StatusLineNC",  { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
+call s:h("StatusLine",    { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.fg[s:theme] })
+call s:h("StatusLineNC",  { "fg": s:ayu.fg[s:theme], "bg": s:ayu.ui.fg[s:theme] })
 call s:h("TabLine",       { "fg": s:ayu.ui.fg[s:theme], "bg": s:ayu.ui.panel.bg[s:theme] })
 call s:h("TabLineFill",   { "bg": s:ayu.syntax.lineHg[s:theme] })
 call s:h("TabLineSel",    { "fg": s:ayu.accent[s:theme], "bg": s:ayu.bg[s:theme] })
-call s:h("Title",         { "fg": s:ayu.syntax.keyword[s:theme] })
 call s:h("Visual",        { "bg": s:ayu.syntax.selection[s:theme] })
-call s:h("WarningMsg",    { "fg": s:ayu.syntax.error[s:theme] })
 call s:h("WildMenu",      { "fg": s:ayu.bg[s:theme], "bg": s:ayu.syntax.supVar[s:theme] })
-call s:h("Comment",       { "fg": s:ayu.syntax.comment[s:theme], "gui": "italic", "cterm": "italic" })
-call s:h("Constant",      { "fg": s:ayu.syntax.constant[s:theme] })
-call s:h("String",        { "fg": s:ayu.syntax.string[s:theme] })
-call s:h("Identifier",    { "fg": s:ayu.syntax.tag[s:theme] })
-call s:h("Function",      { "fg": s:ayu.syntax.func[s:theme] })
-call s:h("Statement",     { "fg": s:ayu.syntax.keyword[s:theme] })
-call s:h("Operator",      { "fg": s:ayu.syntax.operator[s:theme] })
-call s:h("PreProc",       { "fg": s:ayu.syntax.esSpec[s:theme] })
-call s:h("Type",          { "fg": s:ayu.syntax.tag[s:theme] })
-call s:h("Structure",     { "fg": s:ayu.syntax.esSpec[s:theme] })
-call s:h("Special",       { "fg": s:ayu.syntax.esSpec[s:theme] })
-call s:h("Delimiter",     { "fg": s:ayu.fg[s:theme] })
-call s:h("Underlined",    { "fg": s:ayu.syntax.tag[s:theme], "cterm": "underline" })
-call s:h("Error",         { "bg": s:ayu.syntax.error[s:theme] })
-call s:h("Todo",          { "fg": s:ayu.syntax.supVar[s:theme] })
-call s:h("Quote",         { "fg": s:ayu.syntax.tag[s:theme] })
-call s:h("qfLineNr",      { "fg": s:ayu.syntax.keyword[s:theme] })
 
-hi link cssClassName        Keyword
-hi link cssClassNameDot     cssClassName
-hi link cssKeyFrameSelector Keyword
-hi link cssIdentifier       Keyword
-call s:h("cssTagName",      { "fg": s:ayu.syntax.keyword[s:theme] })
-hi link cssProp             Identifier
-hi link cssIncludeKeyword   Keyword
-hi link cssMediaType        Constant
-hi link cssMediaProp        Type
-hi link cssTagName          Identifier
-hi link cssBraces           Normal
+hi! link NonText    AyuBg2
+hi! link SpecialKey AyuBg2
+hi! link Directory  AyuGreenBold
+hi! link Question   AyuOrangeBold
+hi! link MoreMsg    AyuYellowBold
+hi! link ModeMsg    AyuYellowBold
+hi! link WarningMsg AyuRedBold
 
-hi link gitcommitComment        Comment
-hi link gitcommitBranch         Constant
-hi link gitcommitDiscardedType  Error
-hi link gitcommitDiscardedFile  Error
-hi link gitcommitOverflow       Error
-hi link gitcommitUnmergedFile   Keyword
-hi link gitcommitUnmerged       Tag
-hi link gitcommitSelectedType   Tag
-hi link gitcommitUntrackedFile  Tag
-hi link gitcommitSelectedFile   Tag
-hi link gitcommitNoBranch       gitcommitBranch
-hi link gitcommitUntracked      gitcommitComment
-hi link gitcommitDiscarded      gitcommitComment
-hi link gitcommitSelected       gitcommitComment
-hi link gitcommitDiscardedArrow gitcommitDiscardedFile
-hi link gitcommitSelectedArrow  gitcommitSelectedFile
-hi link gitcommitUnmergedArrow  gitcommitUnmergedFile
+call s:h("Comment", { "fg": s:ayu.syntax.comment[s:theme], "gui": "italic", "cterm": "italic" })
+call s:h("Error",   { "fg": s:ayu.syntax.error[s:theme], "bg": s:ayu.bg[s:theme], "gui": "inverse", "cterm": "inverse" })
 
-hi link htmlArg            Keyword
-hi link htmlH1             Title
-hi link htmlEndTag         Type
-hi link htmlSpecialTagName Type
-hi link htmlTag            Type
-hi link htmlTagName        Type
+hi! link Operator     AyuFg1
+hi! link String       AyuGreen
+hi! link Title        AyuGreenBold
+hi! link Function     AyuGreenBold
+hi! link Statement    AyuRed
+hi! link Conditional  AyuRed
+hi! link Repeat       AyuRed
+hi! link Label        AyuRed
+hi! link Exception    AyuRed
+hi! link Keyword      AyuRed
+hi! link Identifier   AyuBlue
+hi! link PreProc      AyuAqua
+hi! link Include      AyuAqua
+hi! link Define       AyuAqua
+hi! link Macro        AyuAqua
+hi! link PreCondit    AyuAqua
+hi! link Structure    AyuAqua
+hi! link Constant     AyuPurple
+hi! link Character    AyuPurple
+hi! link Boolean      AyuPurple
+hi! link Number       AyuPurple
+hi! link Float        AyuPurple
+hi! link Type         AyuYellow
+hi! link Typedef      AyuYellow
+hi! link Special      AyuOrange
+hi! link StorageClass AyuOrange
 
-hi link jsStorageClass Keyword
-hi link jsFunction     Keyword
-hi link jsVariableDef  Function
-hi link jsOperator     Keyword
-hi link jsNull         Boolean
-hi link jsGlobalObject Type
-hi link jsObjectProp   Function
-hi link jsUndefined    Constant
-hi link jsFuncArgs     Constant
-hi link jsArguments    Type
-hi link jsThis         Type
+hi! link cssVendor               AyuFg1
+hi! link cssBraces               AyuBlue
+hi! link cssColor                AyuBlue
+hi! link cssSelectorOp           AyuBlue
+hi! link cssSelectorOp2          AyuBlue
+hi! link cssFunctionName         AyuYellow
+hi! link cssUIProp               AyuYellow
+hi! link cssPositioningProp      AyuYellow
+hi! link cssIdentifier           AyuOrange
+hi! link cssClassName            AyuGreen
+hi! link cssImportant            AyuGreen
+hi! link cssTextProp             AyuAqua
+hi! link cssAnimationProp        AyuAqua
+hi! link cssTransformProp        AyuAqua
+hi! link cssTransitionProp       AyuAqua
+hi! link cssPrintProp            AyuAqua
+hi! link cssBoxProp              AyuAqua
+hi! link cssFontDescriptorProp   AyuAqua
+hi! link cssFlexibleBoxProp      AyuAqua
+hi! link cssBorderOutlineProp    AyuAqua
+hi! link cssBackgroundProp       AyuAqua
+hi! link cssMarginProp           AyuAqua
+hi! link cssListProp             AyuAqua
+hi! link cssTableProp            AyuAqua
+hi! link cssFontProp             AyuAqua
+hi! link cssPaddingProp          AyuAqua
+hi! link cssDimensionProp        AyuAqua
+hi! link cssRenderProp           AyuAqua
+hi! link cssColorProp            AyuAqua
+hi! link cssGeneratedContentProp AyuAqua
 
-hi link jsonBoolean Boolean
+hi! link gitcommitComment        Comment
+hi! link gitcommitBranch         Constant
+hi! link gitcommitDiscardedType  Error
+hi! link gitcommitDiscardedFile  Error
+hi! link gitcommitOverflow       Error
+hi! link gitcommitUnmergedFile   Keyword
+hi! link gitcommitUnmerged       Tag
+hi! link gitcommitSelectedType   Tag
+hi! link gitcommitUntrackedFile  Tag
+hi! link gitcommitSelectedFile   Tag
+hi! link gitcommitNoBranch       gitcommitBranch
+hi! link gitcommitUntracked      gitcommitComment
+hi! link gitcommitDiscarded      gitcommitComment
+hi! link gitcommitSelected       gitcommitComment
+hi! link gitcommitDiscardedArrow gitcommitDiscardedFile
+hi! link gitcommitSelectedArrow  gitcommitSelectedFile
+hi! link gitcommitUnmergedArrow  gitcommitUnmergedFile
+
+hi! link htmlTagN           AyuFg1
+hi! link htmlTag            AyuBlue
+hi! link htmlEndTag         AyuBlue
+hi! link htmlArg            AyuAqua
+hi! link htmlTagName        AyuAquaBold
+hi! link htmlSpecialTagName AyaAquaBold
+hi! link htmlScriptTag      AyuPurple
+hi! link htmlSpecialChar    AyuOrange
+
+hi! link xmlTag               AyuBlue
+hi! link xmlEndTag            AyuBlue
+hi! link xmlTagName           AyuBlue
+hi! link xmlEqual             AyuBlue
+hi! link xmlAttrib            AyuAqua
+hi! link docbkKeyword         AyuAquaBold
+hi! link xmlDocTypeDecl       AyuGray
+hi! link xmlCdataStart        AyuGray
+hi! link dtdFunction          AyuGray
+hi! link xmlProcessingDelim   AyuGray
+hi! link dtdParamEntityPunct  AyuGray
+hi! link dtdParamEntityDPunct AyuGray
+hi! link xmlAttribPunct       AyuGray
+hi! link xmlDocTypeKeyword    AyuPurple
+hi! link xmlCdataCdata        AyuPurple
+hi! link dtdTagName           AyuPurple
+hi! link xmlEntity            AyuOrange
+hi! link xmlEntityPunct       AyuOrange
+
+hi! link javaScriptBraces               AyuFg1
+hi! link javaScriptFunction             AyuAqua
+hi! link javaScriptIdentifier           AyuRed
+hi! link javaScriptMember               AyuBlue
+hi! link javaScriptNumber               AyuPurple
+hi! link javaScriptNull                 AyuPurple
+hi! link javaScriptParens               AyuFg3
+hi! link javascriptImport               AyuAqua
+hi! link javascriptExport               AyuAqua
+hi! link javascriptClassKeyword         AyuAqua
+hi! link javascriptClassExtends         AyuAqua
+hi! link javascriptDefault              AyuAqua
+hi! link javascriptClassName            AyuYellow
+hi! link javascriptClassSuperName       AyuYellow
+hi! link javascriptGlobal               AyuYellow
+hi! link javascriptEndColons            AyuFg1
+hi! link javascriptFuncArg              AyuFg1
+hi! link javascriptGlobalMethod         AyuFg1
+hi! link javascriptNodeGlobal           AyuFg1
+hi! link javascriptVariable             AyuRed
+hi! link javascriptIdentifier           AyuOrange
+hi! link javascriptClassSuper           AyuOrange
+hi! link javascriptFuncKeyword          AyuAqua
+hi! link javascriptAsyncFunc            AyuAqua
+hi! link javascriptClassStatic          AyuOrange
+hi! link javascriptOperator             AyuRed
+hi! link javascriptForOperator          AyuRed
+hi! link javascriptYield                AyuRed
+hi! link javascriptExceptions           AyuRed
+hi! link javascriptMessage              AyuRed
+hi! link javascriptTemplateSB           AyuAqua
+hi! link javascriptTemplateSubstitution AyuFg1
+hi! link javascriptLabel                AyuFg1
+hi! link javascriptObjectLabel          AyuFg1
+hi! link javascriptPropertyName         AyuFg1
+hi! link javascriptLogicSymbols         AyuFg1
+hi! link javascriptArrowFunc            AyuFg1
+hi! link javascriptDocParamName         AyuFg4
+hi! link javascriptDocTags              AyuFg4
+hi! link javascriptDocNotation          AyuFg4
+hi! link javascriptDocParamType         AyuFg4
+hi! link javascriptDocNamedParamType    AyuFg4
+
+hi! link typeScriptReserved     AyuAqua
+hi! link typeScriptLabel        AyuAqua
+hi! link typeScriptIdentifier   AyuOrange
+hi! link typeScriptBraces       AyuFg1
+hi! link typeScriptEndColons    AyuFg1
+hi! link typeScriptDOMObjects   AyuFg1
+hi! link typeScriptAjaxMethods  AyuFg1
+hi! link typeScriptLogicSymbols AyuFg1
+hi! link typeScriptDocSeeTag    Comment
+hi! link typeScriptDocParam     Comment
+
+hi! link coffeeExtendedOp AyuFg3
+hi! link coffeeSpecialOp  AyuFg3
+hi! link coffeeParen      AyuFg3
+hi! link coffeeCurly      AyuOrange
+hi! link coffeeBracket    AyuOrange
+
+hi! link jsonKeyword AyuGreen
+hi! link jsonQuote   AyuGreen
+hi! link jsonBraces  AyuFg1
+hi! link jsonString  AyuFg1
 
 call s:h("rubyInstanceVariable", { "fg": s:ayu.syntax.supVar[s:theme] })
-hi link rubySymbol                 rubyInstanceVariable
-hi link rubyClass                  Keyword
-hi link rubyInclude                Function
-hi link rubyKeywordAsMethod        Function
-hi link rubyOperator               Keyword
-hi link rubyStringDelimiter        String
-hi link rubyInterpolationDelimiter Type
-hi link rubyConstant               Type
+hi! link rubyStringDelimiter        AyuGreen
+hi! link rubyInterpolationDelimiter AyuAqua
 
-hi link sassFor        Type
-hi link sassVariable   Constant
-hi link sassMedia      Type
-hi link sassAmpersand  Keyword
-hi link sassDefinition Type
-hi link sassMediaQuery Type
-hi link sassMixinName  Type
-hi link sassMixin      Type
-hi link sassControl    Keyword
-hi link sassExtend     Constant
-hi link sassClass      cssClassName
-hi link sassClassChar  cssClassName
-hi link sassId         cssIdentifier
-hi link sassIdChar     cssIdentifier
-hi link sassInclude    PreProc
-hi link sassMixing     PreProc
-call s:h("scssSelectorName", { "fg": s:ayu.syntax.keyword[s:theme] })
-call s:h("scssMixin", { "fg": s:ayu.syntax.keyword[s:theme] })
+hi! link elixirDocString              Comment
+hi! link elixirStringDelimiter        AyuGreen
+hi! link elixirInterpolationDelimiter AyuAqua
+hi! link elixirModuleDeclaration      AyuYellow
 
-hi link vimBracket Function
+hi! link markdownH1                AyuGreenBold
+hi! link markdownH2                AyuGreenBold
+hi! link markdownH3                AyuYellowBold
+hi! link markdownH4                AyuYellowBold
+hi! link markdownH5                AyuYellow
+hi! link markdownH6                AyuYellow
+hi! link markdownCode              AyuAqua
+hi! link markdownCodeBlock         AyuAqua
+hi! link markdownCodeDelimiter     AyuAqua
+hi! link markdownBlockquote        AyuGray
+hi! link markdownListMarker        AyuGray
+hi! link markdownOrderedListMarker AyuGray
+hi! link markdownRule              AyuGray
+hi! link markdownHeadingRule       AyuGray
+hi! link markdownUrlDelimiter      AyuFg3
+hi! link markdownLinkDelimiter     AyuFg3
+hi! link markdownLinkTextDelimiter AyuFg3
+hi! link markdownHeadingDelimiter  AyuOrange
+hi! link markdownUrl               AyuPurple
+hi! link markdownUrlTitleDelimiter AyuGreen
+hi! link markdownIdDeclaration     markdownLinkText
 
-hi link shVarAssign Keyword
+" hi! link sassVariable   Constant
+" hi! link sassExtend     Constant
+" hi! link sassAmpersand  Keyword
+" hi! link sassControl    Keyword
+" hi! link sassInclude    Keyword
+" hi! link sassMixing     Keyword
+" hi! link scssImport     Keyword
+" hi! link sassFor        Type
+" hi! link sassMedia      Type
+" hi! link sassDefinition Type
+" hi! link sassMediaQuery Type
+" hi! link sassMixinName  Type
+" hi! link sassMixin      Type
+" hi! link sassClass      cssClassName
+" hi! link sassClassChar  cssClassName
+" hi! link sassId         cssIdentifier
+" hi! link sassIdChar     cssIdentifier
+
+" hi! link scssSelectorName cssClassName
+" hi! link scssMixin        sassMixin
+
+hi! link vimBracket   AyuYellow
+hi! link vimNotation  AyuOrange
+hi! link vimBracket   AyuOrange
+hi! link vimMapModKey AyuOrange
+hi! link vimFuncSID   AyuFg3
+hi! link vimSetSep    AyuFg3
+hi! link vimSep       AyuFg3
+hi! link vimContinue  AyuFg3
+
+" hi! link shVarAssign Keyword
 
 " https://github.com/tpope/vim-fugitive
-hi link diffAdded   DiffAdd
-hi link diffRemoved DiffDelete
+hi! link diffAdded   DiffAdd
+hi! link diffRemoved DiffDelete
 
 " https://github.com/w0rp/ale
 call s:h("ALEWarningSign", {})
