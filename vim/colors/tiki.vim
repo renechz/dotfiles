@@ -19,29 +19,33 @@ function! s:h(group, style)
     \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg    : "NONE")
     \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg    : "NONE")
     \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp    : "NONE")
-    \ "gui="     (has_key(a:style, "gui")   ? a:style.gui   : "NONE")
-    \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm : "NONE")
+    \ "gui="     (has_key(a:style, "style") ? a:style.style : "NONE")
+    \ "cterm="   (has_key(a:style, "style") ? a:style.style : "NONE")
 endfunction
 
-let s:tiki  = {
-\   "bg0":    { "dark": "#161822", "light": "#c7c9d1" },
-\   "bg1":    { "dark": "#202331", "light": "#b9bcc6" },
-\   "bg2":    { "dark": "#2a2e41", "light": "#abaeba" },
-\   "bg3":    { "dark": "#343950", "light": "#9da1af" },
-\   "bg4":    { "dark": "#3e445f", "light": "#8f94a4" },
-\   "fg0":    { "dark": "#d5d7dd", "light": "#0c0d13" },
-\   "fg1":    { "dark": "#c7c9d1", "light": "#161822" },
-\   "fg2":    { "dark": "#b9bcc6", "light": "#202331" },
-\   "fg3":    { "dark": "#abaeba", "light": "#2a2e41" },
-\   "fg4":    { "dark": "#9da1af", "light": "#343950" },
-\   "gray":   { "dark": "#5c6773", "light": "#737888" },
-\   "red":    { "dark": "#EC5f67", "light": "#c0392b" },
-\   "green":  { "dark": "#afe269", "light": "#27ae60" },
-\   "yellow": { "dark": "#FAC863", "light": "#e67e22" },
-\   "blue":   { "dark": "#80d4ff", "light": "#2980b9" },
-\   "purple": { "dark": "#a093c8", "light": "#8e44ad" },
-\   "aqua":   { "dark": "#95e6bc", "light": "#16a085" },
-\   "orange": { "dark": "#F99157", "light": "#d35400" },
+let s:tiki = {
+\   "bg0":       { "dark": "#1f222f", "light": "#E8EAF6" },
+\   "bg1":       { "dark": "#292d3e", "light": "#d9dced" },
+\   "bg2":       { "dark": "#33384d", "light": "#c7cde5" },
+\   "bg3":       { "dark": "#3d435d", "light": "#b6bddc" },
+\   "bg4":       { "dark": "#474e6c", "light": "#a5add4" },
+\   "fg0":       { "dark": "#fbfcfd", "light": "#15171f" },
+\   "fg1":       { "dark": "#eaecf5", "light": "#1f222e" },
+\   "fg2":       { "dark": "#d9dcec", "light": "#292d3d" },
+\   "fg3":       { "dark": "#c8cce4", "light": "#34394c" },
+\   "fg4":       { "dark": "#b7bcdc", "light": "#3e445c" },
+\   "gray":      { "dark": "#676e95", "light": "#a8b0d5" },
+\   "red":       { "dark": "#ff5370", "light": "#e53935" },
+\   "pink":      { "dark": "#FF80AB", "light": "#ff5370" },
+\   "orange":    { "dark": "#f78c6c", "light": "#f76d47" },
+\   "yellow":    { "dark": "#ffcb6b", "light": "#FF6F00" },
+\   "green":     { "dark": "#c3e88d", "light": "#91b859" },
+\   "blue_pale": { "dark": "#b2ccd6", "light": "#8796b0" },
+\   "aqua":      { "dark": "#89ddff", "light": "#39adb5" },
+\   "blue":      { "dark": "#82aaff", "light": "#6182b8" },
+\   "purple":    { "dark": "#c792ea", "light": "#7c4dff" },
+\   "violet":    { "dark": "#bb80b3", "light": "#945eb8" },
+\   "brown":     { "dark": "#ab7967", "light": "#ab7967" },
 \ }
 
 if s:is_dark
@@ -54,327 +58,212 @@ endif
 
 call s:h("Normal", { "fg": s:tiki.fg1[s:theme], "bg": s:tiki.bg0[s:theme] })
 
-call s:h("TikiFg0",        { "fg": s:tiki.fg0[s:theme] })
-call s:h("TikiFg1",        { "fg": s:tiki.fg1[s:theme] })
-call s:h("TikiFg2",        { "fg": s:tiki.fg2[s:theme] })
-call s:h("TikiFg3",        { "fg": s:tiki.fg3[s:theme] })
-call s:h("TikiFg4",        { "fg": s:tiki.fg4[s:theme] })
-call s:h("TikiBg0",        { "fg": s:tiki.bg0[s:theme] })
-call s:h("TikiBg1",        { "fg": s:tiki.bg1[s:theme] })
-call s:h("TikiBg2",        { "fg": s:tiki.bg2[s:theme] })
-call s:h("TikiBg3",        { "fg": s:tiki.bg3[s:theme] })
-call s:h("TikiBg4",        { "fg": s:tiki.bg4[s:theme] })
-call s:h("TikiGray",       { "fg": s:tiki.gray[s:theme] })
-call s:h("TikiRed",        { "fg": s:tiki.red[s:theme] })
-call s:h("TikiGreen",      { "fg": s:tiki.green[s:theme] })
-call s:h("TikiYellow",     { "fg": s:tiki.yellow[s:theme] })
-call s:h("TikiBlue",       { "fg": s:tiki.blue[s:theme] })
-call s:h("TikiPurple",     { "fg": s:tiki.purple[s:theme] })
-call s:h("TikiAqua",       { "fg": s:tiki.aqua[s:theme] })
-call s:h("TikiOrange",     { "fg": s:tiki.orange[s:theme] })
-call s:h("TikiOrangeBold", { "fg": s:tiki.orange[s:theme], "gui": "bold", "cterm": "bold" })
-call s:h("TikiAquaBold",   { "fg": s:tiki.aqua[s:theme],   "gui": "bold", "cterm": "bold" })
-call s:h("TikiGreenBold",  { "fg": s:tiki.green[s:theme],  "gui": "bold", "cterm": "bold" })
-call s:h("TikiYellowBold", { "fg": s:tiki.yellow[s:theme], "gui": "bold", "cterm": "bold" })
+call s:h("TikiFg0",           { "fg": s:tiki.fg0[s:theme] })
+call s:h("TikiFg1",           { "fg": s:tiki.fg1[s:theme] })
+call s:h("TikiFg2",           { "fg": s:tiki.fg2[s:theme] })
+call s:h("TikiFg3",           { "fg": s:tiki.fg3[s:theme] })
+call s:h("TikiFg4",           { "fg": s:tiki.fg4[s:theme] })
+call s:h("TikiBg0",           { "fg": s:tiki.bg0[s:theme] })
+call s:h("TikiBg1",           { "fg": s:tiki.bg1[s:theme] })
+call s:h("TikiBg2",           { "fg": s:tiki.bg2[s:theme] })
+call s:h("TikiBg3",           { "fg": s:tiki.bg3[s:theme] })
+call s:h("TikiBg4",           { "fg": s:tiki.bg4[s:theme] })
+call s:h("TikiGray",          { "fg": s:tiki.gray[s:theme] })
+call s:h("TikiRed",           { "fg": s:tiki.red[s:theme] })
+call s:h("TikiPink",          { "fg": s:tiki.pink[s:theme] })
+call s:h("TikiOrange",        { "fg": s:tiki.orange[s:theme] })
+call s:h("TikiYellow",        { "fg": s:tiki.yellow[s:theme] })
+call s:h("TikiGreen",         { "fg": s:tiki.green[s:theme] })
+call s:h("TikiBluePale",      { "fg": s:tiki.blue_pale[s:theme] })
+call s:h("TikiAqua",          { "fg": s:tiki.aqua[s:theme] })
+call s:h("TikiBlue",          { "fg": s:tiki.blue[s:theme] })
+call s:h("TikiPurple",        { "fg": s:tiki.purple[s:theme] })
+call s:h("TikiViolet",        { "fg": s:tiki.violet[s:theme] })
+call s:h("TikiBrown",         { "fg": s:tiki.brown[s:theme] })
+call s:h("TikiNone",          {})
+call s:h("TikiOrangeBold",    { "fg": s:tiki.orange[s:theme], "style": "bold" })
+call s:h("TikiAquaBold",      { "fg": s:tiki.aqua[s:theme],   "style": "bold" })
+call s:h("TikiGreenBold",     { "fg": s:tiki.green[s:theme],  "style": "bold" })
+call s:h("TikiYellowBold",    { "fg": s:tiki.yellow[s:theme], "style": "bold" })
+call s:h("TikiFg1Bold",       { "fg": s:tiki.fg1[s:theme],    "style": "bold" })
+call s:h("TikiAquaItalic",    { "fg": s:tiki.aqua[s:theme],   "style": "italic" })
+call s:h("TikiOrangeItalic",  { "fg": s:tiki.orange[s:theme], "style": "italic" })
+call s:h("TikiPinkUnderline", { "fg": s:tiki.pink[s:theme],   "style": "underline" })
 
-call s:h("CursorLine", { "bg": s:tiki.bg1[s:theme] })
-hi! link CursorColumn CursorLine
-
-call s:h("TabLineFill", { "bg": s:tiki.bg4[s:theme] })
-call s:h("TabLineSel",  { "bg": s:tiki.bg4[s:theme], "gui": "bold", "cterm": "bold" })
-hi! link TabLine TabLineFill
-
-call s:h("MatchParen",   { "bg": s:tiki.bg3[s:theme], "gui": "bold", "cterm": "bold" })
 call s:h("ColorColumn",  { "bg": s:tiki.bg1[s:theme] })
-call s:h("Conceal",      { "bg": s:tiki.blue[s:theme] })
-call s:h("CursorLineNr", { "fg": s:tiki.yellow[s:theme], "bg": s:tiki.bg1[s:theme] })
+call s:h("CursorLine",   { "bg": s:tiki.bg1[s:theme] })
+call s:h("CursorColumn", { "bg": s:tiki.bg1[s:theme] })
 
-hi! link NonText    TikiBg2
-hi! link SpecialKey TikiBg2
+call s:h("Visual",       { "bg": s:tiki.bg4[s:theme] })
+call s:h("VisualNOS",    { "bg": s:tiki.bg4[s:theme] })
+call s:h("IncSearch",    { "fg": s:tiki.bg0[s:theme],  "bg": s:tiki.orange[s:theme] })
+call s:h("Search",       { "fg": s:tiki.bg0[s:theme],  "bg": s:tiki.green[s:theme] })
+call s:h("WildMenu",     { "fg": s:tiki.bg4[s:theme],  "bg": s:tiki.aqua[s:theme] })
+call s:h("StatusLine",   { "fg": s:tiki.aqua[s:theme], "bg": s:tiki.bg4[s:theme] })
+call s:h("StatusLineNC", { "fg": s:tiki.bg2[s:theme],  "bg": s:tiki.fg4[s:theme], "style": "bold,inverse" })
 
-call s:h("Visual", { "bg": s:tiki.bg3[s:theme] })
-hi! link VisualNOS Visual
+call s:h("Pmenu",        { "fg": s:tiki.fg1[s:theme],  "bg": s:tiki.bg1[s:theme] })
+call s:h("PmenuSbar",    { "fg": s:tiki.bg3[s:theme],  "bg": s:tiki.bg3[s:theme] })
+call s:h("PmenuSel",     { "fg": s:tiki.bg1[s:theme],  "bg": s:tiki.aqua[s:theme] })
+call s:h("PmenuThumb",   { "fg": s:tiki.aqua[s:theme], "bg": s:tiki.aqua[s:theme] })
 
-call s:h("Search",    { "fg": s:tiki.yellow[s:theme], "bg": s:tiki.bg0[s:theme] })
-call s:h("IncSearch", { "fg": s:tiki.orange[s:theme], "bg": s:tiki.bg0[s:theme], "gui": "inverse", "cterm": "inverse" })
+call s:h("DiffAdd",      { "fg": s:tiki.fg1[s:theme], "bg": s:tiki.green[s:theme], "style": "bold" })
+call s:h("DiffChange",   { "fg": s:tiki.fg1[s:theme], "bg": s:tiki.blue_pale[s:theme] })
+call s:h("DiffDelete",   { "fg": s:tiki.red[s:theme] })
+call s:h("DiffText",     { "fg": s:tiki.fg1[s:theme], "bg": s:tiki.blue[s:theme], "style": "bold" })
+call s:h("ErrorMsg",     { "fg": s:tiki.fg0[s:theme], "bg": s:tiki.red[s:theme] })
 
-call s:h("Underlined", { "fg": s:tiki.blue[s:theme], "gui": "underline", "cterm": "underline" })
+hi! link Error          TikiPink
+hi! link WarningMsg     ErrorMsg
+hi! link SpellBad       TikiRed
+hi! link SpellCap       TikiRed
+hi! link Todo           TikiRed
+hi! link MatchParen     TikiPinkUnderline
+hi! link Directory      TikiPurple
+hi! link Folded         TikiAqua
+hi! link FoldColumn     TikiAqua
+hi! link Question       TikiAqua
+hi! link MoreMsg        TikiAqua
+hi! link ModeMsg        TikiAqua
+hi! link LineNr         TikiBg4
+hi! link VertSplit      TikiBg4
+hi! link EndOfBuffer    TikiBg1
+hi! link Conceal        TikiBg3
+hi! link CursorLineNr   TikiYellow
+hi! link NonText        TikiOrange
+hi! link SpecialKey     TikiOrange
+hi! link Title          TikiOrange
 
-call s:h("StatusLine",   { "fg": s:tiki.bg4[s:theme], "bg": s:tiki.bg0[s:theme], "cterm": "bold,inverse", "gui": "bold,inverse" })
-call s:h("StatusLineNC", { "fg": s:tiki.bg2[s:theme], "bg": s:tiki.fg4[s:theme], "gui": "bold,inverse", "cterm": "bold,inverse" })
+call s:h("Underlined", { "fg": s:tiki.violet[s:theme], "style": "underline" })
 
-call s:h("VertSplit", { "fg": s:tiki.fg4[s:theme], "bg": s:tiki.bg2[s:theme] })
-call s:h("WildMenu",  { "fg": s:tiki.blue[s:theme], "bg": s:tiki.bg2[s:theme], "gui": "bold", "cterm": "bold" })
-
-hi! link Directory  TikiGreenBold
-hi! link Title      TikiGreenBold
-
-call s:h("ErrorMsg", { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.red[s:theme], "gui": "bold", "cterm": "bold" })
-hi! link MoreMsg    TikiYellowBold
-hi! link ModeMsg    TikiYellowBold
-hi! link Question   TikiOrangeBold
-hi! link WarningMsg TikiRedBold
-
-call s:h("LineNr",     { "fg": s:tiki.bg4[s:theme] })
-call s:h("SignColumn", { "bg": s:tiki.bg1[s:theme] })
-call s:h("Folded",     { "fg": s:tiki.gray[s:theme], "bg": s:tiki.bg1[s:theme], "gui": "italic", "cterm": "italic" })
-call s:h("FoldColumn", { "fg": s:tiki.gray[s:theme], "bg": s:tiki.bg1[s:theme] })
-
-call s:h("Cursor", { "gui": "inverse", "cterm": "inverse" })
+call s:h("Cursor", { "style": "inverse" })
 hi! link vCursor Cursor
 hi! link iCursor Cursor
 hi! link lCursor Cursor
 
-call s:h("Pmenu",      { "fg": s:tiki.fg1[s:theme], "bg": s:tiki.bg2[s:theme] })
-call s:h("PmenuSel",   { "fg": s:tiki.bg2[s:theme], "bg": s:tiki.blue[s:theme], "gui": "bold", "cterm": "bold" })
-call s:h("PmenuSbar",  { "bg": s:tiki.bg2[s:theme] })
-call s:h("PmenuThumb", { "bg": s:tiki.bg4[s:theme] })
+call s:h("Comment", { "fg": s:tiki.gray[s:theme], "style": "italic" })
 
-
-call s:h("Error",   { "fg": s:tiki.red[s:theme], "gui": "bold,inverse", "cterm": "bold,inverse" })
-
-call s:h("Comment", { "fg": s:tiki.gray[s:theme], "gui": "italic", "cterm": "italic" })
 hi! link Constant     TikiPurple
-hi! link String       TikiGreen
-hi! link Character    TikiPurple
-hi! link Number       TikiPurple
-hi! link Boolean      TikiPurple
-hi! link Float        TikiPurple
+hi! link String       TikiYellow
+hi! link Identifier   TikiAquaItalic
+hi! link Function     TikiGreen
+hi! link Statement    TikiPink
+hi! link Label        TikiYellow
+hi! link PreProc      TikiPink
+hi! link Type         TikiAqua
+hi! link StorageClass TikiAquaItalic
+hi! link Special      TikiFg1
+hi! link Tag          TikiPink
 
-hi! link Identifier   TikiBlue
-hi! link Function     TikiGreenBold
+hi! link NonText      TikiFg4
+hi! link SpecialKey   TikiFg4
+hi! link Title        TikiFg1Bold
 
-hi! link Statement    TikiRed
-hi! link Conditional  TikiRed
-hi! link Repeat       TikiRed
-hi! link Label        TikiRed
-hi! link Operator     Normal
-hi! link Keyword      TikiRed
-hi! link Exception    TikiRed
+hi! link rubyClass                    TikiPink
+hi! link rubyClassName                TikiGreen
+hi! link rubyFunction                 TikiGreen
+hi! link rubyInterpolationDelimiter   TikiNone
+hi! link rubySymbol                   TikiPurple
+hi! link rubyConstant                 TikiAquaItalic
+hi! link rubyStringDelimiter          TikiYellow
+hi! link rubyBlockParameter           TikiOrangeItalic
+hi! link rubyInstanceVariable         TikiOrange
+hi! link rubyInclude                  TikiPink
+hi! link rubyGlobalVariable           TikiNone
+hi! link rubyRegexp                   TikiYellow
+hi! link rubyRegexpDelimiter          TikiYellow
+hi! link rubyEscape                   TikiPurple
+hi! link rubyControl                  TikiPink
+hi! link rubyClassVariable            TikiNone
+hi! link rubyOperator                 TikiPink
+hi! link rubyException                TikiPink
+hi! link rubyPseudoVariable           TikiPurple
+hi! link rubyRailsUserClass           TikiAquaItalic
+hi! link rubyRailsARAssociationMethod TikiAqua
+hi! link rubyRailsARMethod            TikiAqua
+hi! link rubyRailsRenderMethod        TikiAqua
+hi! link rubyRailsMethod              TikiAqua
+hi! link rubySharpBang                Comment
+hi! link erubyDelimiter               TikiNone
+hi! link erubyComment                 Comment
+hi! link erubyRailsMethod             TikiAqua
 
-hi! link PreProc      TikiAqua
-hi! link Include      TikiAqua
-hi! link Define       TikiAqua
-hi! link Macro        TikiAqua
-hi! link PreCondit    TikiAqua
+hi! link htmlTag            TikiNone
+hi! link htmlEndTag         TikiNone
+hi! link htmlTagName        TikiPink
+hi! link htmlSpecialTagName TikiPink
+hi! link htmlArg            TikiGreen
+hi! link htmlSpecialChar    TikiPurple
 
-hi! link Type         TikiYellow
-hi! link StorageClass TikiOrange
-hi! link Structure    TikiAqua
-hi! link Typedef      TikiYellow
+hi! link jsGlobalObjects TikiAquaItalic
+hi! link jsStorageClass  TikiAquaItalic
+hi! link jsFunction      TikiAquaItalic
+hi! link jsFuncArgs      TikiOrangeItalic
+hi! link jsFuncCall      TikiAqua
+hi! link jsPrototype     TikiAqua
+hi! link jsObjectProp    TikiGreen
+hi! link jsOperator      TikiPink
+hi! link jsReturn        TikiPink
 
-hi! link Special      TikiOrange
+hi! link yamlKey            TikiRed
+hi! link yamlAnchor         TikiNone
+hi! link yamlAlias          TikiNone
+hi! link yamlDocumentHeader TikiYellow
 
-hi! link Todo         TikiYellow
+hi! link cssBraces         TikiNone
+hi! link cssClassName      TikiGreen
+hi! link cssColor          TikiPurple
+hi! link cssCommonAttr     TikiAqua
+hi! link cssFontDescriptor TikiPink
+hi! link cssFunctionName   TikiAqua
+hi! link cssMediaType      TikiAqua
+hi! link cssPseudoClassId  TikiGreen
+hi! link cssURL            TikiOrangeItalic
+hi! link cssValueLength    TikiPurple
 
-call s:h("DiffAdd",    { "fg": s:tiki.green[s:theme],  "bg": s:tiki.bg0[s:theme], "gui": "inverse", "cterm": "inverse" })
-call s:h("DiffChange", { "fg": s:tiki.aqua[s:theme],   "bg": s:tiki.bg0[s:theme], "gui": "inverse", "cterm": "inverse" })
-call s:h("DiffDelete", { "fg": s:tiki.red[s:theme],    "bg": s:tiki.bg0[s:theme], "gui": "inverse", "cterm": "inverse" })
-call s:h("DiffText",   { "fg": s:tiki.yellow[s:theme], "bg": s:tiki.bg0[s:theme], "gui": "inverse", "cterm": "inverse" })
+hi! link elixirAtom                   TikiAquaItalic
+hi! link elixirModuleDeclaration      TikiAquaItalic
+hi! link elixirAlias                  TikiAquaItalic
+hi! link elixirInterpolationDelimiter TikiGreen
+hi! link elixirStringDelimiter        TikiYellow
 
-hi! link cssVendor               TikiFg1
-hi! link cssBraces               TikiBlue
-hi! link cssColor                TikiBlue
-hi! link cssSelectorOp           TikiBlue
-hi! link cssSelectorOp2          TikiBlue
-hi! link cssFunctionName         TikiYellow
-hi! link cssUIProp               TikiYellow
-hi! link cssPositioningProp      TikiYellow
-hi! link cssIdentifier           TikiOrange
-hi! link cssClassName            TikiGreen
-hi! link cssImportant            TikiGreen
-hi! link cssTextProp             TikiAqua
-hi! link cssAnimationProp        TikiAqua
-hi! link cssTransformProp        TikiAqua
-hi! link cssTransitionProp       TikiAqua
-hi! link cssPrintProp            TikiAqua
-hi! link cssBoxProp              TikiAqua
-hi! link cssFontDescriptorProp   TikiAqua
-hi! link cssFlexibleBoxProp      TikiAqua
-hi! link cssBorderOutlineProp    TikiAqua
-hi! link cssBackgroundProp       TikiAqua
-hi! link cssMarginProp           TikiAqua
-hi! link cssListProp             TikiAqua
-hi! link cssTableProp            TikiAqua
-hi! link cssFontProp             TikiAqua
-hi! link cssPaddingProp          TikiAqua
-hi! link cssDimensionProp        TikiAqua
-hi! link cssRenderProp           TikiAqua
-hi! link cssColorProp            TikiAqua
-hi! link cssGeneratedContentProp TikiAqua
+hi! link vimGroupName TikiAqua
+hi! link vimGroup     TikiAqua
+hi! link vimOption    TikiAqua
 
-hi! link gitcommitComment        Comment
-hi! link gitcommitBranch         Constant
-hi! link gitcommitDiscardedType  Error
-hi! link gitcommitDiscardedFile  Error
-hi! link gitcommitOverflow       Error
-hi! link gitcommitUnmergedFile   Keyword
-hi! link gitcommitUnmerged       Tag
-hi! link gitcommitSelectedType   Tag
-hi! link gitcommitUntrackedFile  Tag
-hi! link gitcommitSelectedFile   Tag
-hi! link gitcommitNoBranch       gitcommitBranch
-hi! link gitcommitUntracked      gitcommitComment
-hi! link gitcommitDiscarded      gitcommitComment
-hi! link gitcommitSelected       gitcommitComment
-hi! link gitcommitDiscardedArrow gitcommitDiscardedFile
-hi! link gitcommitSelectedArrow  gitcommitSelectedFile
-hi! link gitcommitUnmergedArrow  gitcommitUnmergedFile
-
-hi! link htmlTagN           TikiFg1
-hi! link htmlTag            TikiBlue
-hi! link htmlEndTag         TikiBlue
-hi! link htmlArg            TikiAqua
-hi! link htmlTagName        TikiAquaBold
-hi! link htmlSpecialTagName AyaAquaBold
-hi! link htmlScriptTag      TikiPurple
-hi! link htmlSpecialChar    TikiOrange
-
-hi! link xmlTag               TikiBlue
-hi! link xmlEndTag            TikiBlue
-hi! link xmlTagName           TikiBlue
-hi! link xmlEqual             TikiBlue
-hi! link xmlAttrib            TikiAqua
-hi! link docbkKeyword         TikiAquaBold
-hi! link xmlDocTypeDecl       TikiGray
-hi! link xmlCdataStart        TikiGray
-hi! link dtdFunction          TikiGray
-hi! link xmlProcessingDelim   TikiGray
-hi! link dtdParamEntityPunct  TikiGray
-hi! link dtdParamEntityDPunct TikiGray
-hi! link xmlAttribPunct       TikiGray
-hi! link xmlDocTypeKeyword    TikiPurple
-hi! link xmlCdataCdata        TikiPurple
-hi! link dtdTagName           TikiPurple
-hi! link xmlEntity            TikiOrange
-hi! link xmlEntityPunct       TikiOrange
-
-hi! link javaScriptBraces               TikiFg1
-
-hi! link javaScriptFunction             TikiAqua
-hi! link javascriptFuncKeyword          TikiAqua
-hi! link javascriptAsyncFunc            TikiAqua
-hi! link jsFuncCall                     TikiAqua
-hi! link javascriptArrowFunc            TikiFg1
-hi! link javascriptFuncArg              TikiFg1
-hi! link jsFuncArgs                     TikiFg1
-
-hi! link javaScriptIdentifier           TikiRed
-hi! link javascriptIdentifier           TikiOrange
-
-hi! link javaScriptMember               TikiBlue
-hi! link javaScriptNumber               TikiPurple
-hi! link javaScriptNull                 TikiPurple
-
-hi! link javaScriptParens               TikiFg3
-hi! link jsFuncParens                   TikiFg3
-
-hi! link javascriptImport               TikiAqua
-hi! link javascriptExport               TikiAqua
-
-hi! link javascriptClassKeyword         TikiAqua
-hi! link javascriptClassExtends         TikiAqua
-hi! link javascriptClassName            TikiYellow
-hi! link javascriptClassSuperName       TikiYellow
-hi! link javascriptClassSuper           TikiOrange
-hi! link javascriptClassStatic          TikiOrange
-
-hi! link javascriptDefault              TikiAqua
-
-hi! link javascriptGlobal               TikiYellow
-hi! link javascriptGlobalMethod         TikiFg1
-hi! link javascriptNodeGlobal           TikiFg1
-
-hi! link javascriptEndColons            TikiFg1
-hi! link javascriptVariable             TikiRed
-
-hi! link javascriptOperator             TikiRed
-hi! link jsOperator                     TikiRed
-hi! link javascriptForOperator          TikiRed
-
-hi! link javascriptYield                TikiRed
-hi! link javascriptExceptions           TikiRed
-hi! link javascriptMessage              TikiRed
-
-hi! link javascriptTemplateSB           TikiAqua
-hi! link javascriptTemplateSubstitution TikiFg1
-
-hi! link javascriptLabel                TikiFg1
-hi! link javascriptObjectLabel          TikiFg1
-hi! link jsObjectKey                    TikiFg1
-
-hi! link javascriptPropertyName         TikiFg1
-hi! link javascriptLogicSymbols         TikiFg1
-
-hi! link javascriptDocParamName         TikiFg4
-hi! link javascriptDocTags              TikiFg4
-hi! link javascriptDocNotation          TikiFg4
-hi! link javascriptDocParamType         TikiFg4
-hi! link javascriptDocNamedParamType    TikiFg4
-
-hi! link typeScriptReserved     TikiAqua
-hi! link typeScriptLabel        TikiAqua
-hi! link typeScriptIdentifier   TikiOrange
-hi! link typeScriptBraces       TikiFg1
-hi! link typeScriptEndColons    TikiFg1
-hi! link typeScriptDOMObjects   TikiFg1
-hi! link typeScriptAjaxMethods  TikiFg1
-hi! link typeScriptLogicSymbols TikiFg1
-hi! link typeScriptDocSeeTag    Comment
-hi! link typeScriptDocParam     Comment
-
-hi! link coffeeExtendedOp TikiFg3
-hi! link coffeeSpecialOp  TikiFg3
-hi! link coffeeParen      TikiFg3
-hi! link coffeeCurly      TikiOrange
-hi! link coffeeBracket    TikiOrange
-
-hi! link jsonKeyword TikiGreen
-hi! link jsonQuote   TikiGreen
-hi! link jsonBraces  TikiFg1
-hi! link jsonString  TikiFg1
-
-hi! link rubyInstanceVariable       TikiRed
-hi! link rubyStringDelimiter        TikiGreen
-hi! link rubyInterpolationDelimiter TikiAqua
-
-hi! link elixirDocString              Comment
-hi! link elixirStringDelimiter        TikiGreen
-hi! link elixirInterpolationDelimiter TikiAqua
-hi! link elixirModuleDeclaration      TikiYellow
-
-hi! link markdownH1                TikiGreenBold
-hi! link markdownH2                TikiGreenBold
-hi! link markdownH3                TikiYellowBold
-hi! link markdownH4                TikiYellowBold
-hi! link markdownH5                TikiYellow
-hi! link markdownH6                TikiYellow
-hi! link markdownCode              TikiAqua
-hi! link markdownCodeBlock         TikiAqua
-hi! link markdownCodeDelimiter     TikiAqua
-hi! link markdownBlockquote        TikiGray
-hi! link markdownListMarker        TikiGray
-hi! link markdownOrderedListMarker TikiGray
-hi! link markdownRule              TikiGray
-hi! link markdownHeadingRule       TikiGray
-hi! link markdownUrlDelimiter      TikiFg3
-hi! link markdownLinkDelimiter     TikiFg3
-hi! link markdownLinkTextDelimiter TikiFg3
-hi! link markdownHeadingDelimiter  TikiOrange
+hi! link markdownBlockquote        TikiGreen
+hi! link markdownCode              TikiYellow
+hi! link markdownCodeBlock         TikiYellow
+hi! link markdownCodeDelimiter     TikiYellow
+hi! link markdownH1                TikiPurpleBold
+hi! link markdownH2                TikiPurpleBold
+hi! link markdownH3                TikiPinkBold
+hi! link markdownH4                TikiPinkBold
+hi! link markdownH5                TikiPinkBold
+hi! link markdownH6                TikiPinkBold
+hi! link markdownHeadingDelimiter  TikiAquaBold
+hi! link markdownHeadingRule       TikiGreen
+hi! link markdownLinkDelimiter     TikiOrangeItalic
+hi! link markdownLinkTextDelimiter TikiOrangeItalic
+hi! link markdownListMarker        TikiGreen
+hi! link markdownOrderedListMarker TikiGreen
+hi! link markdownRule              TikiGreen
 hi! link markdownUrl               TikiPurple
+hi! link markdownUrlDelimiter      TikiOrangeItalic
 hi! link markdownUrlTitleDelimiter TikiGreen
-hi! link markdownIdDeclaration     markdownLinkText
 
-hi! link vimBracket   TikiYellow
-hi! link vimNotation  TikiOrange
-hi! link vimBracket   TikiOrange
-hi! link vimMapModKey TikiOrange
-hi! link vimFuncSID   TikiFg3
-hi! link vimSetSep    TikiFg3
-hi! link vimSep       TikiFg3
-hi! link vimContinue  TikiFg3
+" hi! link netrwPlain    TikiAqua
+" hi! link netrwDir      TikiAqua
+" hi! link netrwExe      TikiBlue
+" hi! link netrwClassify TikiOrange
+" hi! link netrwVersion  TikiOrange
 
-" https://github.com/tpope/vim-fugitive
+" hi! link shDerefSimple  TikiAqua
+" hi! link shFunction     TikiBlue
+" hi! link shCmdSubRegion TikiYellow
+" hi! link shFunctionKey  TikiGreen
+
+" " https://github.com/tpope/vim-fugitive
 hi! link diffAdded   DiffAdd
 hi! link diffRemoved DiffDelete
 

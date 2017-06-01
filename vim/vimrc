@@ -36,7 +36,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'maralla/completor.vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'morhetz/gruvbox'
+Plug 'dracula/vim'
 
 call plug#end()
 
