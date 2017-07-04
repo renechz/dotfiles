@@ -107,10 +107,10 @@ call s:h("PmenuSbar",    { "fg": s:tiki.bg3[s:theme],  "bg": s:tiki.bg3[s:theme]
 call s:h("PmenuSel",     { "fg": s:tiki.bg1[s:theme],  "bg": s:tiki.aqua[s:theme] })
 call s:h("PmenuThumb",   { "fg": s:tiki.aqua[s:theme], "bg": s:tiki.aqua[s:theme] })
 
-call s:h("DiffAdd",      { "fg": s:tiki.fg1[s:theme], "bg": s:tiki.green[s:theme], "style": "bold" })
-call s:h("DiffChange",   { "fg": s:tiki.fg1[s:theme], "bg": s:tiki.blue_pale[s:theme] })
-call s:h("DiffDelete",   { "fg": s:tiki.red[s:theme] })
-call s:h("DiffText",     { "fg": s:tiki.fg1[s:theme], "bg": s:tiki.blue[s:theme], "style": "bold" })
+call s:h("DiffAdd",      { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.green[s:theme] })
+call s:h("DiffChange",   { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.blue_pale[s:theme] })
+call s:h("DiffDelete",   { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.red[s:theme] })
+call s:h("DiffText",     { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.blue[s:theme] })
 call s:h("ErrorMsg",     { "fg": s:tiki.fg0[s:theme], "bg": s:tiki.red[s:theme] })
 
 hi! link Error          TikiPink
@@ -162,7 +162,7 @@ hi! link Title        TikiFg1Bold
 hi! link rubyClass                    TikiPink
 hi! link rubyClassName                TikiGreen
 hi! link rubyFunction                 TikiGreen
-hi! link rubyInterpolationDelimiter   TikiNone
+hi! link rubyInterpolationDelimiter   TikiPink
 hi! link rubySymbol                   TikiPurple
 hi! link rubyConstant                 TikiAquaItalic
 hi! link rubyStringDelimiter          TikiYellow
@@ -224,7 +224,7 @@ hi! link cssValueLength    TikiPurple
 hi! link elixirAtom                   TikiAquaItalic
 hi! link elixirModuleDeclaration      TikiAquaItalic
 hi! link elixirAlias                  TikiAquaItalic
-hi! link elixirInterpolationDelimiter TikiGreen
+hi! link elixirInterpolationDelimiter TikiPink
 hi! link elixirStringDelimiter        TikiYellow
 
 hi! link vimGroupName TikiAqua
