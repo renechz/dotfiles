@@ -24,7 +24,7 @@ function! s:h(group, style)
 endfunction
 
 let s:tiki = {
-\   "bg0":       { "dark": "#1f222f", "light": "#E8EAF6" },
+\   "bg0":       { "dark": "#1f222f", "light": "#e8eaf6" },
 \   "bg1":       { "dark": "#292d3e", "light": "#d9dced" },
 \   "bg2":       { "dark": "#33384d", "light": "#c7cde5" },
 \   "bg3":       { "dark": "#3d435d", "light": "#b6bddc" },
@@ -36,9 +36,9 @@ let s:tiki = {
 \   "fg4":       { "dark": "#b7bcdc", "light": "#3e445c" },
 \   "gray":      { "dark": "#676e95", "light": "#a8b0d5" },
 \   "red":       { "dark": "#ff5370", "light": "#e53935" },
-\   "pink":      { "dark": "#FF80AB", "light": "#ff5370" },
+\   "pink":      { "dark": "#ff80ab", "light": "#ff5370" },
 \   "orange":    { "dark": "#f78c6c", "light": "#f76d47" },
-\   "yellow":    { "dark": "#ffcb6b", "light": "#FF6F00" },
+\   "yellow":    { "dark": "#ffcb6b", "light": "#ff6f00" },
 \   "green":     { "dark": "#c3e88d", "light": "#91b859" },
 \   "blue_pale": { "dark": "#b2ccd6", "light": "#8796b0" },
 \   "aqua":      { "dark": "#89ddff", "light": "#39adb5" },
@@ -88,6 +88,7 @@ call s:h("TikiYellowBold",    { "fg": s:tiki.yellow[s:theme], "style": "bold" })
 call s:h("TikiFg1Bold",       { "fg": s:tiki.fg1[s:theme],    "style": "bold" })
 call s:h("TikiAquaItalic",    { "fg": s:tiki.aqua[s:theme],   "style": "italic" })
 call s:h("TikiOrangeItalic",  { "fg": s:tiki.orange[s:theme], "style": "italic" })
+call s:h("TikiPurpleItalic",  { "fg": s:tiki.purple[s:theme], "style": "italic" })
 call s:h("TikiPinkUnderline", { "fg": s:tiki.pink[s:theme],   "style": "underline" })
 
 call s:h("ColorColumn",  { "bg": s:tiki.bg1[s:theme] })
@@ -133,6 +134,7 @@ hi! link CursorLineNr   TikiYellow
 hi! link NonText        TikiOrange
 hi! link SpecialKey     TikiOrange
 hi! link Title          TikiOrange
+hi! link SignColumn     TikiBg0
 
 call s:h("Underlined", { "fg": s:tiki.violet[s:theme], "style": "underline" })
 
@@ -160,14 +162,14 @@ hi! link SpecialKey   TikiFg4
 hi! link Title        TikiFg1Bold
 
 hi! link rubyClass                    TikiPink
-hi! link rubyClassName                TikiGreen
+hi! link rubyClassName                TikiAqua
 hi! link rubyFunction                 TikiGreen
 hi! link rubyInterpolationDelimiter   TikiPink
 hi! link rubySymbol                   TikiPurple
 hi! link rubyConstant                 TikiAquaItalic
 hi! link rubyStringDelimiter          TikiYellow
 hi! link rubyBlockParameter           TikiOrangeItalic
-hi! link rubyInstanceVariable         TikiOrange
+hi! link rubyInstanceVariable         TikiPurpleItalic
 hi! link rubyInclude                  TikiPink
 hi! link rubyGlobalVariable           TikiNone
 hi! link rubyRegexp                   TikiYellow
@@ -184,6 +186,7 @@ hi! link rubyRailsARMethod            TikiAqua
 hi! link rubyRailsRenderMethod        TikiAqua
 hi! link rubyRailsMethod              TikiAqua
 hi! link rubySharpBang                Comment
+hi! link rubyPredefinedConstant       TikiPurple
 hi! link erubyDelimiter               TikiNone
 hi! link erubyComment                 Comment
 hi! link erubyRailsMethod             TikiAqua
@@ -196,14 +199,15 @@ hi! link htmlArg            TikiGreen
 hi! link htmlSpecialChar    TikiPurple
 
 hi! link jsGlobalObjects TikiAquaItalic
-hi! link jsStorageClass  TikiAquaItalic
-hi! link jsFunction      TikiAquaItalic
+hi! link jsStorageClass  TikiPink
+hi! link jsFunction      TikiPink
 hi! link jsFuncArgs      TikiOrangeItalic
-hi! link jsFuncCall      TikiAqua
-hi! link jsPrototype     TikiAqua
+hi! link jsFuncCall      TikiGreen
+hi! link jsPrototype     TikiFg1
 hi! link jsObjectProp    TikiGreen
 hi! link jsOperator      TikiPink
 hi! link jsReturn        TikiPink
+hi! link jsThis          TikiPurpleItalic
 
 hi! link yamlKey            TikiRed
 hi! link yamlAnchor         TikiNone
@@ -216,10 +220,14 @@ hi! link cssColor          TikiPurple
 hi! link cssCommonAttr     TikiAqua
 hi! link cssFontDescriptor TikiPink
 hi! link cssFunctionName   TikiAqua
-hi! link cssMediaType      TikiAqua
+hi! link cssMediaType      TikiPurple
 hi! link cssPseudoClassId  TikiGreen
 hi! link cssURL            TikiOrangeItalic
 hi! link cssValueLength    TikiPurple
+hi! link cssProp           TikiAqua
+hi! link cssNoise          TikiPink
+hi! link cssUnitDecorators TikiPink
+hi! link cssPagePseudo     TikiGreen
 
 hi! link elixirAtom                   TikiAquaItalic
 hi! link elixirModuleDeclaration      TikiAquaItalic
