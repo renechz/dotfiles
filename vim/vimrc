@@ -123,9 +123,9 @@ inoremap <c-s> <Esc><c-s>
 nnoremap <c-x><c-u> :bunload<cr>
 nnoremap <c-x><c-d> :bdelete<cr>
 
-" zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
+" zoom a vim pane
+nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>Z :wincmd =<cr>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -158,6 +158,9 @@ imap <c-e> <plug>(emmet-expand-abbr)
 " ALE
 let g:ale_sign_column_always = 1
 let g:ale_javascript_eslint_use_global = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_text_changed = 'never'
+
 if emoji#available()
   let g:ale_sign_error = emoji#for('sos')
   let g:ale_sign_warning = emoji#for('vibration_mode')
