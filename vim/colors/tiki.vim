@@ -90,6 +90,7 @@ call s:h("TikiAquaItalic",    { "fg": s:tiki.aqua[s:theme],   "style": "italic" 
 call s:h("TikiOrangeItalic",  { "fg": s:tiki.orange[s:theme], "style": "italic" })
 call s:h("TikiPurpleItalic",  { "fg": s:tiki.purple[s:theme], "style": "italic" })
 call s:h("TikiPinkUnderline", { "fg": s:tiki.pink[s:theme],   "style": "underline" })
+call s:h("TikiYellowItalic",    { "fg": s:tiki.yellow[s:theme], "style": "italic" })
 
 call s:h("ColorColumn",  { "bg": s:tiki.bg1[s:theme] })
 call s:h("CursorLine",   { "bg": s:tiki.bg1[s:theme] })
@@ -197,6 +198,9 @@ hi! link htmlTagName        TikiPink
 hi! link htmlSpecialTagName TikiPink
 hi! link htmlArg            TikiGreen
 hi! link htmlSpecialChar    TikiPurple
+hi! link htmlBold           TikiOrangeBold
+hi! link htmlItalic         TikiYellowItalic
+hi! link htmlH1             TikiPurpleBold
 
 hi! link jsGlobalObjects TikiAquaItalic
 hi! link jsStorageClass  TikiPink
@@ -259,6 +263,9 @@ hi! link markdownRule              TikiGreen
 hi! link markdownUrl               TikiPurple
 hi! link markdownUrlDelimiter      TikiOrangeItalic
 hi! link markdownUrlTitleDelimiter TikiGreen
+hi! link mkdListItem               TikiAqua
+hi! link mkdCode                   TikiGreen
+hi! link mkdInlineURL              TikiPink
 
 " hi! link netrwPlain    TikiAqua
 " hi! link netrwDir      TikiAqua
