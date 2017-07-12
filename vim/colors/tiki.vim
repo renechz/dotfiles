@@ -85,6 +85,7 @@ call s:h("TikiOrangeBold",    { "fg": s:tiki.orange[s:theme], "style": "bold" })
 call s:h("TikiAquaBold",      { "fg": s:tiki.aqua[s:theme],   "style": "bold" })
 call s:h("TikiGreenBold",     { "fg": s:tiki.green[s:theme],  "style": "bold" })
 call s:h("TikiYellowBold",    { "fg": s:tiki.yellow[s:theme], "style": "bold" })
+call s:h("TikiPurpleBold",    { "fg": s:tiki.purple[s:theme], "style": "bold" })
 call s:h("TikiFg1Bold",       { "fg": s:tiki.fg1[s:theme],    "style": "bold" })
 call s:h("TikiAquaItalic",    { "fg": s:tiki.aqua[s:theme],   "style": "italic" })
 call s:h("TikiOrangeItalic",  { "fg": s:tiki.orange[s:theme], "style": "italic" })
@@ -263,6 +264,7 @@ hi! link markdownRule              TikiGreen
 hi! link markdownUrl               TikiPurple
 hi! link markdownUrlDelimiter      TikiOrangeItalic
 hi! link markdownUrlTitleDelimiter TikiGreen
+hi! link mkdBold                   TikiOrangeBold
 hi! link mkdListItem               TikiAqua
 hi! link mkdCode                   TikiGreen
 hi! link mkdInlineURL              TikiPink
