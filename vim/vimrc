@@ -6,6 +6,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sgur/vim-editorconfig'
 Plug 'janko-m/vim-test'
@@ -14,7 +15,6 @@ Plug 'mattn/emmet-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
@@ -50,16 +50,16 @@ runtime macros/matchit.vim
 set autoread
 set autowrite
 set autoindent
-set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
 set clipboard=unnamed
-set colorcolumn=81,101          " Highlight where 80 and 100 characters are
+set colorcolumn=81,101
 set diffopt+=vertical
-set display=truncate            " show @@@ in the last line if it is truncated.
+set display=truncate
 set hidden
 set history=500
 set ignorecase
 set incsearch
-set laststatus=2                " Always show the status line
+set laststatus=2
 set list listchars=tab:»\ ,trail:·,nbsp:·,extends:›,precedes:‹
 set nobackup
 set noshowmode
@@ -68,24 +68,17 @@ set noswapfile
 set number
 set relativenumber
 set undolevels=1000
-set ruler                       " show the cursor position all the time
-set scrolloff=3                 " Show a few lines of context around the cursor.
-set showcmd                     " display incomplete commands
+set ruler
+set showcmd
 set ttimeout
-set ttimeoutlen=100             " wait up to 100ms after Esc for special key
-set wildmenu                    " display completion matches in a status line
-
-" 2 space tabs
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
+set ttimeoutlen=100
+set wildmenu
 
 if has('mouse')
   set mouse=a
 endif
 
-set termguicolors     " Enable true color support
+set termguicolors
 set background=dark
 colorscheme tiki
 
@@ -100,7 +93,7 @@ if !isdirectory(undodir)
   call mkdir(undodir)
 endif
 set undodir=~/.undo-vim
-set undofile  " Create FILE.un~ files for persistent undo
+set undofile
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -140,13 +133,15 @@ if executable('rg')
 endif
 
 " vim-test
-let test#strategy = "dispatch"
+let test#strategy = "vimux"
 
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
+
+let g:VimuxOrientation = 'h'
 
 " airline
 let g:airline_powerline_fonts = 1
@@ -180,6 +175,11 @@ nnoremap <silent> <leader>? :History<CR>
 
 " vim-commentary
 nmap cm <Plug>Commentary
+
+" vim-rails
+nnoremap <leader>aa :A<CR>
+nnoremap <leader>as :AS<CR>
+nnoremap <leader>av :AV<CR>
 
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
