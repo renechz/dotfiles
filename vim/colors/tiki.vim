@@ -193,8 +193,8 @@ hi! link erubyDelimiter               TikiNone
 hi! link erubyComment                 Comment
 hi! link erubyRailsMethod             TikiAqua
 
-hi! link htmlTag            TikiNone
-hi! link htmlEndTag         TikiNone
+hi! link htmlTag            TikiPink
+hi! link htmlEndTag         TikiPink
 hi! link htmlTagName        TikiPink
 hi! link htmlSpecialTagName TikiPink
 hi! link htmlArg            TikiGreen
@@ -202,6 +202,11 @@ hi! link htmlSpecialChar    TikiPurple
 hi! link htmlBold           TikiOrangeBold
 hi! link htmlItalic         TikiYellowItalic
 hi! link htmlH1             TikiPurpleBold
+
+hi! link xmlTag     htmlTag
+hi! link xmlTagName htmlTagName
+hi! link xmlEndTag  htmlEndTag
+hi! link xmlAttrib  htmlArg
 
 hi! link jsGlobalObjects TikiAquaItalic
 hi! link jsStorageClass  TikiPink
@@ -287,3 +292,8 @@ hi! link diffRemoved DiffDelete
 " https://github.com/w0rp/ale
 call s:h("ALEWarningSign", {})
 call s:h("ALEErrorSign",   {})
+call s:h("ALEError", { "fg": s:tiki.red[s:theme], "bg": "#ffa0b0" })
+call s:h("ALEWarning", { "fg": s:tiki.red[s:theme], "style": "underline" })
+call s:h("ALEInfo", { "fg": s:tiki.red[s:theme], "bg": "#ffa0b0" })
+call s:h("ALEStyleError", { "fg": s:tiki.red[s:theme], "bg": "#ffa0b0" })
+call s:h("ALEStyleWarning", { "fg": s:tiki.red[s:theme], "bg": "#ffa0b0" })
