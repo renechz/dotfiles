@@ -19,6 +19,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -29,7 +30,7 @@ Plug 'honza/vim-snippets'
 Plug 'kana/vim-textobj-user'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'tek/vim-textobj-ruby'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
@@ -60,6 +61,7 @@ set history=500
 set ignorecase
 set incsearch
 set laststatus=2
+set lazyredraw
 set list listchars=tab:»\ ,trail:·,nbsp:·,extends:›,precedes:‹
 set nobackup
 set noshowmode
@@ -107,14 +109,10 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" Save file with <c-s>
-nnoremap <c-s> <Esc>:w<CR>
-vnoremap <c-s> <Esc><c-s>gv
-inoremap <c-s> <Esc><c-s>
-
-" hide and delete buffer
-nnoremap <c-x><c-u> :bunload<cr>
-nnoremap <c-x><c-d> :bdelete<cr>
+" Save file with <leader>w
+nnoremap <leader>w <Esc>:w<CR>
+vnoremap <leader>w <Esc><c-s>gv
+inoremap <leader>w <Esc><c-s>
 
 " zoom a vim pane
 nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
@@ -134,6 +132,7 @@ endif
 
 " vim-test
 let test#strategy = "vimux"
+let g:VimuxOrientation = 'h'
 
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
@@ -141,14 +140,9 @@ nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 
-let g:VimuxOrientation = 'h'
-
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V' }
-
-" emmet
-imap <c-e> <plug>(emmet-expand-abbr)
 
 " ALE
 let g:ale_sign_column_always = 1
