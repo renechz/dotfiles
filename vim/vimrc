@@ -109,11 +109,6 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" Save file with <leader>w
-nnoremap <leader>w <Esc>:w<CR>
-vnoremap <leader>w <Esc><c-s>gv
-inoremap <leader>w <Esc><c-s>
-
 " zoom a vim pane
 nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>Z :wincmd =<cr>
