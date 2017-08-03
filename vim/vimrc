@@ -138,7 +138,6 @@ nmap <silent> <leader>tv :TestVisit<CR>
 
 " airline
 let g:airline_theme = 'dracula'
-let g:airline_powerline_fonts = 1
 let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V' }
 
 " ALE
