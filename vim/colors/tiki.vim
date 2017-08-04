@@ -99,7 +99,6 @@ call s:h("CursorColumn", { "bg": s:tiki.bg1[s:theme] })
 
 call s:h("Visual",       { "bg": s:tiki.bg4[s:theme] })
 call s:h("VisualNOS",    { "bg": s:tiki.bg4[s:theme] })
-call s:h("IncSearch",    { "fg": s:tiki.bg0[s:theme],  "bg": s:tiki.orange[s:theme] })
 call s:h("Search",       { "fg": s:tiki.bg0[s:theme],  "bg": s:tiki.green[s:theme] })
 call s:h("WildMenu",     { "fg": s:tiki.bg4[s:theme],  "bg": s:tiki.aqua[s:theme] })
 call s:h("StatusLine",   { "fg": s:tiki.aqua[s:theme], "bg": s:tiki.bg4[s:theme] })
@@ -113,8 +112,11 @@ call s:h("PmenuThumb",   { "fg": s:tiki.aqua[s:theme], "bg": s:tiki.aqua[s:theme
 call s:h("DiffAdd",      { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.green[s:theme] })
 call s:h("DiffChange",   { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.blue_pale[s:theme] })
 call s:h("DiffDelete",   { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.red[s:theme] })
-call s:h("DiffText",     { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.blue[s:theme] })
-call s:h("ErrorMsg",     { "fg": s:tiki.fg0[s:theme], "bg": s:tiki.red[s:theme] })
+call s:h("DiffText", { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.blue[s:theme] })
+call s:h("ErrorMsg", { "fg": s:tiki.fg0[s:theme], "bg": s:tiki.red[s:theme], "style": "standout" })
+call s:h("IncSearch", { "fg": s:tiki.orange[s:theme], "style": "reverse" })
+call s:h("ModeMsg", { "style": "bold" })
+" call s:h("IncSearch", { "fg": s:tiki.bg0[s:theme],  "bg": s:tiki.orange[s:theme], "style": "reverse" })
 
 hi! link Error          TikiPink
 hi! link WarningMsg     ErrorMsg
@@ -127,7 +129,6 @@ hi! link Folded         TikiAqua
 hi! link FoldColumn     TikiAqua
 hi! link Question       TikiAqua
 hi! link MoreMsg        TikiAqua
-hi! link ModeMsg        TikiAqua
 hi! link LineNr         TikiBg4
 hi! link VertSplit      TikiBg4
 hi! link EndOfBuffer    TikiBg1
@@ -297,3 +298,88 @@ call s:h("ALEWarning", { "fg": s:tiki.red[s:theme], "style": "underline" })
 call s:h("ALEInfo", { "fg": s:tiki.red[s:theme], "bg": "#ffa0b0" })
 call s:h("ALEStyleError", { "fg": s:tiki.red[s:theme], "bg": "#ffa0b0" })
 call s:h("ALEStyleWarning", { "fg": s:tiki.red[s:theme], "bg": "#ffa0b0" })
+
+" DEFAULT HIGHLIGHT GROUPS
+" "ErrorMsg term=standout ctermbg=DarkRed ctermfg=White guibg=Red guifg=White"),
+" "IncSearch term=reverse cterm=reverse gui=reverse"),
+" "ModeMsg term=bold cterm=bold gui=bold"),
+" "NonText term=bold ctermfg=Blue gui=bold guifg=Blue"),
+" "StatusLine term=reverse,bold cterm=reverse,bold gui=reverse,bold"),
+" "StatusLineNC term=reverse cterm=reverse gui=reverse"),
+" "StatusLineTerm term=reverse cterm=reverse ctermFg=DarkGreen gui=reverse guifg=DarkGreen"),
+" "default link EndOfBuffer NonText",
+" "VertSplit term=reverse cterm=reverse gui=reverse"),
+" "VisualNOS term=underline,bold cterm=underline,bold gui=underline,bold"),
+" "DiffText term=reverse cterm=bold ctermbg=Red gui=bold guibg=Red"),
+" "PmenuSbar ctermbg=Grey guibg=Grey"),
+" "TabLineSel term=bold cterm=bold gui=bold"),
+" "TabLineFill term=reverse cterm=reverse gui=reverse"),
+" "Cursor guibg=fg guifg=bg",
+" "lCursor guibg=fg guifg=bg", /* should be different, but what? */
+" "default link QuickFixLine Search",
+
+" static char *(highlight_init_light[]) =
+" "Directory term=bold ctermfg=DarkBlue guifg=Blue"),
+" "LineNr term=underline ctermfg=Brown guifg=Brown"),
+" "CursorLineNr term=bold ctermfg=Brown gui=bold guifg=Brown"),
+" "MoreMsg term=bold ctermfg=DarkGreen gui=bold guifg=SeaGreen"),
+" "Question term=standout ctermfg=DarkGreen gui=bold guifg=SeaGreen"),
+" "Search term=reverse ctermbg=Yellow ctermfg=NONE guibg=Yellow guifg=NONE"),
+" "SpellBad term=reverse ctermbg=LightRed guisp=Red gui=undercurl"),
+" "SpellCap term=reverse ctermbg=LightBlue guisp=Blue gui=undercurl"),
+" "SpellRare term=reverse ctermbg=LightMagenta guisp=Magenta gui=undercurl"),
+" "SpellLocal term=underline ctermbg=Cyan guisp=DarkCyan gui=undercurl"),
+" "PmenuThumb ctermbg=Black guibg=Black"),
+" "Pmenu ctermbg=LightMagenta ctermfg=Black guibg=LightMagenta"),
+" "PmenuSel ctermbg=LightGrey ctermfg=Black guibg=Grey"),
+" "SpecialKey term=bold ctermfg=DarkBlue guifg=Blue"),
+" "Title term=bold ctermfg=DarkMagenta gui=bold guifg=Magenta"),
+" "WarningMsg term=standout ctermfg=DarkRed guifg=Red"),
+" "WildMenu term=standout ctermbg=Yellow ctermfg=Black guibg=Yellow guifg=Black"),
+" "Folded term=standout ctermbg=Grey ctermfg=DarkBlue guibg=LightGrey guifg=DarkBlue"),
+" "FoldColumn term=standout ctermbg=Grey ctermfg=DarkBlue guibg=Grey guifg=DarkBlue"),
+" "SignColumn term=standout ctermbg=Grey ctermfg=DarkBlue guibg=Grey guifg=DarkBlue"),
+" "Visual term=reverse guibg=LightGrey"),
+" "DiffAdd term=bold ctermbg=LightBlue guibg=LightBlue"),
+" "DiffChange term=bold ctermbg=LightMagenta guibg=LightMagenta"),
+" "DiffDelete term=bold ctermfg=Blue ctermbg=LightCyan gui=bold guifg=Blue guibg=LightCyan"),
+" "TabLine term=underline cterm=underline ctermfg=black ctermbg=LightGrey gui=underline guibg=LightGrey"),
+" "CursorColumn term=reverse ctermbg=LightGrey guibg=Grey90"),
+" "CursorLine term=underline cterm=underline guibg=Grey90"),
+" "ColorColumn term=reverse ctermbg=LightRed guibg=LightRed"),
+" "Conceal ctermbg=DarkGrey ctermfg=LightGrey guibg=DarkGrey guifg=LightGrey"),
+" "MatchParen term=reverse ctermbg=Cyan guibg=Cyan"),
+" "Normal gui=NONE",
+
+" static char *(highlight_init_dark[]) =
+" "Directory term=bold ctermfg=LightCyan guifg=Cyan"),
+" "LineNr term=underline ctermfg=Yellow guifg=Yellow"),
+" "CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow"),
+" "MoreMsg term=bold ctermfg=LightGreen gui=bold guifg=SeaGreen"),
+" "Question term=standout ctermfg=LightGreen gui=bold guifg=Green"),
+" "Search term=reverse ctermbg=Yellow ctermfg=Black guibg=Yellow guifg=Black"),
+" "SpecialKey term=bold ctermfg=LightBlue guifg=Cyan"),
+" "SpellBad term=reverse ctermbg=Red guisp=Red gui=undercurl"),
+" "SpellCap term=reverse ctermbg=Blue guisp=Blue gui=undercurl"),
+" "SpellRare term=reverse ctermbg=Magenta guisp=Magenta gui=undercurl"),
+" "SpellLocal term=underline ctermbg=Cyan guisp=Cyan gui=undercurl"),
+" "PmenuThumb ctermbg=White guibg=White"),
+" "Pmenu ctermbg=Magenta ctermfg=Black guibg=Magenta"),
+" "PmenuSel ctermbg=Black ctermfg=DarkGrey guibg=DarkGrey"),
+" "Title term=bold ctermfg=LightMagenta gui=bold guifg=Magenta"),
+" "WarningMsg term=standout ctermfg=LightRed guifg=Red"),
+" "WildMenu term=standout ctermbg=Yellow ctermfg=Black guibg=Yellow guifg=Black"),
+" "Folded term=standout ctermbg=DarkGrey ctermfg=Cyan guibg=DarkGrey guifg=Cyan"),
+" "FoldColumn term=standout ctermbg=DarkGrey ctermfg=Cyan guibg=Grey guifg=Cyan"),
+" "SignColumn term=standout ctermbg=DarkGrey ctermfg=Cyan guibg=Grey guifg=Cyan"),
+" "Visual term=reverse guibg=DarkGrey"),
+" "DiffAdd term=bold ctermbg=DarkBlue guibg=DarkBlue"),
+" "DiffChange term=bold ctermbg=DarkMagenta guibg=DarkMagenta"),
+" "DiffDelete term=bold ctermfg=Blue ctermbg=DarkCyan gui=bold guifg=Blue guibg=DarkCyan"),
+" "TabLine term=underline cterm=underline ctermfg=white ctermbg=DarkGrey gui=underline guibg=DarkGrey"),
+" "CursorColumn term=reverse ctermbg=DarkGrey guibg=Grey40"),
+" "CursorLine term=underline cterm=underline guibg=Grey40"),
+" "ColorColumn term=reverse ctermbg=DarkRed guibg=DarkRed"),
+" "MatchParen term=reverse ctermbg=DarkCyan guibg=DarkCyan"),
+" "Conceal ctermbg=DarkGrey ctermfg=LightGrey guibg=DarkGrey guifg=LightGrey"),
+" "Normal gui=NONE",
