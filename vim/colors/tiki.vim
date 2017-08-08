@@ -26,6 +26,7 @@ function! s:h(group, style)
 endfunction
 
 let s:tiki = {
+\   "ui_bg":     { "dark": "#151720", "light": "#fafbfd" },
 \   "bg0":       { "dark": "#1f222f", "light": "#e8eaf6" },
 \   "bg1":       { "dark": "#292d3e", "light": "#d9dced" },
 \   "bg2":       { "dark": "#33384d", "light": "#c7cde5" },
@@ -109,7 +110,7 @@ call s:h("StatusLineNC",  { "fg": s:tiki.bg2[s:theme],  "bg": s:tiki.fg4[s:theme
 call s:h("Visual",        { "bg": s:tiki.bg4[s:theme] })
 call s:h("VisualNOS",     { "style": "underline,bold" })
 
-call s:h("VertSplit",     { "style": "reverse" })
+call s:h("VertSplit",     { "fg": s:tiki.ui_bg[s:theme], "style": "reverse" })
 call s:h("WildMenu",      { "fg": s:tiki.bg4[s:theme], "bg": s:tiki.aqua[s:theme] })
 
 call s:h("Function",      { "fg": s:tiki.green[s:theme] })
