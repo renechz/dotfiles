@@ -27,7 +27,7 @@ endfunction
 
 let s:tiki = {
 \   "ui_bg":     { "dark": "#151720", "light": "#fafbfd" },
-\   "bg0":       { "dark": "#1f222f", "light": "#e8eaf6" },
+\   "bg0":       { "dark": "#1f222f", "light": "#fbfaf9" },
 \   "bg1":       { "dark": "#292d3e", "light": "#d9dced" },
 \   "bg2":       { "dark": "#33384d", "light": "#c7cde5" },
 \   "bg3":       { "dark": "#3d435d", "light": "#b6bddc" },
@@ -68,14 +68,14 @@ call s:h("SignColumn",    { "bg": s:tiki.bg0[s:theme] })
 call s:h("Comment",       { "fg": s:tiki.gray[s:theme], "style": "italic" })
 call s:h("Conceal",       { "bg": s:tiki.bg3[s:theme] })
 call s:h("Constant",      { "fg": s:tiki.purple[s:theme] })
-call s:h("Error",         { "fg": s:tiki.pink[s:theme] })
+call s:h("Error",         { "bg": s:tiki.red[s:theme] })
 call s:h("Identifier",    { "fg": s:tiki.aqua[s:theme], "style": "italic" })
 call s:h("Ignore",        { "fg": s:tiki.bg1[s:theme] })
 call s:h("PreProc",       { "fg": s:tiki.pink[s:theme] })
 call s:h("Special",       { "fg": s:tiki.fg1[s:theme] })
 call s:h("Statement",     { "fg": s:tiki.pink[s:theme] })
 call s:h("String",        { "fg": s:tiki.yellow[s:theme] })
-call s:h("Todo",          { "fg": s:tiki.red[s:theme] })
+call s:h("Todo",          { "fg": s:tiki.brown[s:theme], "bg": "NONE" })
 call s:h("Type",          { "fg": s:tiki.aqua[s:theme] })
 call s:h("Underlined",    { "fg": s:tiki.violet[s:theme], "style": "underline" })
 
