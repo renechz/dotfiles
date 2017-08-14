@@ -24,7 +24,6 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -65,7 +64,6 @@ set laststatus=2
 set lazyredraw
 set list listchars=tab:——,trail:·,nbsp:·,extends:›,precedes:‹
 set nobackup
-set noshowmode
 set nowritebackup
 set noswapfile
 set number
@@ -136,14 +134,13 @@ nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 
-" airline
-let g:airline_theme = 'dracula'
-let g:airline_mode_map = { 'n': 'N', 'i' : 'I', 'R': 'R', 'v': 'V', 'V': 'V' }
+set statusline=%<%f
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=\ %y%h%m%r%=%-14.(%l,%c%V%)
 
 " ALE
 let g:ale_sign_column_always = 1
 let g:ale_javascript_eslint_use_global = 1
-let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 
 if emoji#available()
