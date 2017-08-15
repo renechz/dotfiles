@@ -78,6 +78,7 @@ call s:h("String",        { "fg": s:tiki.yellow[s:theme] })
 call s:h("Todo",          { "fg": s:tiki.brown[s:theme], "bg": "NONE" })
 call s:h("Type",          { "fg": s:tiki.aqua[s:theme] })
 call s:h("Underlined",    { "fg": s:tiki.violet[s:theme], "style": "underline" })
+call s:h("SLBranch",      { "fg": s:tiki.ui_bg[s:theme], "bg": s:tiki.blue_pale[s:theme] })
 
 call s:h("NonText",       { "fg": s:tiki.bg4[s:theme], "style": "bold" })
 
@@ -87,8 +88,8 @@ call s:h("PmenuSel",      { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.aqua[s:theme
 call s:h("PmenuThumb",    { "fg": s:tiki.aqua[s:theme], "bg": s:tiki.aqua[s:theme] })
 
 call s:h("ErrorMsg",      { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.red[s:theme] })
-call s:h("ModeMsg",       { "style": "bold" })
-call s:h("MoreMsg",       { "style": "bold" })
+call s:h("ModeMsg",       { "fg": s:tiki.bg3[s:theme] })
+call s:h("MoreMsg",       { "fg": s:tiki.bg3[s:theme] })
 call s:h("Question",      { "fg": s:tiki.aqua[s:theme] })
 call s:h("WarningMsg",    { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.red[s:theme] })
 
@@ -104,8 +105,9 @@ call s:h("CursorLine",    { "bg": s:tiki.bg1[s:theme] })
 call s:h("helpLeadBlank", { "fg": s:tiki.fg3[s:theme] })
 call s:h("helpNormal",    { "fg": s:tiki.fg1[s:theme] })
 
-call s:h("StatusLine",    { "fg": s:tiki.aqua[s:theme], "bg": s:tiki.bg4[s:theme], "style": "reverse,bold" })
-call s:h("StatusLineNC",  { "fg": s:tiki.bg2[s:theme],  "bg": s:tiki.fg4[s:theme], "style": "reverse" })
+call s:h("SLCenter",    { "fg": s:tiki.blue_pale[s:theme], "bg": s:tiki.ui_bg[s:theme], "style": "NONE" })
+call s:h("StatusLine",    { "fg": s:tiki.blue_pale[s:theme], "bg": s:tiki.ui_bg[s:theme], "style": "NONE" })
+call s:h("StatusLineNC",  { "fg": s:tiki.bg2[s:theme],  "bg": s:tiki.fg4[s:theme] })
 
 call s:h("Visual",        { "bg": s:tiki.bg4[s:theme] })
 call s:h("VisualNOS",     { "style": "underline,bold" })
