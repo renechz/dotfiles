@@ -25,19 +25,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'w0rp/ale'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'kana/vim-textobj-user'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'maralla/completor.vim'
-Plug 'ternjs/tern_for_vim'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'dracula/vim'
 
 call plug#end()
 
@@ -56,6 +51,7 @@ set clipboard=unnamed
 set colorcolumn=81,101
 set diffopt+=vertical
 set display=truncate
+set foldmethod=indent
 set hidden
 set history=500
 set ignorecase
@@ -63,6 +59,7 @@ set incsearch
 set laststatus=2
 set lazyredraw
 set list listchars=tab:——,trail:·,nbsp:·,extends:›,precedes:‹
+set mouse=a
 set nobackup
 set nowritebackup
 set noswapfile
@@ -74,10 +71,6 @@ set showcmd
 set ttimeout
 set ttimeoutlen=100
 set wildmenu
-
-if has('mouse')
-  set mouse=a
-endif
 
 set termguicolors
 set background=dark
@@ -115,6 +108,29 @@ nnoremap <leader>Z :wincmd =<cr>
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
+" setup StatusLine
+function! HighlightStatusline()
+  if &modified == 1
+    exe 'hi! link SLCenter WarningMsg'
+  else
+    exe 'hi! link SLCenter StatusLine'
+  endif
+
+  return ''
+endfunction
+
+set statusline=
+set statusline+=\ %{HighlightStatusline()}
+" Left side
+set statusline+=\ %#SLBranch#
+set statusline+=\ %{fugitive#head()}
+set statusline+=\ %#SLCenter#
+set statusline+=\ %<%f
+set statusline+=\ %h%r
+set statusline+=\ %=
+" Right side
+set statusline+=\ %#StatusLine#%y
+
 " ======================================
 " plugins
 " ======================================
@@ -134,31 +150,8 @@ nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 
-function! HighlightStatusline()
-  if &modified == 1
-    exe 'hi! link SLCenter WarningMsg'
-  else
-    exe 'hi! link SLCenter StatusLine'
-  endif
-
-  return ''
-endfunction
-
-set statusline=
-set statusline+=\ %{HighlightStatusline()}
-" Left side
-set statusline+=%#SLBranch#
-set statusline+=\ %{fugitive#head()}
-set statusline+=\ %#SLCenter#
-set statusline+=\ %<%f
-set statusline+=\ %h%r
-set statusline+=\ %=
-" Right side
-set statusline+=\ %#StatusLine#%y
-
 " ALE
 let g:ale_sign_column_always = 1
-let g:ale_javascript_eslint_use_global = 1
 let g:ale_lint_on_text_changed = 'never'
 
 if emoji#available()
@@ -168,9 +161,6 @@ endif
 
 " fzf.vim
 nnoremap <c-p> :Files<cr>
-imap <c-x><c-l> <plug>(fzf-complete-line)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-
 nnoremap <silent> <leader>B :Buffers<CR>
 nnoremap <silent> <leader>W :Windows<CR>
 nnoremap <silent> <leader>; :BLines<CR>
