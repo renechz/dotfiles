@@ -51,6 +51,7 @@ set clipboard=unnamed
 set colorcolumn=81,101
 set diffopt+=vertical
 set display=truncate
+set foldlevelstart=999
 set foldmethod=indent
 set hidden
 set history=500
