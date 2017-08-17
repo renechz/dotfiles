@@ -117,7 +117,7 @@ call s:h("VertSplit",     { "fg": s:tiki.ui_bg[s:theme], "style": "reverse" })
 call s:h("WildMenu",      { "fg": s:tiki.bg4[s:theme], "bg": s:tiki.aqua[s:theme] })
 
 call s:h("Function",      { "fg": s:tiki.green[s:theme] })
-call s:h("SpecialKey",    { "fg": s:tiki.fg4[s:theme] })
+call s:h("SpecialKey",    { "fg": s:tiki.bg4[s:theme] })
 call s:h("Title",         { "fg": s:tiki.orange[s:theme] })
 
 call s:h("DiffAdd",       { "fg": s:tiki.bg0[s:theme], "bg": s:tiki.green[s:theme] })
@@ -225,6 +225,11 @@ call s:h("yamlAlias",        { "fg": s:tiki.green[s:theme], "style": "italic,und
 call s:h("yamlAnchor",       { "fg": s:tiki.aqua[s:theme] })
 call s:h("yamlConstant",     { "fg": s:tiki.purple[s:theme] })
 call s:h("yamlKey",          { "fg": s:tiki.aqua[s:theme] })
+
+call s:h("vimBracket",   { "fg": s:tiki.aqua[s:theme] })
+call s:h("vimMapMod",    { "fg": s:tiki.aqua[s:theme] })
+call s:h("vimMapModKey", { "fg": s:tiki.aqua[s:theme] })
+call s:h("vimNotation",  { "fg": s:tiki.aqua[s:theme] })
 
 " https://github.com/w0rp/ale
 call s:h("ALEError",        { "fg": s:tiki.red[s:theme] })
