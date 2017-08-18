@@ -31,7 +31,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
-Plug 'maralla/completor.vim'
+Plug 'lifepillar/vim-mucomplete'
 Plug 'tmux-plugins/vim-tmux'
 
 call plug#end()
@@ -49,6 +49,7 @@ set autoindent
 set backspace=indent,eol,start
 set clipboard=unnamed
 set colorcolumn=81,101
+set completeopt+=menuone,noinsert
 set diffopt+=vertical
 set display=truncate
 set foldlevelstart=999
@@ -66,6 +67,7 @@ set nowritebackup
 set noswapfile
 set number
 set relativenumber
+set shortmess+=c   " Shut off completion messages
 set undolevels=1000
 set showcmd
 set ttimeout
@@ -177,5 +179,9 @@ nnoremap <leader>av :AV<CR>
 
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" vim-mucomplete
+inoremap <expr> <cr> mucomplete#popup_exit("\<cr>")
+let g:mucomplete#enable_auto_at_startup = 1
 
 map <leader>H :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
