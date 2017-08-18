@@ -67,7 +67,6 @@ set noswapfile
 set number
 set relativenumber
 set undolevels=1000
-set ruler
 set showcmd
 set ttimeout
 set ttimeoutlen=100
@@ -103,8 +102,8 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " zoom a vim pane
-nnoremap <leader>z :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>Z :wincmd =<cr>
+nnoremap <leader>zi :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>zo wincmd =<cr>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -163,7 +162,6 @@ endif
 " fzf.vim
 nnoremap <c-p> :Files<cr>
 nnoremap <silent> <leader>B :Buffers<CR>
-nnoremap <silent> <leader>W :Windows<CR>
 nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>[ :BTags<CR>
 nnoremap <silent> <leader>] :Tags<CR>
