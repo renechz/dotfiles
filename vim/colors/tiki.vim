@@ -27,9 +27,8 @@ endfunction
 
 let s:tiki = {
 \   "editor": {
-\     "bg1": { "dark": "#2c292d", "light": "#faf8f5" },
-\     "fg1": { "dark": "#fcfcfa", "light": "#896724" },
-\     "fg2": { "dark": "#fcfcfa", "light": "#1f222e" },
+\     "bg": { "dark": "#2c292d", "light": "#faf8f5" },
+\     "fg": { "dark": "#fcfcfa", "light": "#896724" },
 \   },
 \   "ui": {
 \     "bg":           { "dark": "#211f22", "light": "#eae1d2" },
@@ -53,18 +52,14 @@ let s:tiki = {
 \   "fg3":       { "dark": "#d9dcec", "light": "#292d3d" },
 \   "fg4":       { "dark": "#c8cce4", "light": "#34394c" },
 \   "fg5":       { "dark": "#b7bcdc", "light": "#3e445c" },
-\   "gray":      { "dark": "#6c6a6c", "light": "#a8b0d5" },
-\   "red":       { "dark": "#ff5370", "light": "#e53935" },
-\   "pink":      { "dark": "#ff80ab", "light": "#ff5370" },
+\   "red":       { "dark": "#ff80ab", "light": "#ff5370" },
 \   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
 \   "yellow":    { "dark": "#ffcb6b", "light": "#896724" },
 \   "green":     { "dark": "#c3e88d", "light": "#896724" },
 \   "blue_pale": { "dark": "#b2ccd6", "light": "#8796b0" },
-\   "aqua":      { "dark": "#89ddff", "light": "#718ecd" },
+\   "cyan":      { "dark": "#89ddff", "light": "#718ecd" },
 \   "blue":      { "dark": "#82aaff", "light": "#6182b8" },
 \   "purple":    { "dark": "#c792ea", "light": "#7c4dff" },
-\   "violet":    { "dark": "#bb80b3", "light": "#945eb8" },
-\   "brown":     { "dark": "#ab7967", "light": "#ab7967" },
 \ }
 
 if s:is_dark
@@ -75,37 +70,37 @@ else
   set background=light
 endif
 
-call s:h("Normal",        { "fg": s:tiki.editor.fg1[s:theme], "bg": s:tiki.editor.bg1[s:theme] })
-call s:h("LineNr",        { "fg": s:tiki.ui.line_nr[s:theme], "bg": s:tiki.editor.bg1[s:theme] })
-call s:h("FoldColumn",    { "fg": s:tiki.aqua[s:theme] })
+call s:h("Normal",        { "fg": s:tiki.editor.fg[s:theme], "bg": s:tiki.editor.bg[s:theme] })
+call s:h("LineNr",        { "fg": s:tiki.ui.line_nr[s:theme], "bg": s:tiki.editor.bg[s:theme] })
+call s:h("FoldColumn",    { "fg": s:tiki.cyan[s:theme] })
 call s:h("Folded",        { "fg": s:tiki.bg5[s:theme], "bg": s:tiki.bg2[s:theme] })
-call s:h("MatchParen",    { "fg": s:tiki.pink[s:theme], "style": "underline" })
+call s:h("MatchParen",    { "fg": s:tiki.red[s:theme], "style": "underline" })
 call s:h("SignColumn",    { "bg": s:tiki.ui.bg[s:theme] })
 call s:h("Comment",       { "fg": s:tiki.syntax.comment[s:theme], "style": "italic" })
 call s:h("Conceal",       { "bg": s:tiki.bg4[s:theme] })
 call s:h("Constant",      { "fg": s:tiki.purple[s:theme] })
 call s:h("Error",         { "bg": s:tiki.red[s:theme] })
-call s:h("Identifier",    { "fg": s:tiki.aqua[s:theme], "style": "italic" })
+call s:h("Identifier",    { "fg": s:tiki.cyan[s:theme], "style": "italic" })
 call s:h("Ignore",        { "fg": s:tiki.bg2[s:theme] })
-call s:h("PreProc",       { "fg": s:tiki.pink[s:theme] })
+call s:h("PreProc",       { "fg": s:tiki.red[s:theme] })
 call s:h("Special",       { "fg": s:tiki.fg2[s:theme] })
-call s:h("Statement",     { "fg": s:tiki.pink[s:theme] })
+call s:h("Statement",     { "fg": s:tiki.red[s:theme] })
 call s:h("String",        { "fg": s:tiki.syntax.string[s:theme] })
-call s:h("Todo",          { "fg": s:tiki.brown[s:theme], "bg": "NONE" })
-call s:h("Type",          { "fg": s:tiki.aqua[s:theme] })
-call s:h("Underlined",    { "fg": s:tiki.violet[s:theme], "style": "underline" })
+call s:h("Todo",          { "fg": s:tiki.orange[s:theme], "bg": "NONE" })
+call s:h("Type",          { "fg": s:tiki.cyan[s:theme] })
+call s:h("Underlined",    { "fg": s:tiki.purple[s:theme], "style": "underline" })
 
 call s:h("NonText",       { "fg": s:tiki.bg5[s:theme], "style": "bold" })
 
 call s:h("Pmenu",         { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme] })
 call s:h("PmenuSbar",     { "fg": s:tiki.bg4[s:theme], "bg": s:tiki.bg4[s:theme] })
-call s:h("PmenuSel",      { "fg": s:tiki.bg2[s:theme], "bg": s:tiki.aqua[s:theme] })
-call s:h("PmenuThumb",    { "fg": s:tiki.aqua[s:theme], "bg": s:tiki.aqua[s:theme] })
+call s:h("PmenuSel",      { "fg": s:tiki.bg2[s:theme], "bg": s:tiki.cyan[s:theme] })
+call s:h("PmenuThumb",    { "fg": s:tiki.cyan[s:theme], "bg": s:tiki.cyan[s:theme] })
 
 call s:h("ErrorMsg",      { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.red[s:theme] })
 call s:h("ModeMsg",       { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("MoreMsg",       { "fg": s:tiki.ui.fg[s:theme] })
-call s:h("Question",      { "fg": s:tiki.aqua[s:theme] })
+call s:h("Question",      { "fg": s:tiki.cyan[s:theme] })
 call s:h("WarningMsg",    { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.red[s:theme] })
 
 call s:h("TabLine",       { "fg": s:tiki.fg4[s:theme], "bg": s:tiki.bg4[s:theme], "style": "bold" })
@@ -130,7 +125,7 @@ call s:h("Visual",        { "bg": s:tiki.ui.visual[s:theme] })
 call s:h("VisualNOS",     { "bg": s:tiki.bg5[s:theme] })
 
 call s:h("VertSplit",     { "fg": s:tiki.ui.bg[s:theme], "style": "reverse" })
-call s:h("WildMenu",      { "fg": s:tiki.bg5[s:theme], "bg": s:tiki.aqua[s:theme] })
+call s:h("WildMenu",      { "fg": s:tiki.bg5[s:theme], "bg": s:tiki.cyan[s:theme] })
 
 call s:h("Function",      { "fg": s:tiki.green[s:theme] })
 call s:h("SpecialKey",    { "fg": s:tiki.ui.special_key[s:theme] })
@@ -154,8 +149,8 @@ call s:h("SpellRare",     { "sp": s:tiki.red[s:theme], "style": "undercurl" })
 call s:h("ColorColumn",   { "bg": s:tiki.ui.color_column[s:theme] })
 
 call s:h("Label",         { "fg": s:tiki.yellow[s:theme] })
-call s:h("StorageClass",  { "fg": s:tiki.aqua[s:theme], "style": "italic" })
-call s:h("Tag",           { "fg": s:tiki.pink[s:theme] })
+call s:h("StorageClass",  { "fg": s:tiki.cyan[s:theme], "style": "italic" })
+call s:h("Tag",           { "fg": s:tiki.red[s:theme] })
 
 hi link Boolean        Constant
 hi link Character      Constant
@@ -179,10 +174,17 @@ hi link SpecialComment Special
 hi link Structure      Type
 hi link Typedef        Type
 
-call s:h("htmlTag",            { "fg": s:tiki.pink[s:theme] })
-call s:h("htmlEndTag",         { "fg": s:tiki.pink[s:theme] })
-call s:h("htmlTagName",        { "fg": s:tiki.pink[s:theme] })
-call s:h("htmlSpecialTagName", { "fg": s:tiki.pink[s:theme] })
+call s:h("jsArrowFunction",     { "fg": s:tiki.cyan[s:theme], "style": "italic" })
+call s:h("jsFuncArgs",          { "fg": s:tiki.orange[s:theme], "style": "italic" })
+call s:h("jsFuncCall",          { "fg": s:tiki.green[s:theme] })
+call s:h("jsGlobalNodeObjects", { "fg": s:tiki.green[s:theme] })
+call s:h("jsGlobalObjects",     { "fg": s:tiki.cyan[s:theme] })
+call s:h("jsObjectKey",         { "fg": s:tiki.red[s:theme] })
+
+call s:h("htmlTag",            { "fg": s:tiki.red[s:theme] })
+call s:h("htmlEndTag",         { "fg": s:tiki.red[s:theme] })
+call s:h("htmlTagName",        { "fg": s:tiki.red[s:theme] })
+call s:h("htmlSpecialTagName", { "fg": s:tiki.red[s:theme] })
 call s:h("htmlArg",            { "fg": s:tiki.green[s:theme] })
 call s:h("htmlSpecialChar",    { "fg": s:tiki.purple[s:theme] })
 call s:h("htmlBold",           { "fg": s:tiki.orange[s:theme], "style": "bold" })
@@ -208,25 +210,25 @@ hi link diffAdded     DiffAdd
 hi link diffRemoved   DiffDelete
 
 call s:h("rubyBlockParameter",           { "fg": s:tiki.orange[s:theme], "style": "italic" })
-call s:h("rubyClass",                    { "fg": s:tiki.pink[s:theme] })
-call s:h("rubyClassName",                { "fg": s:tiki.aqua[s:theme] })
-call s:h("rubyConstant",                 { "fg": s:tiki.aqua[s:theme], "style": "italic" })
-call s:h("rubyControl",                  { "fg": s:tiki.pink[s:theme] })
-call s:h("rubyDefine",                   { "fg": s:tiki.pink[s:theme] })
+call s:h("rubyClass",                    { "fg": s:tiki.red[s:theme] })
+call s:h("rubyClassName",                { "fg": s:tiki.cyan[s:theme] })
+call s:h("rubyConstant",                 { "fg": s:tiki.cyan[s:theme], "style": "italic" })
+call s:h("rubyControl",                  { "fg": s:tiki.red[s:theme] })
+call s:h("rubyDefine",                   { "fg": s:tiki.red[s:theme] })
 call s:h("rubyEscape",                   { "fg": s:tiki.purple[s:theme] })
-call s:h("rubyException",                { "fg": s:tiki.pink[s:theme] })
+call s:h("rubyException",                { "fg": s:tiki.red[s:theme] })
 call s:h("rubyFunction",                 { "fg": s:tiki.green[s:theme] })
-call s:h("rubyInclude",                  { "fg": s:tiki.pink[s:theme] })
+call s:h("rubyInclude",                  { "fg": s:tiki.red[s:theme] })
 call s:h("rubyInstanceVariable",         { "fg": s:tiki.purple[s:theme], "style": "italic" })
-call s:h("rubyInterpolationDelimiter",   { "fg": s:tiki.pink[s:theme] })
-call s:h("rubyOperator",                 { "fg": s:tiki.pink[s:theme] })
+call s:h("rubyInterpolationDelimiter",   { "fg": s:tiki.red[s:theme] })
+call s:h("rubyOperator",                 { "fg": s:tiki.red[s:theme] })
 call s:h("rubyPredefinedConstant",       { "fg": s:tiki.purple[s:theme] })
 call s:h("rubyPseudoVariable",           { "fg": s:tiki.purple[s:theme] })
-call s:h("rubyRailsARAssociationMethod", { "fg": s:tiki.aqua[s:theme] })
-call s:h("rubyRailsARMethod",            { "fg": s:tiki.aqua[s:theme] })
-call s:h("rubyRailsMethod",              { "fg": s:tiki.aqua[s:theme] })
-call s:h("rubyRailsRenderMethod",        { "fg": s:tiki.aqua[s:theme] })
-call s:h("rubyRailsUserClass",           { "fg": s:tiki.aqua[s:theme], "style": "italic" })
+call s:h("rubyRailsARAssociationMethod", { "fg": s:tiki.cyan[s:theme] })
+call s:h("rubyRailsARMethod",            { "fg": s:tiki.cyan[s:theme] })
+call s:h("rubyRailsMethod",              { "fg": s:tiki.cyan[s:theme] })
+call s:h("rubyRailsRenderMethod",        { "fg": s:tiki.cyan[s:theme] })
+call s:h("rubyRailsUserClass",           { "fg": s:tiki.cyan[s:theme], "style": "italic" })
 call s:h("rubyRegexp",                   { "fg": s:tiki.yellow[s:theme] })
 call s:h("rubyRegexpDelimiter",          { "fg": s:tiki.yellow[s:theme] })
 call s:h("rubyStringDelimiter",          { "fg": s:tiki.yellow[s:theme] })
@@ -234,18 +236,19 @@ call s:h("rubySymbol",                   { "fg": s:tiki.purple[s:theme] })
 hi link rubySharpBang Comment
 hi link erubyComment  Comment
 
-call s:h("jsonKeyword",      { "fg": s:tiki.aqua[s:theme] })
-call s:h("jsonKeywordMatch", { "fg": s:tiki.pink[s:theme] })
+call s:h("jsonKeyword",      { "fg": s:tiki.cyan[s:theme] })
+call s:h("jsonKeywordMatch", { "fg": s:tiki.red[s:theme] })
 call s:h("jsonNumber",       { "fg": s:tiki.purple[s:theme] })
 call s:h("yamlAlias",        { "fg": s:tiki.green[s:theme], "style": "italic,underline" })
-call s:h("yamlAnchor",       { "fg": s:tiki.aqua[s:theme] })
+call s:h("yamlAnchor",       { "fg": s:tiki.cyan[s:theme] })
+call s:h("yamlBlock",        { "fg": s:tiki.editor.fg[s:theme] })
 call s:h("yamlConstant",     { "fg": s:tiki.purple[s:theme] })
-call s:h("yamlKey",          { "fg": s:tiki.aqua[s:theme] })
+call s:h("yamlKey",          { "fg": s:tiki.red[s:theme] })
 
-call s:h("vimBracket",   { "fg": s:tiki.aqua[s:theme] })
-call s:h("vimMapMod",    { "fg": s:tiki.aqua[s:theme] })
-call s:h("vimMapModKey", { "fg": s:tiki.aqua[s:theme] })
-call s:h("vimNotation",  { "fg": s:tiki.aqua[s:theme] })
+call s:h("vimBracket",   { "fg": s:tiki.cyan[s:theme] })
+call s:h("vimMapMod",    { "fg": s:tiki.cyan[s:theme] })
+call s:h("vimMapModKey", { "fg": s:tiki.cyan[s:theme] })
+call s:h("vimNotation",  { "fg": s:tiki.cyan[s:theme] })
 
 " https://github.com/w0rp/ale
 call s:h("ALEError",        { "fg": s:tiki.red[s:theme] })
