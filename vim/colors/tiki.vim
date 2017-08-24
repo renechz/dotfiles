@@ -56,10 +56,10 @@ let s:tiki = {
 \   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
 \   "yellow":    { "dark": "#ffcb6b", "light": "#896724" },
 \   "green":     { "dark": "#c3e88d", "light": "#896724" },
-\   "blue_pale": { "dark": "#b2ccd6", "light": "#8796b0" },
 \   "cyan":      { "dark": "#89ddff", "light": "#718ecd" },
-\   "blue":      { "dark": "#82aaff", "light": "#6182b8" },
 \   "purple":    { "dark": "#c792ea", "light": "#7c4dff" },
+\   "blue_pale": { "dark": "#b2ccd6", "light": "#8796b0" },
+\   "blue":      { "dark": "#82aaff", "light": "#6182b8" },
 \ }
 
 if s:is_dark
@@ -97,11 +97,11 @@ call s:h("PmenuSbar",     { "fg": s:tiki.bg4[s:theme], "bg": s:tiki.bg4[s:theme]
 call s:h("PmenuSel",      { "fg": s:tiki.bg2[s:theme], "bg": s:tiki.cyan[s:theme] })
 call s:h("PmenuThumb",    { "fg": s:tiki.cyan[s:theme], "bg": s:tiki.cyan[s:theme] })
 
-call s:h("ErrorMsg",      { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.red[s:theme] })
+call s:h("ErrorMsg",      { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.red[s:theme] })
 call s:h("ModeMsg",       { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("MoreMsg",       { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("Question",      { "fg": s:tiki.cyan[s:theme] })
-call s:h("WarningMsg",    { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.red[s:theme] })
+call s:h("WarningMsg",    { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:theme] })
 
 call s:h("TabLine",       { "fg": s:tiki.fg4[s:theme], "bg": s:tiki.bg4[s:theme], "style": "bold" })
 call s:h("TabLineFill",   { "fg": s:tiki.fg4[s:theme], "bg": s:tiki.bg4[s:theme], "style": "bold" })
