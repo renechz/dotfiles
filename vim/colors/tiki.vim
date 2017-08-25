@@ -97,7 +97,7 @@ call s:h("PmenuSbar",     { "fg": s:tiki.bg4[s:theme], "bg": s:tiki.bg4[s:theme]
 call s:h("PmenuSel",      { "fg": s:tiki.bg2[s:theme], "bg": s:tiki.cyan[s:theme] })
 call s:h("PmenuThumb",    { "fg": s:tiki.cyan[s:theme], "bg": s:tiki.cyan[s:theme] })
 
-call s:h("ErrorMsg",      { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.red[s:theme] })
+call s:h("ErrorMsg",      { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:theme] })
 call s:h("ModeMsg",       { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("MoreMsg",       { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("Question",      { "fg": s:tiki.cyan[s:theme] })
