@@ -25,22 +25,26 @@ function! s:h(group, style)
   endif
 endfunction
 
+" light alternatives
+" bg  fdf4e5
+"     fbfaf9
+
 let s:tiki = {
 \   "editor": {
-\     "bg": { "dark": "#2c292d", "light": "#faf8f5" },
-\     "fg": { "dark": "#fcfcfa", "light": "#896724" },
+\     "bg": { "dark": "#2c292d", "light": "#fbfaf9" },
+\     "fg": { "dark": "#fcfcfa", "light": "#42322d" },
 \   },
 \   "ui": {
 \     "bg":           { "dark": "#211f22", "light": "#eae1d2" },
-\     "fg":           { "dark": "#908e8f", "light": "#fafbfd" },
+\     "fg":           { "dark": "#908e8f", "light": "#b6ad9a" },
 \     "color_column": { "dark": "#363237", "light": "#f3efe7" },
 \     "visual":       { "dark": "#3e3b3f", "light": "#e5ddcb" },
 \     "special_key":  { "dark": "#3e3b3f", "light": "#d1cec7" },
 \     "line_nr":      { "dark": "#575558", "light": "#d1cec7" },
 \   },
 \   "syntax": {
-\     "comment": { "dark": "#6c6a6c", "light": "#b6AD9A" },
-\     "string":  { "dark": "#ffcb6b", "light": "#065289" },
+\     "comment": { "dark": "#6c6a6c", "light": "#b6ad9a" },
+\     "string":  { "dark": "#ffcb6b", "light": "#af7154" },
 \   },
 \   "bg1":       { "dark": "#2c292d", "light": "#fbfaf9" },
 \   "bg2":       { "dark": "#3e3b3f", "light": "#d9dced" },
@@ -52,10 +56,10 @@ let s:tiki = {
 \   "fg3":       { "dark": "#d9dcec", "light": "#292d3d" },
 \   "fg4":       { "dark": "#c8cce4", "light": "#34394c" },
 \   "fg5":       { "dark": "#b7bcdc", "light": "#3e445c" },
-\   "red":       { "dark": "#ff80ab", "light": "#ff5370" },
+\   "red":       { "dark": "#ff80ab", "light": "#a24342" },
 \   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
 \   "yellow":    { "dark": "#ffcb6b", "light": "#896724" },
-\   "green":     { "dark": "#c3e88d", "light": "#896724" },
+\   "green":     { "dark": "#c3e88d", "light": "#b58900" },
 \   "cyan":      { "dark": "#89ddff", "light": "#718ecd" },
 \   "purple":    { "dark": "#c792ea", "light": "#7c4dff" },
 \   "blue_pale": { "dark": "#b2ccd6", "light": "#8796b0" },

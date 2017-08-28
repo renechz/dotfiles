@@ -76,7 +76,6 @@ set ttimeoutlen=100
 set wildmenu
 
 set termguicolors
-set background=dark
 colorscheme tiki
 
 " Enable italics
@@ -85,7 +84,7 @@ let &t_ZR="\e[23m"
 set t_ut=
 
 " Persistent undo
-let undodir = expand('~/.undo-vim')
+let undodir = expand('~/.vim/undo')
 if !isdirectory(undodir)
   call mkdir(undodir)
 endif
@@ -132,7 +131,7 @@ set statusline+=\ %<%f
 set statusline+=\ %h%r
 set statusline+=\ %=
 " Right side
-set statusline+=\ %#StatusLine#%y
+set statusline+=\ %y
 
 " ======================================
 " plugins
