@@ -1,4 +1,9 @@
-# source /usr/local/share/antigen/antigen.zsh
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+setopt hist_ignore_all_dups
+
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
