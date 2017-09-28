@@ -56,12 +56,12 @@ let s:tiki = {
 \   "fg3":       { "dark": "#d9dcec", "light": "#292d3d" },
 \   "fg4":       { "dark": "#c8cce4", "light": "#34394c" },
 \   "fg5":       { "dark": "#b7bcdc", "light": "#3e445c" },
-\   "red":       { "dark": "#ff80ab", "light": "#a24342" },
+\   "red":       { "dark": "#ff6188", "light": "#a24342" },
 \   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
-\   "yellow":    { "dark": "#ffcb6b", "light": "#896724" },
-\   "green":     { "dark": "#c3e88d", "light": "#b58900" },
-\   "cyan":      { "dark": "#89ddff", "light": "#718ecd" },
-\   "purple":    { "dark": "#c792ea", "light": "#7c4dff" },
+\   "yellow":    { "dark": "#ffd866", "light": "#896724" },
+\   "green":     { "dark": "#a9dc76", "light": "#b58900" },
+\   "cyan":      { "dark": "#78dce8", "light": "#718ecd" },
+\   "purple":    { "dark": "#ab9df2", "light": "#7c4dff" },
 \   "blue_pale": { "dark": "#b2ccd6", "light": "#8796b0" },
 \   "blue":      { "dark": "#82aaff", "light": "#6182b8" },
 \ }
@@ -81,7 +81,7 @@ call s:h("Folded",        { "fg": s:tiki.bg5[s:theme], "bg": s:tiki.bg2[s:theme]
 call s:h("MatchParen",    { "fg": s:tiki.red[s:theme], "style": "underline" })
 call s:h("SignColumn",    { "bg": s:tiki.ui.bg[s:theme] })
 call s:h("Comment",       { "fg": s:tiki.syntax.comment[s:theme], "style": "italic" })
-call s:h("Conceal",       { "bg": s:tiki.bg4[s:theme] })
+call s:h("Conceal",       { "fg": s:tiki.red[s:theme], "bg": s:tiki.editor.bg[s:theme] })
 call s:h("Constant",      { "fg": s:tiki.purple[s:theme] })
 call s:h("Error",         { "bg": s:tiki.red[s:theme] })
 call s:h("Identifier",    { "fg": s:tiki.cyan[s:theme], "style": "italic" })
@@ -212,6 +212,10 @@ hi link diffOnly      WarningMsg
 hi link diffRemoved   WarningMsg
 hi link diffAdded     DiffAdd
 hi link diffRemoved   DiffDelete
+
+call s:h("pandocAtx",           { "fg": s:tiki.red[s:theme] })
+call s:h("pandocAtxStart",      { "fg": s:tiki.red[s:theme] })
+call s:h("pandocAtxHeaderMark", { "fg": s:tiki.red[s:theme] })
 
 call s:h("rubyBlockParameter",           { "fg": s:tiki.orange[s:theme], "style": "italic" })
 call s:h("rubyClass",                    { "fg": s:tiki.red[s:theme] })
