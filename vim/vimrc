@@ -49,7 +49,7 @@ set autoindent
 set backspace=indent,eol,start
 set clipboard=unnamed
 set colorcolumn=81,101
-set completeopt+=menuone,noinsert
+set completeopt+=menuone,noselect
 set diffopt+=vertical
 set display=truncate
 set foldlevelstart=999
