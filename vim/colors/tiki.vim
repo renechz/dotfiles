@@ -62,7 +62,6 @@ let s:tiki = {
 \   "green":     { "dark": "#a9dc76", "light": "#b58900" },
 \   "cyan":      { "dark": "#78dce8", "light": "#718ecd" },
 \   "purple":    { "dark": "#ab9df2", "light": "#7c4dff" },
-\   "blue_pale": { "dark": "#b2ccd6", "light": "#8796b0" },
 \   "blue":      { "dark": "#82aaff", "light": "#6182b8" },
 \ }
 
@@ -119,11 +118,11 @@ call s:h("CursorLine",    { "bg": s:tiki.bg2[s:theme] })
 call s:h("helpLeadBlank", { "fg": s:tiki.fg4[s:theme] })
 call s:h("helpNormal",    { "fg": s:tiki.fg2[s:theme] })
 
-call s:h("StatusLine",    { "fg": s:tiki.blue_pale[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "NONE" })
+call s:h("StatusLine",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "NONE" })
 call s:h("StatusLineNC",  { "fg": s:tiki.bg3[s:theme], "bg": s:tiki.fg5[s:theme] })
 " Custom StatusLine groups
-call s:h("SLBranch",      { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.blue_pale[s:theme] })
-call s:h("SLCenter",      { "fg": s:tiki.blue_pale[s:theme], "bg": s:tiki.ui.bg[s:theme] })
+call s:h("SLBranch",      { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
+call s:h("SLCenter",      { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme] })
 
 call s:h("Visual",        { "bg": s:tiki.ui.visual[s:theme] })
 call s:h("VisualNOS",     { "bg": s:tiki.bg5[s:theme] })
@@ -136,7 +135,7 @@ call s:h("SpecialKey",    { "fg": s:tiki.ui.special_key[s:theme] })
 call s:h("Title",         { "fg": s:tiki.orange[s:theme] })
 
 call s:h("DiffAdd",       { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.green[s:theme] })
-call s:h("DiffChange",    { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.blue_pale[s:theme] })
+call s:h("DiffChange",    { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.yellow[s:theme] })
 call s:h("DiffDelete",    { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.red[s:theme] })
 call s:h("DiffText",      { "bg": s:tiki.red[s:theme], "style": "bold" })
 
