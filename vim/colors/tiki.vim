@@ -44,7 +44,7 @@ let s:tiki = {
 \   },
 \   "syntax": {
 \     "comment": { "dark": "#6c6a6c", "light": "#b6ad9a" },
-\     "string":  { "dark": "#ffcb6b", "light": "#af7154" },
+\     "string":  { "dark": "#ffcb6b", "light": "#a27342" },
 \   },
 \   "bg1":       { "dark": "#2c292d", "light": "#fbfaf9" },
 \   "bg2":       { "dark": "#3e3b3f", "light": "#d9dced" },
@@ -59,9 +59,9 @@ let s:tiki = {
 \   "red":       { "dark": "#ff6188", "light": "#a24342" },
 \   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
 \   "yellow":    { "dark": "#ffd866", "light": "#896724" },
-\   "green":     { "dark": "#a9dc76", "light": "#b58900" },
-\   "cyan":      { "dark": "#78dce8", "light": "#718ecd" },
-\   "purple":    { "dark": "#ab9df2", "light": "#7c4dff" },
+\   "green":     { "dark": "#a9dc76", "light": "#42a273" },
+\   "cyan":      { "dark": "#78dce8", "light": "#4271a2" },
+\   "purple":    { "dark": "#ab9df2", "light": "#a24271" },
 \   "blue":      { "dark": "#82aaff", "light": "#6182b8" },
 \ }
 
