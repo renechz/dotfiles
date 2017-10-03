@@ -27,38 +27,30 @@ endfunction
 
 let s:tiki = {
 \   "editor": {
-\     "bg": { "dark": "#2c292d", "light": "#fbfaf9" },
+\     "bg": { "dark": "#2d2a2e", "light": "#fbfaf9" },
 \     "fg": { "dark": "#fcfcfa", "light": "#42322d" },
 \   },
 \   "ui": {
 \     "bg":           { "dark": "#211f22", "light": "#eae1d2" },
 \     "fg":           { "dark": "#908e8f", "light": "#b6ad9a" },
+\     "pmenu_bg":     { "dark": "#403e41", "light": "#b6ad9a" },
+\     "pmenu_fg":     { "dark": "#fcfcfa", "light": "#b6ad9a" },
 \     "color_column": { "dark": "#363237", "light": "#f3efe7" },
-\     "visual":       { "dark": "#3e3b3f", "light": "#e5ddcb" },
+\     "visual":       { "dark": "#403e41", "light": "#e5ddcb" },
 \     "special_key":  { "dark": "#3e3b3f", "light": "#d1cec7" },
-\     "line_nr":      { "dark": "#575558", "light": "#d1cec7" },
+\     "line_nr":      { "dark": "#5b595c", "light": "#d1cec7" },
 \   },
 \   "syntax": {
-\     "comment": { "dark": "#6c6a6c", "light": "#b6ad9a" },
+\     "comment": { "dark": "#727072", "light": "#b6ad9a" },
 \     "string":  { "dark": "#ffd866", "light": "#a27342" },
 \   },
-\   "bg1":       { "dark": "#2c292d", "light": "#fbfaf9" },
-\   "bg2":       { "dark": "#3e3b3f", "light": "#d9dced" },
-\   "bg3":       { "dark": "#33384d", "light": "#c7cde5" },
-\   "bg4":       { "dark": "#3d435d", "light": "#b6bddc" },
-\   "bg5":       { "dark": "#575558", "light": "#a5add4" },
-\   "fg1":       { "dark": "#fcfcfa", "light": "#1f222e" },
-\   "fg2":       { "dark": "#fbfcfd", "light": "#15171f" },
-\   "fg3":       { "dark": "#d9dcec", "light": "#292d3d" },
-\   "fg4":       { "dark": "#c8cce4", "light": "#34394c" },
-\   "fg5":       { "dark": "#b7bcdc", "light": "#3e445c" },
 \   "red":       { "dark": "#ff6188", "light": "#a24342" },
-\   "green":     { "dark": "#a9dc76", "light": "#42a273" },
+\   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
 \   "yellow":    { "dark": "#ffd866", "light": "#896724" },
-\   "blue":      { "dark": "#82aaff", "light": "#6182b8" },
+\   "green":     { "dark": "#a9dc76", "light": "#42a273" },
+\   "blue":      { "dark": "#78dce8", "light": "#6182b8" },
 \   "purple":    { "dark": "#ab9df2", "light": "#a24271" },
 \   "cyan":      { "dark": "#78dce8", "light": "#4271a2" },
-\   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
 \ }
 
 if s:is_dark
@@ -72,7 +64,7 @@ endif
 call s:h("Normal",        { "fg": s:tiki.editor.fg[s:theme], "bg": s:tiki.editor.bg[s:theme] })
 call s:h("LineNr",        { "fg": s:tiki.ui.line_nr[s:theme], "bg": s:tiki.editor.bg[s:theme] })
 call s:h("FoldColumn",    { "fg": s:tiki.cyan[s:theme] })
-call s:h("Folded",        { "fg": s:tiki.bg5[s:theme], "bg": s:tiki.bg2[s:theme] })
+call s:h("Folded",        { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme] })
 call s:h("MatchParen",    { "fg": s:tiki.red[s:theme], "style": "underline" })
 call s:h("SignColumn",    { "bg": s:tiki.ui.bg[s:theme] })
 call s:h("Comment",       { "fg": s:tiki.syntax.comment[s:theme], "style": "italic" })
@@ -80,20 +72,20 @@ call s:h("Conceal",       { "fg": s:tiki.red[s:theme], "bg": s:tiki.editor.bg[s:
 call s:h("Constant",      { "fg": s:tiki.purple[s:theme] })
 call s:h("Error",         { "bg": s:tiki.red[s:theme] })
 call s:h("Identifier",    { "fg": s:tiki.cyan[s:theme], "style": "italic" })
-call s:h("Ignore",        { "fg": s:tiki.bg2[s:theme] })
+call s:h("Ignore",        { "fg": s:tiki.ui.bg[s:theme] })
 call s:h("PreProc",       { "fg": s:tiki.red[s:theme] })
-call s:h("Special",       { "fg": s:tiki.fg2[s:theme] })
+call s:h("Special",       { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("Statement",     { "fg": s:tiki.red[s:theme] })
 call s:h("String",        { "fg": s:tiki.syntax.string[s:theme] })
 call s:h("Todo",          { "fg": s:tiki.orange[s:theme], "bg": "NONE" })
 call s:h("Type",          { "fg": s:tiki.cyan[s:theme] })
 call s:h("Underlined",    { "fg": s:tiki.purple[s:theme], "style": "underline" })
 
-call s:h("NonText",       { "fg": s:tiki.bg5[s:theme], "style": "bold" })
+call s:h("NonText",       { "fg": s:tiki.ui.fg[s:theme], "style": "bold" })
 
-call s:h("Pmenu",         { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme] })
-call s:h("PmenuSbar",     { "fg": s:tiki.bg4[s:theme], "bg": s:tiki.bg4[s:theme] })
-call s:h("PmenuSel",      { "fg": s:tiki.bg2[s:theme], "bg": s:tiki.cyan[s:theme] })
+call s:h("Pmenu",         { "fg": s:tiki.ui.pmenu_fg[s:theme], "bg": s:tiki.ui.pmenu_bg[s:theme] })
+call s:h("PmenuSbar",     { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.editor.bg[s:theme] })
+call s:h("PmenuSel",      { "fg": s:tiki.yellow[s:theme], "bg": s:tiki.ui.fg[s:theme] })
 call s:h("PmenuThumb",    { "fg": s:tiki.cyan[s:theme], "bg": s:tiki.cyan[s:theme] })
 
 call s:h("ErrorMsg",      { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:theme] })
@@ -102,41 +94,41 @@ call s:h("MoreMsg",       { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("Question",      { "fg": s:tiki.cyan[s:theme] })
 call s:h("WarningMsg",    { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:theme] })
 
-call s:h("TabLine",       { "fg": s:tiki.fg4[s:theme], "bg": s:tiki.bg4[s:theme], "style": "bold" })
-call s:h("TabLineFill",   { "fg": s:tiki.fg4[s:theme], "bg": s:tiki.bg4[s:theme], "style": "bold" })
-call s:h("TabLineSel",    { "fg": s:tiki.fg4[s:theme], "bg": s:tiki.bg4[s:theme], "style": "bold" })
+call s:h("TabLine",       { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
+call s:h("TabLineFill",   { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
+call s:h("TabLineSel",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
 
-call s:h("Cursor",        { "fg": s:tiki.bg2[s:theme], "bg": s:tiki.fg2[s:theme] })
-call s:h("CursorColumn",  { "bg": s:tiki.bg2[s:theme] })
+call s:h("Cursor",        { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
+call s:h("CursorColumn",  { "bg": s:tiki.ui.bg[s:theme] })
 call s:h("CursorLineNr",  { "fg": s:tiki.yellow[s:theme] })
-call s:h("CursorLine",    { "bg": s:tiki.bg2[s:theme] })
+call s:h("CursorLine",    { "bg": s:tiki.ui.bg[s:theme] })
 
-call s:h("helpLeadBlank", { "fg": s:tiki.fg4[s:theme] })
-call s:h("helpNormal",    { "fg": s:tiki.fg2[s:theme] })
+call s:h("helpLeadBlank", { "fg": s:tiki.ui.fg[s:theme] })
+call s:h("helpNormal",    { "fg": s:tiki.ui.fg[s:theme] })
 
 call s:h("StatusLine",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "NONE" })
-call s:h("StatusLineNC",  { "fg": s:tiki.bg3[s:theme], "bg": s:tiki.fg5[s:theme] })
+call s:h("StatusLineNC",  { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
 " Custom StatusLine groups
 call s:h("SLBranch",      { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
 call s:h("SLCenter",      { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme] })
 
 call s:h("Visual",        { "bg": s:tiki.ui.visual[s:theme] })
-call s:h("VisualNOS",     { "bg": s:tiki.bg5[s:theme] })
+call s:h("VisualNOS",     { "bg": s:tiki.ui.fg[s:theme] })
 
 call s:h("VertSplit",     { "fg": s:tiki.ui.bg[s:theme], "style": "reverse" })
-call s:h("WildMenu",      { "fg": s:tiki.bg5[s:theme], "bg": s:tiki.cyan[s:theme] })
+call s:h("WildMenu",      { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.cyan[s:theme] })
 
 call s:h("Function",      { "fg": s:tiki.green[s:theme] })
 call s:h("SpecialKey",    { "fg": s:tiki.ui.special_key[s:theme] })
 call s:h("Title",         { "fg": s:tiki.orange[s:theme] })
 
-call s:h("DiffAdd",       { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.green[s:theme] })
-call s:h("DiffChange",    { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.yellow[s:theme] })
-call s:h("DiffDelete",    { "fg": s:tiki.bg1[s:theme], "bg": s:tiki.red[s:theme] })
+call s:h("DiffAdd",       { "fg": s:tiki.editor.bg[s:theme], "bg": s:tiki.green[s:theme] })
+call s:h("DiffChange",    { "fg": s:tiki.editor.bg[s:theme], "bg": s:tiki.yellow[s:theme] })
+call s:h("DiffDelete",    { "fg": s:tiki.editor.bg[s:theme], "bg": s:tiki.red[s:theme] })
 call s:h("DiffText",      { "bg": s:tiki.red[s:theme], "style": "bold" })
 
-call s:h("IncSearch",     { "fg": s:tiki.orange[s:theme], "style": "reverse" })
-call s:h("Search",        { "fg": s:tiki.bg1[s:theme],  "bg": s:tiki.green[s:theme] })
+call s:h("IncSearch",     { "fg": s:tiki.yellow[s:theme], "style": "reverse" })
+call s:h("Search",        { "fg": s:tiki.yellow[s:theme], "style": "reverse" })
 
 call s:h("Directory",     { "fg": s:tiki.purple[s:theme] })
 
