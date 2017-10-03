@@ -31,7 +31,7 @@ let s:tiki = {
 \     "fg": { "dark": "#fcfcfa", "light": "#42322d" },
 \   },
 \   "ui": {
-\     "bg":           { "dark": "#211f22", "light": "#eae1d2" },
+\     "bg":           { "dark": "#221f22", "light": "#eae1d2" },
 \     "fg":           { "dark": "#908e8f", "light": "#b6ad9a" },
 \     "pmenu_bg":     { "dark": "#403e41", "light": "#b6ad9a" },
 \     "pmenu_fg":     { "dark": "#fcfcfa", "light": "#b6ad9a" },
