@@ -41,8 +41,9 @@ let s:tiki = {
 \     "line_nr":      { "dark": "#5b595c", "light": "#d1cec7" },
 \   },
 \   "syntax": {
-\     "comment": { "dark": "#727072", "light": "#b6ad9a" },
-\     "string":  { "dark": "#ffd866", "light": "#a27342" },
+\     "comment":     { "dark": "#727072", "light": "#b6ad9a" },
+\     "punctuation": { "dark": "#939293", "light": "#a27342" },
+\     "string":      { "dark": "#ffd866", "light": "#a27342" },
 \   },
 \   "red":       { "dark": "#ff6188", "light": "#a24342" },
 \   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
@@ -74,14 +75,14 @@ call s:h("Error",         { "bg": s:tiki.red[s:theme] })
 call s:h("Identifier",    { "fg": s:tiki.cyan[s:theme], "style": "italic" })
 call s:h("Ignore",        { "fg": s:tiki.ui.bg[s:theme] })
 call s:h("PreProc",       { "fg": s:tiki.red[s:theme] })
-call s:h("Special",       { "fg": s:tiki.ui.fg[s:theme] })
+call s:h("Special",       { "fg": s:tiki.syntax.punctuation[s:theme] })
 call s:h("Statement",     { "fg": s:tiki.red[s:theme] })
 call s:h("String",        { "fg": s:tiki.syntax.string[s:theme] })
-call s:h("Todo",          { "fg": s:tiki.orange[s:theme], "bg": "NONE" })
+call s:h("Todo",          { "fg": s:tiki.yellow[s:theme], "bg": "NONE" })
 call s:h("Type",          { "fg": s:tiki.cyan[s:theme] })
 call s:h("Underlined",    { "fg": s:tiki.purple[s:theme], "style": "underline" })
 
-call s:h("NonText",       { "fg": s:tiki.ui.fg[s:theme], "style": "bold" })
+call s:h("NonText",       { "fg": s:tiki.ui.line_nr[s:theme], "style": "bold" })
 
 call s:h("Pmenu",         { "fg": s:tiki.ui.pmenu_fg[s:theme], "bg": s:tiki.ui.pmenu_bg[s:theme] })
 call s:h("PmenuSbar",     { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.editor.bg[s:theme] })
