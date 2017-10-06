@@ -143,6 +143,8 @@ call s:h("ColorColumn",   { "bg": s:tiki.ui.color_column[s:theme] })
 call s:h("Label",         { "fg": s:tiki.yellow[s:theme] })
 call s:h("StorageClass",  { "fg": s:tiki.cyan[s:theme], "style": "italic" })
 call s:h("Tag",           { "fg": s:tiki.red[s:theme] })
+call s:h("Quote",         { "fg": s:tiki.syntax.punctuation[s:theme] })
+call s:h("Noise",         { "fg": s:tiki.syntax.punctuation[s:theme] })
 
 hi link Boolean        Constant
 hi link Character      Constant
@@ -166,12 +168,13 @@ hi link SpecialComment Special
 hi link Structure      Type
 hi link Typedef        Type
 
-call s:h("jsArrowFunction",     { "fg": s:tiki.cyan[s:theme], "style": "italic" })
+call s:h("jsArrowFunction",     { "fg": s:tiki.red[s:theme] })
 call s:h("jsFuncArgs",          { "fg": s:tiki.orange[s:theme], "style": "italic" })
 call s:h("jsFuncCall",          { "fg": s:tiki.green[s:theme] })
 call s:h("jsGlobalNodeObjects", { "fg": s:tiki.green[s:theme] })
-call s:h("jsGlobalObjects",     { "fg": s:tiki.cyan[s:theme] })
-call s:h("jsObjectKey",         { "fg": s:tiki.red[s:theme] })
+call s:h("jsGlobalObjects",     { "fg": s:tiki.cyan[s:theme], "style": "italic" })
+call s:h("jsObjectKey",         { "fg": s:tiki.editor.fg[s:theme] })
+call s:h("jsNoise",             { "fg": s:tiki.syntax.punctuation[s:theme] })
 
 call s:h("htmlTag",            { "fg": s:tiki.red[s:theme] })
 call s:h("htmlEndTag",         { "fg": s:tiki.red[s:theme] })
@@ -232,8 +235,8 @@ call s:h("rubySymbol",                   { "fg": s:tiki.purple[s:theme] })
 hi link rubySharpBang Comment
 hi link erubyComment  Comment
 
-call s:h("jsonKeyword",      { "fg": s:tiki.cyan[s:theme] })
-call s:h("jsonKeywordMatch", { "fg": s:tiki.red[s:theme] })
+call s:h("jsonKeyword",      { "fg": s:tiki.editor.fg[s:theme] })
+call s:h("jsonKeywordMatch", { "fg": s:tiki.syntax.punctuation[s:theme] })
 call s:h("jsonNumber",       { "fg": s:tiki.purple[s:theme] })
 call s:h("yamlAlias",        { "fg": s:tiki.green[s:theme], "style": "italic,underline" })
 call s:h("yamlAnchor",       { "fg": s:tiki.cyan[s:theme] })
