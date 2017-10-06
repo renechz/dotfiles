@@ -244,11 +244,6 @@ call s:h("yamlBlock",        { "fg": s:tiki.editor.fg[s:theme] })
 call s:h("yamlConstant",     { "fg": s:tiki.purple[s:theme] })
 call s:h("yamlKey",          { "fg": s:tiki.red[s:theme] })
 
-call s:h("vimBracket",   { "fg": s:tiki.cyan[s:theme] })
-call s:h("vimMapMod",    { "fg": s:tiki.cyan[s:theme] })
-call s:h("vimMapModKey", { "fg": s:tiki.cyan[s:theme] })
-call s:h("vimNotation",  { "fg": s:tiki.cyan[s:theme] })
-
 " https://github.com/w0rp/ale
 call s:h("ALEError",        { "fg": s:tiki.red[s:theme] })
 call s:h("ALEErrorSign",    { "bg": s:tiki.ui.bg[s:theme] })
