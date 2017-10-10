@@ -102,7 +102,7 @@ call s:h("TabLineSel",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:th
 call s:h("Cursor",        { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
 call s:h("CursorColumn",  { "bg": s:tiki.ui.bg[s:theme] })
 call s:h("CursorLineNr",  { "fg": s:tiki.yellow[s:theme] })
-call s:h("CursorLine",    { "bg": s:tiki.ui.bg[s:theme] })
+call s:h("CursorLine",    { "bg": s:tiki.ui.color_column[s:theme], "style": "NONE" })
 
 call s:h("helpLeadBlank", { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("helpNormal",    { "fg": s:tiki.ui.fg[s:theme] })
