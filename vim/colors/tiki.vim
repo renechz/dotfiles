@@ -26,7 +26,7 @@ function! s:h(group, style)
 endfunction
 
 let s:tiki = {
-\   "editor": {
+\   "normal": {
 \     "bg": { "dark": "#2d2a2e", "light": "#fbfaf9" },
 \     "fg": { "dark": "#fcfcfa", "light": "#42322d" },
 \   },
@@ -35,15 +35,15 @@ let s:tiki = {
 \     "fg":           { "dark": "#908e8f", "light": "#b6ad9a" },
 \     "pmenu_bg":     { "dark": "#403e41", "light": "#b6ad9a" },
 \     "pmenu_fg":     { "dark": "#fcfcfa", "light": "#b6ad9a" },
-\     "color_column": { "dark": "#363237", "light": "#f3efe7" },
+\     "color_column": { "dark": "#403e41", "light": "#f3efe7" },
 \     "visual":       { "dark": "#403e41", "light": "#e5ddcb" },
 \     "special_key":  { "dark": "#3e3b3f", "light": "#d1cec7" },
 \     "line_nr":      { "dark": "#5b595c", "light": "#d1cec7" },
 \   },
 \   "syntax": {
-\     "comment":     { "dark": "#727072", "light": "#b6ad9a" },
-\     "punctuation": { "dark": "#939293", "light": "#a27342" },
-\     "string":      { "dark": "#ffd866", "light": "#a27342" },
+\     "comment": { "dark": "#727072", "light": "#b6ad9a" },
+\     "noise":   { "dark": "#939293", "light": "#a27342" },
+\     "string":  { "dark": "#ffd866", "light": "#a27342" },
 \   },
 \   "red":       { "dark": "#ff6188", "light": "#a24342" },
 \   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
@@ -62,20 +62,20 @@ else
   set background=light
 endif
 
-call s:h("Normal",        { "fg": s:tiki.editor.fg[s:theme], "bg": s:tiki.editor.bg[s:theme] })
-call s:h("LineNr",        { "fg": s:tiki.ui.line_nr[s:theme], "bg": s:tiki.editor.bg[s:theme] })
+call s:h("Normal",        { "fg": s:tiki.normal.fg[s:theme], "bg": s:tiki.normal.bg[s:theme] })
+call s:h("LineNr",        { "fg": s:tiki.ui.line_nr[s:theme], "bg": s:tiki.normal.bg[s:theme] })
 call s:h("FoldColumn",    { "fg": s:tiki.cyan[s:theme] })
 call s:h("Folded",        { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme] })
 call s:h("MatchParen",    { "fg": s:tiki.red[s:theme], "style": "underline" })
 call s:h("SignColumn",    { "bg": s:tiki.ui.bg[s:theme] })
 call s:h("Comment",       { "fg": s:tiki.syntax.comment[s:theme], "style": "italic" })
-call s:h("Conceal",       { "fg": s:tiki.red[s:theme], "bg": s:tiki.editor.bg[s:theme] })
+call s:h("Conceal",       { "fg": s:tiki.red[s:theme], "bg": s:tiki.normal.bg[s:theme] })
 call s:h("Constant",      { "fg": s:tiki.purple[s:theme] })
 call s:h("Error",         { "bg": s:tiki.red[s:theme] })
 call s:h("Identifier",    { "fg": s:tiki.cyan[s:theme], "style": "italic" })
 call s:h("Ignore",        { "fg": s:tiki.ui.bg[s:theme] })
 call s:h("PreProc",       { "fg": s:tiki.red[s:theme] })
-call s:h("Special",       { "fg": s:tiki.syntax.punctuation[s:theme] })
+call s:h("Special",       { "fg": s:tiki.syntax.noise[s:theme] })
 call s:h("Statement",     { "fg": s:tiki.red[s:theme] })
 call s:h("String",        { "fg": s:tiki.syntax.string[s:theme] })
 call s:h("Todo",          { "fg": s:tiki.yellow[s:theme], "bg": "NONE" })
@@ -85,7 +85,7 @@ call s:h("Underlined",    { "fg": s:tiki.purple[s:theme], "style": "underline" }
 call s:h("NonText",       { "fg": s:tiki.ui.line_nr[s:theme], "style": "bold" })
 
 call s:h("Pmenu",         { "fg": s:tiki.ui.pmenu_fg[s:theme], "bg": s:tiki.ui.pmenu_bg[s:theme] })
-call s:h("PmenuSbar",     { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.editor.bg[s:theme] })
+call s:h("PmenuSbar",     { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.normal.bg[s:theme] })
 call s:h("PmenuSel",      { "fg": s:tiki.yellow[s:theme], "bg": s:tiki.ui.fg[s:theme] })
 call s:h("PmenuThumb",    { "fg": s:tiki.cyan[s:theme], "bg": s:tiki.cyan[s:theme] })
 
@@ -101,7 +101,7 @@ call s:h("TabLineSel",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:th
 
 call s:h("Cursor",        { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
 call s:h("CursorColumn",  { "bg": s:tiki.ui.bg[s:theme] })
-call s:h("CursorLineNr",  { "fg": s:tiki.yellow[s:theme] })
+call s:h("CursorLineNr",  { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("CursorLine",    { "bg": s:tiki.ui.color_column[s:theme], "style": "NONE" })
 
 call s:h("helpLeadBlank", { "fg": s:tiki.ui.fg[s:theme] })
@@ -123,9 +123,9 @@ call s:h("Function",      { "fg": s:tiki.green[s:theme] })
 call s:h("SpecialKey",    { "fg": s:tiki.ui.special_key[s:theme] })
 call s:h("Title",         { "fg": s:tiki.orange[s:theme] })
 
-call s:h("DiffAdd",       { "fg": s:tiki.editor.bg[s:theme], "bg": s:tiki.green[s:theme] })
-call s:h("DiffChange",    { "fg": s:tiki.editor.bg[s:theme], "bg": s:tiki.yellow[s:theme] })
-call s:h("DiffDelete",    { "fg": s:tiki.editor.bg[s:theme], "bg": s:tiki.red[s:theme] })
+call s:h("DiffAdd",       { "fg": s:tiki.normal.bg[s:theme], "bg": s:tiki.green[s:theme] })
+call s:h("DiffChange",    { "fg": s:tiki.normal.bg[s:theme], "bg": s:tiki.yellow[s:theme] })
+call s:h("DiffDelete",    { "fg": s:tiki.normal.bg[s:theme], "bg": s:tiki.red[s:theme] })
 call s:h("DiffText",      { "bg": s:tiki.red[s:theme], "style": "bold" })
 
 call s:h("IncSearch",     { "fg": s:tiki.yellow[s:theme], "style": "reverse" })
@@ -143,8 +143,8 @@ call s:h("ColorColumn",   { "bg": s:tiki.ui.color_column[s:theme] })
 call s:h("Label",         { "fg": s:tiki.yellow[s:theme] })
 call s:h("StorageClass",  { "fg": s:tiki.cyan[s:theme], "style": "italic" })
 call s:h("Tag",           { "fg": s:tiki.red[s:theme] })
-call s:h("Quote",         { "fg": s:tiki.syntax.punctuation[s:theme] })
-call s:h("Noise",         { "fg": s:tiki.syntax.punctuation[s:theme] })
+call s:h("Quote",         { "fg": s:tiki.syntax.noise[s:theme] })
+call s:h("Noise",         { "fg": s:tiki.syntax.noise[s:theme] })
 
 hi link Boolean        Constant
 hi link Character      Constant
@@ -173,8 +173,8 @@ call s:h("jsFuncArgs",          { "fg": s:tiki.orange[s:theme], "style": "italic
 call s:h("jsFuncCall",          { "fg": s:tiki.green[s:theme] })
 call s:h("jsGlobalNodeObjects", { "fg": s:tiki.green[s:theme] })
 call s:h("jsGlobalObjects",     { "fg": s:tiki.cyan[s:theme], "style": "italic" })
-call s:h("jsObjectKey",         { "fg": s:tiki.editor.fg[s:theme] })
-call s:h("jsNoise",             { "fg": s:tiki.syntax.punctuation[s:theme] })
+call s:h("jsObjectKey",         { "fg": s:tiki.normal.fg[s:theme] })
+call s:h("jsNoise",             { "fg": s:tiki.syntax.noise[s:theme] })
 
 call s:h("htmlTag",            { "fg": s:tiki.red[s:theme] })
 call s:h("htmlEndTag",         { "fg": s:tiki.red[s:theme] })
@@ -209,19 +209,19 @@ call s:h("pandocAtxStart",      { "fg": s:tiki.red[s:theme] })
 call s:h("pandocAtxHeaderMark", { "fg": s:tiki.red[s:theme] })
 
 call s:h("rubyBlockParameter",           { "fg": s:tiki.orange[s:theme], "style": "italic" })
-call s:h("rubyBlockParameterList",       { "fg": s:tiki.syntax.punctuation[s:theme] })
+call s:h("rubyBlockParameterList",       { "fg": s:tiki.syntax.noise[s:theme] })
 call s:h("rubyClass",                    { "fg": s:tiki.red[s:theme] })
 call s:h("rubyClassName",                { "fg": s:tiki.cyan[s:theme] })
 call s:h("rubyConstant",                 { "fg": s:tiki.cyan[s:theme] })
 call s:h("rubyControl",                  { "fg": s:tiki.red[s:theme] })
-call s:h("rubyCurlyBlockDelimiter",      { "fg": s:tiki.syntax.punctuation[s:theme] })
+call s:h("rubyCurlyBlockDelimiter",      { "fg": s:tiki.syntax.noise[s:theme] })
 call s:h("rubyDefine",                   { "fg": s:tiki.red[s:theme] })
 call s:h("rubyEscape",                   { "fg": s:tiki.purple[s:theme] })
 call s:h("rubyException",                { "fg": s:tiki.red[s:theme] })
 call s:h("rubyFunction",                 { "fg": s:tiki.green[s:theme] })
 call s:h("rubyInclude",                  { "fg": s:tiki.red[s:theme] })
 call s:h("rubyInstanceVariable",         { "fg": s:tiki.purple[s:theme], "style": "italic" })
-call s:h("rubyInterpolationDelimiter",   { "fg": s:tiki.syntax.punctuation[s:theme] })
+call s:h("rubyInterpolationDelimiter",   { "fg": s:tiki.syntax.noise[s:theme] })
 call s:h("rubyOperator",                 { "fg": s:tiki.red[s:theme] })
 call s:h("rubyPredefinedConstant",       { "fg": s:tiki.purple[s:theme] })
 call s:h("rubyPseudoVariable",           { "fg": s:tiki.purple[s:theme] })
@@ -237,12 +237,12 @@ call s:h("rubySymbol",                   { "fg": s:tiki.purple[s:theme] })
 hi link rubySharpBang Comment
 hi link erubyComment  Comment
 
-call s:h("jsonKeyword",      { "fg": s:tiki.editor.fg[s:theme] })
-call s:h("jsonKeywordMatch", { "fg": s:tiki.syntax.punctuation[s:theme] })
+call s:h("jsonKeyword",      { "fg": s:tiki.normal.fg[s:theme] })
+call s:h("jsonKeywordMatch", { "fg": s:tiki.syntax.noise[s:theme] })
 call s:h("jsonNumber",       { "fg": s:tiki.purple[s:theme] })
 call s:h("yamlAlias",        { "fg": s:tiki.green[s:theme], "style": "italic,underline" })
 call s:h("yamlAnchor",       { "fg": s:tiki.cyan[s:theme] })
-call s:h("yamlBlock",        { "fg": s:tiki.editor.fg[s:theme] })
+call s:h("yamlBlock",        { "fg": s:tiki.normal.fg[s:theme] })
 call s:h("yamlConstant",     { "fg": s:tiki.purple[s:theme] })
 call s:h("yamlKey",          { "fg": s:tiki.red[s:theme] })
 

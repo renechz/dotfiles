@@ -125,8 +125,6 @@ endfunction
 set statusline=
 set statusline+=\ %{HighlightStatusline()}
 " Left side
-set statusline+=\ %#SLBranch#
-set statusline+=\ %{fugitive#head()}
 set statusline+=\ %#SLCenter#
 set statusline+=\ %<%f
 set statusline+=\ %h%r
@@ -170,6 +168,20 @@ nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>[ :BTags<CR>
 nnoremap <silent> <leader>] :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Pmenu'],
+  \ 'hl':      ['fg', 'Pmenu'],
+  \ 'fg+':     ['fg', 'PmenuSel'],
+  \ 'bg+':     ['bg', 'PmenuSel'],
+  \ 'hl+':     ['fg', 'Pmenu'],
+  \ 'info':    ['fg', 'Pmenu'],
+  \ 'prompt':  ['fg', 'Pmenu'],
+  \ 'pointer': ['fg', 'PmenuSel'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " vim-commentary
 nmap cm <Plug>Commentary
