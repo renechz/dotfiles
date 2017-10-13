@@ -132,6 +132,9 @@ set statusline+=\ %=
 " Right side
 set statusline+=\ %y
 
+set synmaxcol=100
+syntax sync minlines=50
+
 " ======================================
 " plugins
 " ======================================
