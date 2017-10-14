@@ -1,3 +1,7 @@
+[user]
+  name = René Cienfuegos
+[github]
+  user = renechz
 [init]
   templatedir = ~/.git_template
 [push]
@@ -11,6 +15,7 @@
   co = checkout
   pf = push --force-with-lease
   st = status
+  di = diff
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
