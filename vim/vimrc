@@ -114,9 +114,9 @@ autocmd VimResized * :wincmd =
 " setup StatusLine
 function! HighlightStatusline()
   if &modified == 1
-    exe 'hi! link SLCenter WarningMsg'
+    exe 'hi! link StatusLine WarningMsg'
   else
-    exe 'hi! link SLCenter StatusLine'
+    exe 'hi! link StatusLine StatusLineNC'
   endif
 
   return ''

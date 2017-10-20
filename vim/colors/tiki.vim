@@ -25,41 +25,30 @@ function! s:h(group, style)
   endif
 endfunction
 
-
-let s:monokai_pro = {
+let s:palette = {
       \   "bg":                                     "#2d2a2e",
       \   "fg":                                     "#fcfcfa",
       \   "black":                                  "#221f22",
       \   "red":                                    "#ff6188",
       \   "green":                                  "#a9dc76",
-      \   "orange":                                 "#fc9867",
       \   "yellow":                                 "#ffd866",
       \   "blue":                                   "#78dce8",
       \   "purple":                                 "#ab9df2",
       \   "cyan":                                   "#78dce8",
-      \   "lineNumber":                             "#5b595c",
+      \   "white":                                  "#c1c0c0",
+      \   "orange":                                 "#fc9867",
+      \   "comment":                                "#727072",
+      \   "colorColumn":                            "#403e41",
+      \   "cursorLine":                             "#353236",
+      \   "lineNr":                                 "#5b595c",
+      \   "visual":                                 "#403e41",
       \   "sideBarBackground":                      "#221f22",
-      \   "sideBarBorder":                          "#19181a",
       \   "sideBarForeground":                      "#939293",
-      \   "sideBarSectionHeaderBackground":         "#221f22",
-      \   "sideBarSectionHeaderForeground":         "#727072",
       \   "sideBarTitleForeground":                 "#5b595c",
-      \   "statusBarBackground":                    "#221f22",
-      \   "statusBarBorder":                        "#19181a",
-      \   "statusBarDebuggingBackground":           "#727072",
-      \   "statusBarDebuggingForeground":           "#fcfcfa",
-      \   "statusBarBg":                            "#221f22",
-      \   "statusBarFg":                            "#939293",
-      \   "statusBarNoFolderBackground":            "#221f22",
-      \   "statusBarNoFolderForeground":            "#727072",
-      \   "statusBarItemActiveBackground":          "#2d2a2e",
-      \   "statusBarItemHoverBackground":           "#2d2a2e",
-      \   "statusBarItemProminentBackground":       "#403e41",
-      \   "statusBarItemProminentHoverBackground":  "#403e41",
+      \   "statusLineBg":                           "#221f22",
+      \   "statusLineFg":                           "#939293",
       \   "tabActiveBackground":                    "#2d2a2e",
-      \   "tabActiveBorder":                        "#ffd866",
       \   "tabActiveForeground":                    "#ffd866",
-      \   "tabBorder":                              "#2d2a2e",
       \   "tabInactiveBackground":                  "#2d2a2e",
       \   "tabInactiveForeground":                  "#939293",
       \   "tabUnfocusedActiveBorder":               "#939293",
@@ -96,20 +85,41 @@ let s:tiki = {
 \   "cyan":      { "dark": "#78dce8", "light": "#4271a2" },
 \ }
 
-let s:bg = s:monokai_pro.bg
-let s:fg = s:monokai_pro.fg
-let s:black = s:monokai_pro.black
-let s:red = s:monokai_pro.red
-let s:green = s:monokai_pro.green
-let s:yellow = s:monokai_pro.yellow
-let s:blue = s:monokai_pro.blue
-let s:purple = s:monokai_pro.purple
-let s:cyan = s:monokai_pro.cyan
-let s:white = s:monokai_pro.fg
+let s:bg     = s:palette.bg
+let s:fg     = s:palette.fg
+let s:black  = s:palette.black
+let s:red    = s:palette.red
+let s:green  = s:palette.green
+let s:yellow = s:palette.yellow
+let s:blue   = s:palette.blue
+let s:purple = s:palette.purple
+let s:cyan   = s:palette.cyan
+let s:white  = s:palette.white
+let s:orange = s:palette.orange
+let s:accent = s:palette.yellow
 
-let s:statusBarBg = s:monokai_pro.statusBarBg
-let s:statusBarFg = s:monokai_pro.statusBarFg
-let s:lineNumber = s:monokai_pro.lineNumber
+let s:comment    = s:palette.comment
+let s:constant   = s:purple
+let s:string     = s:yellow
+let s:identifier = s:cyan
+let s:function   = s:green
+let s:statement  = s:red
+let s:label      = s:yellow
+let s:preProc    = s:red
+let s:type       = s:cyan
+let s:special    = s:white
+let s:tag        = s:red
+let s:underlined = s:purple
+
+let s:colorColumn  = s:palette.colorColumn
+let s:cursorLine   = s:palette.cursorLine
+let s:statusLineBg = s:palette.black
+let s:statusLineFg = s:palette.statusLineFg
+let s:lineNr       = s:palette.lineNr
+let s:visual       = s:palette.visual
+let s:pmenuBg      = s:palette.visual
+let s:pmenuFg      = s:white
+let s:pmenuSelBg   = s:palette.lineNr
 
 if s:is_dark
   let s:theme = "dark"
@@ -117,40 +127,73 @@ if s:is_dark
 else
   let s:theme = "light"
   set background=light
+  let s:bg     = "#f1eae8"
+  let s:fg     = "#42322d"
+  let s:string = "#a27342"
+  let s:black  = "#e7dcd8"
+  let s:red    = "#a24342"
+  let s:orange = "#fc9867"
+  let s:blue   = "#a25b42"
+  let s:cyan   = "#a25b42"
+  let s:green  = "#4e2020"
+  let s:yellow = s:orange
+  let s:purple = s:palette.purple
+  let s:white  = s:palette.white
+  let s:accent = s:red
+
+  let s:comment    = "#cbb2a8"
+  let s:constant   = s:purple
+  let s:identifier = s:cyan
+  let s:function   = s:green
+  let s:statement  = s:red
+  let s:label      = s:yellow
+  let s:preProc    = s:red
+  let s:type       = s:cyan
+  let s:special    = s:comment
+  let s:tag        = s:red
+  let s:underlined = s:purple
+
+  let s:statusLineBg = s:black
+  let s:colorColumn = s:black
 endif
 
 call s:h("Normal",        { "fg": s:fg, "bg": s:bg })
-call s:h("LineNr",        { "fg": s:lineNumber, "bg": s:bg })
-call s:h("StatusLine",    { "fg": s:statusBarFg, "bg": s:statusBarFg, "style": "NONE" })
-call s:h("StatusLineNC",  { "fg": s:statusBarFg, "bg": s:statusBarFg, "style": "NONE" })
-call s:h("SignColumn",    { "bg": s:statusBarBg })
+call s:h("Comment",       { "fg": s:comment, "style": "italic" })
+call s:h("Constant",      { "fg": s:constant })
+call s:h("String",        { "fg": s:string })
+call s:h("Identifier",    { "fg": s:identifier, "style": "italic" })
+call s:h("Function",      { "fg": s:function })
+call s:h("Statement",     { "fg": s:statement })
+call s:h("Label",         { "fg": s:label })
+call s:h("PreProc",       { "fg": s:preProc })
+call s:h("Type",          { "fg": s:type })
+call s:h("Special",       { "fg": s:special })
+call s:h("Tag",           { "fg": s:tag })
+call s:h("Underlined",    { "fg": s:underlined, "style": "underline" })
+call s:h("Todo",          { "fg": s:accent, "bg": "NONE" })
 
-call s:h("TabLine",       { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
-call s:h("TabLineFill",   { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
-call s:h("TabLineSel",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
+call s:h("LineNr",        { "fg": s:lineNr, "bg": s:bg })
+call s:h("StatusLine",    { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "NONE" })
+call s:h("StatusLineNC",  { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "NONE" })
+call s:h("SignColumn",    { "bg": s:statusLineBg })
+call s:h("CursorLine",    { "bg": s:cursorLine, "style": "NONE" })
+
+call s:h("TabLine",       { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "bold" })
+call s:h("TabLineFill",   { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "bold" })
+call s:h("TabLineSel",    { "fg": s:accent, "bg": s:visual, "style": "bold" })
 call s:h("FoldColumn",    { "fg": s:cyan })
-call s:h("Folded",        { "fg": s:fg, "bg": s:bg })
+call s:h("Folded",        { "fg": s:fg, "bg": s:visual })
 call s:h("MatchParen",    { "fg": s:red, "style": "underline" })
-call s:h("Comment",       { "fg": s:tiki.syntax.comment[s:theme], "style": "italic" })
-call s:h("Conceal",       { "fg": s:tiki.red[s:theme], "bg": s:tiki.normal.bg[s:theme] })
-call s:h("Constant",      { "fg": s:tiki.purple[s:theme] })
-call s:h("Error",         { "bg": s:tiki.red[s:theme] })
-call s:h("Identifier",    { "fg": s:tiki.cyan[s:theme], "style": "italic" })
-call s:h("Ignore",        { "fg": s:tiki.ui.bg[s:theme] })
-call s:h("PreProc",       { "fg": s:tiki.red[s:theme] })
-call s:h("Special",       { "fg": s:tiki.syntax.noise[s:theme] })
-call s:h("Statement",     { "fg": s:tiki.red[s:theme] })
-call s:h("String",        { "fg": s:tiki.syntax.string[s:theme] })
-call s:h("Todo",          { "fg": s:tiki.yellow[s:theme], "bg": "NONE" })
-call s:h("Type",          { "fg": s:tiki.cyan[s:theme] })
-call s:h("Underlined",    { "fg": s:tiki.purple[s:theme], "style": "underline" })
+call s:h("Conceal",       { "fg": s:red, "bg": s:bg })
+call s:h("Error",         { "bg": s:red })
+call s:h("Ignore",        { "fg": s:bg })
 
-call s:h("NonText",       { "fg": s:tiki.ui.line_nr[s:theme], "style": "bold" })
+call s:h("NonText",       { "fg": s:lineNr, "style": "bold" })
 
-call s:h("Pmenu",         { "fg": s:tiki.ui.pmenu_fg[s:theme], "bg": s:tiki.ui.pmenu_bg[s:theme] })
-call s:h("PmenuSbar",     { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.normal.bg[s:theme] })
-call s:h("PmenuSel",      { "fg": s:tiki.yellow[s:theme], "bg": s:tiki.ui.fg[s:theme] })
-call s:h("PmenuThumb",    { "fg": s:tiki.cyan[s:theme], "bg": s:tiki.cyan[s:theme] })
+call s:h("Pmenu",         { "fg": s:pmenuFg, "bg": s:pmenuBg })
+call s:h("PmenuSbar",     { "fg": s:pmenuFg, "bg": s:pmenuBg })
+call s:h("PmenuSel",      { "fg": s:accent, "bg": s:pmenuSelBg })
+call s:h("PmenuThumb",    { "fg": s:accent, "bg": s:accent })
 
 call s:h("ErrorMsg",      { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:theme] })
 call s:h("ModeMsg",       { "fg": s:tiki.ui.fg[s:theme] })
@@ -162,44 +205,39 @@ call s:h("WarningMsg",    { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:them
 call s:h("Cursor",        { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
 call s:h("CursorColumn",  { "bg": s:tiki.ui.bg[s:theme] })
 call s:h("CursorLineNr",  { "fg": s:tiki.ui.fg[s:theme] })
-call s:h("CursorLine",    { "bg": s:tiki.ui.color_column[s:theme], "style": "NONE" })
 
 call s:h("helpLeadBlank", { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("helpNormal",    { "fg": s:tiki.ui.fg[s:theme] })
 
+call s:h("Visual",        { "bg": s:visual })
+call s:h("VisualNOS",     { "bg": s:visual })
 
-call s:h("Visual",        { "bg": s:tiki.ui.visual[s:theme] })
-call s:h("VisualNOS",     { "bg": s:tiki.ui.fg[s:theme] })
+call s:h("VertSplit",     { "fg": s:statusLineBg, "style": "reverse" })
+call s:h("WildMenu",      { "fg": s:accent, "bg": s:pmenuSelBg })
 
-call s:h("VertSplit",     { "fg": s:tiki.ui.bg[s:theme], "style": "reverse" })
-call s:h("WildMenu",      { "fg": s:tiki.yellow[s:theme], "bg": s:tiki.ui.fg[s:theme] })
+call s:h("SpecialKey",    { "fg": s:lineNr })
+call s:h("Title",         { "fg": s:label })
 
-call s:h("Function",      { "fg": s:tiki.green[s:theme] })
-call s:h("SpecialKey",    { "fg": s:tiki.ui.special_key[s:theme] })
-call s:h("Title",         { "fg": s:tiki.orange[s:theme] })
+call s:h("DiffAdd",       { "fg": s:bg, "bg": s:green })
+call s:h("DiffChange",    { "fg": s:bg, "bg": s:yellow })
+call s:h("DiffDelete",    { "fg": s:bg, "bg": s:red })
+call s:h("DiffText",      { "bg": s:red, "style": "bold" })
 
-call s:h("DiffAdd",       { "fg": s:tiki.normal.bg[s:theme], "bg": s:tiki.green[s:theme] })
-call s:h("DiffChange",    { "fg": s:tiki.normal.bg[s:theme], "bg": s:tiki.yellow[s:theme] })
-call s:h("DiffDelete",    { "fg": s:tiki.normal.bg[s:theme], "bg": s:tiki.red[s:theme] })
-call s:h("DiffText",      { "bg": s:tiki.red[s:theme], "style": "bold" })
+call s:h("IncSearch",     { "fg": s:accent, "style": "reverse" })
+call s:h("Search",        { "fg": s:accent, "style": "reverse" })
 
-call s:h("IncSearch",     { "fg": s:tiki.yellow[s:theme], "style": "reverse" })
-call s:h("Search",        { "fg": s:tiki.yellow[s:theme], "style": "reverse" })
+call s:h("Directory",     { "fg": s:purple })
 
-call s:h("Directory",     { "fg": s:tiki.purple[s:theme] })
+call s:h("SpellBad",      { "sp": s:red, "style": "undercurl" })
+call s:h("SpellCap",      { "sp": s:red, "style": "undercurl" })
+call s:h("SpellLocal",    { "sp": s:red, "style": "undercurl" })
+call s:h("SpellRare",     { "sp": s:red, "style": "undercurl" })
 
-call s:h("SpellBad",      { "sp": s:tiki.red[s:theme], "style": "undercurl" })
-call s:h("SpellCap",      { "sp": s:tiki.red[s:theme], "style": "undercurl" })
-call s:h("SpellLocal",    { "sp": s:tiki.red[s:theme], "style": "undercurl" })
-call s:h("SpellRare",     { "sp": s:tiki.red[s:theme], "style": "undercurl" })
+call s:h("ColorColumn",   { "bg": s:colorColumn })
 
-call s:h("ColorColumn",   { "bg": s:tiki.ui.color_column[s:theme] })
-
-call s:h("Label",         { "fg": s:tiki.yellow[s:theme] })
-call s:h("StorageClass",  { "fg": s:tiki.cyan[s:theme], "style": "italic" })
-call s:h("Tag",           { "fg": s:tiki.red[s:theme] })
-call s:h("Quote",         { "fg": s:tiki.syntax.noise[s:theme] })
-call s:h("Noise",         { "fg": s:tiki.syntax.noise[s:theme] })
+call s:h("StorageClass",  { "fg": s:cyan, "style": "italic" })
+call s:h("Quote",         { "fg": s:comment })
+call s:h("Noise",         { "fg": s:comment })
 
 hi link Boolean        Constant
 hi link Character      Constant
@@ -223,23 +261,23 @@ hi link SpecialComment Special
 hi link Structure      Type
 hi link Typedef        Type
 
-call s:h("jsArrowFunction",     { "fg": s:tiki.red[s:theme] })
-call s:h("jsFuncArgs",          { "fg": s:tiki.orange[s:theme], "style": "italic" })
-call s:h("jsFuncCall",          { "fg": s:tiki.green[s:theme] })
-call s:h("jsGlobalNodeObjects", { "fg": s:tiki.green[s:theme] })
-call s:h("jsGlobalObjects",     { "fg": s:tiki.cyan[s:theme], "style": "italic" })
-call s:h("jsObjectKey",         { "fg": s:tiki.normal.fg[s:theme] })
-call s:h("jsNoise",             { "fg": s:tiki.syntax.noise[s:theme] })
+call s:h("jsArrowFunction",     { "fg": s:red })
+call s:h("jsFuncArgs",          { "fg": s:orange, "style": "italic" })
+call s:h("jsFuncCall",          { "fg": s:green })
+call s:h("jsGlobalNodeObjects", { "fg": s:green })
+call s:h("jsGlobalObjects",     { "fg": s:cyan, "style": "italic" })
+call s:h("jsObjectKey",         { "fg": s:fg })
+hi link jsNoise Noise
 
-call s:h("htmlTag",            { "fg": s:tiki.red[s:theme] })
-call s:h("htmlEndTag",         { "fg": s:tiki.red[s:theme] })
-call s:h("htmlTagName",        { "fg": s:tiki.red[s:theme] })
-call s:h("htmlSpecialTagName", { "fg": s:tiki.red[s:theme] })
-call s:h("htmlArg",            { "fg": s:tiki.green[s:theme] })
-call s:h("htmlSpecialChar",    { "fg": s:tiki.purple[s:theme] })
-call s:h("htmlBold",           { "fg": s:tiki.orange[s:theme], "style": "bold" })
-call s:h("htmlItalic",         { "fg": s:tiki.yellow[s:theme], "style": "italic" })
-call s:h("htmlH1",             { "fg": s:tiki.purple[s:theme], "style": "bold" })
+call s:h("htmlTag",            { "fg": s:red })
+call s:h("htmlEndTag",         { "fg": s:red })
+call s:h("htmlTagName",        { "fg": s:red })
+call s:h("htmlSpecialTagName", { "fg": s:red })
+call s:h("htmlArg",            { "fg": s:green })
+call s:h("htmlSpecialChar",    { "fg": s:purple })
+call s:h("htmlBold",           { "fg": s:orange, "style": "bold" })
+call s:h("htmlItalic",         { "fg": s:yellow, "style": "italic" })
+call s:h("htmlH1",             { "fg": s:purple, "style": "bold" })
 hi link xmlTag     htmlTag
 hi link xmlTagName htmlTagName
 hi link xmlEndTag  htmlEndTag
@@ -259,53 +297,49 @@ hi link diffRemoved   WarningMsg
 hi link diffAdded     DiffAdd
 hi link diffRemoved   DiffDelete
 
-call s:h("pandocAtx",           { "fg": s:tiki.red[s:theme] })
-call s:h("pandocAtxStart",      { "fg": s:tiki.red[s:theme] })
-call s:h("pandocAtxHeaderMark", { "fg": s:tiki.red[s:theme] })
-
-call s:h("rubyBlockParameter",           { "fg": s:tiki.orange[s:theme], "style": "italic" })
-call s:h("rubyBlockParameterList",       { "fg": s:tiki.syntax.noise[s:theme] })
-call s:h("rubyClass",                    { "fg": s:tiki.red[s:theme] })
-call s:h("rubyClassName",                { "fg": s:tiki.cyan[s:theme] })
-call s:h("rubyConstant",                 { "fg": s:tiki.cyan[s:theme] })
-call s:h("rubyControl",                  { "fg": s:tiki.red[s:theme] })
-call s:h("rubyCurlyBlockDelimiter",      { "fg": s:tiki.syntax.noise[s:theme] })
-call s:h("rubyDefine",                   { "fg": s:tiki.red[s:theme] })
-call s:h("rubyEscape",                   { "fg": s:tiki.purple[s:theme] })
-call s:h("rubyException",                { "fg": s:tiki.red[s:theme] })
-call s:h("rubyFunction",                 { "fg": s:tiki.green[s:theme] })
-call s:h("rubyInclude",                  { "fg": s:tiki.red[s:theme] })
-call s:h("rubyInstanceVariable",         { "fg": s:tiki.purple[s:theme], "style": "italic" })
-call s:h("rubyInterpolationDelimiter",   { "fg": s:tiki.syntax.noise[s:theme] })
-call s:h("rubyOperator",                 { "fg": s:tiki.red[s:theme] })
-call s:h("rubyPredefinedConstant",       { "fg": s:tiki.purple[s:theme] })
-call s:h("rubyPseudoVariable",           { "fg": s:tiki.purple[s:theme] })
-call s:h("rubyRailsARAssociationMethod", { "fg": s:tiki.cyan[s:theme] })
-call s:h("rubyRailsARMethod",            { "fg": s:tiki.cyan[s:theme] })
-call s:h("rubyRailsMethod",              { "fg": s:tiki.cyan[s:theme] })
-call s:h("rubyRailsRenderMethod",        { "fg": s:tiki.cyan[s:theme] })
-call s:h("rubyRailsUserClass",           { "fg": s:tiki.cyan[s:theme], "style": "italic" })
-call s:h("rubyRegexp",                   { "fg": s:tiki.yellow[s:theme] })
-call s:h("rubyRegexpDelimiter",          { "fg": s:tiki.yellow[s:theme] })
-call s:h("rubyStringDelimiter",          { "fg": s:tiki.yellow[s:theme] })
-call s:h("rubySymbol",                   { "fg": s:tiki.purple[s:theme] })
+call s:h("rubyBlockParameter",           { "fg": s:orange, "style": "italic" })
+call s:h("rubyBlockParameterList",       { "fg": s:comment })
+call s:h("rubyClass",                    { "fg": s:red })
+call s:h("rubyClassName",                { "fg": s:cyan })
+call s:h("rubyConstant",                 { "fg": s:cyan })
+call s:h("rubyControl",                  { "fg": s:red })
+call s:h("rubyCurlyBlockDelimiter",      { "fg": s:comment })
+call s:h("rubyDefine",                   { "fg": s:red })
+call s:h("rubyEscape",                   { "fg": s:purple })
+call s:h("rubyException",                { "fg": s:red })
+call s:h("rubyFunction",                 { "fg": s:green })
+call s:h("rubyInclude",                  { "fg": s:red })
+call s:h("rubyInstanceVariable",         { "fg": s:purple, "style": "italic" })
+call s:h("rubyInterpolationDelimiter",   { "fg": s:comment })
+call s:h("rubyOperator",                 { "fg": s:red })
+call s:h("rubyPredefinedConstant",       { "fg": s:purple })
+call s:h("rubyPseudoVariable",           { "fg": s:purple })
+call s:h("rubyRailsARAssociationMethod", { "fg": s:cyan })
+call s:h("rubyRailsARMethod",            { "fg": s:cyan })
+call s:h("rubyRailsMethod",              { "fg": s:cyan })
+call s:h("rubyRailsRenderMethod",        { "fg": s:cyan })
+call s:h("rubyRailsUserClass",           { "fg": s:cyan, "style": "italic" })
+call s:h("rubyRegexp",                   { "fg": s:yellow })
+call s:h("rubyRegexpDelimiter",          { "fg": s:yellow })
+call s:h("rubyStringDelimiter",          { "fg": s:yellow })
+call s:h("rubySymbol",                   { "fg": s:purple })
 hi link rubySharpBang Comment
 hi link erubyComment  Comment
 
-call s:h("jsonKeyword",      { "fg": s:tiki.normal.fg[s:theme] })
-call s:h("jsonKeywordMatch", { "fg": s:tiki.syntax.noise[s:theme] })
-call s:h("jsonNumber",       { "fg": s:tiki.purple[s:theme] })
-call s:h("yamlAlias",        { "fg": s:tiki.green[s:theme], "style": "italic,underline" })
-call s:h("yamlAnchor",       { "fg": s:tiki.cyan[s:theme] })
-call s:h("yamlBlock",        { "fg": s:tiki.normal.fg[s:theme] })
-call s:h("yamlConstant",     { "fg": s:tiki.purple[s:theme] })
-call s:h("yamlKey",          { "fg": s:tiki.red[s:theme] })
+call s:h("jsonKeyword",      { "fg": s:fg })
+call s:h("jsonKeywordMatch", { "fg": s:comment })
+call s:h("jsonNumber",       { "fg": s:purple })
+call s:h("yamlAlias",        { "fg": s:green, "style": "italic,underline" })
+call s:h("yamlAnchor",       { "fg": s:cyan })
+call s:h("yamlBlock",        { "fg": s:fg })
+call s:h("yamlConstant",     { "fg": s:purple })
+call s:h("yamlKey",          { "fg": s:red })
 
 " https://github.com/w0rp/ale
-call s:h("ALEError",        { "fg": s:tiki.red[s:theme] })
-call s:h("ALEErrorSign",    { "bg": s:tiki.ui.bg[s:theme] })
-call s:h("ALEInfo",         { "fg": s:tiki.red[s:theme] })
-call s:h("ALEStyleError",   { "fg": s:tiki.red[s:theme] })
-call s:h("ALEStyleWarning", { "fg": s:tiki.red[s:theme] })
-call s:h("ALEWarning",      { "sp": s:tiki.red[s:theme], "style": "undercurl" })
-call s:h("ALEWarningSign",  { "bg": s:tiki.ui.bg[s:theme] })
+call s:h("ALEError",        { "fg": s:red })
+call s:h("ALEErrorSign",    { "bg": s:black })
+call s:h("ALEInfo",         { "fg": s:red })
+call s:h("ALEStyleError",   { "fg": s:red })
+call s:h("ALEStyleWarning", { "fg": s:red })
+call s:h("ALEWarning",      { "sp": s:red, "style": "undercurl" })
+call s:h("ALEWarningSign",  { "bg": s:black })
