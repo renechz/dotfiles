@@ -25,6 +25,48 @@ function! s:h(group, style)
   endif
 endfunction
 
+
+let s:monokai_pro = {
+      \   "bg":                                     "#2d2a2e",
+      \   "fg":                                     "#fcfcfa",
+      \   "black":                                  "#221f22",
+      \   "red":                                    "#ff6188",
+      \   "green":                                  "#a9dc76",
+      \   "orange":                                 "#fc9867",
+      \   "yellow":                                 "#ffd866",
+      \   "blue":                                   "#78dce8",
+      \   "purple":                                 "#ab9df2",
+      \   "cyan":                                   "#78dce8",
+      \   "lineNumber":                             "#5b595c",
+      \   "sideBarBackground":                      "#221f22",
+      \   "sideBarBorder":                          "#19181a",
+      \   "sideBarForeground":                      "#939293",
+      \   "sideBarSectionHeaderBackground":         "#221f22",
+      \   "sideBarSectionHeaderForeground":         "#727072",
+      \   "sideBarTitleForeground":                 "#5b595c",
+      \   "statusBarBackground":                    "#221f22",
+      \   "statusBarBorder":                        "#19181a",
+      \   "statusBarDebuggingBackground":           "#727072",
+      \   "statusBarDebuggingForeground":           "#fcfcfa",
+      \   "statusBarBg":                            "#221f22",
+      \   "statusBarFg":                            "#939293",
+      \   "statusBarNoFolderBackground":            "#221f22",
+      \   "statusBarNoFolderForeground":            "#727072",
+      \   "statusBarItemActiveBackground":          "#2d2a2e",
+      \   "statusBarItemHoverBackground":           "#2d2a2e",
+      \   "statusBarItemProminentBackground":       "#403e41",
+      \   "statusBarItemProminentHoverBackground":  "#403e41",
+      \   "tabActiveBackground":                    "#2d2a2e",
+      \   "tabActiveBorder":                        "#ffd866",
+      \   "tabActiveForeground":                    "#ffd866",
+      \   "tabBorder":                              "#2d2a2e",
+      \   "tabInactiveBackground":                  "#2d2a2e",
+      \   "tabInactiveForeground":                  "#939293",
+      \   "tabUnfocusedActiveBorder":               "#939293",
+      \   "tabUnfocusedActiveForeground":           "#c1c0c0",
+      \   "tabUnfocusedInactiveForeground":         "#939293",
+      \   }
+
 let s:tiki = {
 \   "normal": {
 \     "bg": { "dark": "#2d2a2e", "light": "#fbfaf9" },
@@ -54,6 +96,21 @@ let s:tiki = {
 \   "cyan":      { "dark": "#78dce8", "light": "#4271a2" },
 \ }
 
+let s:bg = s:monokai_pro.bg
+let s:fg = s:monokai_pro.fg
+let s:black = s:monokai_pro.black
+let s:red = s:monokai_pro.red
+let s:green = s:monokai_pro.green
+let s:yellow = s:monokai_pro.yellow
+let s:blue = s:monokai_pro.blue
+let s:purple = s:monokai_pro.purple
+let s:cyan = s:monokai_pro.cyan
+let s:white = s:monokai_pro.fg
+
+let s:statusBarBg = s:monokai_pro.statusBarBg
+let s:statusBarFg = s:monokai_pro.statusBarFg
+let s:lineNumber = s:monokai_pro.lineNumber
+
 if s:is_dark
   let s:theme = "dark"
   set background=dark
@@ -62,12 +119,18 @@ else
   set background=light
 endif
 
-call s:h("Normal",        { "fg": s:tiki.normal.fg[s:theme], "bg": s:tiki.normal.bg[s:theme] })
-call s:h("LineNr",        { "fg": s:tiki.ui.line_nr[s:theme], "bg": s:tiki.normal.bg[s:theme] })
-call s:h("FoldColumn",    { "fg": s:tiki.cyan[s:theme] })
-call s:h("Folded",        { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme] })
-call s:h("MatchParen",    { "fg": s:tiki.red[s:theme], "style": "underline" })
-call s:h("SignColumn",    { "bg": s:tiki.ui.bg[s:theme] })
+call s:h("Normal",        { "fg": s:fg, "bg": s:bg })
+call s:h("LineNr",        { "fg": s:lineNumber, "bg": s:bg })
+call s:h("StatusLine",    { "fg": s:statusBarFg, "bg": s:statusBarFg, "style": "NONE" })
+call s:h("StatusLineNC",  { "fg": s:statusBarFg, "bg": s:statusBarFg, "style": "NONE" })
+call s:h("SignColumn",    { "bg": s:statusBarBg })
+
+call s:h("TabLine",       { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
+call s:h("TabLineFill",   { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
+call s:h("TabLineSel",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
+call s:h("FoldColumn",    { "fg": s:cyan })
+call s:h("Folded",        { "fg": s:fg, "bg": s:bg })
+call s:h("MatchParen",    { "fg": s:red, "style": "underline" })
 call s:h("Comment",       { "fg": s:tiki.syntax.comment[s:theme], "style": "italic" })
 call s:h("Conceal",       { "fg": s:tiki.red[s:theme], "bg": s:tiki.normal.bg[s:theme] })
 call s:h("Constant",      { "fg": s:tiki.purple[s:theme] })
@@ -95,9 +158,6 @@ call s:h("MoreMsg",       { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("Question",      { "fg": s:tiki.cyan[s:theme] })
 call s:h("WarningMsg",    { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:theme] })
 
-call s:h("TabLine",       { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
-call s:h("TabLineFill",   { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
-call s:h("TabLineSel",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "bold" })
 
 call s:h("Cursor",        { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
 call s:h("CursorColumn",  { "bg": s:tiki.ui.bg[s:theme] })
@@ -107,11 +167,6 @@ call s:h("CursorLine",    { "bg": s:tiki.ui.color_column[s:theme], "style": "NON
 call s:h("helpLeadBlank", { "fg": s:tiki.ui.fg[s:theme] })
 call s:h("helpNormal",    { "fg": s:tiki.ui.fg[s:theme] })
 
-call s:h("StatusLine",    { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme], "style": "NONE" })
-call s:h("StatusLineNC",  { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
-" Custom StatusLine groups
-call s:h("SLBranch",      { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
-call s:h("SLCenter",      { "fg": s:tiki.ui.fg[s:theme], "bg": s:tiki.ui.bg[s:theme] })
 
 call s:h("Visual",        { "bg": s:tiki.ui.visual[s:theme] })
 call s:h("VisualNOS",     { "bg": s:tiki.ui.fg[s:theme] })
