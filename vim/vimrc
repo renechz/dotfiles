@@ -164,6 +164,11 @@ if emoji#available()
   let g:ale_sign_warning = emoji#for('point_right')
 endif
 
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
+
 " fzf.vim
 nnoremap <c-p> :Files<cr>
 nnoremap <silent> <leader>B :Buffers<CR>
