@@ -177,8 +177,8 @@ nnoremap <silent> <leader>[ :BTags<CR>
 nnoremap <silent> <leader>] :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
 
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Pmenu'],
   \ 'hl':      ['fg', 'Pmenu'],
   \ 'fg+':     ['fg', 'PmenuSel'],
@@ -189,7 +189,8 @@ let g:fzf_colors =
   \ 'pointer': ['fg', 'PmenuSel'],
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+  \ 'header':  ['fg', 'Comment']
+  \ }
 
 " vim-commentary
 nmap cm <Plug>Commentary

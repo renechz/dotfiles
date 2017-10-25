@@ -26,64 +26,24 @@ function! s:h(group, style)
 endfunction
 
 let s:palette = {
-      \   "bg":                                     "#2d2a2e",
-      \   "fg":                                     "#fcfcfa",
-      \   "black":                                  "#221f22",
-      \   "red":                                    "#ff6188",
-      \   "green":                                  "#a9dc76",
-      \   "yellow":                                 "#ffd866",
-      \   "blue":                                   "#78dce8",
-      \   "purple":                                 "#ab9df2",
-      \   "cyan":                                   "#78dce8",
-      \   "white":                                  "#c1c0c0",
-      \   "orange":                                 "#fc9867",
-      \   "comment":                                "#727072",
-      \   "colorColumn":                            "#403e41",
-      \   "cursorLine":                             "#353236",
-      \   "lineNr":                                 "#5b595c",
-      \   "visual":                                 "#403e41",
-      \   "sideBarBackground":                      "#221f22",
-      \   "sideBarForeground":                      "#939293",
-      \   "sideBarTitleForeground":                 "#5b595c",
-      \   "statusLineBg":                           "#221f22",
-      \   "statusLineFg":                           "#939293",
-      \   "tabActiveBackground":                    "#2d2a2e",
-      \   "tabActiveForeground":                    "#ffd866",
-      \   "tabInactiveBackground":                  "#2d2a2e",
-      \   "tabInactiveForeground":                  "#939293",
-      \   "tabUnfocusedActiveBorder":               "#939293",
-      \   "tabUnfocusedActiveForeground":           "#c1c0c0",
-      \   "tabUnfocusedInactiveForeground":         "#939293",
-      \   }
-
-let s:tiki = {
-\   "normal": {
-\     "bg": { "dark": "#2d2a2e", "light": "#fbfaf9" },
-\     "fg": { "dark": "#fcfcfa", "light": "#42322d" },
-\   },
-\   "ui": {
-\     "bg":           { "dark": "#221f22", "light": "#eae1d2" },
-\     "fg":           { "dark": "#908e8f", "light": "#b6ad9a" },
-\     "pmenu_bg":     { "dark": "#403e41", "light": "#b6ad9a" },
-\     "pmenu_fg":     { "dark": "#fcfcfa", "light": "#b6ad9a" },
-\     "color_column": { "dark": "#403e41", "light": "#f3efe7" },
-\     "visual":       { "dark": "#403e41", "light": "#e5ddcb" },
-\     "special_key":  { "dark": "#3e3b3f", "light": "#d1cec7" },
-\     "line_nr":      { "dark": "#5b595c", "light": "#d1cec7" },
-\   },
-\   "syntax": {
-\     "comment": { "dark": "#727072", "light": "#b6ad9a" },
-\     "noise":   { "dark": "#939293", "light": "#a27342" },
-\     "string":  { "dark": "#ffd866", "light": "#a27342" },
-\   },
-\   "red":       { "dark": "#ff6188", "light": "#a24342" },
-\   "orange":    { "dark": "#fc9867", "light": "#fc9867" },
-\   "yellow":    { "dark": "#ffd866", "light": "#896724" },
-\   "green":     { "dark": "#a9dc76", "light": "#42a273" },
-\   "blue":      { "dark": "#78dce8", "light": "#6182b8" },
-\   "purple":    { "dark": "#ab9df2", "light": "#a24271" },
-\   "cyan":      { "dark": "#78dce8", "light": "#4271a2" },
-\ }
+      \   "bg":           "#2d2a2e",
+      \   "fg":           "#fcfcfa",
+      \   "black":        "#221f22",
+      \   "red":          "#ff6188",
+      \   "green":        "#a9dc76",
+      \   "yellow":       "#ffd866",
+      \   "blue":         "#78dce8",
+      \   "purple":       "#ab9df2",
+      \   "cyan":         "#78dce8",
+      \   "white":        "#c1c0c0",
+      \   "orange":       "#fc9867",
+      \   "comment":      "#727072",
+      \   "colorColumn":  "#403e41",
+      \   "cursorLine":   "#353236",
+      \   "lineNr":       "#5b595c",
+      \   "visual":       "#403e41",
+      \   "statusLineFg": "#939293",
+      \ }
 
 let s:bg     = s:palette.bg
 let s:fg     = s:palette.fg
@@ -172,17 +132,23 @@ call s:h("Tag",           { "fg": s:tag })
 call s:h("Underlined",    { "fg": s:underlined, "style": "underline" })
 call s:h("Todo",          { "fg": s:accent, "bg": "NONE" })
 
+call s:h("Cursor",        { "fg": s:black, "bg": s:white })
+call s:h("CursorColumn",  { "bg": s:black })
+call s:h("CursorLine",    { "bg": s:cursorLine, "style": "NONE" })
+call s:h("CursorLineNr",  { "fg": s:white })
+
 call s:h("LineNr",        { "fg": s:lineNr, "bg": s:bg })
 call s:h("StatusLine",    { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "NONE" })
 call s:h("StatusLineNC",  { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "NONE" })
 call s:h("SignColumn",    { "bg": s:statusLineBg })
-call s:h("CursorLine",    { "bg": s:cursorLine, "style": "NONE" })
 
 call s:h("TabLine",       { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "bold" })
 call s:h("TabLineFill",   { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "bold" })
 call s:h("TabLineSel",    { "fg": s:accent, "bg": s:visual, "style": "bold" })
+
 call s:h("FoldColumn",    { "fg": s:cyan })
 call s:h("Folded",        { "fg": s:fg, "bg": s:visual })
+
 call s:h("MatchParen",    { "fg": s:red, "style": "underline" })
 call s:h("Conceal",       { "fg": s:red, "bg": s:bg })
 call s:h("Error",         { "bg": s:red })
@@ -195,19 +161,15 @@ call s:h("PmenuSbar",     { "fg": s:pmenuFg, "bg": s:pmenuBg })
 call s:h("PmenuSel",      { "fg": s:accent, "bg": s:pmenuSelBg })
 call s:h("PmenuThumb",    { "fg": s:accent, "bg": s:accent })
 
-call s:h("ErrorMsg",      { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:theme] })
-call s:h("ModeMsg",       { "fg": s:tiki.ui.fg[s:theme] })
-call s:h("MoreMsg",       { "fg": s:tiki.ui.fg[s:theme] })
-call s:h("Question",      { "fg": s:tiki.cyan[s:theme] })
-call s:h("WarningMsg",    { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.red[s:theme] })
+call s:h("ErrorMsg",      { "fg": s:black, "bg": s:red })
+call s:h("ModeMsg",       { "fg": s:white })
+call s:h("MoreMsg",       { "fg": s:white })
 
+call s:h("Question",      { "fg": s:cyan })
+call s:h("WarningMsg",    { "fg": s:black, "bg": s:red })
 
-call s:h("Cursor",        { "fg": s:tiki.ui.bg[s:theme], "bg": s:tiki.ui.fg[s:theme] })
-call s:h("CursorColumn",  { "bg": s:tiki.ui.bg[s:theme] })
-call s:h("CursorLineNr",  { "fg": s:tiki.ui.fg[s:theme] })
-
-call s:h("helpLeadBlank", { "fg": s:tiki.ui.fg[s:theme] })
-call s:h("helpNormal",    { "fg": s:tiki.ui.fg[s:theme] })
+call s:h("helpLeadBlank", { "fg": s:white })
+call s:h("helpNormal",    { "fg": s:white })
 
 call s:h("Visual",        { "bg": s:visual })
 call s:h("VisualNOS",     { "bg": s:visual })
