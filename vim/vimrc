@@ -76,7 +76,7 @@ set ttimeout
 set ttimeoutlen=100
 set wildmenu
 
-set termguicolors
+" set termguicolors
 colorscheme tiki
 
 " Enable italics

@@ -17,33 +17,36 @@ let s:is_dark = (&background == "dark")
 function! s:h(group, style)
   if !empty(a:style)
     execute "highlight" a:group
-          \ has_key(a:style, "fg")    ? "guifg=" . a:style.fg : ""
-          \ has_key(a:style, "bg")    ? "guibg=" . a:style.bg : ""
-          \ has_key(a:style, "sp")    ? "guisp=" . a:style.sp : ""
-          \ has_key(a:style, "style") ? "gui="   . a:style.style : ""
-          \ has_key(a:style, "style") ? "cterm=" . a:style.style : ""
+      \ has_key(a:style, "fg")    ? "guifg=" . a:style.fg[0] : ""
+      \ has_key(a:style, "bg")    ? "guibg=" . a:style.bg[0] : ""
+      \ has_key(a:style, "sp")    ? "guisp=" . a:style.sp[0] : ""
+      \ has_key(a:style, "style") ? "gui="   . a:style.style : ""
+      \ has_key(a:style, "style") ? "cterm=" . a:style.style : ""
+      \ has_key(a:style, "style") ? "cterm=" . a:style.style : ""
+      \ has_key(a:style, "fg") && get(a:style.fg, 1, 0) ? "ctermfg=" . a:style.fg[1] : ""
+      \ has_key(a:style, "bg") && get(a:style.bg, 1, 0) ? "ctermbg=" . a:style.bg[1] : ""
   endif
 endfunction
 
 let s:palette = {
-      \   "bg":           "#2d2a2e",
-      \   "fg":           "#fcfcfa",
-      \   "black":        "#221f22",
-      \   "red":          "#ff6188",
-      \   "green":        "#a9dc76",
-      \   "yellow":       "#ffd866",
-      \   "blue":         "#78dce8",
-      \   "purple":       "#ab9df2",
-      \   "cyan":         "#78dce8",
-      \   "white":        "#c1c0c0",
-      \   "orange":       "#fc9867",
-      \   "comment":      "#727072",
-      \   "colorColumn":  "#403e41",
-      \   "cursorLine":   "#353236",
-      \   "lineNr":       "#5b595c",
-      \   "visual":       "#403e41",
-      \   "statusLineFg": "#939293",
-      \ }
+  \   "bg":           ["#2d2a2e", 236],
+  \   "fg":           ["#fcfcfa", 7],
+  \   "black":        ["#221f22", 234],
+  \   "red":          ["#ff6188", 1],
+  \   "green":        ["#a9dc76", 2],
+  \   "yellow":       ["#ffd866", 3],
+  \   "blue":         ["#78dce8", 4],
+  \   "purple":       ["#ab9df2", 5],
+  \   "cyan":         ["#78dce8", 6],
+  \   "white":        ["#c1c0c0", 15],
+  \   "orange":       ["#fc9867", 209],
+  \   "comment":      ["#727072", 8],
+  \   "colorColumn":  ["#403e41", 238],
+  \   "cursorLine":   ["#353236", 237],
+  \   "lineNr":       ["#5b595c", 240],
+  \   "visual":       ["#403e41", 238],
+  \   "statusLineFg": ["#939293", 246],
+  \ }
 
 let s:bg     = s:palette.bg
 let s:fg     = s:palette.fg
@@ -87,21 +90,21 @@ if s:is_dark
 else
   let s:theme = "light"
   set background=light
-  let s:bg     = "#f1eae8"
-  let s:fg     = "#42322d"
-  let s:string = "#a27342"
-  let s:black  = "#e7dcd8"
-  let s:red    = "#a24342"
-  let s:orange = "#fc9867"
-  let s:blue   = "#a25b42"
-  let s:cyan   = "#a25b42"
-  let s:green  = "#4e2020"
+  let s:bg     = ["#f1eae8", 255]
+  let s:fg     = ["#42322d", 236]
+  let s:string = ["#a27342", 131]
+  let s:black  = ["#e7dcd8", 253]
+  let s:red    = ["#a24342", 131]
+  let s:orange = ["#fc9867", 209]
+  let s:blue   = ["#a25b42", 131]
+  let s:cyan   = ["#a25b42", 131]
+  let s:green  = ["#4e2020", 235]
   let s:yellow = s:orange
   let s:purple = s:palette.purple
   let s:white  = s:palette.white
   let s:accent = s:red
 
-  let s:comment    = "#cbb2a8"
+  let s:comment    = ["#cbb2a8", 181]
   let s:constant   = s:purple
   let s:identifier = s:cyan
   let s:function   = s:green
@@ -130,7 +133,7 @@ call s:h("Type",          { "fg": s:type })
 call s:h("Special",       { "fg": s:special })
 call s:h("Tag",           { "fg": s:tag })
 call s:h("Underlined",    { "fg": s:underlined, "style": "underline" })
-call s:h("Todo",          { "fg": s:accent, "bg": "NONE" })
+call s:h("Todo",          { "fg": s:accent })
 
 call s:h("Cursor",        { "fg": s:black, "bg": s:white })
 call s:h("CursorColumn",  { "bg": s:black })
