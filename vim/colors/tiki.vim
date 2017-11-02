@@ -17,34 +17,34 @@ let s:is_dark = (&background == "dark")
 function! s:h(group, style)
   if !empty(a:style)
     execute "highlight" a:group
-      \ has_key(a:style, "fg")    ? "guifg=" . a:style.fg[0] : ""
-      \ has_key(a:style, "bg")    ? "guibg=" . a:style.bg[0] : ""
-      \ has_key(a:style, "sp")    ? "guisp=" . a:style.sp[0] : ""
-      \ has_key(a:style, "style") ? "gui="   . a:style.style : ""
-      \ has_key(a:style, "style") ? "cterm=" . a:style.style : ""
-      \ has_key(a:style, "style") ? "cterm=" . a:style.style : ""
-      \ has_key(a:style, "fg") && get(a:style.fg, 1, 0) ? "ctermfg=" . a:style.fg[1] : ""
-      \ has_key(a:style, "bg") && get(a:style.bg, 1, 0) ? "ctermbg=" . a:style.bg[1] : ""
+      \ has_key(a:style, "fg")    ? "ctermfg=" . a:style.fg[1] : ""
+      \ has_key(a:style, "bg")    ? "ctermbg=" . a:style.bg[1] : ""
+      \ has_key(a:style, "fg")    ? "guifg="   . a:style.fg[0] : ""
+      \ has_key(a:style, "bg")    ? "guibg="   . a:style.bg[0] : ""
+      \ has_key(a:style, "sp")    ? "guisp="   . a:style.sp[0] : ""
+      \ has_key(a:style, "style") ? "gui="     . a:style.style : ""
+      \ has_key(a:style, "style") ? "cterm="   . a:style.style : ""
+      \ has_key(a:style, "style") ? "cterm="   . a:style.style : ""
   endif
 endfunction
 
 let s:palette = {
-  \   "bg":           ["#2d2a2e", 236],
+  \   "bg":           ["#2c2525", "NONE"],
   \   "fg":           ["#fcfcfa", 7],
-  \   "black":        ["#221f22", 234],
+  \   "black":        ["#211c1c", 0],
   \   "red":          ["#ff6188", 1],
   \   "green":        ["#a9dc76", 2],
   \   "yellow":       ["#ffd866", 3],
   \   "blue":         ["#78dce8", 4],
   \   "purple":       ["#ab9df2", 5],
   \   "cyan":         ["#78dce8", 6],
-  \   "white":        ["#c1c0c0", 15],
-  \   "orange":       ["#fc9867", 209],
+  \   "white":        ["#c3b7b8", 15],
+  \   "orange":       ["#fc9867", 11],
   \   "comment":      ["#727072", 8],
-  \   "colorColumn":  ["#403e41", 238],
-  \   "cursorLine":   ["#353236", 237],
+  \   "colorColumn":  ["#403838", 237],
+  \   "cursorLine":   ["#fff1f3", 255],
   \   "lineNr":       ["#5b595c", 240],
-  \   "visual":       ["#403e41", 238],
+  \   "visual":       ["#403838", 237],
   \   "statusLineFg": ["#939293", 246],
   \ }
 
@@ -60,6 +60,7 @@ let s:cyan   = s:palette.cyan
 let s:white  = s:palette.white
 let s:orange = s:palette.orange
 let s:accent = s:palette.yellow
+let s:none   = ["NONE", "NONE"]
 
 let s:comment    = s:palette.comment
 let s:constant   = s:purple
@@ -133,7 +134,7 @@ call s:h("Type",          { "fg": s:type })
 call s:h("Special",       { "fg": s:special })
 call s:h("Tag",           { "fg": s:tag })
 call s:h("Underlined",    { "fg": s:underlined, "style": "underline" })
-call s:h("Todo",          { "fg": s:accent })
+call s:h("Todo",          { "fg": s:accent, "bg": s:none })
 
 call s:h("Cursor",        { "fg": s:black, "bg": s:white })
 call s:h("CursorColumn",  { "bg": s:black })
