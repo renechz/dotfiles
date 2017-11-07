@@ -77,7 +77,7 @@ set ttimeout
 set ttimeoutlen=100
 set wildmenu
 
-" set termguicolors
+set termguicolors
 colorscheme tiki
 
 " Enable italics
@@ -112,27 +112,6 @@ nnoremap <leader>zo :wincmd =<cr>
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" setup StatusLine
-function! HighlightStatusline()
-  if &modified == 1
-    exe 'hi! link StatusLine WarningMsg'
-  else
-    exe 'hi! link StatusLine StatusLineNC'
-  endif
-
-  return ''
-endfunction
-
-set statusline=
-set statusline+=\ %{HighlightStatusline()}
-" Left side
-set statusline+=\ %#SLCenter#
-set statusline+=\ %<%f
-set statusline+=\ %h%r
-set statusline+=\ %=
-" Right side
-set statusline+=\ %y
-
 set synmaxcol=100
 syntax sync minlines=50
 
@@ -144,6 +123,11 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
 endif
+
+" if executable('fd')
+"   set grepprg=fd\ --hidden\ --type\ f
+"   set grepformat=%f:%l:%c:%m
+" endif
 
 " vim-test
 let test#strategy = "vimux"
