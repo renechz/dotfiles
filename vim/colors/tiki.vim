@@ -40,12 +40,12 @@ let s:palette = {
   \   "cyan":         ["#78dce8", 6],
   \   "white":        ["#c3b7b8", 15],
   \   "orange":       ["#fc9867", 11],
-  \   "comment":      ["#727072", 8],
+  \   "comment":      ["#72696a", 8],
   \   "colorColumn":  ["#403838", 237],
-  \   "cursorLine":   ["#fff1f3", 255],
-  \   "lineNr":       ["#5b595c", 240],
+  \   "cursorLine":   ["#342d2d", 255],
+  \   "lineNr":       ["#5b5353", 240],
   \   "visual":       ["#403838", 237],
-  \   "statusLineFg": ["#939293", 246],
+  \   "statusLineFg": ["#72696a", 246],
   \ }
 
 let s:bg     = s:palette.bg
