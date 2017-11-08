@@ -71,6 +71,7 @@ set number
 set relativenumber
 set shortmess+=c   " Shut off completion messages
 set undolevels=1000
+set signcolumn=yes
 set smartcase
 set showcmd
 set ttimeout
@@ -140,7 +141,6 @@ nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
 
 " ALE
-let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
