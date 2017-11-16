@@ -275,7 +275,7 @@ call s:h("rubyEscape",                   { "fg": s:purple })
 call s:h("rubyException",                { "fg": s:red })
 call s:h("rubyFunction",                 { "fg": s:green })
 call s:h("rubyInclude",                  { "fg": s:red })
-call s:h("rubyInstanceVariable",         { "fg": s:purple, "style": "italic" })
+call s:h("rubyInstanceVariable",         { "fg": s:white, "style": "italic" })
 call s:h("rubyInterpolationDelimiter",   { "fg": s:comment })
 call s:h("rubyOperator",                 { "fg": s:red })
 call s:h("rubyPredefinedConstant",       { "fg": s:purple })
@@ -288,7 +288,7 @@ call s:h("rubyRailsUserClass",           { "fg": s:cyan, "style": "italic" })
 call s:h("rubyRegexp",                   { "fg": s:yellow })
 call s:h("rubyRegexpDelimiter",          { "fg": s:yellow })
 call s:h("rubyStringDelimiter",          { "fg": s:yellow })
-call s:h("rubySymbol",                   { "fg": s:purple })
+call s:h("rubySymbol",                   { "fg": s:white })
 hi link rubySharpBang Comment
 hi link erubyComment  Comment
 

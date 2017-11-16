@@ -21,7 +21,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -113,22 +112,19 @@ nnoremap <leader>zo :wincmd =<cr>
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-set synmaxcol=100
 syntax sync minlines=50
 
 " ======================================
 " plugins
 " ======================================
 " use ripgrep for grep
-if executable('rg')
+if executable('fd')
+  set grepprg=fd\ --hidden\ --type\ f
+  set grepformat=%f:%l:%c:%m
+elseif executable('rg')
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
 endif
-
-" if executable('fd')
-"   set grepprg=fd\ --hidden\ --type\ f
-"   set grepformat=%f:%l:%c:%m
-" endif
 
 " vim-test
 let test#strategy = "vimux"
