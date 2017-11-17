@@ -35,7 +35,7 @@ let s:palette = {
   \   "red":          ["#fd6883", 1],
   \   "green":        ["#adda78", 2],
   \   "yellow":       ["#f9cc6c", 3],
-  \   "blue":         ["#85dacc", 4],
+  \   "blue":         ["#c0ddec", 4],
   \   "purple":       ["#a8a9eb", 5],
   \   "cyan":         ["#85dacc", 6],
   \   "white":        ["#c3b7b8", 15],
@@ -86,10 +86,8 @@ let s:pmenuFg      = s:white
 let s:pmenuSelBg   = s:palette.lineNr
 
 if s:is_dark
-  let s:theme = "dark"
   set background=dark
 else
-  let s:theme = "light"
   set background=light
   let s:bg     = ["#f1eae8", 255]
   let s:fg     = ["#42322d", 236]
@@ -275,7 +273,7 @@ call s:h("rubyEscape",                   { "fg": s:purple })
 call s:h("rubyException",                { "fg": s:red })
 call s:h("rubyFunction",                 { "fg": s:green })
 call s:h("rubyInclude",                  { "fg": s:red })
-call s:h("rubyInstanceVariable",         { "fg": s:white, "style": "italic" })
+call s:h("rubyInstanceVariable",         { "fg": s:blue })
 call s:h("rubyInterpolationDelimiter",   { "fg": s:comment })
 call s:h("rubyOperator",                 { "fg": s:red })
 call s:h("rubyPredefinedConstant",       { "fg": s:purple })
@@ -288,7 +286,11 @@ call s:h("rubyRailsUserClass",           { "fg": s:cyan, "style": "italic" })
 call s:h("rubyRegexp",                   { "fg": s:yellow })
 call s:h("rubyRegexpDelimiter",          { "fg": s:yellow })
 call s:h("rubyStringDelimiter",          { "fg": s:yellow })
-call s:h("rubySymbol",                   { "fg": s:white })
+call s:h("rubySymbol",                   { "fg": s:blue })
+call s:h("rubyEntity",                   { "fg": s:green })
+call s:h("rubyEntities",                 { "fg": s:green })
+hi link rubyEntity   Function
+hi link rubyEntities rubyEntity
 hi link rubySharpBang Comment
 hi link erubyComment  Comment
 
