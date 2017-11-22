@@ -17,52 +17,59 @@ let s:is_dark = (&background == "dark")
 function! s:h(group, style)
   if !empty(a:style)
     execute "highlight" a:group
-      \ has_key(a:style, "fg")    ? "ctermfg=" . a:style.fg[1] : ""
-      \ has_key(a:style, "bg")    ? "ctermbg=" . a:style.bg[1] : ""
-      \ has_key(a:style, "fg")    ? "guifg="   . a:style.fg[0] : ""
-      \ has_key(a:style, "bg")    ? "guibg="   . a:style.bg[0] : ""
-      \ has_key(a:style, "sp")    ? "guisp="   . a:style.sp[0] : ""
-      \ has_key(a:style, "style") ? "gui="     . a:style.style : ""
-      \ has_key(a:style, "style") ? "cterm="   . a:style.style : ""
-      \ has_key(a:style, "style") ? "cterm="   . a:style.style : ""
+    \ has_key(a:style, "fg")    ? "ctermfg=" . a:style.fg[1] : ""
+    \ has_key(a:style, "bg")    ? "ctermbg=" . a:style.bg[1] : ""
+    \ has_key(a:style, "fg")    ? "guifg="   . a:style.fg[0] : ""
+    \ has_key(a:style, "bg")    ? "guibg="   . a:style.bg[0] : ""
+    \ has_key(a:style, "sp")    ? "guisp="   . a:style.sp[0] : ""
+    \ has_key(a:style, "style") ? "gui="     . a:style.style : ""
+    \ has_key(a:style, "style") ? "cterm="   . a:style.style : ""
+    \ has_key(a:style, "style") ? "cterm="   . a:style.style : ""
   endif
 endfunction
 
-let s:palette = {
-  \   "bg":           ["#2c2525", "NONE"],
-  \   "fg":           ["#fff1f3", 7],
-  \   "black":        ["#211c1c", 0],
-  \   "red":          ["#fd6883", 1],
-  \   "green":        ["#adda78", 2],
-  \   "yellow":       ["#f9cc6c", 3],
-  \   "blue":         ["#c0ddec", 4],
-  \   "purple":       ["#a8a9eb", 5],
-  \   "cyan":         ["#85dacc", 6],
-  \   "white":        ["#c3b7b8", 15],
-  \   "orange":       ["#f38d70", 11],
-  \   "comment":      ["#72696a", 8],
-  \   "colorColumn":  ["#403838", 237],
-  \   "cursorLine":   ["#342d2d", 255],
-  \   "lineNr":       ["#5b5353", 240],
-  \   "visual":       ["#403838", 237],
-  \   "statusLineFg": ["#72696a", 246],
-  \ }
+" Based on Monokai Pro Ristretto filter
+" https://www.monokai.pro/sublime-text/
+" s:colors is used for the syntax highlighting
+let s:colors = {
+\   "red":          ["#fd6883", 1],
+\   "orange":       ["#f38d70", 11],
+\   "yellow":       ["#f9cc6c", 3],
+\   "green":        ["#adda78", 2],
+\   "cyan":         ["#85dacc", 6],
+\   "purple":       ["#a8a9eb", 5],
+\   "blue":         ["#b4e7fe", 4],
+\   "white":        ["#c3b7b8", 15],
+\ }
 
-let s:bg     = s:palette.bg
-let s:fg     = s:palette.fg
-let s:black  = s:palette.black
-let s:red    = s:palette.red
-let s:green  = s:palette.green
-let s:yellow = s:palette.yellow
-let s:blue   = s:palette.blue
-let s:purple = s:palette.purple
-let s:cyan   = s:palette.cyan
-let s:white  = s:palette.white
-let s:orange = s:palette.orange
-let s:accent = s:palette.yellow
-let s:none   = ["NONE", "NONE"]
+" s:theme is used for non-syntax highlight
+" e.g. selection, status bar, sign column
+let s:theme = {
+\   "bg":           ["#2c2525", "NONE"],
+\   "fg":           ["#fff1f3", 7],
+\   "black":        ["#211c1c", 0],
+\   "comment":      ["#72696a", 8],
+\   "colorColumn":  ["#403838", 237],
+\   "cursorLine":   ["#342d2d", 255],
+\   "lineNr":       ["#5b5353", 240],
+\   "visual":       ["#403838", 237],
+\   "statusLineFg": ["#72696a", 246],
+\ }
 
-let s:comment    = s:palette.comment
+let s:bg     = s:theme.bg
+let s:fg     = s:theme.fg
+let s:black  = s:theme.black
+let s:red    = s:colors.red
+let s:green  = s:colors.green
+let s:yellow = s:colors.yellow
+let s:blue   = s:colors.blue
+let s:purple = s:colors.purple
+let s:cyan   = s:colors.cyan
+let s:white  = s:colors.white
+let s:orange = s:colors.orange
+let s:accent = s:colors.yellow
+
+let s:comment    = s:theme.comment
 let s:constant   = s:purple
 let s:string     = s:yellow
 let s:identifier = s:cyan
@@ -75,15 +82,17 @@ let s:special    = s:white
 let s:tag        = s:red
 let s:underlined = s:purple
 
-let s:colorColumn  = s:palette.colorColumn
-let s:cursorLine   = s:palette.cursorLine
-let s:statusLineBg = s:palette.black
-let s:statusLineFg = s:palette.statusLineFg
-let s:lineNr       = s:palette.lineNr
-let s:visual       = s:palette.visual
-let s:pmenuBg      = s:palette.visual
-let s:pmenuFg      = s:white
-let s:pmenuSelBg   = s:palette.lineNr
+let s:none   = ["NONE", "NONE"]
+
+let s:colorColumn  = s:theme.colorColumn
+let s:cursorLine   = s:theme.cursorLine
+let s:statusLineBg = s:theme.black
+let s:statusLineFg = s:theme.statusLineFg
+let s:lineNr       = s:theme.lineNr
+let s:visual       = s:theme.visual
+let s:pmenuBg      = s:theme.visual
+let s:pmenuFg      = s:colors.white
+let s:pmenuSelBg   = s:theme.lineNr
 
 if s:is_dark
   set background=dark
@@ -99,8 +108,8 @@ else
   let s:cyan   = ["#a25b42", 131]
   let s:green  = ["#4e2020", 235]
   let s:yellow = s:orange
-  let s:purple = s:palette.purple
-  let s:white  = s:palette.white
+  let s:purple = s:colors.purple
+  let s:white  = s:colors.white
   let s:accent = s:red
 
   let s:comment    = ["#cbb2a8", 181]
@@ -162,6 +171,7 @@ call s:h("Pmenu",         { "fg": s:pmenuFg, "bg": s:pmenuBg })
 call s:h("PmenuSbar",     { "fg": s:pmenuFg, "bg": s:pmenuBg })
 call s:h("PmenuSel",      { "fg": s:accent, "bg": s:pmenuSelBg })
 call s:h("PmenuThumb",    { "fg": s:accent, "bg": s:accent })
+hi link QuickFixLine PmenuSel
 
 call s:h("ErrorMsg",      { "fg": s:black, "bg": s:red })
 call s:h("ModeMsg",       { "fg": s:white })
@@ -187,8 +197,8 @@ call s:h("DiffChange",    { "fg": s:bg, "bg": s:yellow })
 call s:h("DiffDelete",    { "fg": s:bg, "bg": s:red })
 call s:h("DiffText",      { "bg": s:red, "style": "bold" })
 
-call s:h("IncSearch",     { "fg": s:accent, "style": "reverse" })
-call s:h("Search",        { "fg": s:accent, "style": "reverse" })
+call s:h("IncSearch",     { "fg": s:bg, "bg": s:accent, "style": "NONE" })
+call s:h("Search",        { "fg": s:bg, "bg": s:accent })
 
 call s:h("Directory",     { "fg": s:purple })
 
@@ -304,10 +314,10 @@ call s:h("yamlConstant",     { "fg": s:purple })
 call s:h("yamlKey",          { "fg": s:red })
 
 " https://github.com/w0rp/ale
-call s:h("ALEError",        { "fg": s:red })
+call s:h("ALEError",        { "fg": s:red, "style": "reverse" })
 call s:h("ALEErrorSign",    { "bg": s:black })
 call s:h("ALEInfo",         { "fg": s:red })
-call s:h("ALEStyleError",   { "fg": s:red })
+call s:h("ALEStyleError",   { "fg": s:red, "style": "reverse" })
 call s:h("ALEStyleWarning", { "fg": s:red })
 call s:h("ALEWarning",      { "sp": s:red, "style": "undercurl" })
 call s:h("ALEWarningSign",  { "bg": s:black })

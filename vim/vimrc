@@ -118,11 +118,11 @@ syntax sync minlines=50
 " plugins
 " ======================================
 " use ripgrep for grep
-if executable('fd')
-  set grepprg=fd\ --hidden\ --type\ f
-  set grepformat=%f:%l:%c:%m
-elseif executable('rg')
+if executable('rg')
   set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+elseif executable('fd')
+  set grepprg=fd\ --hidden\ --type\ f
   set grepformat=%f:%l:%c:%m
 endif
 
