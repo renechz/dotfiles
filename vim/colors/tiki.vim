@@ -143,6 +143,8 @@ call s:h("Tag",           { "fg": s:tag })
 call s:h("Underlined",    { "fg": s:underlined, "style": "underline" })
 call s:h("Todo",          { "fg": s:accent, "bg": s:none })
 
+call s:h("Delimiter",     { "fg": s:comment })
+
 call s:h("Cursor",        { "fg": s:black, "bg": s:white })
 call s:h("CursorColumn",  { "bg": s:black })
 call s:h("CursorLine",    { "bg": s:cursorLine, "style": "NONE" })
@@ -157,8 +159,8 @@ call s:h("TabLine",       { "fg": s:statusLineFg, "bg": s:statusLineBg, "style":
 call s:h("TabLineFill",   { "fg": s:statusLineFg, "bg": s:statusLineBg, "style": "bold" })
 call s:h("TabLineSel",    { "fg": s:accent, "bg": s:visual, "style": "bold" })
 
-call s:h("FoldColumn",    { "fg": s:cyan })
-call s:h("Folded",        { "fg": s:fg, "bg": s:visual })
+call s:h("FoldColumn",    { "fg": s:statusLineFg, "bg": s:visual })
+call s:h("Folded",        { "fg": s:statusLineFg, "bg": s:visual })
 
 call s:h("MatchParen",    { "fg": s:red, "style": "underline" })
 call s:h("Conceal",       { "fg": s:red, "bg": s:bg })
@@ -178,7 +180,7 @@ call s:h("ModeMsg",       { "fg": s:white })
 call s:h("MoreMsg",       { "fg": s:white })
 
 call s:h("Question",      { "fg": s:cyan })
-call s:h("WarningMsg",    { "fg": s:black, "bg": s:red })
+call s:h("WarningMsg",    { "fg": s:black, "bg": s:orange })
 
 call s:h("helpLeadBlank", { "fg": s:white })
 call s:h("helpNormal",    { "fg": s:white })
@@ -195,7 +197,7 @@ call s:h("Title",         { "fg": s:label })
 call s:h("DiffAdd",       { "fg": s:bg, "bg": s:green })
 call s:h("DiffChange",    { "fg": s:bg, "bg": s:yellow })
 call s:h("DiffDelete",    { "fg": s:bg, "bg": s:red })
-call s:h("DiffText",      { "bg": s:red, "style": "bold" })
+call s:h("DiffText",      { "fg": s:blue, "bg": s:none, "style": "NONE" })
 
 call s:h("IncSearch",     { "fg": s:bg, "bg": s:accent, "style": "NONE" })
 call s:h("Search",        { "fg": s:bg, "bg": s:accent })
@@ -209,7 +211,7 @@ call s:h("SpellRare",     { "sp": s:red, "style": "undercurl" })
 
 call s:h("ColorColumn",   { "bg": s:colorColumn })
 
-call s:h("StorageClass",  { "fg": s:cyan, "style": "italic" })
+call s:h("StorageClass",  { "fg": s:cyan })
 call s:h("Quote",         { "fg": s:comment })
 call s:h("Noise",         { "fg": s:comment })
 
@@ -218,7 +220,6 @@ hi link Character      Constant
 hi link Conditional    Statement
 hi link Debug          Special
 hi link Define         Special
-hi link Delimiter      Special
 hi link Exception      Statement
 hi link Float          Number
 hi link HelpCommand    Statement
@@ -239,7 +240,7 @@ call s:h("jsArrowFunction",     { "fg": s:red })
 call s:h("jsFuncArgs",          { "fg": s:orange, "style": "italic" })
 call s:h("jsFuncCall",          { "fg": s:green })
 call s:h("jsGlobalNodeObjects", { "fg": s:green })
-call s:h("jsGlobalObjects",     { "fg": s:cyan, "style": "italic" })
+call s:h("jsGlobalObjects",     { "fg": s:cyan })
 call s:h("jsObjectKey",         { "fg": s:fg })
 hi link jsNoise Noise
 
@@ -276,14 +277,12 @@ call s:h("rubyClass",                    { "fg": s:red })
 call s:h("rubyClassName",                { "fg": s:cyan })
 call s:h("rubyConstant",                 { "fg": s:cyan })
 call s:h("rubyControl",                  { "fg": s:red })
-call s:h("rubyCurlyBlockDelimiter",      { "fg": s:comment })
 call s:h("rubyDefine",                   { "fg": s:red })
 call s:h("rubyEscape",                   { "fg": s:purple })
 call s:h("rubyException",                { "fg": s:red })
 call s:h("rubyFunction",                 { "fg": s:green })
 call s:h("rubyInclude",                  { "fg": s:red })
 call s:h("rubyInstanceVariable",         { "fg": s:blue })
-call s:h("rubyInterpolationDelimiter",   { "fg": s:comment })
 call s:h("rubyOperator",                 { "fg": s:red })
 call s:h("rubyPredefinedConstant",       { "fg": s:purple })
 call s:h("rubyPseudoVariable",           { "fg": s:purple })
@@ -291,27 +290,31 @@ call s:h("rubyRailsARAssociationMethod", { "fg": s:cyan })
 call s:h("rubyRailsARMethod",            { "fg": s:cyan })
 call s:h("rubyRailsMethod",              { "fg": s:cyan })
 call s:h("rubyRailsRenderMethod",        { "fg": s:cyan })
-call s:h("rubyRailsUserClass",           { "fg": s:cyan, "style": "italic" })
+call s:h("rubyRailsUserClass",           { "fg": s:cyan })
 call s:h("rubyRegexp",                   { "fg": s:yellow })
-call s:h("rubyRegexpDelimiter",          { "fg": s:yellow })
-call s:h("rubyStringDelimiter",          { "fg": s:yellow })
 call s:h("rubySymbol",                   { "fg": s:blue })
 call s:h("rubyEntity",                   { "fg": s:green })
 call s:h("rubyEntities",                 { "fg": s:green })
-hi link rubyEntity   Function
-hi link rubyEntities rubyEntity
-hi link rubySharpBang Comment
-hi link erubyComment  Comment
+hi link rubyEntity                 Function
+hi link rubyEntities               rubyEntity
+hi link rubySharpBang              Comment
+hi link erubyComment               Comment
+hi link rubyArrayDelimiter         Delimiter
+hi link rubyRegexpDelimiter        Delimiter
+hi link rubyInterpolationDelimiter Delimiter
+hi link rubyCurlyBlockDelimiter    Delimiter
+hi link rubyStringDelimiter        Delimiter
 
 call s:h("jsonKeyword",      { "fg": s:fg })
 call s:h("jsonKeywordMatch", { "fg": s:comment })
 call s:h("jsonNumber",       { "fg": s:purple })
-call s:h("yamlAlias",        { "fg": s:green, "style": "italic,underline" })
+call s:h("yamlAlias",        { "fg": s:green, "style": "underline" })
 call s:h("yamlAnchor",       { "fg": s:cyan })
 call s:h("yamlBlock",        { "fg": s:fg })
 call s:h("yamlConstant",     { "fg": s:purple })
 call s:h("yamlKey",          { "fg": s:red })
 
+" Plugins
 " https://github.com/w0rp/ale
 call s:h("ALEError",        { "fg": s:red, "style": "reverse" })
 call s:h("ALEErrorSign",    { "bg": s:black })
