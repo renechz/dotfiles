@@ -132,7 +132,7 @@ call s:h("Normal",        { "fg": s:fg, "bg": s:bg })
 call s:h("Comment",       { "fg": s:comment, "style": "italic" })
 call s:h("Constant",      { "fg": s:constant })
 call s:h("String",        { "fg": s:string })
-call s:h("Identifier",    { "fg": s:identifier, "style": "italic" })
+call s:h("Identifier",    { "fg": s:identifier, "style": "NONE" })
 call s:h("Function",      { "fg": s:function })
 call s:h("Statement",     { "fg": s:statement })
 call s:h("Label",         { "fg": s:label })
@@ -257,7 +257,6 @@ hi link xmlTagName htmlTagName
 hi link xmlEndTag  htmlEndTag
 hi link xmlAttrib  htmlArg
 
-hi link markdownItalic           PreProc
 hi link asciidocQuotedEmphasized PreProc
 
 hi link diffBDiffer   WarningMsg
