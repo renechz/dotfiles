@@ -33,6 +33,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'lifepillar/vim-mucomplete'
+Plug 'lifepillar/vim-colortemplate'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'vim-ruby/vim-ruby'
 
