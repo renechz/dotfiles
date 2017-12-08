@@ -1,0 +1,241 @@
+# vim: ft=colortemplate fdm=marker
+
+# Information {{{
+# Mandatory
+Full name:   Tiki
+Short name:  tiki
+Author:      René C <renechz@github.com>
+Maintainer:  Myself <renechz@github.com>
+# Optional
+Website:
+Description: Vim port for Monokai.Pro Ristretto filter
+License: Vim License
+Terminal Colors: 256
+Option Prefix: dark
+# }}}
+
+Background: dark
+
+# Color palette {{{
+# Color name - GUI - Base256 - Base16 (optional)
+Color: ristretto  #2c2525 ~
+Color: latte      #fff1f3 ~
+Color: black      #211c1c ~ Black
+Color: red        #fd6883 ~ DarkRed
+Color: green      #adda78 ~ DarkGreen
+Color: yellow     #f9cc6c ~ DarkYellow
+Color: blue       #b4e7fe ~ DarkBlue
+Color: magenta    #a8a9eb ~ DarkMagenta
+Color: cyan       #85dacc ~ DarkCyan
+Color: white      #c3b7b8 ~ LightGrey
+Color: orange     #f38d70 ~ LightGrey
+Color: comment    #72696a ~
+Color: visual     #403838 ~
+Color: cursorLine #342d2d ~
+Color: lineNr     #5b5353 ~
+# }}}
+
+# Default highlight groups {{{
+verbatim
+if !has('gui_running') && get(g:, '@optionprefix_transp_bg', 0)
+endverbatim
+    # Transparent background
+    Normal latte none
+    # See `:help terminal-size-color`
+    Terminal latte none
+verbatim
+else
+endverbatim
+    # Opaque background
+    Normal   latte none
+    Terminal latte none
+verbatim
+endif
+endverbatim
+
+# Group - Foreground - Background - Attributes
+ColorColumn  none         visual
+Conceal      none         ristretto
+Cursor       black        white
+CursorColumn none         black
+CursorLine   latte        cursorLine
+CursorLineNr white        none
+DiffAdd      ristretto    green
+DiffChange   ristretto    yellow
+DiffDelete   ristretto    red
+DiffText     blue         none
+Directory    magenta      none
+EndOfBuffer  lineNr       none
+ErrorMsg     black        red
+FoldColumn   comment      visual
+Folded       comment      visual italic
+IncSearch    yellow       black  t=reverse g=standout
+LineNr       lineNr       ristretto
+MatchParen   red          black
+ModeMsg      white        none
+MoreMsg      white        none
+NonText      lineNr       none
+Pmenu        white        visual
+PmenuSbar    white        visual
+PmenuSel     yellow       lineNr
+PmenuThumb   yellow       yellow
+Question     cyan         none
+QuickFixLine ->           Search
+
+Search           black            yellow
+SignColumn       none             black
+SpecialKey       lineNr           none
+SpellBad         red              black s=red
+SpellCap         red              black s=blue
+SpellLocal       red              black s=magenta
+SpellRare        red              black s=cyan reverse
+StatusLine       comment          black
+StatusLineNC     comment          black
+StatusLineTerm   ->               StatusLine
+StatusLineTermNC ->               StatusLineNC
+TabLine          comment          black
+TabLineFill      comment          black
+TabLineSel       yellow           visual
+Title            yellow           none
+VertSplit        black            none  reverse
+Visual           none             visual
+VisualNOS        none             visual
+WarningMsg       orange           black
+WildMenu         yellow           lineNr
+
+# Other conventional group names (see `:help group-name`)
+Boolean              ->         Constant
+Character            ->         Constant
+Comment              comment    none italic
+Conditional          ->         Statement
+Constant             magenta   none
+Define               ->         PreProc
+Debug                ->         Special
+Delimiter            comment    none
+Error                black      red    reverse
+Exception            ->         Statement
+Float                ->         Constant
+Function             green      none
+Identifier           cyan       none
+Ignore               white      none
+Include              ->         PreProc
+Keyword              ->         Statement
+Label                yellow     none
+Macro                ->         PreProc
+Noise                comment    none
+Number               ->         Constant
+Operator             ->         Statement
+PreCondit            ->         PreProc
+PreProc              red        none
+Quote                comment    none
+Repeat               ->         Statement
+Special              white      none
+SpecialChar          ->         Special
+SpecialComment       ->         Special
+Statement            red        none
+StorageClass         cyan       none
+String               yellow     none
+Structure            ->         Type
+Tag                  red        none
+Todo                 yellow     none
+Type                 cyan       none
+Typedef              ->         Type
+Underlined           magenta    none   underline
+# See `:help lCursor`
+lCursor              ->         Cursor
+# See `:help CursorIM`
+CursorIM             none       fg
+# See `:help window-toolbar`
+ToolbarLine          none       black
+ToolbarButton        white      black  bold
+# }}}
+
+jsArrowFunction     red    none
+jsFuncArgs          orange none italic
+jsFuncCall          green  none
+jsGlobalNodeObjects green  none
+jsGlobalObjects     cyan   none
+jsObjectKey         fg     none
+jsNoise -> Noise
+
+htmlTagName        red     none
+htmlSpecialTagName red     none
+htmlArg            cyan    none italic
+htmlSpecialChar    magenta none
+htmlBold           orange  none bold
+htmlItalic         yellow  none italic
+htmlH1             magenta none bold
+htmlTag    -> Noise
+htmlEndTag -> htmlTagName
+xmlTag     -> htmlTag
+xmlTagName -> htmlTagName
+xmlEndTag  -> htmlEndTag
+xmlAttrib  -> htmlArg
+
+diffBDiffer   -> WarningMsg
+diffCommon    -> WarningMsg
+diffDiffer    -> WarningMsg
+diffIdentical -> WarningMsg
+diffIsA       -> WarningMsg
+diffNoEOL     -> WarningMsg
+diffOnly      -> WarningMsg
+diffRemoved   -> WarningMsg
+diffAdded     -> DiffAdd
+diffRemoved   -> DiffDelete
+
+rubyBlockParameter           orange  none italic
+rubyBlockParameterList       comment none
+rubyClass                    red     none
+rubyClassName                cyan    none
+rubyConstant                 cyan    none
+rubyControl                  red     none
+rubyDefine                   red     none
+rubyEscape                   magenta none
+rubyException                red     none
+rubyFunction                 green   none
+rubyInclude                  red     none
+rubyInstanceVariable         blue    none
+rubyOperator                 red     none
+rubyPredefinedConstant       magenta none
+rubyPseudoVariable           magenta none
+rubyRailsARAssociationMethod cyan    none
+rubyRailsARMethod            cyan    none
+rubyRailsMethod              cyan    none
+rubyRailsRenderMethod        cyan    none
+rubyRailsUserClass           cyan    none
+rubyRegexp                   yellow  none
+rubyRegexpAnchor             yellow  none
+rubyRegexpCharClass          magenta none
+rubyRegexpEscape             magenta none
+rubyRegexpQuantifier         yellow  none
+rubySymbol                   blue    none
+rubyEntity                   green   none
+rubyEntities                 green   none
+rubyEntity                 -> Function
+rubyEntities               -> rubyEntity
+rubySharpBang              -> Comment
+erubyComment               -> Comment
+rubyArrayDelimiter         -> Delimiter
+rubyRegexpDelimiter        -> Delimiter
+rubyInterpolationDelimiter -> Delimiter
+rubyCurlyBlockDelimiter    -> Delimiter
+rubyStringDelimiter        -> Delimiter
+
+jsonKeyword      fg      none
+jsonKeywordMatch comment none
+jsonNumber       magenta none
+yamlAlias        green   none underline
+yamlAnchor       cyan    none
+yamlBlock        fg      none
+yamlConstant     magenta none
+yamlKey          red     none
+
+# Plugins
+# https://github.com/w0rp/ale
+ALEError        red   none reverse
+ALEErrorSign    black none
+ALEInfo         red   none
+ALEStyleError   red   none reverse
+ALEStyleWarning red   none
+ALEWarning      red   none undercurl
+ALEWarningSign  none  black
