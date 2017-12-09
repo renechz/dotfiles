@@ -102,20 +102,25 @@ nnoremap <leader><leader> <c-^>
 " Grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
+" Window manipulation
+" zoom a vim pane
 " Quicker window movement
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" zoom a vim pane
+" Resize windows
+nnoremap <esc><up>    <c-w>+
+nnoremap <esc><down>  <c-w>-
+nnoremap <esc><left>  <c-w><
+nnoremap <esc><right> <c-w>>
+
 nnoremap <leader>zi :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>zo :wincmd =<cr>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
-
-syntax sync minlines=50
 
 " ======================================
 " plugins
