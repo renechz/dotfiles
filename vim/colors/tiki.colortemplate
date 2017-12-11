@@ -232,10 +232,10 @@ yamlKey          red     none
 
 # Plugins
 # https://github.com/w0rp/ale
-ALEError        red   none reverse
+ALEError        red   none reverse,underline
 ALEErrorSign    black none
-ALEInfo         red   none
-ALEStyleError   red   none reverse
-ALEStyleWarning red   none
-ALEWarning      red   none undercurl
+ALEInfo         none  none s=yellow undercurl
+ALEStyleError   red   none reverse,underline
+ALEStyleWarning none  none s=yellow undercurl
+ALEWarning      none  none s=yellow undercurl
 ALEWarningSign  none  black
