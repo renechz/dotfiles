@@ -58,7 +58,7 @@ ColorColumn  none         visual
 Conceal      none         ristretto
 Cursor       black        white
 CursorColumn none         black
-CursorLine   latte        cursorLine
+CursorLine   none         cursorLine
 CursorLineNr white        none
 DiffAdd      ristretto    green
 DiffChange   ristretto    yellow
@@ -112,7 +112,7 @@ Constant             magenta   none
 Define               ->         PreProc
 Debug                ->         Special
 Delimiter            comment    none
-Error                black      red    reverse
+Error                red        black    reverse
 Exception            ->         Statement
 Float                ->         Constant
 Function             green      none
@@ -120,7 +120,7 @@ Identifier           cyan       none
 Ignore               white      none
 Include              ->         PreProc
 Keyword              ->         Statement
-Label                yellow     none
+Label                ->         Statement
 Macro                ->         PreProc
 Noise                comment    none
 Number               ->         Constant
