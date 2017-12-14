@@ -19,50 +19,37 @@ Background: dark
 # Color palette {{{
 # Color name - GUI - Base256 - Base16 (optional)
 Color: ristretto  #2c2525 ~
-Color: latte      #fff1f3 ~
-Color: black      #211c1c ~ Black
-Color: red        #fd6883 ~ DarkRed
-Color: green      #adda78 ~ DarkGreen
-Color: yellow     #f9cc6c ~ DarkYellow
-Color: blue       #b4e7fe ~ DarkBlue
-Color: magenta    #a8a9eb ~ DarkMagenta
-Color: cyan       #85dacc ~ DarkCyan
-Color: white      #c3b7b8 ~ LightGrey
-Color: orange     #f38d70 ~ LightGrey
-Color: comment    #72696a ~
+Color: latte      #fff1f3 7
+Color: black      #211c1c 0 Black
+Color: red        #fd6883 1 DarkRed
+Color: green      #adda78 2 DarkGreen
+Color: yellow     #f9cc6c 3 DarkYellow
+Color: blue       #b4e7fe 4 DarkBlue
+Color: magenta    #a8a9eb 5 DarkMagenta
+Color: cyan       #85dacc 6 DarkCyan
+Color: white      #c3b7b8 15 LightGrey
+Color: orange     #f38d70 11 LightGrey
+Color: comment    #72696a 8
 Color: visual     #403838 ~
 Color: cursorLine #342d2d ~
 Color: lineNr     #5b5353 ~
 # }}}
 
 # Default highlight groups {{{
-verbatim
-if !has('gui_running') && get(g:, '@optionprefix_transp_bg', 0)
-endverbatim
-    # Transparent background
-    Normal latte none
-    # See `:help terminal-size-color`
-    Terminal latte none
-verbatim
-else
-endverbatim
-    # Opaque background
-    Normal   latte none
-    Terminal latte none
-verbatim
-endif
-endverbatim
+# Transparent background
+Normal   latte none
+Terminal latte none
 
 # Group - Foreground - Background - Attributes
 ColorColumn  none         visual
-Conceal      none         ristretto
+Conceal      none         black
 Cursor       black        white
 CursorColumn none         black
 CursorLine   none         cursorLine
 CursorLineNr white        none
-DiffAdd      ristretto    green
-DiffChange   ristretto    yellow
-DiffDelete   ristretto    red
+DiffAdd      black        green
+DiffChange   black        yellow
+DiffDelete   black        red
 DiffText     blue         none
 Directory    magenta      none
 EndOfBuffer  lineNr       none
@@ -70,7 +57,7 @@ ErrorMsg     black        red
 FoldColumn   comment      visual
 Folded       comment      visual italic
 IncSearch    yellow       black  t=reverse g=standout
-LineNr       lineNr       ristretto
+LineNr       lineNr       none
 MatchParen   red          black
 ModeMsg      white        none
 MoreMsg      white        none

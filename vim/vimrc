@@ -69,7 +69,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 set number
-set relativenumber
 set shortmess+=c   " Shut off completion messages
 set undolevels=1000
 set signcolumn=yes
