@@ -20,15 +20,15 @@ Background: dark
 # Color name - GUI - Base256 - Base16 (optional)
 Color: ristretto  #2c2525 ~
 Color: latte      #fff1f3 7
-Color: black      #211c1c 0 Black
-Color: red        #fd6883 1 DarkRed
-Color: green      #adda78 2 DarkGreen
-Color: yellow     #f9cc6c 3 DarkYellow
-Color: blue       #b4e7fe 4 DarkBlue
-Color: magenta    #a8a9eb 5 DarkMagenta
-Color: cyan       #85dacc 6 DarkCyan
-Color: white      #c3b7b8 15 LightGrey
-Color: orange     #f38d70 11 LightGrey
+Color: black      #211c1c 0
+Color: red        #fd6883 1
+Color: green      #adda78 2
+Color: yellow     #f9cc6c 3
+Color: blue       #b4e7fe 4
+Color: magenta    #a8a9eb 5
+Color: cyan       #85dacc 6
+Color: white      #c3b7b8 15
+Color: orange     #f38d70 11
 Color: comment    #72696a 8
 Color: visual     #403838 ~
 Color: cursorLine #342d2d ~
@@ -40,101 +40,101 @@ Color: lineNr     #5b5353 ~
 Normal   latte none
 Terminal latte none
 
-# Group - Foreground - Background - Attributes
-ColorColumn  none         visual
-Conceal      none         black
-Cursor       black        white
-CursorColumn none         black
-CursorLine   none         cursorLine
-CursorLineNr white        none
-DiffAdd      black        green
-DiffChange   black        yellow
-DiffDelete   black        red
-DiffText     blue         none
-Directory    magenta      none
-EndOfBuffer  lineNr       none
-ErrorMsg     black        red
-FoldColumn   comment      visual
-Folded       comment      visual italic
-IncSearch    yellow       black  t=reverse g=standout
-LineNr       lineNr       none
-MatchParen   red          black
-ModeMsg      white        none
-MoreMsg      white        none
-NonText      lineNr       none
-Pmenu        white        visual
-PmenuSbar    white        visual
-PmenuSel     yellow       lineNr
-PmenuThumb   yellow       yellow
-Question     cyan         none
-QuickFixLine ->           Search
-
-Search           black            yellow
-SignColumn       none             black
-SpecialKey       lineNr           none
-SpellBad         red              black s=red
-SpellCap         red              black s=blue
-SpellLocal       red              black s=magenta
-SpellRare        red              black s=cyan reverse
-StatusLine       comment          black
-StatusLineNC     comment          black
-StatusLineTerm   ->               StatusLine
-StatusLineTermNC ->               StatusLineNC
-TabLine          comment          black
-TabLineFill      comment          black
-TabLineSel       yellow           visual
-Title            yellow           none
-VertSplit        black            none  reverse
-Visual           none             visual
-VisualNOS        none             visual
-WarningMsg       orange           black
-WildMenu         yellow           lineNr
+# Group          FG      BG     Attr
+ColorColumn      none    visual
+Conceal          none    black
+Cursor           black   white
+CursorColumn     none    black
+CursorLine       none    cursorLine
+CursorLineNr     white   none
+DiffAdd          black   green
+DiffChange       black   yellow
+DiffDelete       black   red
+DiffText         blue    none
+Directory        magenta none
+EndOfBuffer      lineNr  none
+ErrorMsg         black   red
+FoldColumn       comment visual
+Folded           comment visual italic
+IncSearch        yellow  black  t=reverse g=standout
+LineNr           lineNr  none
+MatchParen       black   red
+ModeMsg          white   none
+MoreMsg          white   none
+NonText          lineNr  none
+Pmenu            white   visual
+PmenuSbar        white   visual
+PmenuSel         yellow  lineNr
+PmenuThumb       yellow  yellow
+Question         cyan    none
+QuickFixLine     ->      Search
+Search           black   yellow
+SignColumn       none    black
+SpecialKey       lineNr  none
+SpellBad         red     black  s=red
+SpellCap         red     black  s=blue
+SpellLocal       red     black  s=magenta
+SpellRare        red     black  s=cyan    reverse
+StatusLine       comment black
+StatusLineNC     comment black
+StatusLineTerm   ->      StatusLine
+StatusLineTermNC ->      StatusLineNC
+TabLine          comment black
+TabLineFill      comment black
+TabLineSel       yellow  visual
+Title            yellow  none
+VertSplit        black   none   reverse
+Visual           none    visual
+VisualNOS        none    visual
+WarningMsg       orange  black
+WildMenu         yellow  lineNr
 
 # Other conventional group names (see `:help group-name`)
-Boolean              ->         Constant
-Character            ->         Constant
-Comment              comment    none italic
-Conditional          ->         Statement
-Constant             magenta   none
-Define               ->         PreProc
-Debug                ->         Special
-Delimiter            comment    none
-Error                red        black    reverse
-Exception            ->         Statement
-Float                ->         Constant
-Function             green      none
-Identifier           cyan       none
-Ignore               white      none
-Include              ->         PreProc
-Keyword              ->         Statement
-Label                ->         Statement
-Macro                ->         PreProc
-Noise                comment    none
-Number               ->         Constant
-Operator             ->         Statement
-PreCondit            ->         PreProc
-PreProc              red        none
-Quote                comment    none
-Repeat               ->         Statement
-Special              white      none
-SpecialChar          ->         Special
-SpecialComment       ->         Special
-Statement            red        none
-StorageClass         cyan       none
-String               yellow     none
-Structure            ->         Type
-Tag                  red        none
-Todo                 yellow     none
-Type                 cyan       none
-Typedef              ->         Type
-Underlined           magenta    none   underline
+Boolean        ->      Constant
+Character      ->      Constant
+Comment        comment none italic
+Conditional    ->      Statement
+Constant       magenta none
+Define         ->      PreProc
+Debug          ->      Special
+Delimiter      comment none
+Error          red     black    reverse
+Exception      ->      Statement
+Float          ->      Constant
+Function       green   none
+Identifier     cyan    none
+Ignore         white   none
+Include        ->      PreProc
+Keyword        ->      Statement
+Label          ->      Statement
+Macro          ->      PreProc
+Noise          comment none
+Number         ->      Constant
+Operator       ->      Statement
+PreCondit      ->      PreProc
+PreProc        red     none
+Quote          comment none
+Repeat         ->      Statement
+Special        white   none
+SpecialChar    ->      Special
+SpecialComment ->      Special
+Statement      red     none
+StorageClass   cyan    none
+String         yellow  none
+Structure      ->      Type
+Tag            red     none
+Todo           yellow  none
+Type           cyan    none
+Typedef        ->      Type
+Underlined     magenta none   underline
+
 # See `:help lCursor`
-lCursor              ->         Cursor
+lCursor -> Cursor
 # See `:help CursorIM`
-CursorIM             none       fg
+CursorIM none fg
 # See `:help window-toolbar`
-ToolbarLine          none       black
-ToolbarButton        white      black  bold
+ToolbarLine   none  black
+ToolbarButton white black bold
 # }}}
 
 jsArrowFunction     red    none
