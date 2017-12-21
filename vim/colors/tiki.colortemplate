@@ -8,7 +8,7 @@ Author:      René C <renechz@github.com>
 Maintainer:  Myself <renechz@github.com>
 # Optional
 Website:
-Description: Vim port for Monokai.Pro Ristretto filter
+Description: Vim port for Monokai.Pro
 License: Vim License
 Terminal Colors: 256
 Option Prefix: dark
@@ -16,10 +16,28 @@ Option Prefix: dark
 
 Background: dark
 
-# Color palette {{{
+# Color palette (Monokai Pro: Default) {{{
 # Color name - GUI - Base256 - Base16 (optional)
-Color: ristretto  #2c2525 ~
-Color: latte      #fff1f3 7
+# Color: back       #2d2a2e ~
+# Color: fore       #fcfcfa 7
+# Color: black      #211c1c 0
+# Color: red        #ff6188 1
+# Color: green      #a9dc76 2
+# Color: yellow     #ffd866 3
+# Color: blue       #b4e7fe 4
+# Color: magenta    #ab9df2 5
+# Color: cyan       #78dce8 6
+# Color: white      #c1c0c0 15
+# Color: orange     #fc9867 11
+# Color: comment    #727072 8
+# Color: visual     #403e41 ~
+# Color: cursorLine #342d2d ~
+# Color: lineNr     #5b595c ~
+# }}}
+# Color palette (Monokai Pro: Ristretto) {{{
+# Color name - GUI - Base256 - Base16 (optional)
+Color: back       #2c2525 ~
+Color: fore       #fff1f3 7
 Color: black      #211c1c 0
 Color: red        #fd6883 1
 Color: green      #adda78 2
@@ -34,11 +52,29 @@ Color: visual     #403838 ~
 Color: cursorLine #342d2d ~
 Color: lineNr     #5b5353 ~
 # }}}
+# Color palette (Monokai Pro: Spectrum) {{{
+# Color name - GUI - Base256 - Base16 (optional)
+# Color: back       #222222 ~
+# Color: fore       #f7f1ff 7
+# Color: black      #211c1c 0
+# Color: red        #fc618d 1
+# Color: green      #7bd88f 2
+# Color: yellow     #fce566 3
+# Color: blue       #b4e7fe 4
+# Color: magenta    #948ae3 5
+# Color: cyan       #5ad4e6 6
+# Color: white      #bab6c0 15
+# Color: orange     #fd9353 11
+# Color: comment    #69676c 8
+# Color: visual     #363537 ~
+# Color: cursorLine #342d2d ~
+# Color: lineNr     #525053 ~
+# }}}
 
 # Default highlight groups {{{
 # Transparent background
-Normal   latte none
-Terminal latte none
+Normal   fore none
+Terminal fore none
 
 # Group          FG      BG     Attr
 ColorColumn      none    visual
