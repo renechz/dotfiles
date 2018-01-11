@@ -40,7 +40,7 @@ set ttimeoutlen=100
 set ttyfast
 set wildmenu
 
-if filereadable(expand("~/vim/vimrc.bundles"))
+if filereadable(expand("~/.vim/vimrc.bundles"))
   source ~/.vim/vimrc.bundles
 endif
 
