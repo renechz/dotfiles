@@ -1,50 +1,11 @@
 " vim: foldmethod=marker foldlevel=0
 
-" junegunn/vim-plug {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'kana/vim-textobj-user'
-Plug 'benmills/vimux'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'coderifous/textobj-word-column.vim'
-Plug 'janko-m/vim-test'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-emoji'
-Plug 'lifepillar/vim-colortemplate'
-Plug 'lifepillar/vim-mucomplete'
-Plug 'plasticboy/vim-markdown'
-Plug 'sgur/vim-editorconfig'
-Plug 'sheerun/vim-polyglot'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
-Plug 'vim-ruby/vim-ruby'
-Plug 'w0rp/ale'
-
-call plug#end()
-" }}}
 " ------------------------------------------------------------------------------
 " Settings
 " ------------------------------------------------------------------------------
 " Settings {{{
 let mapleader = " "
 filetype plugin indent on
-syntax on
 
 runtime macros/matchit.vim
 
@@ -81,6 +42,23 @@ set ttimeout
 set ttimeoutlen=100
 set ttyfast
 set wildmenu
+
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+endif
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
+filetype plugin indent on
 " }}}
 " Colorscheme {{{
 set termguicolors
@@ -206,3 +184,7 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
 " }}}
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
