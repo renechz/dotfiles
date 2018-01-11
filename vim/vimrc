@@ -5,9 +5,6 @@
 " ------------------------------------------------------------------------------
 " Settings {{{
 let mapleader = " "
-filetype plugin indent on
-
-runtime macros/matchit.vim
 
 set autoread
 set autowrite
@@ -43,8 +40,8 @@ set ttimeoutlen=100
 set ttyfast
 set wildmenu
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/vim/vimrc.bundles"))
+  source ~/.vim/vimrc.bundles
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -185,6 +182,6 @@ nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
 " }}}
 " Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
+if filereadable($HOME . "/.vim/vimrc.local")
+  source ~/.vim/vimrc.local
 endif
