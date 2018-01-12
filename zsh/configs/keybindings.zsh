@@ -1,10 +1,6 @@
 # give us access to ^Q
 stty -ixon
 
-# vi mode
-bindkey -v
-bindkey "^F" vi-cmd-mode
-
 # handy keybindings
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
@@ -18,5 +14,3 @@ bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
