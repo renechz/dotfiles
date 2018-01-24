@@ -6,8 +6,8 @@ zplug "lib/history", from:oh-my-zsh
 zplug "plugins/heroku", from:oh-my-zsh
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-completions", from:github
-zplug "zsh-users/zsh-history-substring-search", from:github
 zplug 'zsh-users/zsh-syntax-highlighting', from:github
+zplug "zsh-users/zsh-history-substring-search", from:github
 zplug 'mafredri/zsh-async'
 zplug 'sindresorhus/pure'
 

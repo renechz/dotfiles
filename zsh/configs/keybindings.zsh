@@ -1,6 +1,7 @@
 # give us access to ^Q
 stty -ixon
 
+bindkey -e
 # handy keybindings
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
