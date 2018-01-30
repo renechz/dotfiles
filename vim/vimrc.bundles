@@ -43,7 +43,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
-Plug 'w0rp/ale'
 
 if g:has_async
   Plug 'w0rp/ale'
