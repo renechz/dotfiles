@@ -70,9 +70,6 @@ set t_ut=
 if executable('rg')
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
-elseif executable('fd')
-  set grepprg=fd\ --hidden\ --type\ f
-  set grepformat=%f:%l:%c:%m
 endif
 " }}}
 " Persistent undo {{{
@@ -90,7 +87,6 @@ set undofile
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " }}}
 " Window manipulation {{{
-" zoom a vim pane
 " Quicker window movement
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -103,6 +99,7 @@ nnoremap <esc><down>  <c-w>-
 nnoremap <esc><left>  <c-w><
 nnoremap <esc><right> <c-w>>
 
+" zoom in and out of a vim pane
 nnoremap <leader>zi :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>zo :wincmd =<cr>
 
