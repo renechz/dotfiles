@@ -59,7 +59,6 @@ filetype plugin indent on
 " }}}
 " Colorscheme {{{
 set termguicolors
-" let g:tiki_filter = 'spectrum'
 colorscheme tiki
 " }}}
 " Enable italics under tmux {{{
@@ -181,7 +180,8 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
 " }}}
-" Local config
+" Local config {{{
 if filereadable($HOME . "/.vim/vimrc.local")
   source ~/.vim/vimrc.local
 endif
+" }}}
