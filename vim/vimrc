@@ -59,7 +59,9 @@ filetype plugin indent on
 " }}}
 " Colorscheme {{{
 set termguicolors
-colorscheme tiki
+let g:tiki_plugin_hi_groups=1
+let g:tiki_filetype_hi_groups=1
+colorscheme tiki_ristretto
 " }}}
 " Enable italics under tmux {{{
 let &t_ZH="\e[3m"
