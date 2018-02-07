@@ -151,9 +151,6 @@ map <leader>H :call colortemplate#syn#toggle()<CR>
 inoremap <expr> <cr> mucomplete#popup_exit("\<cr>")
 let g:mucomplete#enable_auto_at_startup = 1
 " }}}
-" plasticboy/vim-markdown {{{
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby=rb']
-" }}}
 " sgur/vim-editorconfig {{{
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " }}}
