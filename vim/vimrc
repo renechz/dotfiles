@@ -22,7 +22,6 @@ set history=500
 set ignorecase
 set incsearch
 set laststatus=2
-set lazyredraw
 set list listchars=tab:——,trail:·,nbsp:·,extends:›,precedes:‹
 set mouse=a
 set nobackup
@@ -165,11 +164,13 @@ nnoremap <leader>av :AV<CR>
 " w0rp/ale {{{
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '>'
 
-if emoji#available()
-  let g:ale_sign_error = emoji#for('fire')
-  let g:ale_sign_warning = emoji#for('point_right')
-endif
+" if emoji#available()
+  " let g:ale_sign_error = emoji#for('fire')
+  " let g:ale_sign_warning = emoji#for('point_right')
+" endif
 
 nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
