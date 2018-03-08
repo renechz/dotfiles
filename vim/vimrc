@@ -112,7 +112,6 @@ autocmd VimResized * :wincmd =
 " ------------------------------------------------------------------------------
 " janko-m/vim-test {{{
 let test#strategy = "vimux"
-let g:VimuxOrientation = 'h'
 
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
