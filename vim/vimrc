@@ -1,4 +1,4 @@
-" vim: foldmethod=marker foldlevel=0
+" 'vim': foldmethod=marker foldlevel=0
 
 " ------------------------------------------------------------------------------
 " Settings
@@ -28,7 +28,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 set number
-set relativenumber
 set shortmess+=c   " Shut off completion messages
 set undolevels=1000
 set signcolumn=yes
@@ -60,7 +59,7 @@ filetype plugin indent on
 set termguicolors
 let g:tiki_plugin_hi_groups=1
 let g:tiki_filetype_hi_groups=1
-colorscheme tiki_ristretto
+colorscheme tiki_octagon
 " }}}
 " Enable italics under tmux {{{
 let &t_ZH="\e[3m"
@@ -74,12 +73,11 @@ if executable('rg')
 endif
 " }}}
 " Persistent undo {{{
-let undodir = expand('~/.vim/undo')
-if !isdirectory(undodir)
-  call mkdir(undodir)
+if has('persistent_undo')
+  set undodir=$HOME/.vim/undo
+  set undofile
+  if !isdirectory(&undodir) | call mkdir(&undodir, 'p', 0700) | endif
 endif
-set undodir=undodir
-set undofile
 " }}}
 " ------------------------------------------------------------------------------
 " Keymaps
@@ -160,16 +158,17 @@ nnoremap <leader>aa :A<CR>
 nnoremap <leader>as :AS<CR>
 nnoremap <leader>av :AV<CR>
 " }}}
+" vim-airline/vim-airline {{{
+let g:airline_theme='tiki'
+" }}}
 " w0rp/ale {{{
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '>'
 
-" if emoji#available()
-  " let g:ale_sign_error = emoji#for('fire')
-  " let g:ale_sign_warning = emoji#for('point_right')
-" endif
+if emoji#available()
+  let g:ale_sign_error = emoji#for('fire')
+  let g:ale_sign_warning = emoji#for('point_right')
+endif
 
 nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
