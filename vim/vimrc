@@ -10,6 +10,7 @@ set autoread
 set autowrite
 set autoindent
 set backspace=indent,eol,start
+set belloff+=ctrlg
 set clipboard=unnamed
 set colorcolumn=81,101
 set completeopt+=menuone,noselect
