@@ -2,7 +2,7 @@ source ~/.zplug/init.zsh
 
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 zplug "lib/completion", from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
+# zplug "lib/history", from:oh-my-zsh
 zplug "plugins/heroku", from:oh-my-zsh
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-completions", from:github
