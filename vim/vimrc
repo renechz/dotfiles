@@ -145,7 +145,6 @@ let g:fzf_colors = {
 map <leader>H :call colortemplate#syn#toggle()<CR>
 " }}}
 " lifepillar/vim-mucomplete {{{
-inoremap <expr> <cr> mucomplete#popup_exit("\<cr>")
 let g:mucomplete#enable_auto_at_startup = 1
 " }}}
 " sgur/vim-editorconfig {{{
