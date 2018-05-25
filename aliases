@@ -16,5 +16,7 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+alias vimrc="$VISUAL ~/.vim/vimrc"
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
