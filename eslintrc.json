@@ -1,50 +1,41 @@
 {
   "rules": {
-    "no-empty": ["error", { "allowEmptyCatch": true }],
-    "array-bracket-spacing": ["error", "always"],
-    "arrow-parens": "off",
-    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
-    "camelcase": "off",
-    "comma-dangle": ["error", "always-multiline"],
-    "comma-style": ["error", "last"],
-    "curly": ["error", "all"],
-    "dot-notation": "error",
-    "func-call-spacing": ["error", "never"],
-    "indent": ["error", 2, { "SwitchCase": 1 }],
-    "key-spacing": ["error", {
-      "beforeColon": false,
-      "afterColon": true
-    }],
-    "keyword-spacing": ["error", {
-      "overrides": {
-        "else": { "before": true },
-        "while": { "before": true },
-        "catch": { "before": true }
+    "array-bracket-spacing": [2, "always"],
+    "arrow-parens": 0,
+    "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+    "camelcase": 0,
+    "comma-dangle": [2, "always-multiline"],
+    "comma-style": [2, "last"],
+    "curly": [2, "all"],
+    "dot-notation": 2,
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
+    "keyword-spacing": [
+      2,
+      {
+        "overrides": {
+          "else": { "before": true },
+          "while": { "before": true },
+          "catch": { "before": true }
+        }
       }
-    }],
-    "no-multiple-empty-lines": ["error", { "max": 2 }],
-    "no-trailing-spaces": "error",
-    "no-var": "error",
-    "object-shorthand": "error",
-    "one-var": ["error", {
-      "uninitialized": "always",
-      "initialized": "never"
-    }],
-    "operator-linebreak": ["error", "after"],
-    "semi": ["error", "always"],
-    "semi-spacing": ["error", {
-      "before": false,
-      "after": true
-    }],
+    ],
+    "no-empty": [2, { "allowEmptyCatch": true }],
+    "no-multiple-empty-lines": 2,
+    "no-spaced-func": 2,
+    "no-trailing-spaces": 2,
+    "no-var": 2,
+    "object-shorthand": 2,
+    "one-var": [2, { "uninitialized": "always", "initialized": "never" }],
+    "operator-linebreak": [2, "after"],
     "quotes": [2, "single", { "avoidEscape": true }],
-    "space-before-function-paren": ["error", "never"],
-    "space-in-parens": ["error", "never"],
-    "space-infix-ops": "error",
-    "space-unary-ops": ["error", {
-      "words": false,
-      "nonwords": false
-    }],
-    "spaced-comment": ["error", "always"],
-    "space-before-blocks": ["error", "always"]
+    "semi": [2, "always"],
+    "semi-spacing": [2, { "before": false, "after": true }],
+    "space-before-blocks": [2, "always"],
+    "space-before-function-paren": [2, "never"],
+    "space-in-parens": [2, "never"],
+    "space-infix-ops": 2,
+    "space-unary-ops": [2, { "words": false, "nonwords": false }],
+    "spaced-comment": [2, "always"]
   }
 }
