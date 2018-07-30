@@ -59,7 +59,7 @@ filetype plugin indent on
 set termguicolors
 let g:tiki_plugin_hi_groups=1
 let g:tiki_filetype_hi_groups=1
-colorscheme tiki_octagon
+colorscheme tiki_night_owl
 " }}}
 " Enable italics under tmux {{{
 let &t_ZH="\e[3m"
@@ -141,7 +141,7 @@ let g:fzf_colors = {
   \ }
 " }}}
 " lifepillar/vim-colortemplate {{{
-map <leader>H :call colortemplate#syn#toggle()<CR>
+map <leader>H :call colortemplate#syn#hi_group()<CR>
 " }}}
 " lifepillar/vim-mucomplete {{{
 let g:mucomplete#enable_auto_at_startup = 1
