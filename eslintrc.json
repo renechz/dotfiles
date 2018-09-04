@@ -1,4 +1,13 @@
 {
+  "plugins": ["react"],
+  "extends": ["plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
     "array-bracket-spacing": [2, "always"],
     "arrow-parens": 0,

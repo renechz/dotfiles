@@ -59,7 +59,7 @@ filetype plugin indent on
 set termguicolors
 let g:tiki_plugin_hi_groups=1
 let g:tiki_filetype_hi_groups=1
-colorscheme tiki_night_owl
+colorscheme tiki
 " }}}
 " Enable italics under tmux {{{
 let &t_ZH="\e[3m"
@@ -128,16 +128,7 @@ nnoremap <silent> <leader>? :History<CR>
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Pmenu'],
-  \ 'hl':      ['fg', 'Pmenu'],
-  \ 'fg+':     ['fg', 'PmenuSel'],
-  \ 'bg+':     ['bg', 'PmenuSel'],
-  \ 'hl+':     ['fg', 'Pmenu'],
-  \ 'info':    ['fg', 'Pmenu'],
-  \ 'prompt':  ['fg', 'Pmenu'],
-  \ 'pointer': ['fg', 'PmenuSel'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment']
+  \ 'hl':      ['bg', 'PmenuSel'],
   \ }
 " }}}
 " lifepillar/vim-colortemplate {{{
