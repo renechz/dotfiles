@@ -6,26 +6,27 @@
 " /_/  |_\__/\____/_/ /_/ /_/_/\___/
 "
 "----------------------------------------------------------------
-"  Theme   : tiki
+"  Theme   : Atomic
 "  Version : 2.0.0
 "  License : MIT
 "  Author  : Gerard Bajona
-"  URL     : https://github.com/gerardbm/tiki
+"  URL     : https://github.com/gerardbm/atomic
 " ----------------------------------------------------------------
 "  Colors will be adapted to the current colorscheme. For better
 "  contrast use the tiki colorscheme: it has ten color palettes
 "  with sixteen colors selected procedurally (algorithms).
 "
-"  tiki colorscheme: https://github.com/gerardbm/vim-tiki
+"  Atomic colorscheme: https://github.com/gerardbm/vim-atomic
+"  tiki colorscheme: https://github.com/renechz/tiki.vim
 " ----------------------------------------------------------------
 
 let g:airline#themes#tiki#palette = {}
 
 function! airline#themes#tiki#refresh()
 
-  let s:N1 = airline#themes#get_highlight2(['LineNr', 'bg'], ['ModeMsg', 'fg'], 'none')
-  let s:N2 = airline#themes#get_highlight2(['LineNr', 'bg'], ['LineNr', 'fg'], 'none')
-  let s:N3 = airline#themes#get_highlight2(['ModeMsg', 'fg'], ['StatusLine', 'bg'], 'none')
+  let s:N1 = airline#themes#get_highlight2(['StatusLine', 'fg'], ['StatusLine', 'bg'], 'none')
+  let s:N2 = airline#themes#get_highlight2(['StatusLine', 'bg'], ['StatusLine', 'fg'], 'none')
+  let s:N3 = airline#themes#get_highlight2(['Normal', 'fg'], ['StatusLine', 'bg'], 'none')
   let g:airline#themes#tiki#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 
   let s:I1 = airline#themes#get_highlight2(['LineNr', 'bg'], ['Question', 'fg'], 'none')
