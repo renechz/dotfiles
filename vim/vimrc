@@ -23,7 +23,7 @@ set history=500
 set ignorecase
 set incsearch
 set laststatus=2
-set list listchars=tab:——,trail:·,nbsp:·,extends:›,precedes:‹
+set list listchars=tab:––,trail:•,nbsp:•,extends:»,precedes:«
 set mouse=a
 set nobackup
 set nowritebackup
@@ -161,12 +161,12 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
   \ 'css': ['prettier'],
   \ 'javascript': ['prettier_standard'],
-  \ 'ruby': ['standardrb'],
+  \ 'ruby': [''],
 \ }
 
 let g:ale_linters = {
-  \ 'javascript': ['standard'],
-  \ 'ruby': ['standardrb'],
+  \ 'javascript': ['eslint'],
+  \ 'ruby': [''],
 \ }
 
 if emoji#available()
