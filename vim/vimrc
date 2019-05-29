@@ -57,6 +57,7 @@ filetype plugin indent on
 " }}}
 " Colorscheme {{{
 " set background=light
+set background=dark
 " set termguicolors
 let g:tiki_use16=1
 let g:tiki_plugin_hi_groups=1
@@ -72,8 +73,8 @@ set t_ut=
 " }}}
 " Set custom grepprg {{{
 if executable('rg')
-  set grepprg=rg\ --vimgrep
-  set grepformat=%f:%l:%c:%m
+  set grepprg=rg\ --smart-case\ --vimgrep
+  " set grepformat=%f:%l:%c:%m
 endif
 " }}}
 " Persistent undo {{{
@@ -130,9 +131,7 @@ nnoremap <silent> <leader>] :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
 
 let g:fzf_colors = {
-  \ 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Pmenu'],
-  \ 'hl':      ['bg', 'PmenuSel'],
+  \ 'bg':      ['bg', 'StatusLine'],
   \ }
 " }}}
 " lifepillar/vim-colortemplate {{{
@@ -160,13 +159,12 @@ let g:ale_fix_on_save = 1
 
 let g:ale_fixers = {
   \ 'css': ['prettier'],
-  \ 'javascript': ['eslint'],
-  \ 'ruby': [''],
+  \ 'javascript': ['eslint']
 \ }
 
 let g:ale_linters = {
   \ 'javascript': ['eslint'],
-  \ 'ruby': [''],
+  \ 'ruby': ['standardrb'],
 \ }
 
 if emoji#available()
