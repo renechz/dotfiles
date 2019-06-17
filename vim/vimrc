@@ -23,7 +23,7 @@ set history=500
 set ignorecase
 set incsearch
 set laststatus=2
-set list listchars=tab:––,trail:•,nbsp:•,extends:»,precedes:«
+set list listchars=tab:▸\ ,trail:•,nbsp:•,extends:»,precedes:«
 set mouse=a
 set nobackup
 set nowritebackup
@@ -56,10 +56,8 @@ endif
 filetype plugin indent on
 " }}}
 " Colorscheme {{{
-" set background=light
 set background=dark
-" set termguicolors
-let g:tiki_use16=1
+set termguicolors
 let g:tiki_plugin_hi_groups=1
 let g:tiki_filetype_hi_groups=1
 let g:tiki_transp_bg=1
@@ -152,9 +150,9 @@ nnoremap <leader>as :AS<CR>
 nnoremap <leader>av :AV<CR>
 " }}}
 " w0rp/ale {{{
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
 let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 
 let g:ale_fixers = {
@@ -176,6 +174,8 @@ nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
+
+let g:polyglot_disabled = ['styled-components']
 " }}}
 " Local config {{{
 if filereadable($HOME . "/.vim/vimrc.local")
