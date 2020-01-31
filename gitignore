@@ -16,3 +16,9 @@ log/*.log
 rerun.txt
 tags
 tmp/**/*
+.tool-versions
+
+.php_cs.dist
+.php_cs.cache
+.projections.json
+.vscode
