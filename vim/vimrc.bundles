@@ -14,6 +14,7 @@ let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.vim/bundle')
 
+Plug 'vim-airline/vim-airline'
 Plug 'kana/vim-textobj-user'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
@@ -24,11 +25,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'lifepillar/vim-colortemplate'
-Plug 'renechz/monokai-pro-vim'
+" Plug 'renechz/monokai-pro-vim'
+Plug 'renechz/github-vim-colorscheme'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tommcdo/vim-lion'
+Plug 'yuezk/vim-js'
+" Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -40,7 +45,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
 
 if g:has_async
