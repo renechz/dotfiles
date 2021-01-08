@@ -17,6 +17,7 @@ alias s="rspec"
 alias path='echo $PATH | tr -s ":" "\n"'
 
 alias vimrc="$VISUAL ~/.vim/vimrc"
+alias vundles="$VISUAL ~/.vim/vimrc.bundles"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
