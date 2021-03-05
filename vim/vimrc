@@ -57,7 +57,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set termguicolors
 set background=dark
-colorscheme github
+colorscheme monokai_pro
 " }}}
 " Set custom grepprg {{{
 if executable('rg')
@@ -149,8 +149,8 @@ let g:fzf_colors = {
 
 let g:fzf_layout = { 'tmux': '-p80%' }
 " }}}
-" cocopon/inspecthi {{{
-map <leader>H :call colortemplate#syn#hi_group()<CR>
+" lifepillar/colortemplate {{{
+let g:colortemplate_no_mappings = 1
 " }}}
 " lifepillar/vim-mucomplete {{{
 let g:mucomplete#enable_auto_at_startup = 1

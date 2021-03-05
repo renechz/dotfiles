@@ -13,6 +13,7 @@ command!  -nargs=1 UnPlug call s:UnPlug(<args>)
 let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.vim/bundle')
+let g:plug_url_format = 'git@github.com:%s.git'
 
 Plug 'vim-airline/vim-airline'
 Plug 'kana/vim-textobj-user'
@@ -25,7 +26,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'lifepillar/vim-colortemplate'
-" Plug 'renechz/monokai-pro-vim'
+Plug 'renechz/monokai-pro-vim'
 Plug 'renechz/github-vim-colorscheme'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tmux-plugins/vim-tmux'
@@ -46,6 +47,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
+Plug 'vim-python/python-syntax'
 
 if g:has_async
   Plug 'dense-analysis/ale'
