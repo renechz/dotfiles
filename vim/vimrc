@@ -57,6 +57,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set termguicolors
 set background=dark
+
 colorscheme monokai_pro
 " }}}
 " Set custom grepprg {{{
@@ -142,12 +143,6 @@ nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>[ :BTags<CR>
 nnoremap <silent> <leader>] :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
-
-let g:fzf_colors = {
-      \ 'bg': ['bg', 'StatusLine'],
-    \ }
-
-let g:fzf_layout = { 'tmux': '-p80%' }
 " }}}
 " lifepillar/colortemplate {{{
 let g:colortemplate_no_mappings = 1
