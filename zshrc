@@ -1,41 +1,21 @@
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug 'mafredri/zsh-async'
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug 'zsh-users/zsh-completions', defer:2
+zplug 'zsh-users/zsh-autosuggestions', defer:2
+
+zplug load
+
+for zsh_source in $HOME/.zsh/configs/*.zsh; do
+  source $zsh_source
 done
 
-# extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
-# these are loaded first, second, and third, respectively.
-_load_settings() {
-  _dir="$1"
-  if [ -d "$_dir" ]; then
-    if [ -d "$_dir/pre" ]; then
-      for config in "$_dir"/pre/**/*~*.zwc(N-.); do
-        . $config
-      done
-    fi
+. $HOME/.asdf/asdf.sh
 
-    for config in "$_dir"/**/*(N-.); do
-      case "$config" in
-        "$_dir"/(pre|post)/*|*.zwc)
-          :
-          ;;
-        *)
-          . $config
-          ;;
-      esac
-    done
+[ -f ~/zsh/zshrc.local ] && source ~/zsh/zshrc.local
 
-    if [ -d "$_dir/post" ]; then
-      for config in "$_dir"/post/**/*~*.zwc(N-.); do
-        . $config
-      done
-    fi
-  fi
-}
-_load_settings "$HOME/.zsh/configs"
+eval "$(starship init zsh)"
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+export PATH="$HOME/.bin:$PATH"

@@ -1,16 +1,21 @@
-tap "thoughtbot/formulae"
+tap 'homebrew/cask'
+tap 'homebrew/bundle'
 tap "homebrew/services"
+tap "thoughtbot/formulae"
 tap "universal-ctags/universal-ctags"
 
 brew "asdf"
-brew "universal-ctags", args: ["HEAD"]
+brew "fd"
+brew "fzf"
+brew "gh"
 brew "git"
 brew "openssl"
 brew "rcm"
 brew "reattach-to-user-namespace"
-brew "fd"
+brew "starship"
 brew "tmux"
+brew "universal-ctags", args: ["HEAD"]
 brew "vim"
-brew "fish"
+brew "zplug"
 
 brew "coreutils"
