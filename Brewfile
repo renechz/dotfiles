@@ -5,6 +5,7 @@ tap "thoughtbot/formulae"
 tap "universal-ctags/universal-ctags"
 
 brew "asdf"
+brew "coreutils"
 brew "fd"
 brew "fzf"
 brew "gh"
@@ -18,4 +19,4 @@ brew "universal-ctags", args: ["HEAD"]
 brew "vim"
 brew "zplug"
 
-brew "coreutils"
+cask "fig"
