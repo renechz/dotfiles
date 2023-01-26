@@ -17,6 +17,7 @@ brew "starship"
 brew "tmux"
 brew "universal-ctags", args: ["HEAD"]
 brew "vim"
+brew "warp"
 brew "zplug"
 
 cask "fig"
