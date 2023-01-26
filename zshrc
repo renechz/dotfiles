@@ -12,6 +12,8 @@ for zsh_source in $HOME/.zsh/configs/*.zsh; do
   source $zsh_source
 done
 
+source $HOME/.zsh/aliases.zsh
+
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 [ -f ~/zsh/zshrc.local ] && source ~/zsh/zshrc.local
