@@ -16,6 +16,6 @@ source $HOME/.zsh/aliases.zsh
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
-[ -f ~/zsh/zshrc.local ] && source ~/zsh/zshrc.local
+[ -f ~/.zsh/zshrc.local ] && source ~/.zsh/zshrc.local
 
 export PATH="$HOME/.bin:$PATH"
