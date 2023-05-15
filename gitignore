@@ -17,8 +17,8 @@ rerun.txt
 tmp/**/*
 /tags
 .tool-versions
+.python-version
 
 .php_cs.dist
 .php_cs.cache
 .projections.json
-.vscode
