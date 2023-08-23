@@ -19,8 +19,6 @@
   autocrlf = input
 [merge]
   ff = only
-[commit]
-  template = ~/.git/gitmessage
 [fetch]
   prune = true
 [rebase]
