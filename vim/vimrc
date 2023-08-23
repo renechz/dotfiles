@@ -11,7 +11,7 @@ set autoindent
 set backspace=indent,eol,start
 set belloff+=ctrlg
 set clipboard=unnamed
-set colorcolumn=81,101,121
+set colorcolumn=80,100,120
 set completeopt-=preview
 set completeopt+=menuone,noselect
 set diffopt+=vertical
@@ -176,11 +176,6 @@ let g:ale_linters = {
   \ 'ruby': ['standardrb'],
   \ 'zsh': ['shellcheck'],
 \ }
-
-if emoji#available()
-  let g:ale_sign_error = emoji#for('fire')
-  let g:ale_sign_warning = emoji#for('point_right')
-endif
 
 nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
