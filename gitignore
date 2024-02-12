@@ -22,3 +22,5 @@ tmp/**/*
 .php_cs.dist
 .php_cs.cache
 .projections.json
+
+.clinic
