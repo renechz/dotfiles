@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# shellcheck disable=SC3043
+
+fancy_echo() {
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\\n$fmt\\n" "$@"
+}
+
+# shellcheck disable=SC2154
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+set -e
+
+fancy_echo "Checking for rcm..."
+if ! command -V rcup >/dev/null; then
+  fancy_echo "Installing rcm ..."
+
+if command -v brew >/dev/null; then
+    fancy_echo "Installing rcm via Homebrew ..."
+    brew install rcm
+fi
+if command -v apt >/dev/null; then
+    fancy_echo "Installing rcm via apt ..."
+    sudo apt update
+    sudo apt install rcm
+fi
+if command -v apk >/dev/null; then
+    fancy_echo "Installing rcm via apk ..."
+    sudo apk add rcm
+fi
+
+fi
+
+if ! command -V rcup >/dev/null; then
+    fancy_echo "Couldn't install rcm"
+    exit 1
+else
+    fancy_echo "Running rcup ..."
+    [ -f $HOME/dotfiles/rcrc ] && RCRC=$HOME/dotfiles/rcrc rcup -v
+    [ -f $HOME/.dotfiles/rcrc ] && RCRC=$HOME/.dotfiles/rcrc rcup -v
+fi
