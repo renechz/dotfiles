@@ -1,4 +1,5 @@
 tap "thoughtbot/formulae"
+tap "homebrew/services"
 
 brew "coreutils"
 brew "fd"
@@ -9,6 +10,6 @@ brew "openssl"
 brew "rcm"
 brew "ripgrep"
 brew "vim"
-brew "zplug"
+brew "universal-ctags"
 
 cask "warp"

@@ -1,21 +1,70 @@
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
+# Colors
+# makes color constants available
+autoload -U colors
+colors
 
-zplug 'mafredri/zsh-async'
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-zplug 'zsh-users/zsh-completions', defer:2
-zplug 'zsh-users/zsh-autosuggestions', defer:2
+# enable colored output from ls, etc. on FreeBSD-based systems
+export CLICOLOR=1
 
-zplug load
 
-for zsh_source in $HOME/.zsh/configs/*.zsh; do
-  source $zsh_source
-done
+# FZF
+export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-source $HOME/.zsh/aliases.zsh
+# General
+export VISUAL=vim
+export EDITOR=$VISUAL
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# https://docs.brew.sh/Analytics
+export HOMEBREW_NO_ANALYTICS=1
 
-[ -f ~/.zsh/zshrc.local ] && source ~/.zsh/zshrc.local
+# Keybindings
+# give us access to ^Q
+stty -ixon
 
-export PATH="$HOME/.bin:$PATH"
+# vi mode
+bindkey -v
+bindkey "^F" vi-cmd-mode
+
+# handy keybindings
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^K" kill-line
+bindkey "^R" history-incremental-search-backward
+bindkey "^P" history-search-backward
+bindkey "^Y" accept-and-hold
+bindkey "^N" insert-last-word
+bindkey "^Q" push-line-or-edit
+
+
+# POST
+# Completions
+# completion; use cache if updated within 24h
+autoload -Uz compinit
+if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
+  compinit -d $HOME/.zcompdump;
+else
+  compinit -C;
+fi;
+
+# PATH
+
+PATH="$HOME/.bin:/usr/local/sbin:$PATH"
+
+# mkdir .git/safe in the root of trusted repositories
+PATH=".git/safe/../../bin:$PATH"
+# PATH="$HOME/bin:$PATH"
+# PATH="$HOME/.npm-packages/bin:$PATH"
+
+
+export -U PATH
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# export PATH="/opt/homebrew/bin:$PATH"
+# export PATH="$HOME/bin:$PATH"
+# export PATH="$HOME/.bin:$PATH"
+#
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
+

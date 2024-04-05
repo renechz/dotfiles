@@ -15,34 +15,21 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 let g:plug_url_format = 'git@github.com:%s.git'
 
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 Plug 'kana/vim-textobj-user'
-Plug 'coderifous/textobj-word-column.vim'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'lifepillar/vim-mucomplete'
-Plug 'lifepillar/vim-colortemplate'
-Plug 'renechz/monokai-pro-vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-ruby/vim-ruby'
 Plug 'sheerun/vim-polyglot'
-
-if g:has_async
-  Plug 'dense-analysis/ale'
-endif
 
 if filereadable(expand("~/.vim/vimrc.bundles.local"))
   source ~/.vim/vimrc.bundles.local
