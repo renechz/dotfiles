@@ -17,7 +17,6 @@ let g:plug_url_format = 'git@github.com:%s.git'
 
 " Plug 'vim-airline/vim-airline'
 Plug 'kana/vim-textobj-user'
-Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'editorconfig/editorconfig-vim'

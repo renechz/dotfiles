@@ -52,10 +52,7 @@ endif
 filetype plugin indent on
 " }}}
 " Colorscheme {{{
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-set termguicolors
 set background=dark
 colorscheme slate
 " }}}
@@ -121,20 +118,6 @@ cnoremap <Esc>f <S-Right>
 " ------------------------------------------------------------------------------
 " Plugins
 " ------------------------------------------------------------------------------
-"  vim-airline {{{
-let g:airline_powerline_fonts = 1
-let g:airline_symbols = {}
-let g:airline_symbols.dirty='⚡️'
-" }}}
-" janko-m/vim-test {{{
-let test#strategy = "vimux"
-
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ta :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
-" }}}
 " junegunn/fzf.vim {{{
 nnoremap <c-p> :Files<cr>
 nnoremap <silent> <leader>B :Buffers<CR>
@@ -146,40 +129,11 @@ nnoremap <silent> <leader>? :History<CR>
 " lifepillar/colortemplate {{{
 let g:colortemplate_no_mappings = 1
 " }}}
-" lifepillar/vim-mucomplete {{{
-let g:mucomplete#enable_auto_at_startup = 1
-" }}}
 " sgur/vim-editorconfig {{{
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " }}}
 " tpope/vim-commentary {{{
 nmap cm <Plug>Commentary
-" }}}
-" tpope/vim-rails {{{
-nnoremap <leader>aa :A<CR>
-nnoremap <leader>as :AS<CR>
-nnoremap <leader>av :AV<CR>
-" }}}
-" w0rp/ale {{{
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
-let g:ale_fix_on_save = 1
-
-let g:ale_fixers = {
-  \ 'css': ['prettier'],
-\ }
-
-let g:ale_linters = {
-  \ 'ruby': ['standardrb'],
-  \ 'zsh': ['shellcheck'],
-\ }
-
-nmap <silent> [W <Plug>(ale_first)
-nmap <silent> [w <Plug>(ale_previous)
-nmap <silent> ]w <Plug>(ale_next)
-nmap <silent> ]W <Plug>(ale_last)
 " }}}
 " Local config {{{
 if filereadable($HOME . "/.vim/vimrc.local")
