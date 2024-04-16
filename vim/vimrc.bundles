@@ -19,7 +19,6 @@ let g:plug_url_format = 'git@github.com:%s.git'
 Plug 'kana/vim-textobj-user'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'

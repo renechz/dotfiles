@@ -54,7 +54,7 @@ filetype plugin indent on
 " Colorscheme {{{
 
 set background=dark
-colorscheme slate
+colorscheme habamax
 " }}}
 " Set custom grepprg {{{
 if executable('rg')
