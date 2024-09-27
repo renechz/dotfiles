@@ -55,7 +55,9 @@ packadd! editorconfig
 " Colorscheme {{{
 
 set background=dark
-colorscheme habamax
+set termguicolors
+colorscheme iceberg
+
 " }}}
 " Set custom grepprg {{{
 if executable('rg')
