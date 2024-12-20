@@ -57,7 +57,6 @@ packadd! editorconfig
 set background=dark
 set termguicolors
 colorscheme iceberg
-
 " }}}
 " Set custom grepprg {{{
 if executable('rg')

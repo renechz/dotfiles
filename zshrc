@@ -47,6 +47,9 @@ else
   compinit -C;
 fi;
 
+# ZOXIDE
+eval "$(zoxide init zsh)"
+
 # PATH
 
 PATH="$HOME/.bin:/usr/local/sbin:$PATH"
