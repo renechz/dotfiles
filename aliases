@@ -8,6 +8,8 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 alias vimrc="$EDITOR $HOME/.vim/vimrc"
 alias vundles="$EDITOR $HOME/.vim/vimrc.bundles"
+alias ghosttyrc="$EDITOR $HOME/.config/ghostty/config"
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
