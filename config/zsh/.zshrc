@@ -1,3 +1,8 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 # Colors
 # makes color constants available
 autoload -U colors
@@ -23,8 +28,8 @@ export HOMEBREW_NO_ANALYTICS=1
 stty -ixon
 
 # vi mode
-bindkey -v
-bindkey "^F" vi-cmd-mode
+# bindkey -v
+# bindkey "^F" vi-cmd-mode
 
 # handy keybindings
 bindkey "^A" beginning-of-line
@@ -41,8 +46,8 @@ bindkey "^Q" push-line-or-edit
 # Completions
 # completion; use cache if updated within 24h
 autoload -Uz compinit
-if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
-  compinit -d $HOME/.zcompdump;
+if [[ -n $ZDOTDIR/.zcompdump(#qN.mh+24) ]]; then
+  compinit -d $ZDOTDIR/.zcompdump;
 else
   compinit -C;
 fi;
@@ -62,7 +67,7 @@ PATH=".git/safe/../../bin:$PATH"
 
 export -U PATH
 
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+[ -f $ZDOTDIR/zshrc.local ] && source $ZDOTDIR/zshrc.local
 
 # export PATH="/opt/homebrew/bin:$PATH"
 # export PATH="$HOME/bin:$PATH"
