@@ -56,7 +56,7 @@ packadd! editorconfig
 
 set background=dark
 set termguicolors
-colorscheme iceberg
+colorscheme unokai
 " }}}
 " Set custom grepprg {{{
 if executable('rg')
