@@ -63,7 +63,9 @@ PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 PATH=".git/safe/../../bin:$PATH"
 # PATH="$HOME/bin:$PATH"
 # PATH="$HOME/.npm-packages/bin:$PATH"
-
+#
+# 1PASSWORD
+source "$XDG_CONFIG_HOME/op/plugins.sh"
 
 export -U PATH
 

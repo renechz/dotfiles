@@ -11,6 +11,8 @@ alias vundles="$EDITOR $HOME/.vim/vimrc.bundles"
 alias ghosttyrc="$EDITOR $HOME/.config/ghostty/config"
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
