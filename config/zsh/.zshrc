@@ -55,6 +55,9 @@ fi;
 # ZOXIDE
 eval "$(zoxide init zsh)"
 
+# MISE
+eval "$(/opt/homebrew/bin/mise activate zsh)"
+
 # PATH
 
 PATH="$HOME/.bin:/usr/local/sbin:$PATH"

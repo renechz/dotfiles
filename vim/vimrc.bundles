@@ -15,7 +15,6 @@ let g:has_async = v:version >= 800 || has('nvim')
 call plug#begin('~/.vim/bundle')
 let g:plug_url_format = 'git@github.com:%s.git'
 
-Plug 'cocopon/iceberg.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
