@@ -1,0 +1,10 @@
+# Homebrew formulae
+coreutils
+fd
+fzf
+gh
+git
+openssl
+ripgrep
+vim
+universal-ctags
