@@ -4,6 +4,7 @@ fd
 fzf
 gh
 git
+just
 openssl
 ripgrep
 vim
