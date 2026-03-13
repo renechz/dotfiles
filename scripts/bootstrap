@@ -2,7 +2,7 @@
 set -eu
 
 REPO_DIR=$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)
-BREW_DIR="$REPO_DIR/dependencies/brew"
+BREWFILE="$REPO_DIR/dependencies/Brewfile"
 EXTERNAL_DIR="$REPO_DIR/dependencies/external"
 
 log() {
@@ -61,63 +61,14 @@ install_homebrew_if_missing() {
   esac
 }
 
-install_taps() {
+install_brew_bundle() {
   brew="$1"
-  file="$BREW_DIR/taps.txt"
-  [ -f "$file" ] || return 0
+  [ -f "$BREWFILE" ] || {
+    log "Brewfile not found: $BREWFILE"
+    return 1
+  }
 
-  while IFS= read -r tap || [ -n "$tap" ]; do
-    case "$tap" in
-      ''|'#'*) continue ;;
-    esac
-
-    if "$brew" tap | grep -Fx "$tap" >/dev/null 2>&1; then
-      log "tap already installed: $tap"
-    else
-      log "installing tap: $tap"
-      if ! run_cmd "$brew" tap "$tap"; then
-        log "warning: failed to install tap '$tap'; continuing"
-      fi
-    fi
-  done < "$file"
-}
-
-install_formulae() {
-  brew="$1"
-  file="$BREW_DIR/formulae.txt"
-  [ -f "$file" ] || return 0
-
-  while IFS= read -r formula || [ -n "$formula" ]; do
-    case "$formula" in
-      ''|'#'*) continue ;;
-    esac
-
-    if "$brew" list --formula "$formula" >/dev/null 2>&1; then
-      log "formula already installed: $formula"
-    else
-      log "installing formula: $formula"
-      run_cmd "$brew" install "$formula"
-    fi
-  done < "$file"
-}
-
-install_casks() {
-  brew="$1"
-  file="$BREW_DIR/casks.txt"
-  [ -f "$file" ] || return 0
-
-  while IFS= read -r cask || [ -n "$cask" ]; do
-    case "$cask" in
-      ''|'#'*) continue ;;
-    esac
-
-    if "$brew" list --cask "$cask" >/dev/null 2>&1; then
-      log "cask already installed: $cask"
-    else
-      log "installing cask: $cask"
-      run_cmd "$brew" install --cask "$cask"
-    fi
-  done < "$file"
+  run_cmd "$brew" bundle --file "$BREWFILE"
 }
 
 run_external_installers() {
@@ -155,9 +106,7 @@ main() {
 
   log "using brew: $BREW"
   run_cmd "$BREW" update
-  install_taps "$BREW"
-  install_formulae "$BREW"
-  install_casks "$BREW"
+  install_brew_bundle "$BREW"
   run_external_installers
 }
 
