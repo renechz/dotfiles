@@ -55,9 +55,6 @@ fi;
 # ZOXIDE
 eval "$(zoxide init zsh)"
 
-# MISE
-eval "$(/opt/homebrew/bin/mise activate zsh)"
-
 # PATH
 
 PATH="$HOME/.bin:/usr/local/sbin:$PATH"
@@ -69,6 +66,9 @@ PATH=".git/safe/../../bin:$PATH"
 #
 # 1PASSWORD
 source "$XDG_CONFIG_HOME/op/plugins.sh"
+
+# MISE
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 
 export -U PATH
 

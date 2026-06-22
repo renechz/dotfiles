@@ -24,3 +24,7 @@ tmp/**/*
 .projections.json
 
 .clinic
+mise.local*
+.mise.local*
+
+**/.claude/settings.local.json
