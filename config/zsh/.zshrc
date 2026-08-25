@@ -68,7 +68,7 @@ PATH=".git/safe/../../bin:$PATH"
 source "$XDG_CONFIG_HOME/op/plugins.sh"
 
 # MISE
-eval "$(/opt/homebrew/bin/mise activate zsh)"
+eval "$($HOME/.local/bin/mise activate zsh)"
 
 export -U PATH
 
